@@ -20,11 +20,12 @@ public class MarketHealing
 		healGen = data.get(0);
 		healClass = data.get(1);
 	}
-	public MarketHealing()
+	public MarketHealing(ArrayList<String> data)
 	{
-		//Empty constructor. Meant to be used with setAll methods when loading from save.
+		//Meant to be used with setAll methods when loading from save.
 		healGen = new ArrayList<Healing>();
 		healClass = new ArrayList<Healing>();
+		setAllString(data);
 	}
 	public Player getPlayer()
 	{

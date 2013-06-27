@@ -39,25 +39,14 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 		bosses = new BossBattles();
 		town();
 	}
-	public PlaceActions(Player p, ArrayList data)
+	public PlaceActions(Player p, ArrayList<String> data)
 	{
+		//Meant to be used with setAll() when loading from save.
 		rand = new Random();
 		player = p;
-		desert = (Boolean)data.get(0);
-		plains = (Boolean)data.get(1);
-		forest = (Boolean)data.get(2);
-		mountains = (Boolean)data.get(3);
-		volcano = (Boolean)data.get(4);
-		caverns = (Boolean)data.get(5);
-		baseFac = (Boolean)data.get(6);
-		baseUrb = (Boolean)data.get(7);
-		baseLab = (Boolean)data.get(8);
-		baseMil = (Boolean)data.get(9);
-		baseFin = (Boolean)data.get(10);
-		markDef = new MarketDefense((ArrayList<ArrayList>)data.get(11));
-		markHeal = new MarketHealing((ArrayList<ArrayList>)data.get(12));
-		markSA = new MarketSpeAttack((ArrayList<ArrayList>)data.get(13));
-		markWeap = new MarketWeapon((ArrayList<Weapon>)data.get(14));
+		
+		setAll(data);
+
 		bosses = new BossBattles();
 		town();
 	}
@@ -976,25 +965,87 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 				base();
 		}
 	}
-	public ArrayList getAll()
+	public ArrayList<String> getAll()
 	{
-		ArrayList data = new ArrayList();
-		data.add(new Boolean(desert));
-		data.add(new Boolean(plains));
-		data.add(new Boolean(forest));
-		data.add(new Boolean(mountains));
-		data.add(new Boolean(volcano));
-		data.add(new Boolean(caverns));
-		data.add(new Boolean(baseFac));
-		data.add(new Boolean(baseUrb));
-		data.add(new Boolean(baseLab));
-		data.add(new Boolean(baseMil));
-		data.add(new Boolean(baseFin));
-		data.add(new ArrayList<ArrayList>(markDef.getAll()));
-		data.add(new ArrayList<ArrayList>(markHeal.getAll()));
-		data.add(new ArrayList<ArrayList>(markSA.getAll()));
-		data.add(new ArrayList<Weapon>(markWeap.getAll()));
+		ArrayList<String> data = new ArrayList<String>();
+		
+		String bools = "";
+		bools = desert ? bools + "1" : bools + "0";
+		bools = plains ? bools + "1" : bools + "0";
+		bools = forest ? bools + "1" : bools + "0";
+		bools = mountains ? bools + "1" : bools + "0";
+		bools = volcano ? bools + "1" : bools + "0";
+		bools = caverns ? bools + "1" : bools + "0";
+		bools = baseFac ? bools + "1" : bools + "0";
+		bools = baseUrb ? bools + "1" : bools + "0";
+		bools = baseLab ? bools + "1" : bools + "0";
+		bools = baseMil ? bools + "1" : bools + "0";
+		bools = baseFin ? bools + "1" : bools + "0";
+		
+		data.add(bools);
+		
+		ArrayList<String> defOut = markDef.getAllString();
+		ArrayList<String> healOut = markHeal.getAllString();
+		ArrayList<String> SAOut = markSA.getAllString();
+		ArrayList<String> weapOut = markWeap.getAllString();
+		
+		int[] sizes = [defOut.size(), healOut.size(), SAOut.size(), weapOut.size()];
+		for(int i = 0; i < sizes[0]; i++)
+		{
+			data.add(defOut.get(i));
+		}
+		for(int i = 0; i < sizes[1]; i++)
+		{
+			data.add(healOut.get(i));
+		}
+		for(int i = 0; i < sizes[2]; i++)
+		{
+			data.add(SAOut.get(i));
+		}
+		for(int i = 0; i < sizes[3]; i++)
+		{
+			data.add(weapOut.get(i));
+		}
+		
 		return data;
+	}
+	public void setAll(ArrayList<String> data)
+	{
+		ArrayList<String> defIn = new ArrayList<String>();
+		ArrayList<String> healIn = new ArrayList<String>();
+		ArrayList<String> SAIn = new ArrayList<String>();
+		ArrayList<String> weapIn = new ArrayList<String>();
+		
+		String bools = data.remove(0);
+		
+		desert = data.charAt(0) == '1' ? true : false;
+		plains = data.charAt(1) == '1' ? true : false;
+		forest = data.charAt(2) == '1' ? true : false;
+		mountains = data.charAt(3) == '1' ? true : false;
+		volcano = data.charAt(4) == '1' ? true : false;
+		caverns = data.charAt(5) == '1' ? true : false;
+		baseFac = data.charAt(6) == '1' ? true : false;
+		baseUrb = data.charAt(7) == '1' ? true : false;
+		baseLab = data.charAt(8) == '1' ? true : false;
+		baseMil = data.charAt(9) == '1' ? true : false;
+		baseFin = data.charAt(10) == '1' ? true : false;
+		
+		for(int i = 1; i <= 8; i++)
+		{
+			int numIters = Integer.parseInt(data.get(0));
+			for(int j = 0; j <= numIters; j++)
+			{
+				if(i == 1 || i == 2) defIn.add(data.remove(0));
+				else if(i == 3 || i == 4) healIn.add(data.remove(0));
+				else if(i == 5 || i == 6) SAIn.add(data.remove(0));
+				else weapIn.add(data.remove(0));
+			}
+		}
+		
+		markDef = new MarketDefense(defIn);
+		markHeal = new MarketHealing(healIn);
+		markSA = new MarketSpeAttack(SAIn);
+		markWeap = new MarketWeapon(weapIn);
 	}
 	 /*Places (in order):
 	  *1 - Town

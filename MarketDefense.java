@@ -20,11 +20,12 @@ public class MarketDefense//change Util.numberSelect() to proper parameters
 		defenseGen = data.get(0);
 		defenseClass = data.get(1);
 	}
-	public MarketDefense()
+	public MarketDefense(ArrayList<String> data)
 	{
-		//Empty constructor. Meant to be used with setAll when loading from save.
+		//Meant to be used with setAll when loading from save.
 		defenseGen = new ArrayList<Defense>();
 		defenseClass = new ArrayList<Defense>();
+		setAllString(data);
 	}
 	public Player getPlayer()
 	{

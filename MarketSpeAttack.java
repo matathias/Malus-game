@@ -20,11 +20,12 @@ public class MarketSpeAttack//change Util.numberSelect() to proper parameters
 		speAttGen = data.get(0);
 		speAttClass = data.get(1);
 	}
-	public MarketSpeAttack ()
+	public MarketSpeAttack(ArrayList<String> data)
 	{
-		//Empty constructor. Meant to be used with setAll methods when loading from save.
+		//Meant to be used with setAll methods when loading from save.
 		speAttGen = new ArrayList<SpecialAttack>();
 		speAttClass = new ArrayList<SpecialAttack>();
+		setAllString(data);
 	}
 	public Player getPlayer()
 	{

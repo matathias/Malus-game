@@ -17,9 +17,11 @@ public class MarketWeapon //change Util.numberSelect() to proper parameters
 	{
 		weapon = data;
 	}
-	public MarketWeapon()
+	public MarketWeapon(ArrayList<String> data)
 	{
-		//Empty constructor. Meant to be used with the setAll methods when loading from save.
+		//Meant to be used with the setAll methods when loading from save.
+		weapon = new ArrayList<Weapon>();
+		setAllString(data);
 	}
 	public Player getPlayer()
 	{
