@@ -567,9 +567,9 @@ public class Player
 
 	//I/O all related data-----------------------------------------------------------------------------------------
 
-	public ArrayList getAll()
+	public ArrayList<String> getAll()
 	{
-		ArrayList data = new ArrayList();
+		ArrayList<String> data = new ArrayList<String>();
 		/*Data indices:
 		 *0 - HP (double)
 		 *1 - MaxHP (double)
@@ -586,17 +586,18 @@ public class Player
 		 *12 - SpecialAttack (arraylist)
 		 *13 - Healing (arraylist)
 		*/
-		data.add(new Double(getHP()));
-		data.add(new Double(getMaxHealth())); //includes the HP added by the weapon
-		data.add(new Double(getEP()));
-		data.add(new Double(getMaxEP())); //includes the EP added by the weapon
-		data.add(new Double(getRawDamage()));
-		data.add(new Double(getMod()));
-		data.add(new Double(getMoney()));
-		data.add(new Double(getEXP()));
-		data.add(new Double(getLvl()));
-		data.add(new String(getPlayerName()));
-		data.add(new String(getPlayerClass()));
+		data.add(String.valueOf(getHP()));
+		data.add(String.valueOf(getMaxHealth())); //includes the HP added by the weapon
+		data.add(String.valueOf(getEP()));
+		data.add(String.valueOf(getMaxEP())); //includes the EP added by the weapon
+		data.add(String.valueOf(getRawDamage()));
+		data.add(String.valueOf(getMod()));
+		data.add(String.valueOf(getMoney()));
+		data.add(String.valueOf(getEXP()));
+		data.add(String.valueOf(getLvl()));
+		data.add(String.valueOf(getPlayerName()));
+		data.add(getPlayerClass());
+		
 		data.add(new Weapon(getWeapon()));
 		data.add(new ArrayList<SpecialAttack>(getSpecialAttacks()));
 		data.add(new ArrayList<Healing>(getHealing()));
