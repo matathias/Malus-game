@@ -571,20 +571,24 @@ public class Player
 	{
 		ArrayList<String> data = new ArrayList<String>();
 		/*Data indices:
-		 *0 - HP (double)
-		 *1 - MaxHP (double)
-		 *2 - EP (double)
-		 *3 - MaxEP (double)
-		 *4 - Attack Damage (double)
-		 *5 - Attack Mod (double)
-		 *6 - Money (double)
-		 *7 - EXP (double)
-		 *8 - Level (double)
-		 *9 - Player Name (String)
-		 *10 - Player Class (String)
-		 *11 - Weapon (object)
-		 *12 - SpecialAttack (arraylist)
-		 *13 - Healing (arraylist)
+		 * 0 - HP
+		 * 1 - MaxHP
+		 * 2 - EP
+		 * 3 - MaxEP
+		 * 4 - Attack Damage
+		 * 5 - Attack Mod
+		 * 6 - Money
+		 * 7 - EXP
+		 * 8 - Level
+		 * 9 - Player Name
+		 *10 - Player Class
+		 *11 - Weapon Name
+         *12 - Weapon Damage
+         *13 - Weapon HP Bonus
+         *14 - Weapon EP Bonus
+         *15 - Weapon Cost
+		 *   - SpecialAttacks
+		 *   - Healing Abilities
 		*/
 		data.add(String.valueOf(getHP()));
 		data.add(String.valueOf(getMaxHealth())); //includes the HP added by the weapon
@@ -595,29 +599,93 @@ public class Player
 		data.add(String.valueOf(getMoney()));
 		data.add(String.valueOf(getEXP()));
 		data.add(String.valueOf(getLvl()));
-		data.add(String.valueOf(getPlayerName()));
+		data.add(getPlayerName());
 		data.add(getPlayerClass());
 		
-		data.add(new Weapon(getWeapon()));
-		data.add(new ArrayList<SpecialAttack>(getSpecialAttacks()));
-		data.add(new ArrayList<Healing>(getHealing()));
+		data.add(getWeapon().getWeaponName());
+		data.add(String.valueOf(getWeapon().getWeaponDamage()));
+		data.add(String.valueOf(getWeapon().getHP()));
+		data.add(String.valueOf(getWeapon().getEP()));
+		data.add(String.valueOf(getWeapon().getCost()));
+		
+		ArrayList<SpecialAttack> speAtt = getSpecialAttacks();
+		data.add(String.valueOf(speAtt.size()));
+		for(int i = 0; i < speAtt.size(); i++)
+		{
+			data.add(speAtt.get(i).getAttackName());
+			data.add(speAtt.get(i).getAvailClass());
+			data.add(String.valueOf(speAtt.get(i).getAttackDamage()));
+			data.add(String.valueOf(speAtt.get(i).getExtraPoints()));
+			data.add(String.valueOf(speAtt.get(i).getMinLevel()));
+			data.add(String.valueOf(speAtt.get(i).getCost()));
+			data.add(String.valueOf(speAtt.get(i).getCritChance()));
+			data.add(String.valueOf(speAtt.get(i).getCritBonus()));
+		}
+		
+		ArrayList<Healing> heal = getHealing();
+		data.add(String.valueOf(heal.size()));
+		for(int i = 0; i < heal.size(); i+=6)
+		{
+			data.add(heal.get(i).getHealName());
+			data.add(heal.get(i).getAvailClass());
+			data.add(String.valueOf(heal.get(i).getHealedHP()));
+			data.add(String.valueOf(heal.get(i).getUsedEP()));
+			data.add(String.valueOf(heal.get(i).getMinLevel()));
+			data.add(String.valueOf(heal.get(i).getCost()));
+		}
+		
 		return data;
 	}
 	public void setAll(ArrayList list)
 	{
-		setHP((Double)list.get(0));
-		setMaxHealth((Double)list.get(1));
-		setEP((Double)list.get(2));
-		setMaxEP((Double)list.get(3));
-		setDamage((Double)list.get(4));
-		setMod((Double)list.get(5));
-		setMoney((Double)list.get(6));
-		setEXP((Double)list.get(7));
-		setLvl((Double)list.get(8));
-		setPlayerName((String)list.get(9));
-		setClass((String)list.get(10));
-		setWeapon((Weapon)list.get(11));
-		setSpecialAttacks((ArrayList<SpecialAttack>)list.get(12));
-		setHealing((ArrayList<Healing>)list.get(13));
+		setHP(Double.parseDouble(list.remove(0)));
+		setMaxHealth(Double.parseDouble(list.remove(0)));
+		setEP(Double.parseDouble(list.remove(0)));
+		setMaxEP(Double.parseDouble(list.remove(0)));
+		setDamage(Double.parseDouble(list.remove(0)));
+		setMod(Double.parseDouble(list.remove(0)));
+		setMoney(Double.parseDouble(list.remove(0)));
+		setEXP(Double.parseDouble(list.remove(0)));
+		setLvl(Double.parseDouble(list.remove(0)));
+		setPlayerName(list.remove(0));
+		setClass(list.remove(0));
+		
+		String weaponName = list.remove(0);
+		double weaponDam = Double.parseDouble(list.remove(0));
+		double weaponHP = Double.parseDouble(list.remove(0));
+		double weaponEP = Double.parseDouble(list.remove(0));
+		int weaponCost = Integer.parseInt(list.remove(0));
+		Weapon loadWeapon = new Weapon(weaponName, weaponDam, weaponHP, weaponEP, weaponCost);
+		setWeapon(loadWeapon);
+		
+		numSpeAtt = Integer.parseInt(list.remove(0));
+		ArrayList<SpecialAttack> speAtt = new ArrayList<SpecialAttack>();
+		for(int i = 0; i < numSpeAtt; i++)
+		{
+			String speName = list.remove(0);
+			String speClass = list.remove(0);
+			double speDam = Double.parseDouble(list.remove(0));
+			double speEP = Double.parseDouble(list.remove(0));
+			double speMinLvl = Double.parseDouble(list.remove(0));
+			int speCost = Integer.parseInt(list.remove(0));
+			int speCritCh = Integer.parseInt(list.remove(0));
+			double speCritBon = Double.parseDouble(list.remove(0));
+			speAtt.add(new SpecialAttack(speName, speClass, speDam, speEP, speMinLvl, speCost, speCritCh, speCritBon));
+		}
+		setSpecialAttacks(speAtt);
+		
+		numHeal = Integer.parseInt(list.remove(0));
+		ArrayList<Healing> heal = new ArrayList<Healing>();
+		for(int i = 0; i < numHeal; i++)
+		{
+			String heaName = list.remove(0);
+			String heaClass = list.remove(0);
+			double heaHP = Double.parseDouble(list.remove(0));
+			double heaEP = Double.parseDouble(list.remove(0));
+			int heaMinLvl = Integer.parseInt(list.remove(0));
+			int heaCost = Integer.parseInt(list.remove(0));
+			heal.add(new Healing(heaName, heaClass, heaHP, heaEP, heaMinLvl, heaCost));
+		}
+		setHealing(heal);
 	}
 }
