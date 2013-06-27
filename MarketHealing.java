@@ -20,6 +20,12 @@ public class MarketHealing
 		healGen = data.get(0);
 		healClass = data.get(1);
 	}
+	public MarketHealing()
+	{
+		//Empty constructor. Meant to be used with setAll methods when loading from save.
+		healGen = new ArrayList<Healing>();
+		healClass = new ArrayList<Healing>();
+	}
 	public Player getPlayer()
 	{
 		return player;
@@ -178,5 +184,66 @@ public class MarketHealing
 	{
 		healGen = data.get(0);
 		healClass = data.get(1);
+	}
+	public ArrayList<String> getAllString()
+	{
+		int numGen = healGen.size();
+		int numClass = healClass.size();
+		ArrayList<String> data = new ArrayList<String>();
+		
+		data.add(String.valueOf(numGen));
+		for(int i = 0; i < numGen; i++)
+		{
+			data.add(healGen.get(i).getHealName());
+			data.add(healGen.get(i).getAvailClass());
+			data.add(String.valueOf(healGen.get(i).getHealedHP()));
+			data.add(String.valueOf(healGen.get(i).getUsedEP()));
+			data.add(String.valueOf(healGen.get(i).getMinLevel()));
+			data.add(String.valueOf(healGen.get(i).getCost()));
+		}
+		
+		data.add(String.valueOf(numClass));
+		for(int i = 0; i < numGen; i++)
+		{
+			data.add(healClass.get(i).getHealName());
+			data.add(healClass.get(i).getAvailClass());
+			data.add(String.valueOf(healClass.get(i).getHealedHP()));
+			data.add(String.valueOf(healClass.get(i).getUsedEP()));
+			data.add(String.valueOf(healClass.get(i).getMinLevel()));
+			data.add(String.valueOf(healClass.get(i).getCost()));
+		}
+		
+		return data;
+	}
+	public void setAllString(ArrayList<String> data)
+	{
+		ArrayList<Healing> inDataGen = new ArrayList<Healing>();
+		ArrayList<Healing> inDataClass = new ArrayList<Healing>();
+		
+		int numGen = Integer.parseInt(data.remove(0));
+		for(int i = 0; i < numGen; i++)
+		{
+			String inName = data.remove(0);
+			String inClass = data.remove(0);
+			double inHeal = Double.parseDouble(data.remove(0));
+			double inEP = Double.parseDouble(data.remove(0));
+			double inLvl = Double.parseDouble(data.remove(0));
+			int inCost = Integer.parseInt(data.remove(0));
+			inDataGen.add(new Healing(inName, inClass, inHeal, inEP, inLvl, inCost));
+		}
+		healGen = inDataGen;
+		
+		int numClass = Integer.parseInt(data.remove(0));
+		for(int i = 0; i < numClass; i++)
+		{
+			String inName = data.remove(0);
+			String inClass = data.remove(0);
+			double inHeal = Double.parseDouble(data.remove(0));
+			double inEP = Double.parseDouble(data.remove(0));
+			double inLvl = Double.parseDouble(data.remove(0));
+			int inCost = Integer.parseInt(data.remove(0));
+			inDataClass.add(new Healing(inName, inClass, inHeal, inEP, inLvl, inCost));
+		}
+		healClass = inDataClass;
 	}
 }

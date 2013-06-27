@@ -20,6 +20,12 @@ public class MarketSpeAttack//change Util.numberSelect() to proper parameters
 		speAttGen = data.get(0);
 		speAttClass = data.get(1);
 	}
+	public MarketSpeAttack ()
+	{
+		//Empty constructor. Meant to be used with setAll methods when loading from save.
+		speAttGen = new ArrayList<SpecialAttack>();
+		speAttClass = new ArrayList<SpecialAttack>();
+	}
 	public Player getPlayer()
 	{
 		return player;
@@ -188,5 +194,74 @@ public class MarketSpeAttack//change Util.numberSelect() to proper parameters
 	{
 		speAttGen = data.get(0);
 		speAttClass = data.get(1);
+	}
+	public ArrayList<String> getAllString()
+	{
+		int numGen = speAttGen.size();
+		int numClass = speAttClass.size();
+		ArrayList<String> data = new ArrayList<String>();
+		
+		data.add(String.valueOf(numGen));
+		for(int i = 0; i < numGen; i++)
+		{
+			data.add(speAttGen.get(i).getAttackName());
+			data.add(speAttGen.get(i).getAvailClass());
+			data.add(String.valueOf(speAttGen.get(i).getAttackDamage()));
+			data.add(String.valueOf(speAttGen.get(i).getExtraPoints()));
+			data.add(String.valueOf(speAttGen.get(i).getMinLevel()));
+			data.add(String.valueOf(speAttGen.get(i).getCost()));
+			data.add(String.valueOf(speAttGen.get(i).getCritChance()));
+			data.add(String.valueOf(speAttGen.get(i).getCritBonus()));
+		}
+		
+		data.add(String.valueOf(numClass));
+		for(int i = 0; i < numGen; i++)
+		{
+			data.add(speAttClass.get(i).getAttackName());
+			data.add(speAttClass.get(i).getAvailClass());
+			data.add(String.valueOf(speAttClass.get(i).getAttackDamage()));
+			data.add(String.valueOf(speAttClass.get(i).getExtraPoints()));
+			data.add(String.valueOf(speAttClass.get(i).getMinLevel()));
+			data.add(String.valueOf(speAttClass.get(i).getCost()));
+			data.add(String.valueOf(speAttClass.get(i).getCritChance()));
+			data.add(String.valueOf(speAttClass.get(i).getCritBonus()));
+		}
+		
+		return data;
+	}
+	public void setAllString(ArrayList<String> data)
+	{
+		ArrayList<SpecialAttack> inDataGen = new ArrayList<SpecialAttack>();
+		ArrayList<SpecialAttack> inDataClass = new ArrayList<SpecialAttack>();
+		
+		int numGen = Integer.parseInt(data.remove(0));
+		for(int i = 0; i < numGen; i++)
+		{
+			String inName = data.remove(0);
+			String inClass = data.remove(0);
+			double inDam = Double.parseDouble(data.remove(0));
+			double inEP = Double.parseDouble(data.remove(0));
+			double inLvl = Double.parseDouble(data.remove(0));
+			int inCost = Integer.parseInt(data.remove(0));
+			int inCritChan = Integer.parseInt(data.remove(0));
+			double inCritBon = Double.parseDouble(data.remove(0));
+			inDataGen.add(new SpecialAttack(inName, inClass, inDam, inEP, inLvl, inCost, inCritChan, inCratBon));
+		}
+		speAttGen = inDataGen;
+		
+		int numClass = Integer.parseInt(data.remove(0));
+		for(int i = 0; i < numGen; i++)
+		{
+			String inName = data.remove(0);
+			String inClass = data.remove(0);
+			double inDam = Double.parseDouble(data.remove(0));
+			double inEP = Double.parseDouble(data.remove(0));
+			double inLvl = Double.parseDouble(data.remove(0));
+			int inCost = Integer.parseInt(data.remove(0));
+			int inCritChan = Integer.parseInt(data.remove(0));
+			double inCritBon = Double.parseDouble(data.remove(0));
+			inDataClass.add(new SpecialAttack(inName, inClass, inDam, inEP, inLvl, inCost, inCritChan, inCratBon));
+		}
+		speAttClass = inDataClass;
 	}
 }

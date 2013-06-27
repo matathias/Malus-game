@@ -17,6 +17,10 @@ public class MarketWeapon //change Util.numberSelect() to proper parameters
 	{
 		weapon = data;
 	}
+	public MarketWeapon()
+	{
+		//Empty constructor. Meant to be used with the setAll methods when loading from save.
+	}
 	public Player getPlayer()
 	{
 		return player;
@@ -155,5 +159,34 @@ public class MarketWeapon //change Util.numberSelect() to proper parameters
 	public void setAll(ArrayList<Weapon> data)
 	{
 		weapon = data;
+	}
+	public ArrayList<String> getAllString()
+	{
+		ArrayList<String> data = new ArrayList<String>();
+		for(int i = 0; i < weapon.size(); i++)
+		{
+			data.add(weapon.get(i).getWeaponName());
+			data.add(String.valueOf(weapon.get(i).getWeaponDamage()));
+			data.add(String.valueOf(weapon.get(i).getHP()));
+			data.add(String.valueOf(weapon.get(i).getEP()));
+			data.add(String.valueOf(weapon.get(i).getCost()));
+		}
+		return data;
+	}
+	public void setAllString(ArrayList<String> data)
+	{
+		ArrayList<Weapon> inData = new ArrayList<Weapon>();
+		for(int i = 0; i < data.size(); i+=5)
+		{
+			String inName = data.get(i);
+			double inDam = Double.parseDouble(data.get(i+1));
+			double inHP = Double.parseDouble(data.get(i+2));
+			double inEP = Double.parseDouble(data.get(i+3));
+			int inCost = Integer.parseInt(data.get(i+4));
+			
+			inData.add(new Weapon(inName, inDam, inHP, inEP, inCost));
+		}
+		
+		weapon = inData;
 	}
 }

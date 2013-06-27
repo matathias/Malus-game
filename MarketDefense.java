@@ -20,6 +20,12 @@ public class MarketDefense//change Util.numberSelect() to proper parameters
 		defenseGen = data.get(0);
 		defenseClass = data.get(1);
 	}
+	public MarketDefense()
+	{
+		//Empty constructor. Meant to be used with setAll when loading from save.
+		defenseGen = new ArrayList<Defense>();
+		defenseClass = new ArrayList<Defense>();
+	}
 	public Player getPlayer()
 	{
 		return player;
@@ -176,5 +182,58 @@ public class MarketDefense//change Util.numberSelect() to proper parameters
 	{
 		defenseGen = data.get(0);
 		defenseClass = data.get(1);
+	}
+	public ArrayList<String> getAllString()
+	{
+		int numGen = defenseGen.size();
+		int numClass = defenseClass.size();
+		ArrayList<String> data = new ArrayList<String>();
+		
+		data.add(String.valueOf(numGen));
+		for(int i = 0; i < numGen; i++)
+		{
+			data.add(defenseGen.get(i).getDefenseName());
+			data.add(String.valueOf(defenseGen.get(i).getAddHP()));
+			data.add(String.valueOf(defenseGen.get(i).getAddEP()));
+			data.add(String.valueOf(defenseGen.get(i).getCost()));
+		}
+		
+		data.add(String.valueOf(numClass));
+		for(int i = 0; i < numGen; i++)
+		{
+			data.add(defenseClass.get(i).getDefenseName());
+			data.add(String.valueOf(defenseClass.get(i).getAddHP()));
+			data.add(String.valueOf(defenseClass.get(i).getAddEP()));
+			data.add(String.valueOf(defenseClass.get(i).getCost()));
+		}
+		
+		return data;
+	}
+	public void setAllString(ArrayList<String> data)
+	{
+		ArrayList<Defense> inDataGen = new ArrayList<Defense>();
+		ArrayList<Defense> inDataClass = new ArrayList<Defense>();
+		
+		int numGen = Integer.parseInt(data.remove(0));
+		for(int i = 0; i < numGen; i++)
+		{
+			String inName = data.remove(0);
+			double inHP = Double.parseDouble(data.remove(0));
+			double inEP = Double.parseDouble(data.remove(0));
+			int inCost = Integer.parseInt(data.remove(0));
+			inDataGen.add(new Defense(inName, inHP, inEP, inCost));
+		}
+		defenseGen = inDataGen;
+		
+		int numClass = Integer.parseInt(data.remove(0));
+		for(int i = 0; i < numClass; i++)
+		{
+			String inName = data.remove(0);
+			double inHP = Double.parseDouble(data.remove(0));
+			double inEP = Double.parseDouble(data.remove(0));
+			int inCost = Integer.parseInt(data.remove(0));
+			inDataClass.add(new Defense(inName, inHP, inEP, inCost));
+		}
+		defenseClass = inDataClass;
 	}
 }
