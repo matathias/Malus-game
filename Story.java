@@ -1121,40 +1121,48 @@ public class Story
 			Util.skitPause();
 		}
 	}
-	public static ArrayList getAll()
+	public static String getAll()
 	{
-		ArrayList data = new ArrayList();
+		/*
+		 * Returns a String with each character corresponding to a variable.
+		 */
+		String data = "";
 		
-		data.add(new Integer(malusQuoteCounter));
-		data.add(new Integer(placeQuoteCounter));
-		data.add(new Boolean(desBoss));
-		data.add(new Boolean(plaBoss));
-		data.add(new Boolean(forBoss));
-		data.add(new Boolean(mounBoss));
-		data.add(new Boolean(volBoss));
-		data.add(new Boolean(cavBoss));
-		data.add(new Boolean(facBoss));
-		data.add(new Boolean(urbBoss));
-		data.add(new Boolean(labBoss));
-		data.add(new Boolean(milBoss));
-		data.add(new Boolean(malBoss));
+		data = data + String.valueOf(malusQuoteCounter);
+		data = data + String.valueOf(placeQuoteCounter);
+		
+		data = desBoss ? data + "1" : data + "0";
+		data = plaBoss ? data + "1" : data + "0";
+		data = forBoss ? data + "1" : data + "0";
+		data = mounBoss ? data + "1" : data + "0";
+		data = volBoss ? data + "1" : data + "0";
+		data = cavBoss ? data + "1" : data + "0";
+		data = facBoss ? data + "1" : data + "0";
+		data = urbBoss ? data + "1" : data + "0";
+		data = labBoss ? data + "1" : data + "0";
+		data = milBoss ? data + "1" : data + "0";
+		data = malBoss ? data + "1" : data + "0";
 		
 		return data;
 	}
-	public static void setAll(ArrayList data)
+	public static void setAll(String data)
 	{
-		malusQuoteCounter = (Integer)data.get(0);
-		placeQuoteCounter = (Integer)data.get(1);
-		desBoss = (Boolean)data.get(2);
-		plaBoos = (Boolean)data.get(3);
-		forBoss = (Boolean)data.get(4);
-		mounBoss = (Boolean)data.get(5);
-		volBoss = (Boolean)data.get(6);
-		cavBoss = (Boolean)data.get(7);
-		facBoss = (Boolean)data.get(8);
-		urbBoss = (Boolean)data.get(9);
-		labBoss = (Boolean)data.get(10);
-		milBoss = (Boolean)data.get(11);
-		malBoss = (Boolean)data.get(12);
+		/*
+		 * Ternary operators FTW
+		 */
+		malusQuoteCounter = Integer.parseInt(data.substring(0,1));
+		placeQuoteCounter = Integer.parseInt(data.substring(1,2));
+		
+		desBoss = data.charAt(2) == '1' ? true : false;
+		plaBoss = data.charAt(3) == '1' ? true : false;
+		forBoss = data.charAt(4) == '1' ? true : false;
+		mounBoss = data.charAt(5) == '1' ? true : false;
+		volBoss = data.charAt(6) == '1' ? true : false;
+		cavBoss = data.charAt(7) == '1' ? true : false;
+		facBoss = data.charAt(8) == '1' ? true : false;
+		urbBoss = data.charAt(9) == '1' ? true : false;
+		labBoss = data.charAt(10) == '1' ? true : false;
+		milBoss = data.charAt(11) == '1' ? true : false;
+		malBoss = data.charAt(12) == '1' ? true : false;
 	}
 }

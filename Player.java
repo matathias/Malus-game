@@ -636,7 +636,7 @@ public class Player
 		
 		return data;
 	}
-	public void setAll(ArrayList list)
+	public void setAll(ArrayList<String> list)
 	{
 		setHP(Double.parseDouble(list.remove(0)));
 		setMaxHealth(Double.parseDouble(list.remove(0)));
@@ -658,7 +658,7 @@ public class Player
 		Weapon loadWeapon = new Weapon(weaponName, weaponDam, weaponHP, weaponEP, weaponCost);
 		setWeapon(loadWeapon);
 		
-		numSpeAtt = Integer.parseInt(list.remove(0));
+		int numSpeAtt = Integer.parseInt(list.remove(0));
 		ArrayList<SpecialAttack> speAtt = new ArrayList<SpecialAttack>();
 		for(int i = 0; i < numSpeAtt; i++)
 		{
@@ -674,7 +674,7 @@ public class Player
 		}
 		setSpecialAttacks(speAtt);
 		
-		numHeal = Integer.parseInt(list.remove(0));
+		int numHeal = Integer.parseInt(list.remove(0));
 		ArrayList<Healing> heal = new ArrayList<Healing>();
 		for(int i = 0; i < numHeal; i++)
 		{
