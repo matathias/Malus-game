@@ -51,8 +51,32 @@ public class Setup
 	 	if(answer.equalsIgnoreCase("Yes"))
 	 	{
 	 		System.out.println("Well said! Time to choose a class!");
-	 		Util.pause();
-	 		chooseClass();
+	 		System.out.println("(But before that - do you have a saved game you wish to load instead?)");
+	 		String ans = Util.yesNoLoop();
+	 		if(ans.equalsIgnoreCase("Yes"))
+	 		{
+	 			while (ans.equalsIgnoreCase("Yes"))
+	 			{
+	 				System.out.print("Enter the file name:   ");
+	 				ans = inputWord.nextLine().trim();
+	 				boolean success = Util.gameLoad(ans);
+	 				if(!success)
+	 				{
+	 					System.out.print("Try again with a different file name?");
+	 					ans = Util.yesNoLoop();
+	 				}
+	 				else
+	 				{
+	 					ans = "No";
+	 				}
+	 			}
+	 		}
+	 		else
+	 		{
+	 			System.out.println("Alright then. Onwards!");
+	 			Util.pause();
+	 			chooseClass();
+	 		}
 	 	}
 	 	else
 	 	{

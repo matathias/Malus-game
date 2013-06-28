@@ -122,7 +122,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 	private void town()
 	{
 		Story.town();
-		int choice = Util.numberSelect("Where will you go:\n1. Inn\n2. Weapon Market\n3. Defense Market\n4. Healing Market\n5. Special Attack Market\n6. Desert",6);
+		int choice = Util.numberSelect("Where will you go:\n1. Inn\n2. Weapon Market\n3. Defense Market\n4. Healing Market\n5. Special Attack Market\n6. Save\n7. Desert",6);
 		int cost = 0;
 		switch(choice)
 		{
@@ -180,6 +180,15 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 				town();
 				break;
 			case 6:
+				System.out.println("Do you wish to save your game?");
+				String ans = Util.yesNoLoop();
+				if(ans.equalsIgnoreCase("Yes"))
+				{
+					Util.gameSave(player.getAll(), getAll(), Story.getAll());
+				}
+				town();
+				break;
+			case 7:
 				desert();
 				break;
 			default:

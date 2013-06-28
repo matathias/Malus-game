@@ -185,13 +185,14 @@ public class Util
 			
 			//Close the output stream
 			out.close();
+			System.out.println("Saving of file " + fileName + " successful!");
 		}
 		catch (Exception e){
 			System.out.println("Error: " + e.getMessage());
 			System.out.println("Unable to save.");
 		}
 	}
-	public static void gameLoad(String fileName)
+	public static boolean gameLoad(String fileName)
 	{
 		/*
 		 * Reads data from a file named fileName and assigns it to all relevant classes 
@@ -282,13 +283,18 @@ public class Util
 			//close the file
 			in.close();
 			
+			System.out.println("Load successful!");
+			pause();
+			
 			//initialize PlaceActions and Story and continue the game
 			Story.setAll(inStory);
 			PlaceActions game = new PlaceActions(inPlayer, inGame);
+			return true;
 		}
 		catch (Exception e){
 			System.out.println("Error: " + e.getMessage());
 			System.out.println("Unable to load.");
+			return false;
 		}
 	}
 }
