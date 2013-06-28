@@ -989,7 +989,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 		ArrayList<String> SAOut = markSA.getAllString();
 		ArrayList<String> weapOut = markWeap.getAllString();
 		
-		int[] sizes = [defOut.size(), healOut.size(), SAOut.size(), weapOut.size()];
+		int[] sizes = {defOut.size(), healOut.size(), SAOut.size(), weapOut.size()};
 		for(int i = 0; i < sizes[0]; i++)
 		{
 			data.add(defOut.get(i));
@@ -1018,17 +1018,17 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 		
 		String bools = data.remove(0);
 		
-		desert = data.charAt(0) == '1' ? true : false;
-		plains = data.charAt(1) == '1' ? true : false;
-		forest = data.charAt(2) == '1' ? true : false;
-		mountains = data.charAt(3) == '1' ? true : false;
-		volcano = data.charAt(4) == '1' ? true : false;
-		caverns = data.charAt(5) == '1' ? true : false;
-		baseFac = data.charAt(6) == '1' ? true : false;
-		baseUrb = data.charAt(7) == '1' ? true : false;
-		baseLab = data.charAt(8) == '1' ? true : false;
-		baseMil = data.charAt(9) == '1' ? true : false;
-		baseFin = data.charAt(10) == '1' ? true : false;
+		desert = bools.charAt(0) == '1' ? true : false;
+		plains = bools.charAt(1) == '1' ? true : false;
+		forest = bools.charAt(2) == '1' ? true : false;
+		mountains = bools.charAt(3) == '1' ? true : false;
+		volcano = bools.charAt(4) == '1' ? true : false;
+		caverns = bools.charAt(5) == '1' ? true : false;
+		baseFac = bools.charAt(6) == '1' ? true : false;
+		baseUrb = bools.charAt(7) == '1' ? true : false;
+		baseLab = bools.charAt(8) == '1' ? true : false;
+		baseMil = bools.charAt(9) == '1' ? true : false;
+		baseFin = bools.charAt(10) == '1' ? true : false;
 		
 		for(int i = 1; i <= 8; i++)
 		{
@@ -1042,10 +1042,10 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 			}
 		}
 		
-		markDef = new MarketDefense(defIn);
-		markHeal = new MarketHealing(healIn);
-		markSA = new MarketSpeAttack(SAIn);
-		markWeap = new MarketWeapon(weapIn);
+		markDef = new MarketDefense(defIn, true);
+		markHeal = new MarketHealing(healIn, true);
+		markSA = new MarketSpeAttack(SAIn, true);
+		markWeap = new MarketWeapon(weapIn, true);
 	}
 	 /*Places (in order):
 	  *1 - Town

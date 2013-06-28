@@ -20,7 +20,7 @@ public class MarketHealing
 		healGen = data.get(0);
 		healClass = data.get(1);
 	}
-	public MarketHealing(ArrayList<String> data)
+	public MarketHealing(ArrayList<String> data, boolean str)
 	{
 		//Meant to be used with setAll methods when loading from save.
 		healGen = new ArrayList<Healing>();
@@ -228,7 +228,7 @@ public class MarketHealing
 			String inClass = data.remove(0);
 			double inHeal = Double.parseDouble(data.remove(0));
 			double inEP = Double.parseDouble(data.remove(0));
-			double inLvl = Double.parseDouble(data.remove(0));
+			int inLvl = Integer.parseInt(data.remove(0));
 			int inCost = Integer.parseInt(data.remove(0));
 			inDataGen.add(new Healing(inName, inClass, inHeal, inEP, inLvl, inCost));
 		}
@@ -241,7 +241,7 @@ public class MarketHealing
 			String inClass = data.remove(0);
 			double inHeal = Double.parseDouble(data.remove(0));
 			double inEP = Double.parseDouble(data.remove(0));
-			double inLvl = Double.parseDouble(data.remove(0));
+			int inLvl = Integer.parseInt(data.remove(0));
 			int inCost = Integer.parseInt(data.remove(0));
 			inDataClass.add(new Healing(inName, inClass, inHeal, inEP, inLvl, inCost));
 		}

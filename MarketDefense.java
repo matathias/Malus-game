@@ -20,7 +20,7 @@ public class MarketDefense//change Util.numberSelect() to proper parameters
 		defenseGen = data.get(0);
 		defenseClass = data.get(1);
 	}
-	public MarketDefense(ArrayList<String> data)
+	public MarketDefense(ArrayList<String> data, boolean str)
 	{
 		//Meant to be used with setAll when loading from save.
 		defenseGen = new ArrayList<Defense>();

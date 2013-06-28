@@ -50,6 +50,8 @@ public class Util
 				choice = userChoice.nextInt();
 			if(choice >numChoices || choice<1)
 				System.out.println("Incorrect Input! Choose a number from the list.");
+			
+			userChoice.close();
 		}
 		while(choice > numChoices || choice<1);
 		return choice;
@@ -79,6 +81,8 @@ public class Util
 				choice = userChoice.nextInt();
 			if(choice >numChoices || choice<1)
 				System.out.println("Incorrect Input! Choose a number from the list.");
+			
+			userChoice.close();
 		}
 		while(choice > numChoices || choice<1);
 		return choice;

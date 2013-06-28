@@ -20,7 +20,7 @@ public class MarketSpeAttack//change Util.numberSelect() to proper parameters
 		speAttGen = data.get(0);
 		speAttClass = data.get(1);
 	}
-	public MarketSpeAttack(ArrayList<String> data)
+	public MarketSpeAttack(ArrayList<String> data, boolean str)
 	{
 		//Meant to be used with setAll methods when loading from save.
 		speAttGen = new ArrayList<SpecialAttack>();
@@ -246,7 +246,7 @@ public class MarketSpeAttack//change Util.numberSelect() to proper parameters
 			int inCost = Integer.parseInt(data.remove(0));
 			int inCritChan = Integer.parseInt(data.remove(0));
 			double inCritBon = Double.parseDouble(data.remove(0));
-			inDataGen.add(new SpecialAttack(inName, inClass, inDam, inEP, inLvl, inCost, inCritChan, inCratBon));
+			inDataGen.add(new SpecialAttack(inName, inClass, inDam, inEP, inLvl, inCost, inCritChan, inCritBon));
 		}
 		speAttGen = inDataGen;
 		
@@ -261,7 +261,7 @@ public class MarketSpeAttack//change Util.numberSelect() to proper parameters
 			int inCost = Integer.parseInt(data.remove(0));
 			int inCritChan = Integer.parseInt(data.remove(0));
 			double inCritBon = Double.parseDouble(data.remove(0));
-			inDataClass.add(new SpecialAttack(inName, inClass, inDam, inEP, inLvl, inCost, inCritChan, inCratBon));
+			inDataClass.add(new SpecialAttack(inName, inClass, inDam, inEP, inLvl, inCost, inCritChan, inCritBon));
 		}
 		speAttClass = inDataClass;
 	}

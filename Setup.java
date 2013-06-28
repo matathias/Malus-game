@@ -8,7 +8,6 @@ public class Setup
 	 * Introduces the player to the game and initializes their starting class and equipment.
 	 */
 	 private static Scanner inputWord = new Scanner(System.in);
-	 private static Scanner inputNum = new Scanner(System.in);
 	 public static Player player;
 
 	 public static void Introduction()
