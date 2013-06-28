@@ -39,13 +39,13 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 		bosses = new BossBattles();
 		town();
 	}
-	public PlaceActions(Player p, ArrayList<String> data)
+	public PlaceActions(ArrayList<String> pData, ArrayList<String> pAData)
 	{
 		//Meant to be used with setAll() when loading from save.
 		rand = new Random();
-		player = p;
+		player = new Player(pData);
 		
-		setAll(data);
+		setAll(pAData);
 
 		bosses = new BossBattles();
 		town();

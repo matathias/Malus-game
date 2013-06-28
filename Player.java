@@ -57,6 +57,11 @@ public class Player
 		extraPoints = eP;
 		playerName = pN;
 	}
+	
+	public Player (ArrayList<String> data) //to be used with game loading
+	{
+		setAll(data);
+	}
 
 	//HP----------------------------------------------------------------------------------------------------
 

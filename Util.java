@@ -118,7 +118,7 @@ public class Util
 		 */
 		System.out.println("\n-----------------------------------------------------------------------------------------------------------------------------\n");
 	}
-	public static void gameSave(ArrayList playerData, ArrayList gameData, ArrayList storyData)
+	public static void gameSave(ArrayList<String> playerData, ArrayList<String> gameData, ArrayList<String> storyData)
 	{
 		/*
 		 * Creates a save file and writes all relevant date to it for later loading.
@@ -134,6 +134,7 @@ public class Util
 		String charName = (String)playerData.get(9);
 		String charClass = (String)playerData.get(10);
 		String counter = Integer.toString(saveCounter);
+		saveCounter++;
 		
 		fileName = charName + charClass + counter + ".txt";
 		
@@ -145,42 +146,44 @@ public class Util
 			 * Delimiter character: #
 			 */
 			
-			//Example of writing to file with BufferedWriter:
-			//out.write("Hello Java");
+			out.write("#");
+			out.newLine();
 			
 			/*
 			 * Write playerData
 			 */
-			out.write(String.valueOf((Double)playerData.get(0))); //current HP
-			out.write(String.valueOf((Double)playerData.get(1))); //max HP
-			out.write(String.valueOf((Double)playerData.get(2))); //current EP
-			out.write(String.valueOf((Double)playerData.get(3))); //max EP
-			out.write(String.valueOf((Double)playerData.get(4))); //damage
-			out.write(String.valueOf((Double)playerData.get(5))); //attack mod
-			out.write(String.valueOf((Double)playerData.get(6))); //money
-			out.write(String.valueOf((Double)playerData.get(7))); //exp
-			out.write(String.valueOf((Double)playerData.get(8))); //level
-			out.write((String)playerData.get(9));                //player name
-			out.write((String)playerData.get(10));               //player class
-			//Player Weapon
-			String weaponName = playerData.get(11).getWeaponName();
-			double weaponDam = (Weapon)playerData.get(11).getWeaponDamage();
-			double weaponHP = (Weapon)playerData.get(11).getHP();
-			double weaponEP = (Weapon)playerData.get(11).getEP();
-			int weaponCost = (Weapon)playerData.get(11).getCost();
-			out.write(weaponName);
-			out.write(String.valueOf(weaponDam));
-			out.write(String.valueOf(weaponHP));
-			out.write(String.valueOf(weaponEP));
-			out.write(String.valueOf(weaponCost));
+			for(int i = 0; i < playerData.size(); i++)
+			{
+				out.write(playerData.get(i));
+				out.newLine();
+			}
+			
+			out.write("#");
+			out.newLine();
 			
 			/*
 			 * Write gameData
 			 */
+			for(int i = 0; i < gameData.size(); i++)
+			{
+				out.write(gameData.get(i));
+				out.newLine();
+			}
+			
+			out.write("#");
+			out.newLine();
 			
 			/*
 			 * Write storyData
 			 */
+			for(int i = 0; i < storyData.size(); i++)
+			{
+				out.write(storyData.get(i));
+				out.newLine();
+			}
+			
+			out.write("#");
+			out.newLine();
 			
 			
 			//Close the output stream
@@ -197,5 +200,13 @@ public class Util
 		 * Reads data from a file named fileName and assigns it to all relevant classes 
 		 * in order to resume the game from a previous save.
 		 */
+		try{
+			FileReader inFile = new FileReader(fileName);
+			BufferedReader in = new BufferedReader(inFile);
+		}
+		catch (Exception e){
+			System.out.println("Error: " + e.getMessage());
+			System.out.println("Unable to load.");
+		}
 	}
 }
