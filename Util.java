@@ -118,7 +118,7 @@ public class Util
 		 */
 		System.out.println("\n-----------------------------------------------------------------------------------------------------------------------------\n");
 	}
-	public static void gameSave(ArrayList<String> playerData, ArrayList<String> gameData, ArrayList<String> storyData)
+	public static void gameSave(ArrayList<String> playerData, ArrayList<String> gameData, String storyData)
 	{
 		/*
 		 * Creates a save file and writes all relevant date to it for later loading.
@@ -131,8 +131,8 @@ public class Util
 		
 		//Assemble the file name from character name, class, and the save counter.
 		String fileName;
-		String charName = (String)playerData.get(9);
-		String charClass = (String)playerData.get(10);
+		String charName = playerData.get(9);
+		String charClass = playerData.get(10);
 		String counter = Integer.toString(saveCounter);
 		saveCounter++;
 		
@@ -176,11 +176,8 @@ public class Util
 			/*
 			 * Write storyData
 			 */
-			for(int i = 0; i < storyData.size(); i++)
-			{
-				out.write(storyData.get(i));
-				out.newLine();
-			}
+			out.write(storyData);
+			out.newLine();
 			
 			out.write("#");
 			out.newLine();
@@ -200,9 +197,94 @@ public class Util
 		 * Reads data from a file named fileName and assigns it to all relevant classes 
 		 * in order to resume the game from a previous save.
 		 */
+		ArrayList<String> inPlayer = new ArrayList<String>();
+		ArrayList<String> inGame = new ArrayList<String>();
+		String inStory = "";
+		
 		try{
 			FileReader inFile = new FileReader(fileName);
 			BufferedReader in = new BufferedReader(inFile);
+			int itNum = 0;
+			
+			String dummy = in.readLine();
+			//Read in the first 16 lines to the inPlayer arrayList
+			for(int i = 0; i < 16; i++)
+			{
+				inPlayer.add(in.readLine());
+			}
+			
+			//Find the amount of special attacks the player should have
+			String numSpeAtt = in.readLine();
+			itNum = Integer.parseInt(numSpeAtt);
+			inPlayer.add(numSpeAtt);
+			//Read in all of the special attack strings to the inPlayer arraylist
+			for(int i = 0; i < itNum*8; i++)
+			{
+				inPlayer.add(in.readLine());
+			}
+			
+			//Find the amount of healing abilities the player should have
+			String numHeal = in.readLine();
+			itNum = Integer.parseInt(numHeal);
+			inPlayer.add(numHeal);
+			//Read in all of the healing strings to the inPlayer arraylist
+			for(int i = 0; i < itNum*6; i++)
+			{
+				inPlayer.add(in.readLine());
+			}
+			
+			dummy = in.readLine(); //Pass the "#" character
+			
+			//Begin reading all of the game data
+			String gameBools = in.readLine();
+			inGame.add(gameBools);
+			int numItems = 0;
+			for(int i = 0; i < 4; i++)
+			{
+				switch(i)
+				{
+					case 0: numItems = 4;
+							break;
+					case 1: numItems = 6;
+							break;
+					case 2: numItems = 8;
+							break;
+					case 3: numItems = 5;
+							break;
+				}
+				//Begin reading the Market data
+				//   Start by reading in numGen
+				String numGen = in.readLine();
+				itNum = Integer.parseInt(numGen);
+				inGame.add(numGen);
+				//   Read in all of the general Market strings
+				for(int j = 0; j < itNum*numItems; j++)
+				{
+					inGame.add(in.readLine());
+				}
+				//   Now read in numClass
+				String numClass = in.readLine();
+				itNum = Integer.parseInt(numClass);
+				inGame.add(numClass);
+				//   Read in all of the class Market strings
+				for(int j = 0; j < itNum*numItems; j++)
+				{
+					inGame.add(in.readLine());
+				}
+			}
+			
+			// Pass the next "#" line
+			dummy = in.readLine();
+			
+			// Read in the story data string
+			inStory = in.readLine();
+			
+			//close the file
+			in.close();
+			
+			//initialize PlaceActions and Story and continue the game
+			Story.setAll(inStory);
+			PlaceActions game = new PlaceActions(inPlayer, inGame);
 		}
 		catch (Exception e){
 			System.out.println("Error: " + e.getMessage());
