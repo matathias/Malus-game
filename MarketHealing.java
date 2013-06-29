@@ -1,5 +1,4 @@
 import java.util.*;
-import java.text.DecimalFormat;
 
 public class MarketHealing
 {

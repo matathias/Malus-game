@@ -1,5 +1,4 @@
 import java.util.*;
-import java.text.DecimalFormat;
 
 public class MarketDefense//change Util.numberSelect() to proper parameters
 {

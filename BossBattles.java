@@ -1,5 +1,4 @@
 import java.util.*;
-import java.text.DecimalFormat;
 
 public class BossBattles //change Util.numberSelect to proper parameters! - Done
 {
@@ -10,14 +9,12 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	private int win;
 	private int damage;
 	private int winRes;
-	private Scanner inputNum;
 	private Random rand;
 
 	public BossBattles()
 	{
 		win = 0;
 		rand = new Random();
-		inputNum = new Scanner(System.in);
 	}
 	private void playerAttack(Player player, Player boss)
 	{
@@ -309,8 +306,9 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 				if(!emergency)
 	 				{
 	 					Story.desertBossEmergency();
+	 					System.out.println("Sand Stone attacked you with Desert Storm!");
 	 					damage = (int)(sandStone.damage()*3);
-	 					System.out.println("Sand Stone attacked you with Desert Storm! \nThe forces of sand and desert come together in one spot, attacking you for " + damage + " damage!");
+	 					System.out.println("The forces of sand and desert come together in one spot, attacking you for " + damage + " damage!");
 	 					Util.lineBreak();
 	 					player.subtractHP(damage);
 	 					if(player.getHP() <= 0)
@@ -1219,7 +1217,6 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 	System.out.println("You have entered battle with the Incomplete Bug Crawler!");
 	 	Player bugCrawler = new Player(10,10,10,10,10,10,"Bug Crawler"); //Placeholder values
 	 	boolean emergencyOne = true;
-	 	boolean emergencyTwo = true;
 	 	boolean transformed = false;
 	 	while (player.getHP() > 0 && bugCrawler.getHP() > 0 && win != 2)
 	 	{
@@ -1364,7 +1361,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 			 			win = 3;
 	 			 		transformed = true;
 	 			 	}
-	 			 	else if(bugCrawler.getHP() > bugCrawler.getMaxHealth()/8) //HP between 33% and 12.5%
+	 			 	else if(bugCrawler.getHP() > bugCrawler.getMaxHealth()/10) //HP between 33% and 10%
 	 			 	{
 	 				 	if(attackChance < 40)
 	 			 		{
@@ -1394,7 +1391,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 								win = 3;
 	 			 		}
 	 			 	}
-	 			 	else //HP below 12.5%
+	 			 	else //HP below 10%
 	 			 	{
 	 			 		if(attackChance < 35)
 	 			 		{
@@ -1451,7 +1448,6 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 	boolean third = true;
 	 	int thirdCounter = 0;
 	 	int quarterCounter = 0;
-	 	boolean emergency = false;
 	 	while (player.getHP() > 0 && civilMech.getHP() > 0 && win != 2)
 	 	{
 	 		playerAttack(player,civilMech);
@@ -2362,7 +2358,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 			 *Attack 7: below 33%, every 6 turns
 	 			 *if HP < 25%, will occasionally heal himself 1-5%
 	 			 *black hole cannon always drains 5% of Malus' current HP, always hurt player 10% of player's max HP
-	 			 *Chaos's Reign always heal Malus 5% of his max HP, always hurt player 10% of player's current HP
+	 			 *Chaos's Reign always heal Malus 2% of his max HP, always hurt player 5% of player's current HP
 	 			 *Every five turns, have Malus say something (call a single Story method that loops through several different taunts, depending on Malus' health)
 	 			 *
 	 			 */
@@ -2379,12 +2375,17 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 			if(battlestart)
 	 			{
 	 				System.out.println("Malus: \"You thought you could beat me? Ha! Well think again!\"");
+	 				Util.skitPause();
 					damage = (int)(player.getMaxHealth()/5);
 	 				System.out.println("Malus is charging energy... its gathering in one spot and growing darker, and denser. It looks like...");
+	 				Util.skitPause();
 	 				System.out.println("A Black Hole?!");
+	 				Util.skitPause();
 	 				System.out.println("Malus fires his Ultima Black Hole Cannon at you, dealing " + damage + " damage!");
+	 				Util.skitPause();
 	 				System.out.println("Malus: \"You don't even have a hope of winning this time! Ah hahahaha!!\"");
-					Util.lineBreak();
+					Util.skitPause();
+	 				Util.lineBreak();
 					player.subtractHP(damage);
 					if(player.getHP() <= 0)
 						win = 3;
@@ -2392,11 +2393,11 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 			}
 	 			else if(ultimaMalus.getHP()<ultimaMalus.getMaxHealth()/3 && !emergency33) //first time Malus's HP dips below 33%
 	 			{
-	 				damage = (int)(player.getHP()/10);
+	 				damage = (int)(player.getHP()/20);
 	 				System.out.println("Malus: \"Hm, you certainly are worthy of my respect... respect enough to witness Chaos's Reign! Ah haha!\"");
 	 				System.out.println("Malus starts drawing in boundless amounts of Chaos Energy... and then unleashes it!");
-	 				System.out.println("Using Chaos's Reign, Malus healed himself " + (int)(ultimaMalus.getHP()/20) + " and dealt " + damage + " damage to you!!");
-	 				ultimaMalus.addHP(ultimaMalus.getHP()/20);
+	 				System.out.println("Using Chaos's Reign, Malus healed himself " + (int)(ultimaMalus.getHP()/50) + " and dealt " + damage + " damage to you!!");
+	 				ultimaMalus.addHP(ultimaMalus.getHP()/50);
 					Util.lineBreak();
 					player.subtractHP(damage);
 					if(player.getHP() <= 0)
@@ -2407,7 +2408,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 			{
 	 				damage = (int)(ultimaMalus.damage()*10); //change the modifier?
 	 				System.out.println("Malus: \"Hot damn! You just might win this... if I don't step it up a notch, that is!\"");
-	 				System.out.println("The Ultima Railgun has finished charging!");
+	 				System.out.println("<The Ultima Railgun has finished charging!>");
 	 				System.out.println("Malus: \"Now that the Ultima Railgun has finished its preliminary charge, it will charge MUCH faster from now on!\"");
 	 				System.out.println("Malus: \"Now... die!!\"");
 	 				System.out.println("Malus uses the Ultima Railgun on you, dealing " + damage + " damage!");
@@ -2485,10 +2486,10 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 			}
 	 			else if(chaosReign && !ultimaRailgun && !blackHoleCannon) //Chaos's Reign attack (ultima railgun and black hole cannon trump Chaos's Reign; Chaos's Reign will be used the following turn)
 	 			{
-					damage = (int)(player.getHP()/10);
+					damage = (int)(player.getHP()/20);
 	 				System.out.println("Malus is drawing in boundless amounts of Chaos Energy... and then unleashes it!");
-	 				System.out.println("Using Chaos's Reign, Malus healed himself " + (int)(ultimaMalus.getHP()/20) + " and dealt " + damage + " damage to you!!");
-	 				ultimaMalus.addHP(ultimaMalus.getHP()/20);
+	 				System.out.println("Using Chaos's Reign, Malus healed himself " + (int)(ultimaMalus.getHP()/50) + " and dealt " + damage + " damage to you!!");
+	 				ultimaMalus.addHP(ultimaMalus.getHP()/50);
 					Util.lineBreak();
 					player.subtractHP(damage);
 					if(player.getHP() <= 0)

@@ -1,0 +1,13 @@
+*Create an ArrayList return method for all classes that returns an ArrayList containing all their relevant data (ex. boolean values) - Done
+*Create secondary constructors for methods that takes in an ArrayList similar to the one it would return - Done
+*Create a method in the Util class that writes data to a file - done
+*Create a method in the Util class that reads that data from a file - done
+
+*fill all placeTravel() methods with dummy arguments - done
+*modify all dummy arguments to their real values
+*modify dummy arguments for enemy Players to real values
+
+*add real values to all Weapons in MarketWeapon
+*add real values to all Healing in MarketHealing
+*add real values to all Special Attacks in MarketSpeAttack
+*add real values to all Defense in MarketDefense

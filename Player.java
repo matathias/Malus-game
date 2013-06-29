@@ -295,7 +295,7 @@ public class Player
 		int critHit = rand.nextInt(99); //checks whether or not a "critial hit" is scored, which raises the total damage done by 50%
 		if (critHit < 10) //critical hit has a 10% chance of occuring
 		{
-			System.out.println("Critical hit!");
+			//System.out.println("Critical hit!");
 			return (int)(getTotalRawDamage()*attackMod*randomnessPercent*1.5);
 		}
 		else

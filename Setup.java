@@ -98,31 +98,31 @@ public class Setup
 	 		//(HP,Damage,EP,Exp,Money,PlayerName,PlayerClass,Weapon)
 	 		case 1:
 	 			System.out.println("You choose the Commando Class!"); //80HP, 30EP, 5 Damage
-	 			player = new Player(80,5,30,0,10,"","Commando",new Weapon());
+	 			player = new Player(80,5,30,0,10,"","Commando",new Weapon("Slingshot",0,0,0,0));
 	 			break;
 	 		case 2:
 	 			System.out.println("You choose the Berserker Class!"); //40HP, 20EP, 10 Damage
-	 			player = new Player(40,10,20,0,10,"","Berserker",new Weapon());
+	 			player = new Player(40,10,20,0,10,"","Berserker",new Weapon("Wooden Sword",0,0,0,0));
 	 			break;
 	 		case 3:
 	 			System.out.println("You choose the Sentinel Class!"); //160HP, 20EP, 2.5 Damage
-	 			player = new Player(160,2.5,20,0,10,"","Sentinel",new Weapon());
+	 			player = new Player(160,2.5,20,0,10,"","Sentinel",new Weapon("Wood Board",0,0,0,0));
 	 			break;
 	 		case 4:
 	 			System.out.println("You choose the Ravager Class!"); //50HP, 100EP, 8 Damage
-	 			player = new Player(50,8,100,0,10,"","Ravager",new Weapon());
+	 			player = new Player(50,8,100,0,10,"","Ravager",new Weapon("Worn-down Tome",0,0,0,0));
 	 			break;
 	 		case 5:
 	 			System.out.println("You choose the Reliever Class!"); //130HP, 80EP, 3 Damage
-	 			player = new Player(130,3,80,0,10,"","Commando",new Weapon());
+	 			player = new Player(130,3,80,0,10,"","Commando",new Weapon("Wooden Stave",0,0,0,0));
 	 			break;
 	 		case 6:
 	 			System.out.println("You choose the Entrepreneur Class!");//60HP, 20EP, 3 Damage
-	 			player = new Player(60,3,20,0,100,"","Entrepreneur",new Weapon());
+	 			player = new Player(60,3,20,0,100,"","Entrepreneur",new Weapon("Playing Card",0,0,0,0));
 	 			break;
 			case 7:
 				System.out.println("Debug mode. Class: Commando. HP: 1000000 EP: 1000000 Damage: 500 Money: 1000000");
-				player = new Player(1000000,500,1000000,0,1000000,"","Commando",new Weapon());
+				player = new Player(1000000,500,1000000,0,1000000,"","Commando",new Weapon("Debug Weapon",1000000,10,10,50));
 	 	}
 	 	Util.pause();
 	 	chooseName();
