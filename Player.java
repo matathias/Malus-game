@@ -46,7 +46,7 @@ public class Player
 		attackMod = 1;
 	}
 
-	public Player (double hP, double aD, double exP, double m, double eP, String pN) //This is the enemy constructor. The EXP, money, and EP values are actually the EXP, money, and EP that will be rewarded to the human player upon defeat of the enemy.
+	public Player (double hP, double aD, double exP, double m, double eP, double lvl, String pN) //This is the enemy constructor. The EXP, money, and EP values are actually the EXP, money, and EP that will be rewarded to the human player upon defeat of the enemy.
 	{
 		weapon = new Weapon();
 		maxHealth = hP;
@@ -55,6 +55,7 @@ public class Player
 		EXP = exP;
 		money = m;
 		extraPoints = eP;
+		level = lvl;
 		playerName = pN;
 	}
 	
@@ -205,12 +206,12 @@ public class Player
 		int choice = 1;
 		for(Healing a: healing)
 		{
-			heal+= String.valueOf(choice) + " " + a;
+			heal+= String.valueOf(choice) + " " + a + "\n";
 			choice++;
 		}
 		return heal;
 	}
-	public ArrayList getHealing()
+	public ArrayList<Healing> getHealing()
 	{
 		return healing;
 	}
@@ -233,7 +234,7 @@ public class Player
 	{
 		attackDamage = d;
 	}
-	public void addDamage (double d) //adds the specfied number to the *current* attackDamage value
+	public void addDamage (double d) //adds the specified number to the *current* attackDamage value
 	{
 		attackDamage += d;
 	}
@@ -266,12 +267,12 @@ public class Player
 		int choice = 1;
 		for(SpecialAttack a:specialAttack)
 		{
-			attacks += String.valueOf(choice) + " " + a;
+			attacks += String.valueOf(choice) + " " + a + "\n";
 			choice++;
 		}
 		return attacks;
 	}
-	public ArrayList getSpecialAttacks()
+	public ArrayList<SpecialAttack> getSpecialAttacks()
 	{
 		return specialAttack;
 	}
@@ -464,7 +465,7 @@ public class Player
 				setMaxEP(80*(Math.pow(1.75,getLvl()/5))); //EP: 80*(1.75^(x/5))
 				System.out.println(output.format(getMaxEP()));
 				System.out.print("Base Damage: " + output.format(getRawDamage()) + " ==> ");
-				attackDamage = 3*(Math.pow(2,getLvl()/5)) + (getLvl()*6) - 3; //Damage: 3*(2^(x/5)) + (x*6) - 3
+				attackDamage = 4*(Math.pow(2,getLvl()/5)) + (getLvl()*6) - 4; //Damage: 4*(2^(x/5)) + (x*6) - 4
 				System.out.println(output.format(getRawDamage()));
 			}
 			else if (playerClass.equalsIgnoreCase("Entrepreneur")) //Entrepreneur level up (Lower HP, Average EP, Lower Damage, Cheaper marker and earns money at level up)

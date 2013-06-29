@@ -53,7 +53,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 								choiceSpeAtt = Util.numberSelect("",player.numberSpecialAttacks());
 								if(player.getSpecialAttackEP(choiceSpeAtt-1)> player.getEP())
 									System.out.println("Not enough EP! Choose again.");
-							}while(!(choiceSpeAtt>0 && choiceSpeAtt<player.numberSpecialAttacks()) || player.getSpecialAttackEP(choiceSpeAtt-1)>player.getEP());
+							}while(player.getSpecialAttackEP(choiceSpeAtt-1)>player.getEP());
 							specialAttack(choiceSpeAtt-1,player,boss);
 							break;
 					}
@@ -61,7 +61,8 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 				break;
 			case 2:
 				int fleeChance = rand.nextInt(99);
-				if(fleeChance<=80)
+				int totalChance = (int)(100 * (double)(player.getLvl() / boss.getLvl()));
+				if(fleeChance<=totalChance)
 				{
 					win = 2;
 				}
@@ -75,12 +76,10 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 				do
 				{
 					System.out.println("Choose: ");
-					choiceHeal = inputNum.nextInt();
-					if(!(choiceHeal>0 && choiceHeal<player.numberHealing()))
-						System.out.println("Incorrect input! Choose again.");
-					else if(player.getHealingEP(choiceHeal-1)>player.getEP())
+					choiceHeal = Util.numberSelect("", player.numberHealing());
+					if(player.getHealingEP(choiceHeal-1)>player.getEP())
 						System.out.println("Not enough EP! Choose again.");
-				}while(!(choiceHeal>0 && choiceHeal<player.numberHealing()) || player.getHealingEP(choiceHeal-1)>player.getEP());
+				}while(player.getHealingEP(choiceHeal-1)>player.getEP());
 				player.useHealing(choiceHeal-1);
 				break;
 		}
@@ -120,12 +119,10 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 						do
 						{
 							System.out.println("Choose: ");
-							choiceSpeAtt = inputNum.nextInt();
-							if(!(choiceSpeAtt>0 && choiceSpeAtt<player.numberSpecialAttacks()))
-								System.out.println("Incorrect input! Choose again.");
-							else if(player.getSpecialAttackEP(choiceSpeAtt-1)> player.getEP())
+							choiceSpeAtt = Util.numberSelect("", player.numberSpecialAttacks());
+							if(player.getSpecialAttackEP(choiceSpeAtt-1)> player.getEP())
 								System.out.println("Not enough EP! Choose again.");
-						}while(!(choiceSpeAtt>0 && choiceSpeAtt<player.numberSpecialAttacks()) || player.getSpecialAttackEP(choiceSpeAtt-1)>player.getEP());
+						}while(player.getSpecialAttackEP(choiceSpeAtt-1)>player.getEP());
 						specialAttack(choiceSpeAtt-1,player,boss);
 						break;
 				}
@@ -135,12 +132,10 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 				do
 				{
 					System.out.println("Choose: ");
-					choiceHeal = inputNum.nextInt();
-					if(!(choiceHeal>0 && choiceHeal<player.numberHealing()))
-						System.out.println("Incorrect input! Choose again.");
-					else if(player.getHealingEP(choiceHeal-1)>player.getEP())
+					choiceHeal = Util.numberSelect("", player.numberHealing());
+					if(player.getHealingEP(choiceHeal-1)>player.getEP())
 						System.out.println("Not enough EP! Choose again.");
-				}while(!(choiceHeal>0 && choiceHeal<player.numberHealing()) || player.getHealingEP(choiceHeal-1)>player.getEP());
+				}while(player.getHealingEP(choiceHeal-1)>player.getEP());
 				player.useHealing(choiceHeal-1);
 				break;
 		}
@@ -157,8 +152,9 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	}
 	private void specialAttack(int index, Player player, Player boss)
 	{
+		System.out.println("You used " + player.getSpecialAttackName(index) + "!");
 		damage = player.specialDamage(index);
-		System.out.println("You used " + player.getSpecialAttackName(index) + "! " + damage + " damage dealt to " + boss.getPlayerName() + "!");
+		System.out.println(damage + " damage dealt to " + boss.getPlayerName() + "!");
 		Util.lineBreak();
 		boss.subtractHP(damage);
 		if(boss.getHP()<= 0)
@@ -170,7 +166,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 		switch(winRes)
 		{
 			case 1: //Player Wins
-				System.out.println("You have defeated the " + e.getPlayerName());
+				System.out.println("You have defeated the " + e.getPlayerName() + "!");
 				System.out.println("+" + e.getEP() + "EP, +" + e.getEXP() + " EXP, +" + e.getMoney() + " Gold");
 				p.addMoney(e.getMoney());
 				p.addEXP(e.getEXP());
@@ -229,11 +225,11 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 public int sandStoneBoss(Player player)
 	 {
 	 	System.out.println("You have entered battle with Sand Stone!");
-	 	Player sandStone = new Player(10,10,10,10,10,"Sand Stone"); //Placeholder values
+	 	Player sandStone = new Player(10,10,10,10,10,10,"Sand Stone"); //Placeholder values
 	 	boolean quarter = true;
 	 	int quarterCounter = 0;
 	 	boolean emergency = false;
-	 	while (player.getHP() > 0 && sandStone.getHP() > 0 && win != 3)
+	 	while (player.getHP() > 0 && sandStone.getHP() > 0 && win != 2)
 	 	{
 	 		playerAttack(player,sandStone);
 	 		if(sandStone.getHP() > 0 && win != 2)
@@ -373,11 +369,11 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 public int grassStoneBoss(Player player)
 	 {
 	 	System.out.println("You have entered battle with Grass Stone!");
-	 	Player grassStone = new Player(10,10,10,10,10,"Grass Stone"); //Placeholder values
+	 	Player grassStone = new Player(10,10,10,10,10,10,"Grass Stone"); //Placeholder values
 	 	boolean quarter = true;
 	 	int quarterCounter = 0;
 	 	boolean emergency = false;
-	 	while (player.getHP() > 0 && grassStone.getHP() > 0 && win != 3)
+	 	while (player.getHP() > 0 && grassStone.getHP() > 0 && win != 2)
 	 	{
 	 		playerAttack(player,grassStone);
 	 		if(grassStone.getHP() > 0 && win != 2)
@@ -517,11 +513,11 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 public int leafStoneBoss(Player player)
 	 {
 	 	System.out.println("You have entered battle with Leaf Stone!");
-	 	Player leafStone = new Player(10,10,10,10,10,"Leaf Stone"); //Placeholder values
+	 	Player leafStone = new Player(10,10,10,10,10,10,"Leaf Stone"); //Placeholder values
 	 	boolean quarter = true;
 	 	int quarterCounter = 0;
 	 	boolean emergency = false;
-	 	while (player.getHP() > 0 && leafStone.getHP() > 0 && win != 3)
+	 	while (player.getHP() > 0 && leafStone.getHP() > 0 && win != 2)
 	 	{
 	 		playerAttack(player,leafStone);
 	 		if(leafStone.getHP() > 0 && win != 2)
@@ -661,11 +657,11 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 public int blizzardStoneBoss(Player player)
 	 {
 	 	System.out.println("You have entered battle with Blizzard Stone!");
-	 	Player blizzardStone = new Player(10,10,10,10,10,"Blizzard Stone"); //Placeholder values
+	 	Player blizzardStone = new Player(10,10,10,10,10,10,"Blizzard Stone"); //Placeholder values
 	 	boolean quarter = true;
 	 	int quarterCounter = 0;
 	 	boolean emergency = false;
-	 	while (player.getHP() > 0 && blizzardStone.getHP() > 0 && win != 3)
+	 	while (player.getHP() > 0 && blizzardStone.getHP() > 0 && win != 2)
 	 	{
 	 		playerAttack(player,blizzardStone);
 	 		if(blizzardStone.getHP() > 0 && win != 2)
@@ -805,13 +801,13 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 public int wyvernBoss(Player player)
 	 {
 	 	System.out.println("You have entered battle with the Boss-Class Aerial: Wyvern!");
-	 	Player wyvern = new Player(10,10,10,10,10,"BCA Wyvern"); //Placeholder values
+	 	Player wyvern = new Player(10,10,10,10,10,10,"BCA Wyvern"); //Placeholder values
 	 	boolean third = true;
 	 	boolean quarter = true;
 	 	int thirdCounter = 0;
 	 	int quarterCounter = 0;
 	 	boolean emergency = false;
-	 	while (player.getHP() > 0 && wyvern.getHP() > 0 && win != 3)
+	 	while (player.getHP() > 0 && wyvern.getHP() > 0 && win != 2)
 	 	{
 	 		playerAttack(player,wyvern);
 	 		if(wyvern.getHP() > 0 && win != 2)
@@ -1014,13 +1010,13 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 public int cerberusBoss(Player player)
 	 {
 	 	System.out.println("You have entered battle with the Boss-Class Ground: Cerberus!");
-	 	Player cerberus = new Player(10,10,10,10,10,"BCG Cerberus"); //Placeholder values
+	 	Player cerberus = new Player(10,10,10,10,10,10,"BCG Cerberus"); //Placeholder values
 	 	boolean quarter = true;
 	 	boolean third = true;
 	 	int thirdCounter = 0;
 	 	int quarterCounter = 0;
 	 	boolean emergency = false;
-	 	while (player.getHP() > 0 && cerberus.getHP() > 0 && win != 3)
+	 	while (player.getHP() > 0 && cerberus.getHP() > 0 && win != 2)
 	 	{
 	 		playerAttack(player,cerberus);
 	 		if(cerberus.getHP() > 0 && win != 2)
@@ -1221,11 +1217,11 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 public int bugCrawlerBoss(Player player)
 	 {
 	 	System.out.println("You have entered battle with the Incomplete Bug Crawler!");
-	 	Player bugCrawler = new Player(10,10,10,10,10,"Bug Crawler"); //Placeholder values
+	 	Player bugCrawler = new Player(10,10,10,10,10,10,"Bug Crawler"); //Placeholder values
 	 	boolean emergencyOne = true;
 	 	boolean emergencyTwo = true;
 	 	boolean transformed = false;
-	 	while (player.getHP() > 0 && bugCrawler.getHP() > 0 && win != 3)
+	 	while (player.getHP() > 0 && bugCrawler.getHP() > 0 && win != 2)
 	 	{
 	 		playerAttack(player,bugCrawler);
 	 		if(bugCrawler.getHP() > 0 && win != 2)
@@ -1450,13 +1446,13 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 public int civilMechBoss(Player player) //replace placeholder values
 	 {
 	 	System.out.println("You have entered battle with the Civil Control Mech!");
-	 	Player civilMech = new Player(10,10,10,10,10,"Civil Control Mech"); //Placeholder values
+	 	Player civilMech = new Player(10,10,10,10,10,10,"Civil Control Mech"); //Placeholder values
 	 	boolean quarter = true;
 	 	boolean third = true;
 	 	int thirdCounter = 0;
 	 	int quarterCounter = 0;
 	 	boolean emergency = false;
-	 	while (player.getHP() > 0 && civilMech.getHP() > 0 && win != 3)
+	 	while (player.getHP() > 0 && civilMech.getHP() > 0 && win != 2)
 	 	{
 	 		playerAttack(player,civilMech);
 	 		if(civilMech.getHP() > 0 && win != 2)
@@ -1614,11 +1610,11 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 public int mantisCrawlerBoss(Player player) //replace placeholder values
 	 {
 	 	System.out.println("You have entered battle with the Prototype Mantis Crawler!");
-	 	Player mantisCrawler = new Player(10,10,10,10,10,"Mantis Crawler"); //Placeholder values
+	 	Player mantisCrawler = new Player(10,10,10,10,10,10,"Mantis Crawler"); //Placeholder values
 	 	boolean quarter = true;
 	 	int quarterCounter = 0;
 	 	boolean emergency = false;
-	 	while (player.getHP() > 0 && mantisCrawler.getHP() > 0 && win != 3)
+	 	while (player.getHP() > 0 && mantisCrawler.getHP() > 0 && win != 2)
 	 	{
 	 		playerAttack(player,mantisCrawler);
 	 		if(mantisCrawler.getHP() > 0 && win != 2)
@@ -1812,12 +1808,12 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 public int insectiCrawlerBoss(Player player) //replace placeholder values
 	 {
 	 	System.out.println("You have entered battle with the Insecti Crawler!");
-	 	Player insectiCrawler = new Player(10,10,10,10,10,"Insecti Crawler"); //Placeholder values
+	 	Player insectiCrawler = new Player(10,10,10,10,10,10,"Insecti Crawler"); //Placeholder values
 	 	boolean quarter = true;
 	 	int quarterCounter = 0;
 	 	boolean emergency = false;
 	 	boolean transformed = false;
-	 	while (player.getHP() > 0 && insectiCrawler.getHP() > 0 && win != 3)
+	 	while (player.getHP() > 0 && insectiCrawler.getHP() > 0 && win != 2)
 	 	{
 	 		playerAttack(player,insectiCrawler);
 	 		if(insectiCrawler.getHP() > 0 && win != 2)
@@ -2007,7 +2003,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 public int malusPhaseOneBoss(Player player) //replace placeholder values
 	 {
 	 	System.out.println("You have entered battle with Malus!");
-	 	Player malusOne = new Player(10,10,10,10,10,"Malus"); //Placeholder values
+	 	Player malusOne = new Player(10,10,10,10,10,10,"Malus"); //Placeholder values
 	 	boolean half = false;
 	 	boolean third = false;
 	 	boolean quarter = false;
@@ -2021,7 +2017,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 	boolean above50 = true;
 	 	boolean above33 = true;
 	 	boolean above20 = true;
-	 	while (player.getHP() > 0 && malusOne.getHP() > 0 && win != 3)
+	 	while (player.getHP() > 0 && malusOne.getHP() > 0 && win != 2)
 	 	{
 	 		playerAttack(player,malusOne);
 	 		if(malusOne.getHP() > 0 && win != 2)
@@ -2328,7 +2324,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 public int malusPhaseTwoBoss(Player player) //replace placeholder values
 	 {
 	 	System.out.println("You have entered battle with Ultima Malus!");
-	 	Player ultimaMalus = new Player(10,10,10,10,10,"Ultima Malus"); //Placeholder values
+	 	Player ultimaMalus = new Player(10,10,10,10,10,10,"Ultima Malus"); //Placeholder values
 	 	boolean chaosReign = false;
 	 	boolean ultimaRailgun = false;
 	 	boolean blackHoleCannon = false;
@@ -2339,7 +2335,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 	int bhcCounter = 0; //Counter for the black hole cannon
 	 	boolean emergency33 = false;
 	 	boolean emergency10 = false;
-	 	while (player.getHP() > 0 && ultimaMalus.getHP() > 0 && win != 3)
+	 	while (player.getHP() > 0 && ultimaMalus.getHP() > 0 && win != 2)
 	 	{
 	 		if(!battlestart)
 	 			playerAttackMalus(player,ultimaMalus); //player goes after Malus; in other words, Malus goes first!

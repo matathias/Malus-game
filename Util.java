@@ -56,7 +56,7 @@ public class Util
 		while(choice > numChoices || choice<1);
 		return choice;
 	}
-	public static int numberSelect(ArrayList list, int numChoices)
+	public static int numberSelect(ArrayList<String> list, int numChoices)
 	{
 		/*
 		 * Loops until the user has properly entered a choice in the range [1, numChoices]
@@ -69,7 +69,8 @@ public class Util
 		numChoices = Math.abs(numChoices);
 		for(int a = 0; a<list.size(); a++)
 		{
-			System.out.println(list.get(a));
+			int b = a+1;
+			System.out.println(b + ". " + list.get(a));
 		}
 		do
 		{
@@ -93,7 +94,7 @@ public class Util
 		 * Used to "pause" output, allowing the player to read everything before moving on.
 		 */
 		System.out.print("\nPress Enter to Continue");
-		String dummy = input.nextLine();
+		input.nextLine();
 		System.out.println();
 	}
 	public static void skitPause()
@@ -102,7 +103,7 @@ public class Util
 		 * Used to pause output in a non-obtrusive manner.
 		 */
 		System.out.print("");
-		String dummy = input.nextLine();
+		input.nextLine();
 	}
 	public static void lineBreak()
 	{
@@ -207,7 +208,7 @@ public class Util
 			BufferedReader in = new BufferedReader(inFile);
 			int itNum = 0;
 			
-			String dummy = in.readLine();
+			in.readLine();
 			//Read in the first 16 lines to the inPlayer arrayList
 			for(int i = 0; i < 16; i++)
 			{
@@ -234,7 +235,7 @@ public class Util
 				inPlayer.add(in.readLine());
 			}
 			
-			dummy = in.readLine(); //Pass the "#" character
+			in.readLine(); //Pass the "#" character
 			
 			//Begin reading all of the game data
 			String gameBools = in.readLine();
@@ -275,7 +276,7 @@ public class Util
 			}
 			
 			// Pass the next "#" line
-			dummy = in.readLine();
+			in.readLine();
 			
 			// Read in the story data string
 			inStory = in.readLine();

@@ -77,7 +77,7 @@ public class Healing
 
 	public String toString()
 	{
-		return healName + "\t\t\tHeals " + healedHP + "HP\t\tEP Cost: " + usedEP;
+		return healName + "\t\tHeals " + healedHP + "HP\t\tEP Cost: " + usedEP;
 	}
 	public String marketToString()
 	{

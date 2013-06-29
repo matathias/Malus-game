@@ -129,11 +129,11 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 			case 1: //inn; cost goes up with every level up
 				if(player.getPlayerClass().equalsIgnoreCase("Entrepreneur"))
 				{
-					cost = (int)((10*Math.pow(2,player.getLvl()/4)+5)*.9);
+					cost = (int)((10*Math.pow(2,player.getLvl()/6)+5)*.9);
 				}
 				else
 				{
-					cost = (int)((10*Math.pow(2,player.getLvl()/4)+5));
+					cost = (int)((10*Math.pow(2,player.getLvl()/6)+5));
 				}
 				System.out.println("The Inn will replenish all your HP and EP but costs money.");
 				System.out.println("Current cost: " + cost + "\t\tYour Money: " + player.getMoney());
@@ -743,7 +743,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 		int choice;
 		if(baseFac && baseUrb && baseLab && baseMil)
 		{
-			choice = Util.numberSelect("Where will you go:\n1. Back to the Caverns\n2. Factory Path\n3. Urban Path\n4. Laboratory Path\n5. Military Path\n6. Defeat Malus!\n\tNote: Once you leave to defeat Malus there will be no return, except through victory... or death.\n\tIn other words, if you lose against Malus, then you lose the game!",6);
+			choice = Util.numberSelect("Where will you go:\n1. Back to the Caverns\n2. Factory Path\n3. Urban Path\n4. Laboratory Path\n5. Military Path\n6. Defeat Malus!\n\tNote: Once you leave to defeat Malus there will be no return, except through victory... or death.\n\tIn other words, you can't flee - and if you lose, then you lose the whole game!",6);
 		}
 		else
 			choice = Util.numberSelect("Where will you go:\n1. Back to the Caverns\n2. Factory Path\n3. Urban Path\n4. Laboratory Path\n5. Military Path",5);

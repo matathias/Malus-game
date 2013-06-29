@@ -1,5 +1,4 @@
 import java.util.*;
-import java.text.DecimalFormat;
 
 public class Battle
 {
@@ -11,7 +10,6 @@ public class Battle
 	private int damage;
 	private int winRes;
 	private Player p, e;
-	private Scanner inputNum;
 	private Random rand;
 
 	public Battle(Player pl, Player en)
@@ -20,13 +18,12 @@ public class Battle
 		e = en;
 		win = 0;
 		rand = new Random();
-		inputNum = new Scanner(System.in);
 	}
 
 	public int mookBattle()
 	{
 		System.out.println("You have entered battle with the " + e.getPlayerName() + "!");
-		while (p.getHP() > 0 && e.getHP() > 0 && win != 3)
+		while (p.getHP() > 0 && e.getHP() > 0 && win != 2)
 		{
 			p.battleShow();
 			if(p.numberHealing() < 1)
@@ -62,7 +59,8 @@ public class Battle
 					break;
 				case 2:
 					int fleeChance = rand.nextInt(99);
-					if(fleeChance<=80)
+					int totalChance = (int)(100 * (double)(p.getLvl()/e.getLvl()));
+					if(fleeChance<=totalChance)
 					{
 						win = 2;
 					}
@@ -103,8 +101,9 @@ public class Battle
 	}
 	private void specialAttack(int index,Player p,Player e)
 	{
+		System.out.println("You used " + p.getSpecialAttackName(index) + "!");
 		damage = p.specialDamage(index);
-		System.out.println("You used " + p.getSpecialAttackName(index) + "! " + damage + " damage dealt to the " + e.getPlayerName() + "!");
+		System.out.println(damage + " damage dealt to the " + e.getPlayerName() + "!");
 		Util.lineBreak();
 		e.subtractHP(damage);
 		if(e.getHP()<= 0)
@@ -113,7 +112,7 @@ public class Battle
 	private void mookAttack(Player e, Player p)
 	{
 		damage = e.damage();
-		System.out.println("The " + e.getPlayerName() + " dealt " + damage + " to you!");
+		System.out.println("The " + e.getPlayerName() + " dealt " + damage + " damage to you!");
 		Util.lineBreak();
 		p.subtractHP(damage);
 		if(p.getHP()<=0)
