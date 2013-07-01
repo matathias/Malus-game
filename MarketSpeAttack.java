@@ -38,18 +38,18 @@ public class MarketSpeAttack//change Util.numberSelect() to proper parameters
 	{
 		if(player.getPlayerClass().equalsIgnoreCase("Entrepreneur")) //10% cheaper
 		{
-			speAttGen.add(new SpecialAttack()); //Throw
-			speAttGen.add(new SpecialAttack()); //Slam
-			speAttGen.add(new SpecialAttack()); //Overload
+			speAttGen.add(new SpecialAttack()); //Destruction
+			speAttGen.add(new SpecialAttack()); //Foe Crash
+			speAttGen.add(new SpecialAttack()); //Chaos Drive
 			speAttGen.add(new SpecialAttack()); //Machina Chaos
 			speAttGen.add(new SpecialAttack()); //Penultima Chaos
 			speAttGen.add(new SpecialAttack()); //Ultima Chaos (high level)
 		}
 		else
 		{
-			speAttGen.add(new SpecialAttack()); //Throw
-			speAttGen.add(new SpecialAttack()); //Slam
-			speAttGen.add(new SpecialAttack()); //Overload
+			speAttGen.add(new SpecialAttack()); //Destruction
+			speAttGen.add(new SpecialAttack()); //Foe Crash
+			speAttGen.add(new SpecialAttack()); //Chaos Drive
 			speAttGen.add(new SpecialAttack()); //Machina Chaos
 			speAttGen.add(new SpecialAttack()); //Penultima Chaos
 			speAttGen.add(new SpecialAttack()); //Ultima Chaos (high level)
@@ -77,10 +77,10 @@ public class MarketSpeAttack//change Util.numberSelect() to proper parameters
 		}
 		else if(player.getPlayerClass().equalsIgnoreCase("Ravager"))
 		{
-			speAttClass.add(new SpecialAttack()); //Fire 			(high dam, low ep, low crit chance, low crit bonus)
-			speAttClass.add(new SpecialAttack()); //Flux 			(high dam, high ep, low crit chance, high crit bonus)
-			speAttClass.add(new SpecialAttack()); //Thunder 		(mid dam, mid ep, mid crit chance, high crit bonus)
-			speAttClass.add(new SpecialAttack()); //Luna			(low dam, high ep, high crit chance, high crit bonus)
+			speAttClass.add(new SpecialAttack()); //Flame			(high dam, low ep, low crit chance, low crit bonus)
+			speAttClass.add(new SpecialAttack()); //Crush 			(high dam, high ep, low crit chance, high crit bonus)
+			speAttClass.add(new SpecialAttack()); //Freeze 			(mid dam, mid ep, mid crit chance, high crit bonus)
+			speAttClass.add(new SpecialAttack()); //Thunder			(low dam, high ep, high crit chance, high crit bonus)
 			speAttClass.add(new SpecialAttack()); //Chaos Claw		(mid dam, high ep, low crit chance, high crit bonus)
 			speAttClass.add(new SpecialAttack()); //Chaos Strike	(high dam, high ep, high crit chance, low crit bonus)
 			speAttClass.add(new SpecialAttack()); //Chaos Blast 	(high dam, high ep, high crit chance, high crit bonus)
