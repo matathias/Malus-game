@@ -12,11 +12,7 @@ public class MarketWeapon //change Util.numberSelect() to proper parameters
 		initGeneralWeapons();
 		initClassWeapons();
 	}
-	public MarketWeapon(ArrayList<Weapon> data)
-	{
-		weapon = data;
-	}
-	public MarketWeapon(ArrayList<String> data, boolean str)
+	public MarketWeapon(ArrayList<String> data)
 	{
 		//Meant to be used with the setAll methods when loading from save.
 		weapon = new ArrayList<Weapon>();

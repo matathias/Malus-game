@@ -14,12 +14,7 @@ public class MarketSpeAttack//change Util.numberSelect() to proper parameters
 		initGeneralSpeAtt();
 		initClassSpeAtt();
 	}
-	public MarketSpeAttack (ArrayList<ArrayList> data)
-	{
-		speAttGen = data.get(0);
-		speAttClass = data.get(1);
-	}
-	public MarketSpeAttack(ArrayList<String> data, boolean str)
+	public MarketSpeAttack(ArrayList<String> data)
 	{
 		//Meant to be used with setAll methods when loading from save.
 		speAttGen = new ArrayList<SpecialAttack>();
@@ -183,18 +178,6 @@ public class MarketSpeAttack//change Util.numberSelect() to proper parameters
 		while(!bought);
 		return player;
 	}
-	public ArrayList<ArrayList> getAll()
-	{
-		ArrayList<ArrayList> data = new ArrayList<ArrayList>();
-		data.add(speAttGen);
-		data.add(speAttClass);
-		return data;
-	}
-	public void setAll(ArrayList<ArrayList> data)
-	{
-		speAttGen = data.get(0);
-		speAttClass = data.get(1);
-	}
 	public ArrayList<String> getAllString()
 	{
 		int numGen = speAttGen.size();
@@ -215,7 +198,7 @@ public class MarketSpeAttack//change Util.numberSelect() to proper parameters
 		}
 		
 		data.add(String.valueOf(numClass));
-		for(int i = 0; i < numGen; i++)
+		for(int i = 0; i < numClass; i++)
 		{
 			data.add(speAttClass.get(i).getAttackName());
 			data.add(speAttClass.get(i).getAvailClass());
@@ -250,7 +233,7 @@ public class MarketSpeAttack//change Util.numberSelect() to proper parameters
 		speAttGen = inDataGen;
 		
 		int numClass = Integer.parseInt(data.remove(0));
-		for(int i = 0; i < numGen; i++)
+		for(int i = 0; i < numClass; i++)
 		{
 			String inName = data.remove(0);
 			String inClass = data.remove(0);

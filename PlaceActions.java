@@ -1116,10 +1116,14 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 			}
 		}
 		
-		markDef = new MarketDefense(defIn, true);
-		markHeal = new MarketHealing(healIn, true);
-		markSA = new MarketSpeAttack(SAIn, true);
-		markWeap = new MarketWeapon(weapIn, true);
+		markDef = new MarketDefense(defIn);
+		markHeal = new MarketHealing(healIn);
+		markSA = new MarketSpeAttack(SAIn);
+		markWeap = new MarketWeapon(weapIn);
+	}
+	public void end() //End the game.
+	{
+		System.exit(0);
 	}
 	 /*Places (in order):
 	  *1 - Town

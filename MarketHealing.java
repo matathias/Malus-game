@@ -14,12 +14,7 @@ public class MarketHealing
 		initGeneralHealing();
 		initClassHealing();
 	}
-	public MarketHealing(ArrayList<ArrayList> data)
-	{
-		healGen = data.get(0);
-		healClass = data.get(1);
-	}
-	public MarketHealing(ArrayList<String> data, boolean str)
+	public MarketHealing(ArrayList<String> data)
 	{
 		//Meant to be used with setAll methods when loading from save.
 		healGen = new ArrayList<Healing>();
@@ -173,18 +168,6 @@ public class MarketHealing
 		while(!bought);
 		return player;
 	}
-	public ArrayList<ArrayList> getAll()
-	{
-		ArrayList<ArrayList> data = new ArrayList<ArrayList>();
-		data.add(healGen);
-		data.add(healClass);
-		return data;
-	}
-	public void setAll(ArrayList<ArrayList> data)
-	{
-		healGen = data.get(0);
-		healClass = data.get(1);
-	}
 	public ArrayList<String> getAllString()
 	{
 		int numGen = healGen.size();
@@ -203,7 +186,7 @@ public class MarketHealing
 		}
 		
 		data.add(String.valueOf(numClass));
-		for(int i = 0; i < numGen; i++)
+		for(int i = 0; i < numClass; i++)
 		{
 			data.add(healClass.get(i).getHealName());
 			data.add(healClass.get(i).getAvailClass());

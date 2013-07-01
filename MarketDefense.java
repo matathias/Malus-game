@@ -14,12 +14,7 @@ public class MarketDefense//change Util.numberSelect() to proper parameters
 		initGeneralDefenses();
 		initClassDefenses();
 	}
-	public MarketDefense(ArrayList<ArrayList> data)
-	{
-		defenseGen = data.get(0);
-		defenseClass = data.get(1);
-	}
-	public MarketDefense(ArrayList<String> data, boolean str)
+	public MarketDefense(ArrayList<String> data)
 	{
 		//Meant to be used with setAll when loading from save.
 		defenseGen = new ArrayList<Defense>();
@@ -171,18 +166,6 @@ public class MarketDefense//change Util.numberSelect() to proper parameters
 			System.out.println("You didn't buy any defenses.");
 		return player;
 	}
-	public ArrayList<ArrayList> getAll()
-	{
-		ArrayList<ArrayList> data = new ArrayList<ArrayList>();
-		data.add(defenseGen);
-		data.add(defenseClass);
-		return data;
-	}
-	public void setAll(ArrayList<ArrayList> data)
-	{
-		defenseGen = data.get(0);
-		defenseClass = data.get(1);
-	}
 	public ArrayList<String> getAllString()
 	{
 		int numGen = defenseGen.size();
@@ -199,7 +182,7 @@ public class MarketDefense//change Util.numberSelect() to proper parameters
 		}
 		
 		data.add(String.valueOf(numClass));
-		for(int i = 0; i < numGen; i++)
+		for(int i = 0; i < numClass; i++)
 		{
 			data.add(defenseClass.get(i).getDefenseName());
 			data.add(String.valueOf(defenseClass.get(i).getAddHP()));

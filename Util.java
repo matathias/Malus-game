@@ -1,6 +1,5 @@
 import java.util.*;
 import java.io.*;
-import java.text.DecimalFormat;
 
 public class Util
 {
@@ -290,6 +289,7 @@ public class Util
 			//initialize PlaceActions and Story and continue the game
 			Story.setAll(inStory);
 			PlaceActions game = new PlaceActions(inPlayer, inGame);
+			game.end();
 			return true;
 		}
 		catch (Exception e){
