@@ -13,8 +13,7 @@ public class Setup
 	 {
 	 	System.out.println("\nWelcome to... The Game!");
 	 	System.out.println("The Game is a text-based RPG, with input and output involving the keyboard and text only.");
-	 	System.out.println("You will face many dangers in the game, from monsters to robots to an evil villain...");
-	 	System.out.println("...and you'll have to do it all without saving!!");
+	 	System.out.println("You will face many dangers in the game, from monsters to robots to an evil villain who can end your game permanently.");
 	 	System.out.println("Are you ready for this challenge?");
 	 	String answer = Util.yesNoLoop();
 	 	if(answer.equalsIgnoreCase("Yes"))
@@ -44,8 +43,7 @@ public class Setup
 	 	System.out.println("Also, sometimes the game will pause without displaying \"Press Enter to Continue\", such as with skits.");
 	 	System.out.println("All you have to do is press enter, and the game will continue. Example:");
 	 	Util.skitPause();
-	 	System.out.println("A final note: there is no saving your progress. You either beat the game, or you don't. Are you ready for this time investment?");
-	 	System.out.println("Are you ready... to play The Game?");
+	 	System.out.println("Now, are you ready... to play The Game?");
 	 	String answer = Util.yesNoLoop();
 	 	if(answer.equalsIgnoreCase("Yes"))
 	 	{
@@ -79,7 +77,7 @@ public class Setup
 	 	}
 	 	else
 	 	{
-	 		System.out.println("Taking the coward's way out, eh? Ha! You'll be back. I guarantee it!");
+	 		System.out.println("Oh? Perhaps it's good that you quit now; there's no way a sissy could make it through The Game.");
 	 	}
 	 }
 	 public static void chooseClass()
@@ -89,7 +87,7 @@ public class Setup
 	 	System.out.println("2. Berserkers are offense-oriented, sacrificing HP to obtain higher damage-dealing power. Berserkers have the highest Damage out of all the classes.");
 	 	System.out.println("3. Sentinels are defense-oriented, sacrificing damage-dealing power to obtain higher HP. Sentinels have the highest HP out of all the classes.");
 	 	System.out.println("4. Ravagers are offense-oriented special-attack users, sacificing HP to obtain higher EP. Ravagers have the highest EP out of all the classes.");
-	 	System.out.println("5. Relievers are defense-oriengted special-attack users, sacrificing Damage to obtain higher HP and EP. They have exclusive access to most healing spells.");
+	 	System.out.println("5. Relievers are defense-oriented special-attack users, sacrificing Damage to obtain higher HP and EP. They have exclusive access to most healing spells.");
 	 	System.out.println("6. Entrepreneurs sacrifice a little of everything in order to obtain more money per battle, recieve money from a level up, and pay less at markets.");
 	 	System.out.println("Which will you be? (Pick 1-6)");
 	 	int choice = Util.numberSelect("",7);
@@ -162,7 +160,8 @@ public class Setup
 	 	if(confirm.equalsIgnoreCase("Yes"))
 	 	{
 	 		System.out.println("You are finally ready to play... The Game!");
-	 		//PlaceActions game = new PlaceActions(player);
+	 		PlaceActions game = new PlaceActions(player);
+	 		game.end();
 	 	}
 	 	else
 	 	{

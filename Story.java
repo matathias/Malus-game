@@ -459,7 +459,7 @@ public class Story
 	public static void volcanoPathTwo() //end of path two, nothing there COMPLETE
 	{
 		Util.lineBreak();
-		System.out.println("There's nothing here... vexed, you turn back toward the way you came.");
+		System.out.println("There's nothing here, besides far too much magma... vexed, you turn back toward the way you came.");
 		Util.skitPause();
 	}
 	public static void volcanoPathThree() //end of path three, nothing there COMPLETE
@@ -570,7 +570,7 @@ public class Story
 	public static void cavernsPathOne() //end of path one, nothing there COMPLETE
 	{
 		Util.lineBreak();
-		System.out.println("There's nothing here... fatigued, you turn back toward the way you came.");
+		System.out.println("Even after all those damn rocks, there's nothing here... fatigued, you turn back toward the way you came.");
 		Util.skitPause();
 	}
 	public static void cavernsPathThree() //end of path three, nothing there COMPLETE
