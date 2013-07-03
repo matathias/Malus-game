@@ -56,6 +56,6 @@ public class Defense
 
 	public String toString()
 	{
-		return name + "\t\tAdds " + addHP + "HP and " + addEP + "EP\t\tCost: " + cost;
+		return name + "\tAdds " + addHP + "HP and " + addEP + "EP\tCost: " + cost;
 	}
 }

@@ -25,61 +25,8 @@ public class Battle
 		System.out.println("You have entered battle with the " + e.getPlayerName() + "!");
 		while (p.getHP() > 0 && e.getHP() > 0 && win != 2)
 		{
-			p.battleShow();
-			if(p.numberHealing() < 1)
-				choiceMain = Util.numberSelect("Will you:\t\t1. Attack\t\t2. Flee",2);
-			else
-				choiceMain = Util.numberSelect("Will you:\t\t1. Attack\t\t2. Flee\t\t3. Heal",3);
-
-			switch(choiceMain)
-			{
-				case 1:
-					if(p.numberSpecialAttacks()<1)
-						regAttack(p,e);
-					else
-					{
-						choiceAttack = Util.numberSelect("Will you:\t\t1. Use regular attack\t\t2. Use Special attack",2);
-						switch(choiceAttack)
-						{
-							case 1:
-								regAttack(p,e);
-								break;
-							case 2:
-								System.out.println(p.showSpecialAttacks());
-								do
-								{
-									choiceSpeAtt = Util.numberSelect("",p.numberSpecialAttacks());
-									if(p.getSpecialAttackEP(choiceSpeAtt-1)> p.getEP())
-										System.out.println("Not enough EP! Choose again.");
-								}while(!(choiceSpeAtt>0 && choiceSpeAtt<p.numberSpecialAttacks()) || p.getSpecialAttackEP(choiceSpeAtt-1)>p.getEP());
-								specialAttack(choiceSpeAtt-1,p,e);
-								break;
-						}
-					}
-					break;
-				case 2:
-					int fleeChance = rand.nextInt(99);
-					int totalChance = (int)(100 * (double)(p.getLvl()/e.getLvl()));
-					if(fleeChance<=totalChance)
-					{
-						win = 2;
-					}
-					else
-					{
-						System.out.println("You failed to run away!");
-					}
-					break;
-				case 3:
-					System.out.println(p.showHealing());
-					do
-					{
-						choiceHeal = Util.numberSelect("",p.numberHealing());
-						if(p.getHealingEP(choiceHeal-1)>p.getEP())
-							System.out.println("Not enough EP! Choose again.");
-					}while(!(choiceHeal>0 && choiceHeal<p.numberHealing()) || p.getHealingEP(choiceHeal-1)>p.getEP());
-					p.useHealing(choiceHeal-1);
-					break;
-			}
+			doChoice();
+			
 			Util.pause();
 			if (e.getHP() > 0 && win != 2)
 			{
@@ -90,6 +37,93 @@ public class Battle
 		return win; //returns the "win" number so that when this method (mookBattle) is called, the caller can determine what to do with the player afterward
 	}
 
+	private void doChoice()
+	{
+		p.battleShow();
+		if(p.numberHealing() < 1)
+			choiceMain = Util.numberSelect("Will you:\t\t1. Attack\t\t2. Flee",2);
+		else
+			choiceMain = Util.numberSelect("Will you:\t\t1. Attack\t\t2. Flee\t\t3. Heal",3);
+		
+		switch(choiceMain)
+		{
+			case 1:
+				if(p.numberSpecialAttacks()<1)
+					regAttack(p,e);
+				else
+					doAttack();
+				break;
+			case 2:
+				doFlee();
+				break;
+			case 3:
+				doHealing();
+				break;
+		}
+	}
+	private void doAttack()
+	{
+		choiceAttack = Util.numberSelect("Will you:\n1. Use regular attack\n2. Use Special attack\n3. Go back",3);
+		switch(choiceAttack)
+		{
+			case 1:
+				regAttack(p,e);
+				break;
+			case 2:
+				doSpeAttack();
+				break;
+			case 3:
+				doChoice();
+				break;
+		}
+	}
+	private void doSpeAttack()
+	{
+		System.out.println(p.showSpecialAttacks());
+		System.out.println(String.valueOf(p.numberSpecialAttacks() + 1) + ". Go back");
+		do
+		{
+			choiceSpeAtt = Util.numberSelect("",p.numberSpecialAttacks() + 1);
+			if(choiceSpeAtt == p.numberSpecialAttacks()+1)
+			{
+				doAttack();
+				break;
+			}
+			else if(p.getSpecialAttackEP(choiceSpeAtt-1)> p.getEP())
+				System.out.println("Not enough EP! Choose again.");
+		}while(p.getSpecialAttackEP(choiceSpeAtt-1)>p.getEP());
+		
+		if(choiceSpeAtt <= p.numberSpecialAttacks())
+			specialAttack(choiceSpeAtt-1,p,e);
+	}
+	private void doHealing()
+	{
+		System.out.println(p.showHealing());
+		System.out.println(String.valueOf(p.numberHealing() + 1) + ". Go back");
+		do
+		{
+			choiceHeal = Util.numberSelect("",p.numberHealing()+1);
+			if(choiceHeal == p.numberHealing()+1)
+			{
+				doChoice();
+				break;
+			}
+			else if(p.getHealingEP(choiceHeal-1)>p.getEP())
+				System.out.println("Not enough EP! Choose again.");
+		}while(p.getHealingEP(choiceHeal-1)>p.getEP());
+		
+		if(choiceHeal <= p.numberHealing())
+			p.useHealing(choiceHeal-1);
+	}
+	private void doFlee()
+	{
+		int fleeChance = rand.nextInt(99);
+		int totalChance = (int)(100 * (double)(p.getLvl()/e.getLvl()));
+		if(fleeChance<=totalChance)
+			win = 2;
+		else
+			System.out.println("You failed to run away!");
+	}
 	private void regAttack(Player p, Player e)
 	{
 		damage = p.damage();

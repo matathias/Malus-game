@@ -85,10 +85,10 @@ public class Weapon
 
 	public String toString()
 	{
-		return weaponName + "\t\t Damage: " + weaponDamage + "\t\tAdds " + addHP + " HP\tAdds " + addEP + " EP";
+		return weaponName + "\tDamage: " + weaponDamage + "\tAdds " + addHP + " HP\tAdds " + addEP + " EP";
 	}
 	public String marketToString()
 	{
-		return weaponName + "\t\t Damage: " + weaponDamage + "\t\tAdds " + addHP + "HP\tAdds " + addEP + "EP" + "\n\tCost: " + cost;
+		return weaponName + "\tDamage: " + weaponDamage + "\tAdds " + addHP + "HP\tAdds " + addEP + "EP" + "\n\tCost: " + cost;
 	}
 }

@@ -10,6 +10,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	private int damage;
 	private int winRes;
 	private Random rand;
+	private Player p, b;
 
 	public BossBattles()
 	{
@@ -18,125 +19,136 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	}
 	private void playerAttack(Player player, Player boss)
 	{
+		p = player;
+		b = boss;
 		Util.pause();
-		player.battleShow();
-		if(player.numberHealing() < 1)
-		{
-			choiceMain = Util.numberSelect("Will you:\t\t1. Attack\t\t2. Flee",2);
-		}
-		else
-		{
-			choiceMain = Util.numberSelect("Will you:\t\t1. Attack\t\t2. Flee\t\t3. Heal",3);
-		}
-		switch(choiceMain)
-		{
-			case 1:
-				if(player.numberSpecialAttacks()<1)
-				{
-					regAttack(player,boss);
-				}
-				else
-				{
-					choiceAttack = Util.numberSelect("Will you:\t\t1. Use regular attack\t\t2. Use Special attack",3);
-					switch(choiceAttack)
-					{
-						case 1:
-							regAttack(player,boss);
-							break;
-						case 2:
-							System.out.println(player.showSpecialAttacks());
-							do
-							{
-								choiceSpeAtt = Util.numberSelect("",player.numberSpecialAttacks());
-								if(player.getSpecialAttackEP(choiceSpeAtt-1)> player.getEP())
-									System.out.println("Not enough EP! Choose again.");
-							}while(player.getSpecialAttackEP(choiceSpeAtt-1)>player.getEP());
-							specialAttack(choiceSpeAtt-1,player,boss);
-							break;
-					}
-				}
-				break;
-			case 2:
-				int fleeChance = rand.nextInt(99);
-				int totalChance = (int)(100 * (double)(player.getLvl() / boss.getLvl()));
-				if(fleeChance<=totalChance)
-				{
-					win = 2;
-				}
-				else
-				{
-					System.out.println("You failed to run away!");
-				}
-				break;
-			case 3:
-				player.showHealing();
-				do
-				{
-					System.out.println("Choose: ");
-					choiceHeal = Util.numberSelect("", player.numberHealing());
-					if(player.getHealingEP(choiceHeal-1)>player.getEP())
-						System.out.println("Not enough EP! Choose again.");
-				}while(player.getHealingEP(choiceHeal-1)>player.getEP());
-				player.useHealing(choiceHeal-1);
-				break;
-		}
+		
+		doChoice(false);
+		
 		Util.lineBreak();
 		Util.pause();
 	}
 	private void playerAttackMalus(Player player, Player boss) //no fleeing
 	{
+		p = player;
+		b = boss;
 		Util.pause();
-		player.battleShow();
-		if(player.numberHealing() < 1)
+
+		doChoice(true);
+		
+		Util.pause();
+	}
+	
+	private void doChoice(boolean isMalus)
+	{
+		if(isMalus)
 		{
-			choiceMain = Util.numberSelect("Will you:\t\t1. Attack",1);
+			p.battleShow();
+			if(p.numberHealing() < 1)
+				choiceMain = Util.numberSelect("Will you:\t\t1. Attack",1);
+			else
+				choiceMain = Util.numberSelect("Will you:\t\t1. Attack\t\t2. Heal",2);
+		
+			switch(choiceMain)
+			{
+				case 1:
+					if(p.numberSpecialAttacks()<1)
+						regAttack(p,b);
+					else
+						doAttack(isMalus);
+					break;
+				case 2:
+					doHealing(isMalus);
+					break;
+			}
 		}
 		else
 		{
-			choiceMain = Util.numberSelect("Will you:\t\t1. Attack\t\t2. Heal",2);
+			p.battleShow();
+			if(p.numberHealing() < 1)
+				choiceMain = Util.numberSelect("Will you:\t\t1. Attack\t\t2. Flee",2);
+			else
+				choiceMain = Util.numberSelect("Will you:\t\t1. Attack\t\t2. Flee\t\t3. Heal",3);
+		
+			switch(choiceMain)
+			{
+				case 1:
+					if(p.numberSpecialAttacks()<1)
+						regAttack(p,b);
+					else
+						doAttack(isMalus);
+					break;
+				case 2:
+					doFlee();
+					break;
+				case 3:
+					doHealing(isMalus);
+					break;
+			}
 		}
-		switch(choiceMain)
+	}
+	private void doAttack(boolean isMalus)
+	{
+		choiceAttack = Util.numberSelect("Will you:\n1. Use regular attack\n2. Use Special attack\n3. Go back",3);
+		switch(choiceAttack)
 		{
 			case 1:
-				if(player.numberSpecialAttacks()<1)
-				{
-					regAttack(player,boss);
-				}
-				else
-				{
-					choiceAttack = Util.numberSelect("Will you:\t\t1. Use regular attack\t\t2. Use Special attack",3);
-				}
-				switch(choiceAttack)
-				{
-					case 1:
-						regAttack(player,boss);
-						break;
-					case 2:
-						player.showSpecialAttacks();
-						do
-						{
-							System.out.println("Choose: ");
-							choiceSpeAtt = Util.numberSelect("", player.numberSpecialAttacks());
-							if(player.getSpecialAttackEP(choiceSpeAtt-1)> player.getEP())
-								System.out.println("Not enough EP! Choose again.");
-						}while(player.getSpecialAttackEP(choiceSpeAtt-1)>player.getEP());
-						specialAttack(choiceSpeAtt-1,player,boss);
-						break;
-				}
+				regAttack(p,b);
 				break;
 			case 2:
-				player.showHealing();
-				do
-				{
-					System.out.println("Choose: ");
-					choiceHeal = Util.numberSelect("", player.numberHealing());
-					if(player.getHealingEP(choiceHeal-1)>player.getEP())
-						System.out.println("Not enough EP! Choose again.");
-				}while(player.getHealingEP(choiceHeal-1)>player.getEP());
-				player.useHealing(choiceHeal-1);
+				doSpeAttack(isMalus);
+				break;
+			case 3:
+				doChoice(isMalus);
 				break;
 		}
-		Util.pause();
+	}
+	private void doSpeAttack(boolean isMalus)
+	{
+		System.out.println(p.showSpecialAttacks());
+		System.out.println(String.valueOf(p.numberSpecialAttacks() + 1) + ". Go back");
+		do
+		{
+			choiceSpeAtt = Util.numberSelect("",p.numberSpecialAttacks() + 1);
+			if(choiceSpeAtt == p.numberSpecialAttacks()+1)
+			{
+				doAttack(isMalus);
+				break;
+			}
+			else if(p.getSpecialAttackEP(choiceSpeAtt-1)> p.getEP())
+				System.out.println("Not enough EP! Choose again.");
+		}while(p.getSpecialAttackEP(choiceSpeAtt-1)>p.getEP());
+		
+		if(choiceSpeAtt <= p.numberSpecialAttacks())
+			specialAttack(choiceSpeAtt-1,p,b);
+	}
+	private void doHealing(boolean isMalus)
+	{
+		System.out.println(p.showHealing());
+		System.out.println(String.valueOf(p.numberHealing() + 1) + ". Go back");
+		do
+		{
+			choiceHeal = Util.numberSelect("",p.numberHealing()+1);
+			if(choiceHeal == p.numberHealing()+1)
+			{
+				doChoice(isMalus);
+				break;
+			}
+			else if(p.getHealingEP(choiceHeal-1)>p.getEP())
+				System.out.println("Not enough EP! Choose again.");
+		}while(p.getHealingEP(choiceHeal-1)>p.getEP());
+		
+		if(choiceHeal <= p.numberHealing())
+			p.useHealing(choiceHeal-1);
+	}
+	private void doFlee()
+	{
+		int fleeChance = rand.nextInt(99);
+		int totalChance = (int)(100 * (double)(p.getLvl()/b.getLvl()));
+		if(fleeChance<=totalChance)
+			win = 2;
+		else
+			System.out.println("You failed to run away!");
 	}
 	private void regAttack(Player player, Player boss)
 	{
@@ -229,6 +241,8 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 	while (player.getHP() > 0 && sandStone.getHP() > 0 && win != 2)
 	 	{
 	 		playerAttack(player,sandStone);
+	 		player = p;
+	 		sandStone = b;
 	 		if(sandStone.getHP() > 0 && win != 2)
 	 		{
 	 			/*Attacks:
@@ -374,6 +388,8 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 	while (player.getHP() > 0 && grassStone.getHP() > 0 && win != 2)
 	 	{
 	 		playerAttack(player,grassStone);
+	 		player = p;
+	 		grassStone = b;
 	 		if(grassStone.getHP() > 0 && win != 2)
 	 		{
 	 			/*Attacks:
@@ -518,6 +534,8 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 	while (player.getHP() > 0 && leafStone.getHP() > 0 && win != 2)
 	 	{
 	 		playerAttack(player,leafStone);
+	 		player = p;
+	 		leafStone = b;
 	 		if(leafStone.getHP() > 0 && win != 2)
 	 		{
 	 			/*Attacks:
@@ -662,6 +680,8 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 	while (player.getHP() > 0 && blizzardStone.getHP() > 0 && win != 2)
 	 	{
 	 		playerAttack(player,blizzardStone);
+	 		player = p;
+	 		blizzardStone = b;
 	 		if(blizzardStone.getHP() > 0 && win != 2)
 	 		{
 	 			/*Attacks:
@@ -808,6 +828,8 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 	while (player.getHP() > 0 && wyvern.getHP() > 0 && win != 2)
 	 	{
 	 		playerAttack(player,wyvern);
+	 		player = p;
+	 		wyvern = b;
 	 		if(wyvern.getHP() > 0 && win != 2)
 	 		{
 	 			/*Attacks:
@@ -1017,6 +1039,8 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 	while (player.getHP() > 0 && cerberus.getHP() > 0 && win != 2)
 	 	{
 	 		playerAttack(player,cerberus);
+	 		player = p;
+	 		cerberus = b;
 	 		if(cerberus.getHP() > 0 && win != 2)
 	 		{
 	 			/*Attacks:
@@ -1221,6 +1245,8 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 	while (player.getHP() > 0 && bugCrawler.getHP() > 0 && win != 2)
 	 	{
 	 		playerAttack(player,bugCrawler);
+	 		player = p;
+	 		bugCrawler = b;
 	 		if(bugCrawler.getHP() > 0 && win != 2)
 	 		{
 	 			/*Attacks:
@@ -1451,6 +1477,8 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 	while (player.getHP() > 0 && civilMech.getHP() > 0 && win != 2)
 	 	{
 	 		playerAttack(player,civilMech);
+	 		player = p;
+	 		civilMech = b;
 	 		if(civilMech.getHP() > 0 && win != 2)
 	 		{
 	 			/*Attacks:
@@ -1613,6 +1641,8 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 	while (player.getHP() > 0 && mantisCrawler.getHP() > 0 && win != 2)
 	 	{
 	 		playerAttack(player,mantisCrawler);
+	 		player = p;
+	 		mantisCrawler = b;
 	 		if(mantisCrawler.getHP() > 0 && win != 2)
 	 		{
 	 			/*Attacks:
@@ -1812,6 +1842,8 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 	while (player.getHP() > 0 && insectiCrawler.getHP() > 0 && win != 2)
 	 	{
 	 		playerAttack(player,insectiCrawler);
+	 		player = p;
+	 		insectiCrawler = b;
 	 		if(insectiCrawler.getHP() > 0 && win != 2)
 	 		{
 	 			/*Attacks:
@@ -2016,6 +2048,8 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 	while (player.getHP() > 0 && malusOne.getHP() > 0 && win != 2)
 	 	{
 	 		playerAttack(player,malusOne);
+	 		player = p;
+	 		malusOne = b;
 	 		if(malusOne.getHP() > 0 && win != 2)
 	 		{
 	 			/*Attacks:
@@ -2334,7 +2368,11 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 	while (player.getHP() > 0 && ultimaMalus.getHP() > 0 && win != 2)
 	 	{
 	 		if(!battlestart)
+	 		{
 	 			playerAttackMalus(player,ultimaMalus); //player goes after Malus; in other words, Malus goes first!
+	 			player = p;
+	 			ultimaMalus = b;
+	 		}
 	 		if(ultimaMalus.getHP() > 0 && win != 2)
 	 		{
 	 			/*Attacks:

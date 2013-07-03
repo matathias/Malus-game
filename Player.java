@@ -206,7 +206,7 @@ public class Player
 		int choice = 1;
 		for(Healing a: healing)
 		{
-			heal+= String.valueOf(choice) + " " + a + "\n";
+			heal+= String.valueOf(choice) + ". " + a + "\n";
 			choice++;
 		}
 		return heal;
@@ -267,7 +267,7 @@ public class Player
 		int choice = 1;
 		for(SpecialAttack a:specialAttack)
 		{
-			attacks += String.valueOf(choice) + " " + a + "\n";
+			attacks += String.valueOf(choice) + ". " + a + "\n";
 			choice++;
 		}
 		return attacks;
