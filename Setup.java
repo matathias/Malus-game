@@ -68,7 +68,7 @@ public class Setup
 	 				}
 	 			}
 	 		}
-	 		else
+	 		if(ans.equalsIgnoreCase("No"))
 	 		{
 	 			System.out.println("Alright then. Onwards!");
 	 			Util.pause();

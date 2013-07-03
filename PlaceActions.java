@@ -139,7 +139,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 				path += "X";
 			}
 			random = rand.nextInt(99);
-			if(random <= chan)
+			if(random <= chan && !justBattled)
 			{
 				randomEnChan = rand.nextInt(99);
 				if(randomEnChan <= chanEn1)
@@ -147,24 +147,28 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 					System.out.println("\nYou've encountered a " + en1.getPlayerName() + "!");
 					battleMook = new Battle(player, en1);
 					win = battleMook.mookBattle();
+					reInitMook(en1);
 				}
 				else if(randomEnChan > chanEn1 && randomEnChan <= (chanEn1 + chanEn2))
 				{
 					System.out.println("\nYou've encountered a " + en2.getPlayerName() + "!");
 					battleMook = new Battle(player, en2);
 					win = battleMook.mookBattle();
+					reInitMook(en2);
 				}
 				else if(randomEnChan > (chanEn1 + chanEn2) && randomEnChan <= (chanEn1 + chanEn2 + chanEn3))
 				{
 					System.out.println("\nYou've encountered a " + en3.getPlayerName() + "!");
 					battleMook = new Battle(player, en3);
 					win = battleMook.mookBattle();
+					reInitMook(en3);
 				}
 				else if(randomEnChan > (chanEn1 + chanEn2 + chanEn3) && randomEnChan <= (chanEn1 + chanEn2 + chanEn3 + chanEn4))
 				{
 					System.out.println("\nYou've encountered a " + en4.getPlayerName() + "!");
 					battleMook = new Battle(player, en4);
 					win = battleMook.mookBattle();
+					reInitMook(en4);
 				}
 				else
 				{
@@ -184,10 +188,14 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 		while (win != 3 && counter<=len);
 		return win;
 	}
+	private void reInitMook(Player en)
+	{
+		en.setHP(en.getMaxHealth());
+	}
 	private void town()
 	{
 		Story.town();
-		int choice = Util.numberSelect("Where will you go:\n1. Inn\n2. Weapon Market\n3. Defense Market\n4. Healing Market\n5. Special Attack Market\n6. Save\n7. Desert",6);
+		int choice = Util.numberSelect("Where will you go:\n1. Inn\n2. Weapon Market\n3. Defense Market\n4. Healing Market\n5. Special Attack Market\n6. Save\n7. Desert\n8. Quit Game",8);
 		int cost = 0;
 		switch(choice)
 		{
@@ -255,6 +263,14 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 				break;
 			case 7:
 				desert();
+				break;
+			case 8:
+				System.out.println("Are you sure you want to quit?");
+				String ans2 = Util.yesNoLoop();
+				if(ans2.equalsIgnoreCase("Yes"))
+					end();
+				else
+					town();
 				break;
 			default:
 				town();
