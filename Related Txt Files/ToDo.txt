@@ -13,7 +13,7 @@
 *add real values to all Special Attacks in MarketSpeAttack - done
 *add real values to all Defense in MarketDefense - done
 
-*make sure that the player doesn't get stuck if they choose to do a special attack or healing ability in battle but want to change their minds
+*make sure that the player doesn't get stuck if they choose to do a special attack or healing ability in battle but want to change their minds - done
 
 NOTES:
 -Ravager and Reliever should have much lower damage values, lower than the current Sentinel's perhaps - modified
