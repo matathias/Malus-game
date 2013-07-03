@@ -441,7 +441,7 @@ public class Player
 				setMaxEP(20*(Math.pow(1.75,getLvl()/5))); //EP: 20*(1.75^(x/5))
 				System.out.println(output.format(getMaxEP()));
 				System.out.print("Base Damage: " + output.format(getRawDamage()) + " ==> ");
-				attackDamage = 2.5*(Math.pow(2,getLvl()/5)) + (getLvl()*5) - 2.5; //Damage: 2.5*(2^(x/5)) + (x*5) - 2.5
+				attackDamage = 3.5*(Math.pow(2,getLvl()/5)) + (getLvl()*5) - 2.5; //Damage: 3.5*(2^(x/5)) + (x*5) - 2.5
 				System.out.println(output.format(getRawDamage()));
 			}
 			else if (playerClass.equalsIgnoreCase("Ravager")) //Ravager level up (Lower HP, Higher EP, Average Damage)
@@ -450,10 +450,10 @@ public class Player
 				setMaxHealth(50*(Math.pow(1.75,getLvl()/5))); //HP: 50*1.75^(x/5)
 				System.out.println(output.format(getMaxHealth()));
 				System.out.print("Max EP: " + output.format(getMaxEP()) + " ==> ");
-				setMaxEP(100*(Math.pow(1.75,getLvl()/5))); //EP: 100*(1.75^(x/5))
+				setMaxEP(90*(Math.pow(1.75,getLvl()/5))); //EP: 90*(1.75^(x/5))
 				System.out.println(output.format(getMaxEP()));
 				System.out.print("Base Damage: " + output.format(getRawDamage()) + " ==> ");
-				attackDamage = 8*(Math.pow(2,getLvl()/5)) + (getLvl()*17) - 8; //Damage: 8*(2^(x/5)) + (x*17) - 8
+				attackDamage = 6.5*(Math.pow(2,getLvl()/5)) + (getLvl()*17) - 8; //Damage: 6.5*(2^(x/5)) + (x*17) - 8
 				System.out.println(output.format(getRawDamage()));
 			}
 			else if (playerClass.equalsIgnoreCase("Reliever")) //Reliever level up (Higher HP, Higher EP, Average Damage)
@@ -462,10 +462,10 @@ public class Player
 				setMaxHealth(130*(Math.pow(1.75,getLvl()/5))); //HP: 130*1.75^(x/5)
 				System.out.println(output.format(getMaxHealth()));
 				System.out.print("Max EP: " + output.format(getMaxEP()) + " ==> ");
-				setMaxEP(80*(Math.pow(1.75,getLvl()/5))); //EP: 80*(1.75^(x/5))
+				setMaxEP(75*(Math.pow(1.75,getLvl()/5))); //EP: 75*(1.75^(x/5))
 				System.out.println(output.format(getMaxEP()));
 				System.out.print("Base Damage: " + output.format(getRawDamage()) + " ==> ");
-				attackDamage = 4*(Math.pow(2,getLvl()/5)) + (getLvl()*6) - 4; //Damage: 4*(2^(x/5)) + (x*6) - 4
+				attackDamage = 3*(Math.pow(2,getLvl()/5)) + (getLvl()*6) - 4; //Damage: 3*(2^(x/5)) + (x*6) - 4
 				System.out.println(output.format(getRawDamage()));
 			}
 			else if (playerClass.equalsIgnoreCase("Entrepreneur")) //Entrepreneur level up (Lower HP, Average EP, Lower Damage, Cheaper marker and earns money at level up)
@@ -477,7 +477,7 @@ public class Player
 				setMaxEP(20*(Math.pow(1.75,getLvl()/5))); //EP: 20*(1.75^(x/5))
 				System.out.println(output.format(getMaxEP()));
 				System.out.print("Base Damage: " + output.format(getRawDamage()) + " ==> ");
-				attackDamage = 3*(Math.pow(2,getLvl()/5)) + (getLvl()*6) - 3; //Damage: 3*(2^(x/5)) + (x*6) - 3
+				attackDamage = 3.5*(Math.pow(2,getLvl()/5)) + (getLvl()*6) - 3; //Damage: 3.5*(2^(x/5)) + (x*6) - 3
 				System.out.println(output.format(getRawDamage()));
 				Random rand = new Random();
 				int addM = rand.nextInt((int)getLvl()*500);

@@ -63,60 +63,60 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 		/*
 		 * Desert Enemies
 		 */
-		desertEnemies.add(new Player(10,10,10,10,10,10,"Sand Drone"));
-		desertEnemies.add(new Player(10,10,10,10,10,10,"Manipulated Cactus"));
-		desertEnemies.add(new Player(10,10,10,10,10,10,"Sand Demon"));
+		desertEnemies.add(new Player(40,6,5,3,0,1,"Sand Drone"));
+		desertEnemies.add(new Player(100,9,10,7,0,3,"Manipulated Cactus"));
+		desertEnemies.add(new Player(250,15,15,12,5,4,"Sand Demon"));
 		
 		/*
 		 * Plains Enemies
 		 */
-		plainEnemies.add(new Player(10,10,10,10,10,10,"Dry Spell"));
-		plainEnemies.add(new Player(10,10,10,10,10,10,"Grass Drone"));
-		plainEnemies.add(new Player(10,10,10,10,10,10,"Manipulated Dandelion"));
-		plainEnemies.add(new Player(10,10,10,10,10,10,"Delta-Class Ground: Beetle"));
+		plainEnemies.add(new Player(150,8,13,10,0,6,"Dry Spell"));
+		plainEnemies.add(new Player(375,20,22,8,0,7,"Grass Drone"));
+		plainEnemies.add(new Player(250,18,20,500,250,9,"Manipulated Dandelion"));
+		plainEnemies.add(new Player(750,22,40,25,0,10,"Delta-Class Ground: Beetle"));
 		
 		/*
 		 * Forest Enemies
 		 */
-		forestEnemies.add(new Player(10,10,10,10,10,10,"Manipulated Tree"));
-		forestEnemies.add(new Player(10,10,10,10,10,10,"Nature Drone"));
-		forestEnemies.add(new Player(10,10,10,10,10,10,"Delta-Class Aerial: Bee"));
+		forestEnemies.add(new Player(750,25,45,42,10,12,"Manipulated Tree"));
+		forestEnemies.add(new Player(900,28,54,75,0,14,"Nature Drone"));
+		forestEnemies.add(new Player(1100,32,60,150,0,16,"Delta-Class Aerial: Bee"));
 		
 		/*
 		 * Mountain Enemies
 		 */
-		mountainEnemies.add(new Player(10,10,10,10,10,10,"Sentrock Drone"));
-		mountainEnemies.add(new Player(10,10,10,10,10,10,"Manipulated Yeti"));
-		mountainEnemies.add(new Player(10,10,10,10,10,10,"Avalanche Catalyst"));
-		mountainEnemies.add(new Player(10,10,10,10,10,10,"Sentrice Drone"));
+		mountainEnemies.add(new Player(1250,40,90,200,0,20,"Sentrock Drone"));
+		mountainEnemies.add(new Player(3000,40,175,1500,10,21,"Manipulated Yeti"));
+		mountainEnemies.add(new Player(1000,50,125,175,15,22,"Avalanche Catalyst"));
+		mountainEnemies.add(new Player(1200,60,150,250,0,23,"Sentrice Drone"));
 		
 		/*
 		 * Volcano Enemies
 		 */
-		volcanoEnemies.add(new Player(10,10,10,10,10,10,"Magma Drone"));
-		volcanoEnemies.add(new Player(10,10,10,10,10,10,"Gamma-Class Ground: Cockroach"));
-		volcanoEnemies.add(new Player(10,10,10,10,10,10,"Unstoppable Magma"));
+		volcanoEnemies.add(new Player(1500,65,180,300,0,24,"Magma Drone"));
+		volcanoEnemies.add(new Player(2000,70,200,350,0,27,"Gamma-Class Ground: Cockroach"));
+		volcanoEnemies.add(new Player(4000,80,235,1000,20,29,"Unstoppable Magma"));
 		
 		/*
 		 * Cavern Enemies
 		 */
-		cavernEnemies.add(new Player(10,10,10,10,10,10,"Gamma-Class Aerial: Mosquito"));
-		cavernEnemies.add(new Player(10,10,10,10,10,10,"Autoturret"));
-		cavernEnemies.add(new Player(10,10,10,10,10,10,"Immovable Rock"));
+		cavernEnemies.add(new Player(1750,120,275,400,0,32,"Gamma-Class Aerial: Mosquito"));
+		cavernEnemies.add(new Player(5000,250,315,350,0,34,"Autoturret"));
+		cavernEnemies.add(new Player(100000,0,5000,5000,1000,30,"Immovable Rock"));
 		
 		/*
 		 * Base Enemies
 		 */
-		baseEnemies.add(new Player(10,10,10,10,10,10,"Prototype Autoturret"));
-		baseEnemies.add(new Player(10,10,10,10,10,10,"Magnatus Drone"));
-		baseEnemies.add(new Player(10,10,10,10,10,10,"Beta-Class Ground: Black Widow"));
-		baseEnemies.add(new Player(10,10,10,10,10,10,"Civil Autoturret"));
-		baseEnemies.add(new Player(10,10,10,10,10,10,"Beta-Class Aerial: Wasp"));
-		baseEnemies.add(new Player(10,10,10,10,10,10,"Defense Autoturret"));
-		baseEnemies.add(new Player(10,10,10,10,10,10,"Manipulated Antimatter"));
-		baseEnemies.add(new Player(10,10,10,10,10,10,"Mutant Something"));
-		baseEnemies.add(new Player(10,10,10,10,10,10,"Alpha-Class Ground: Tarantula"));
-		baseEnemies.add(new Player(10,10,10,10,10,10,"Alpha-Class Aerial: Hornet"));
+		baseEnemies.add(new Player(4000,400,350,400,0,35,"Prototype Autoturret"));
+		baseEnemies.add(new Player(5250,550,405,400,0,36,"Magnatus Drone"));
+		baseEnemies.add(new Player(6000,750,460,450,0,38,"Beta-Class Ground: Black Widow"));
+		baseEnemies.add(new Player(4500,675,435,300,0,36,"Civil Autoturret"));
+		baseEnemies.add(new Player(4500,1250,490,500,0,38,"Beta-Class Aerial: Wasp"));
+		baseEnemies.add(new Player(12500,1000,515,450,0,40,"Defense Autoturret"));
+		baseEnemies.add(new Player(3456,789,1011,121314,12,41,"Manipulated Antimatter"));
+		baseEnemies.add(new Player(10000,565,500,375,50,41,"Mutant Something"));
+		baseEnemies.add(new Player(25000,1250,600,550,0,42,"Alpha-Class Ground: Tarantula"));
+		baseEnemies.add(new Player(8050,1500,550,600,0,42,"Alpha-Class Aerial: Hornet"));
 	}
 	//private int placeTravel()//prevents compile error messages
 	//{return 0;}

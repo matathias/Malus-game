@@ -222,7 +222,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 public int sandStoneBoss(Player player)
 	 {
 	 	System.out.println("You have entered battle with Sand Stone!");
-	 	Player sandStone = new Player(10,10,10,10,10,10,"Sand Stone"); //Placeholder values
+	 	Player sandStone = new Player(750,15,125,50,20,6,"Sand Stone"); //Placeholder values
 	 	boolean quarter = true;
 	 	int quarterCounter = 0;
 	 	boolean emergency = false;
@@ -367,7 +367,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 public int grassStoneBoss(Player player)
 	 {
 	 	System.out.println("You have entered battle with Grass Stone!");
-	 	Player grassStone = new Player(10,10,10,10,10,10,"Grass Stone"); //Placeholder values
+	 	Player grassStone = new Player(1500,26,256,250,40,12,"Grass Stone"); //Placeholder values
 	 	boolean quarter = true;
 	 	int quarterCounter = 0;
 	 	boolean emergency = false;
@@ -511,7 +511,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 public int leafStoneBoss(Player player)
 	 {
 	 	System.out.println("You have entered battle with Leaf Stone!");
-	 	Player leafStone = new Player(10,10,10,10,10,10,"Leaf Stone"); //Placeholder values
+	 	Player leafStone = new Player(2500,58,485,1000,80,18,"Leaf Stone"); //Placeholder values
 	 	boolean quarter = true;
 	 	int quarterCounter = 0;
 	 	boolean emergency = false;
@@ -655,7 +655,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 public int blizzardStoneBoss(Player player)
 	 {
 	 	System.out.println("You have entered battle with Blizzard Stone!");
-	 	Player blizzardStone = new Player(10,10,10,10,10,10,"Blizzard Stone"); //Placeholder values
+	 	Player blizzardStone = new Player(4000,120,886,3000,160,24,"Blizzard Stone"); //Placeholder values
 	 	boolean quarter = true;
 	 	int quarterCounter = 0;
 	 	boolean emergency = false;
@@ -799,7 +799,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 public int wyvernBoss(Player player)
 	 {
 	 	System.out.println("You have entered battle with the Boss-Class Aerial: Wyvern!");
-	 	Player wyvern = new Player(10,10,10,10,10,10,"BCA Wyvern"); //Placeholder values
+	 	Player wyvern = new Player(12500,240,1587,9000,320,30,"BCA Wyvern"); //Placeholder values
 	 	boolean third = true;
 	 	boolean quarter = true;
 	 	int thirdCounter = 0;
@@ -1008,7 +1008,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 public int cerberusBoss(Player player)
 	 {
 	 	System.out.println("You have entered battle with the Boss-Class Ground: Cerberus!");
-	 	Player cerberus = new Player(10,10,10,10,10,10,"BCG Cerberus"); //Placeholder values
+	 	Player cerberus = new Player(25000,550,2813,15000,640,36,"BCG Cerberus"); //Placeholder values
 	 	boolean quarter = true;
 	 	boolean third = true;
 	 	int thirdCounter = 0;
@@ -1215,7 +1215,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 public int bugCrawlerBoss(Player player)
 	 {
 	 	System.out.println("You have entered battle with the Incomplete Bug Crawler!");
-	 	Player bugCrawler = new Player(10,10,10,10,10,10,"Bug Crawler"); //Placeholder values
+	 	Player bugCrawler = new Player(65000,850,2500,16500,1440,42,"Bug Crawler"); //Placeholder values
 	 	boolean emergencyOne = true;
 	 	boolean transformed = false;
 	 	while (player.getHP() > 0 && bugCrawler.getHP() > 0 && win != 2)
@@ -1443,7 +1443,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 public int civilMechBoss(Player player) //replace placeholder values
 	 {
 	 	System.out.println("You have entered battle with the Civil Control Mech!");
-	 	Player civilMech = new Player(10,10,10,10,10,10,"Civil Control Mech"); //Placeholder values
+	 	Player civilMech = new Player(75000,550,2000,16000,960,40,"Civil Control Mech"); //Placeholder values
 	 	boolean quarter = true;
 	 	boolean third = true;
 	 	int thirdCounter = 0;
@@ -1606,7 +1606,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 public int mantisCrawlerBoss(Player player) //replace placeholder values
 	 {
 	 	System.out.println("You have entered battle with the Prototype Mantis Crawler!");
-	 	Player mantisCrawler = new Player(10,10,10,10,10,10,"Mantis Crawler"); //Placeholder values
+	 	Player mantisCrawler = new Player(85000,1050,3000,17000,2160,44,"Mantis Crawler"); //Placeholder values
 	 	boolean quarter = true;
 	 	int quarterCounter = 0;
 	 	boolean emergency = false;
@@ -1804,7 +1804,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 public int insectiCrawlerBoss(Player player) //replace placeholder values
 	 {
 	 	System.out.println("You have entered battle with the Insecti Crawler!");
-	 	Player insectiCrawler = new Player(10,10,10,10,10,10,"Insecti Crawler"); //Placeholder values
+	 	Player insectiCrawler = new Player(98000,1250,3500,17500,3240,46,"Insecti Crawler"); //Placeholder values
 	 	boolean quarter = true;
 	 	int quarterCounter = 0;
 	 	boolean emergency = false;
@@ -1999,7 +1999,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 public int malusPhaseOneBoss(Player player) //replace placeholder values
 	 {
 	 	System.out.println("You have entered battle with Malus!");
-	 	Player malusOne = new Player(10,10,10,10,10,10,"Malus"); //Placeholder values
+	 	Player malusOne = new Player(125000,850,20000,75000,0,48,"Malus"); //Placeholder values
 	 	boolean half = false;
 	 	boolean third = false;
 	 	boolean quarter = false;
@@ -2320,7 +2320,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 public int malusPhaseTwoBoss(Player player) //replace placeholder values
 	 {
 	 	System.out.println("You have entered battle with Ultima Malus!");
-	 	Player ultimaMalus = new Player(10,10,10,10,10,10,"Ultima Malus"); //Placeholder values
+	 	Player ultimaMalus = new Player(1000000,1250,50000,150000,0,50,"Ultima Malus"); //Placeholder values
 	 	boolean chaosReign = false;
 	 	boolean ultimaRailgun = false;
 	 	boolean blackHoleCannon = false;

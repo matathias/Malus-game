@@ -38,67 +38,67 @@ public class MarketSpeAttack//change Util.numberSelect() to proper parameters
 	{
 		if(player.getPlayerClass().equalsIgnoreCase("Entrepreneur")) //10% cheaper
 		{
-			speAttGen.add(new SpecialAttack()); //Destruction
-			speAttGen.add(new SpecialAttack()); //Foe Crash
-			speAttGen.add(new SpecialAttack()); //Chaos Drive
-			speAttGen.add(new SpecialAttack()); //Machina Chaos
-			speAttGen.add(new SpecialAttack()); //Penultima Chaos
-			speAttGen.add(new SpecialAttack()); //Ultima Chaos (high level)
+			speAttGen.add(new SpecialAttack("Destruction","All",150,40,9,(int)(200*.9),5,1.5)); //Destruction
+			speAttGen.add(new SpecialAttack("Foe Crash","All",350,100,16,(int)(500*.9),10,1.5)); //Foe Crash
+			speAttGen.add(new SpecialAttack("Chaos Drive","All",500,175,22,(int)(2000*.9),15,1.5)); //Chaos Drive
+			speAttGen.add(new SpecialAttack("Machina Chaos","All",1000,450,30,(int)(6000*.9),25,2)); //Machina Chaos
+			speAttGen.add(new SpecialAttack("Penultima Chaos","All",2500,600,37,(int)(10000*.9),32,3.5)); //Penultima Chaos
+			speAttGen.add(new SpecialAttack("Ultima Chaos","All",50000,4300,48,(int)(100000*.9),50,5)); //Ultima Chaos (high level)
 		}
 		else
 		{
-			speAttGen.add(new SpecialAttack()); //Destruction
-			speAttGen.add(new SpecialAttack()); //Foe Crash
-			speAttGen.add(new SpecialAttack()); //Chaos Drive
-			speAttGen.add(new SpecialAttack()); //Machina Chaos
-			speAttGen.add(new SpecialAttack()); //Penultima Chaos
-			speAttGen.add(new SpecialAttack()); //Ultima Chaos (high level)
+			speAttGen.add(new SpecialAttack("Destruction","All",150,40,9,200,5,1.5)); //Destruction
+			speAttGen.add(new SpecialAttack("Foe Crash","All",350,100,16,500,10,1.5)); //Foe Crash
+			speAttGen.add(new SpecialAttack("Chaos Drive","All",500,175,22,2000,15,1.5)); //Chaos Drive
+			speAttGen.add(new SpecialAttack("Machina Chaos","All",1000,450,30,6000,25,2)); //Machina Chaos
+			speAttGen.add(new SpecialAttack("Penultima Chaos","All",2500,600,37,10000,32,3.5)); //Penultima Chaos
+			speAttGen.add(new SpecialAttack("Ultima Chaos","All",50000,4300,48,100000,50,5)); //Ultima Chaos (high level)
 		}
 	}
 	private void initClassSpeAtt()
 	{
 		if(player.getPlayerClass().equalsIgnoreCase("Commando"))
 		{
-			speAttClass.add(new SpecialAttack()); //Bullet Blitz (all three: low dam, high(ish) ep, high crit chance, high crit bonus)
-			speAttClass.add(new SpecialAttack()); //Bullet Storm
-			speAttClass.add(new SpecialAttack()); //Bullet Hell
+			speAttClass.add(new SpecialAttack("Bullet Blitz","Commando",200,80,15,600,40,4)); //Bullet Blitz (all three: low dam, high(ish) ep, high crit chance, high crit bonus)
+			speAttClass.add(new SpecialAttack("Bullet Storm","Commando",410,200,25,3500,55,5)); //Bullet Storm
+			speAttClass.add(new SpecialAttack("Bullet Hell","Commando",1000,700,35,9050,75,8)); //Bullet Hell
 		}
 		else if(player.getPlayerClass().equalsIgnoreCase("Berserker"))
 		{
-			speAttClass.add(new SpecialAttack()); //Flamestrike
-			speAttClass.add(new SpecialAttack()); //Cleave
-			speAttClass.add(new SpecialAttack()); //Berserk (high dam, high ep, high crit chance, low crit bonus)
+			speAttClass.add(new SpecialAttack("Flamestrike","Berserker",550,75,14,500,10,1.75)); //Flamestrike
+			speAttClass.add(new SpecialAttack("Cleave","Berserker",800,200,22,3050,25,4)); //Cleave
+			speAttClass.add(new SpecialAttack("Berserk","Berserker",4000,1200,38,10500,80,1.5)); //Berserk (high dam, high ep, high crit chance, low crit bonus)
 		}
 		else if(player.getPlayerClass().equalsIgnoreCase("Sentinel"))
 		{
-			speAttClass.add(new SpecialAttack()); //Forced Response (low dam, low ep, low crit chance, low crit bonus)
-			speAttClass.add(new SpecialAttack()); //Defense's Offense (low dam, high ep, high crit chance, high crit bonus)
-			speAttClass.add(new SpecialAttack()); //Guard's Strength (high dam, high ep, low crit chance, low crit bonus)
+			speAttClass.add(new SpecialAttack("Forced Response","Sentinel",100,20,12,350,5,1.5)); //Forced Response (low dam, low ep, low crit chance, low crit bonus)
+			speAttClass.add(new SpecialAttack("Defense's Offence","Sentinel",200,60,24,3000,35,3)); //Defense's Offense (low dam, high ep, high crit chance, high crit bonus)
+			speAttClass.add(new SpecialAttack("Guard's Strength","Sentinel",400,350,28,5000,50,5)); //Guard's Strength (high dam, high ep, low crit chance, low crit bonus)
 		}
 		else if(player.getPlayerClass().equalsIgnoreCase("Ravager"))
 		{
-			speAttClass.add(new SpecialAttack()); //Flame			(high dam, low ep, low crit chance, low crit bonus)
-			speAttClass.add(new SpecialAttack()); //Crush 			(high dam, high ep, low crit chance, high crit bonus)
-			speAttClass.add(new SpecialAttack()); //Freeze 			(mid dam, mid ep, mid crit chance, high crit bonus)
-			speAttClass.add(new SpecialAttack()); //Thunder			(low dam, high ep, high crit chance, high crit bonus)
-			speAttClass.add(new SpecialAttack()); //Chaos Claw		(mid dam, high ep, low crit chance, high crit bonus)
-			speAttClass.add(new SpecialAttack()); //Chaos Strike	(high dam, high ep, high crit chance, low crit bonus)
-			speAttClass.add(new SpecialAttack()); //Chaos Blast 	(high dam, high ep, high crit chance, high crit bonus)
-			speAttClass.add(new SpecialAttack()); //Ultimate Sacrifice (high level, high damage, high EP cost, very low crit chance, high crit bonus)
+			speAttClass.add(new SpecialAttack("Flame","Ravager",375,50,10,250,5,1.25)); //Flame			(high dam, low ep, low crit chance, low crit bonus)
+			speAttClass.add(new SpecialAttack("Crush","Ravager",450,100,15,500,5,4)); //Crush 			(high dam, high ep, low crit chance, high crit bonus)
+			speAttClass.add(new SpecialAttack("Freeze","Ravager",525,175,20,1250,15,2.5)); //Freeze 			(mid dam, mid ep, mid crit chance, high crit bonus)
+			speAttClass.add(new SpecialAttack("Thunder","Ravager",775,225,25,3250,35,3)); //Thunder			(low dam, high ep, high crit chance, high crit bonus)
+			speAttClass.add(new SpecialAttack("Chaos Claw","Ravager",1350,400,30,5075,5,4)); //Chaos Claw		(mid dam, high ep, low crit chance, high crit bonus)
+			speAttClass.add(new SpecialAttack("Chaos Strike","Ravager",2500,875,35,8500,50,1.25)); //Chaos Strike	(high dam, high ep, high crit chance, low crit bonus)
+			speAttClass.add(new SpecialAttack("Chaos Blast","Ravager",3500,2000,40,14000,55,6)); //Chaos Blast 	(high dam, high ep, high crit chance, high crit bonus)
+			speAttClass.add(new SpecialAttack("Ultimate Sacrifice","Ravager",5000,5000,45,18000,3,25)); //Ultimate Sacrifice (high level, high damage, high EP cost, very low crit chance, high crit bonus)
 		}
 		else if(player.getPlayerClass().equalsIgnoreCase("Reliever"))
 		{
-			speAttClass.add(new SpecialAttack()); //Forced Response(low dam, low ep, low crit chance, low crit bonus)
-			speAttClass.add(new SpecialAttack()); //Lightning
-			speAttClass.add(new SpecialAttack()); //Shining Blow
-			speAttClass.add(new SpecialAttack()); //Chaos' Light
-			speAttClass.add(new SpecialAttack()); //Ultimate Light (high level, high dam, high ep, mid crit chance, low crit bonus)
+			speAttClass.add(new SpecialAttack("Forced Response","Reliever",150,50,12,250,5,1.25)); //Forced Response(low dam, low ep, low crit chance, low crit bonus)
+			speAttClass.add(new SpecialAttack("Lightning","Reliever",275,125,20,1100,35,3)); //Lightning
+			speAttClass.add(new SpecialAttack("Shining Blow","Reliever",600,230,28,3200,10,2.1)); //Shining Blow
+			speAttClass.add(new SpecialAttack("Chaos' Light","Reliever",1200,775,36,5250,35,2)); //Chaos' Light
+			speAttClass.add(new SpecialAttack("Ultimate Light","Reliever",3500,1250,45,15250,20,1.75)); //Ultimate Light (high level, high dam, high ep, mid crit chance, low crit bonus)
 		}
 		else if(player.getPlayerClass().equalsIgnoreCase("Entrepreneur"))
 		{
-			speAttClass.add(new SpecialAttack()); //Demand's Supply
-			speAttClass.add(new SpecialAttack()); //Hostile Takeover (low dam, mid ep, high crit chance, high crit bonus)
-			speAttClass.add(new SpecialAttack()); //Monopoly (high dam, high ep, high crit chance, high crit bonus)
+			speAttClass.add(new SpecialAttack("Demand's Supply","Entreprenuer",150,30,14,400,25,2.5)); //Demand's Supply
+			speAttClass.add(new SpecialAttack("Hostile Takeover","Entreprenuer",250,100,25,3000,50,5)); //Hostile Takeover (low dam, mid ep, high crit chance, high crit bonus)
+			speAttClass.add(new SpecialAttack("Monopoly","Entreprenuer",1175,975,38,5000,75,4)); //Monopoly (high dam, high ep, high crit chance, high crit bonus)
 		}
 	}
 	public Player speAttMarket(Player p)
