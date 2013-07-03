@@ -1,4 +1,0 @@
-*Create an ArrayList return method for all classes that returns an ArrayList containing all their relevant data (ex. boolean values) - Done
-*Create secondary constructors for methods that takes in an ArrayList similar to the one it would return - Done
-*Create a method in the Util class that writes data to a file
-*Create a method in the Util class that reads that data from a file

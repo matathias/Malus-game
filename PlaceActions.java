@@ -137,6 +137,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 			{
 				System.out.println(path +  "X");
 				path += "X";
+				justBattled = false;
 			}
 			random = rand.nextInt(99);
 			if(random <= chan && !justBattled)
@@ -177,7 +178,6 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 					System.out.println("Other chances: " + chanEn1 + "\t" + chanEn2 + "\t" + chanEn3 + "\t" + chanEn4);
 					Util.pause();
 				}
-				justBattled = true;
 			}
 			else
 			{

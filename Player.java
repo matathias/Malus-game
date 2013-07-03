@@ -57,6 +57,7 @@ public class Player
 		extraPoints = eP;
 		level = lvl;
 		playerName = pN;
+		attackMod = 1;
 	}
 	
 	public Player (ArrayList<String> data) //to be used with game loading
@@ -296,10 +297,10 @@ public class Player
 		if (critHit < 10) //critical hit has a 10% chance of occuring
 		{
 			//System.out.println("Critical hit!");
-			return (int)(getTotalRawDamage()*attackMod*randomnessPercent*1.5);
+			return (int)Math.round(getTotalRawDamage()*attackMod*randomnessPercent*1.5);
 		}
 		else
-			return (int)(getTotalRawDamage()*attackMod*randomnessPercent);
+			return (int)Math.round(getTotalRawDamage()*attackMod*randomnessPercent);
 	}
 	public int specialDamage(int index) //index controls which special attack is used
 	{
@@ -310,10 +311,10 @@ public class Player
 		if (critHit < specialAttack.get(index).getCritChance()) //critical hit has a variable chance of occuring
 		{
 			System.out.println("Critical hit!");
-			return (int)(specialAttack.get(index).getAttackDamage()*attackMod*(getLvl()/10)*randomnessPercent*specialAttack.get(index).getCritBonus());
+			return (int)Math.round(specialAttack.get(index).getAttackDamage()*attackMod*(getLvl()/(specialAttack.get(index).getMinLevel()+5))*randomnessPercent*specialAttack.get(index).getCritBonus());
 		}
 		else
-			return (int)(specialAttack.get(index).getAttackDamage()*attackMod*(getLvl()/10)*randomnessPercent);
+			return (int)Math.round(specialAttack.get(index).getAttackDamage()*attackMod*(getLvl()/(specialAttack.get(index).getMinLevel()+5))*randomnessPercent);
 	}
 
 	//Attack Modifier----------------------------------------------------------------------------------------------------
