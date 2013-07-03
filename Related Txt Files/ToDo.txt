@@ -8,12 +8,13 @@
 *modify dummy arguments for enemy Players to real values - done
 *Add path lengths and encounter chances to PlaceActions
 
-*add real values to all Weapons in MarketWeapon
-*add real values to all Healing in MarketHealing
-*add real values to all Special Attacks in MarketSpeAttack
-*add real values to all Defense in MarketDefense
+*add real values to all Weapons in MarketWeapon - done
+*add real values to all Healing in MarketHealing - done
+*add real values to all Special Attacks in MarketSpeAttack - done
+*add real values to all Defense in MarketDefense - done
 
+*make sure that the player doesn't get stuck if they choose to do a special attack or healing ability in battle but want to change their minds
 
 NOTES:
--Ravager and Reliever should have much lower damage values, lower than the current Sentinel's perhaps
--Sentinel should have slightly higher damage values(?)
+-Ravager and Reliever should have much lower damage values, lower than the current Sentinel's perhaps - modified
+-Sentinel should have slightly higher damage values - modified

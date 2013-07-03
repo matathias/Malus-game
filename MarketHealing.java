@@ -38,15 +38,15 @@ public class MarketHealing
 	{
 		if(player.getPlayerClass().equalsIgnoreCase("Entrepreneur")) //10% cheaper
 		{
-			healGen.add(new Healing()); //Heal (-EP,+HP)
-			healGen.add(new Healing()); //HealUp (--EP, ++HP)
-			healGen.add(new Healing()); //Machina Heal(-HP, +EP)
+			healGen.add(new Healing("Heal","All",25,10,8,(int)(.9*150))); //Heal (-EP,+HP)
+			healGen.add(new Healing("HealUP","All",400,100,30,(int)(.9*2050))); //HealUp (--EP, ++HP)
+			healGen.add(new Healing("Machina Heal","All",-1000,-200,36,(int)(.9*2000))); //Machina Heal(-HP, +EP)
 		}
 		else
 		{
-			healGen.add(new Healing()); //Heal (-EP,+HP)
-			healGen.add(new Healing()); //HealUp (--EP, ++HP)
-			healGen.add(new Healing()); //Machina Heal(-HP, +EP)
+			healGen.add(new Healing("Heal","All",25,10,8,150)); //Heal (-EP,+HP)
+			healGen.add(new Healing("HealUP","All",400,100,30,2050)); //HealUp (--EP, ++HP)
+			healGen.add(new Healing("Machina Heal","All",-1000,-200,36,2000)); //Machina Heal(-HP, +EP)
 		}
 	}
 	//for spells that increase EP instead of HP, have both be negative values
@@ -54,39 +54,39 @@ public class MarketHealing
 	{
 		if(player.getPlayerClass().equalsIgnoreCase("Commando"))
 		{
-			healClass.add(new Healing()); //First Aid(-EP,+HP)
-			healClass.add(new Healing()); //Second Aid(--EP, ++HP)
+			healClass.add(new Healing("First Aid","Commando, Berserker",100,25,20,1000)); //First Aid(-EP,+HP)
+			healClass.add(new Healing("Second Aid","Commando, Berserker",4000,1250,45,15000)); //Second Aid(--EP, ++HP)
 		}
 		else if(player.getPlayerClass().equalsIgnoreCase("Berserker"))
 		{
-			healClass.add(new Healing()); //First Aid(-EP,+HP)
-			healClass.add(new Healing()); //Second Aid(--EP, ++HP)
+			healClass.add(new Healing("First Aid","Commando, Berserker",100,25,20,1000)); //First Aid(-EP,+HP)
+			healClass.add(new Healing("Second Aid","Commando, Berserker",4000,1250,45,15000)); //Second Aid(--EP, ++HP)
 		}
 		else if(player.getPlayerClass().equalsIgnoreCase("Sentinel"))
 		{
-			healClass.add(new Healing()); //Last Stand(-EP, +HP)
-			healClass.add(new Healing()); //Ultimate Defense (--EP, ++HP) (consumes 75% of level 30? Sentinel EP)
-			healClass.add(new Healing()); //Sentinel's Sacrifice (---EP, +++HP) (consumes 75% of level 50? Sentinel EP)
+			healClass.add(new Healing("Last Stand","Sentinel",550,150,18,1000)); //Last Stand(-EP, +HP)
+			healClass.add(new Healing("Ultimate Defense","Sentinel",1800,500,30,2250)); //Ultimate Defense (--EP, ++HP) (consumes 75% of level 30? Sentinel EP)
+			healClass.add(new Healing("Sentinel's Sacrifice","Sentinel",15000,2600,44,15500)); //Sentinel's Sacrifice (---EP, +++HP) (consumes 75% of level 50? Sentinel EP)
 		}
 		else if(player.getPlayerClass().equalsIgnoreCase("Ravager"))
 		{
-			healClass.add(new Healing()); //Offense's Defense(++HP, --EP)
-			healClass.add(new Healing()); //Final Stand (+++HP, ---EP)
-			healClass.add(new Healing()); //Ravager's Sacrifice (---HP, +++EP) (consumes 75% of level 50? Ravager HP)
+			healClass.add(new Healing("Offense's Defense","Ravager",200,75,20,1100)); //Offense's Defense(++HP, --EP)
+			healClass.add(new Healing("Final Stand","Ravager",4000,2000,40,8000)); //Final Stand (+++HP, ---EP)
+			healClass.add(new Healing("Ravager's Sacrifice","Ravager",-2000,-4000,42,7000)); //Ravager's Sacrifice (---HP, +++EP) (consumes 75% of level 50? Ravager HP)
 		}
 		else if(player.getPlayerClass().equalsIgnoreCase("Reliever"))
 		{
-			healClass.add(new Healing()); //Mend (++HP, -EP)
-			healClass.add(new Healing()); //Healer's Relief (--HP, ++EP)
-			healClass.add(new Healing()); //Inversi (---HP, +++EP)
-			healClass.add(new Healing()); //Pacifistic Defense(+++HP, --EP)
-			healClass.add(new Healing()); //Final Stand(+++HP, ---EP)
-			healClass.add(new Healing()); //Ultima Relief (+++HP, --EP) (consumes 50% of level 75? Reliever HP)
+			healClass.add(new Healing("Mend","Reliever",500,100,16,900)); //Mend (++HP, -EP)
+			healClass.add(new Healing("Healer's Relief","Reliever",-500,-90,20,1000)); //Healer's Relief (--HP, ++EP)
+			healClass.add(new Healing("Inversi","Reliever",-2000,-450,40,6500)); //Inversi (---HP, +++EP)
+			healClass.add(new Healing("Pacifistic Defense","Reliever",750,175,24,1250)); //Pacifistic Defense(+++HP, --EP)
+			healClass.add(new Healing("Final Stand","Reliever",4500,1500,32,2500)); //Final Stand(+++HP, ---EP)
+			healClass.add(new Healing("Ultima Relief","Reliever",12000,2000,46,15000)); //Ultima Relief (+++HP, --EP) (consumes 50% of level 75? Reliever HP)
 		}
 		else if(player.getPlayerClass().equalsIgnoreCase("Entrepreneur"))
 		{
-			healClass.add(new Healing()); //Marginal Opportunity Cost (-EP, +HP)
-			healClass.add(new Healing()); //Total Opportunity Cost (--EP, ++HP)
+			healClass.add(new Healing("Marginal Opportunity Cost","Entreprenuer",150,25,16,700)); //Marginal Opportunity Cost (-EP, +HP)
+			healClass.add(new Healing("Total Opportunity Cost","Entreprenuer",5000,1000,40,8000)); //Total Opportunity Cost (--EP, ++HP)
 		}
 	}
 	public Player healingMarket(Player p)

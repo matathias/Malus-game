@@ -40,77 +40,77 @@ public class MarketDefense//change Util.numberSelect() to proper parameters
 		if(player.getPlayerClass().equalsIgnoreCase("Entrepreneur"))//10% cheaper
 		{
 			//HP
-			defenseGen.add(new Defense()); //Wooden Shield
-			defenseGen.add(new Defense()); //Iron Shield
-			defenseGen.add(new Defense()); //Steel Shield
+			defenseGen.add(new Defense("Wooden Shield",20,0,(int)(.9*90))); //Wooden Shield
+			defenseGen.add(new Defense("Iron Shield",50,0,(int)(.9*130))); //Iron Shield
+			defenseGen.add(new Defense("Steel Shield",100,0,(int)(.9*250))); //Steel Shield
 			//EP
-			defenseGen.add(new Defense()); //Channel Shield
-			defenseGen.add(new Defense()); //Conduit Shield
-			defenseGen.add(new Defense()); //Chaos Shield
+			defenseGen.add(new Defense("Channel Shield",0,20,(int)(.9*115))); //Channel Shield
+			defenseGen.add(new Defense("Conduit Shield",0,50,(int)(.9*225))); //Conduit Shield
+			defenseGen.add(new Defense("Chaos Shield",0,100,(int)(.9*300))); //Chaos Shield
 			//Both
-			defenseGen.add(new Defense()); //Machina Shield
-			defenseGen.add(new Defense()); //Penultima Shield
-			defenseGen.add(new Defense()); //Ultima Shield
+			defenseGen.add(new Defense("Machina Shield",200,200,(int)(.9*750))); //Machina Shield
+			defenseGen.add(new Defense("Penultima Shield",500,500,(int)(.9*1250))); //Penultima Shield
+			defenseGen.add(new Defense("Ultima Shield",2000,2000,(int)(.9*2000))); //Ultima Shield
 		}
 		else
 		{
 			//HP
-			defenseGen.add(new Defense()); //Wooden Shield
-			defenseGen.add(new Defense()); //Iron Shield
-			defenseGen.add(new Defense()); //Steel Shield
+			defenseGen.add(new Defense("Wooden Shield",20,0,90)); //Wooden Shield
+			defenseGen.add(new Defense("Iron Shield",50,0,130)); //Iron Shield
+			defenseGen.add(new Defense("Steel Shield",100,0,250)); //Steel Shield
 			//EP
-			defenseGen.add(new Defense()); //Channel Shield
-			defenseGen.add(new Defense()); //Conduit Shield
-			defenseGen.add(new Defense()); //Chaos Shield
+			defenseGen.add(new Defense("Channel Shield",0,20,115)); //Channel Shield
+			defenseGen.add(new Defense("Conduit Shield",0,50,225)); //Conduit Shield
+			defenseGen.add(new Defense("Chaos Shield",0,100,300)); //Chaos Shield
 			//Both
-			defenseGen.add(new Defense()); //Machina Shield
-			defenseGen.add(new Defense()); //Penultima Shield
-			defenseGen.add(new Defense()); //Ultima Shield
+			defenseGen.add(new Defense("Machina Shield",200,200,750)); //Machina Shield
+			defenseGen.add(new Defense("Penultima Shield",500,500,1250)); //Penultima Shield
+			defenseGen.add(new Defense("Ultima Shield",2000,2000,2000)); //Ultima Shield
 		}
 	}
 	private void initClassDefenses()
 	{
 		if(player.getPlayerClass().equalsIgnoreCase("Commando"))
 		{
-			defenseClass.add(new Defense()); //Bullet-Proof Vest = +HP
-			defenseClass.add(new Defense()); //Riot Shield = +HP
-			defenseClass.add(new Defense()); //Off-hand Ammo Pack = +EP
-			defenseClass.add(new Defense()); //Full Chaos Gear = +HP, +EP
+			defenseClass.add(new Defense("Bullet-Proof Vest",25,0,50)); //Bullet-Proof Vest = +HP
+			defenseClass.add(new Defense("Riot Shield",40,0,120)); //Riot Shield = +HP
+			defenseClass.add(new Defense("Off-Hand Ammo Pack",0,30,200)); //Off-hand Ammo Pack = +EP
+			defenseClass.add(new Defense("Full Chaos Gear",1000,500,1500)); //Full Chaos Gear = +HP, +EP
 		}
 		else if(player.getPlayerClass().equalsIgnoreCase("Berserker"))
 		{
-			defenseClass.add(new Defense()); //Steel Armor = +HP
-			defenseClass.add(new Defense()); //Hand-guards = +HP
-			defenseClass.add(new Defense()); //Chaos Sheath = +EP
-			defenseClass.add(new Defense()); //Full Body Armor = +HP,+EP
+			defenseClass.add(new Defense("Steel Armor",50,0,65)); //Steel Armor = +HP
+			defenseClass.add(new Defense("Hand Guards",100,0,130)); //Hand-guards = +HP
+			defenseClass.add(new Defense("Chaos Sheath",0,50,250)); //Chaos Sheath = +EP
+			defenseClass.add(new Defense("Full Body Armor",400,200,1000)); //Full Body Armor = +HP,+EP
 		}
 		else if(player.getPlayerClass().equalsIgnoreCase("Sentinel"))
 		{
-			defenseClass.add(new Defense()); //Iron Armor = +HP
-			defenseClass.add(new Defense()); //Steel Armor = +HP
-			defenseClass.add(new Defense()); //Chaos Armor = +EP
-			defenseClass.add(new Defense()); //Ultimus Armor = ++HP
+			defenseClass.add(new Defense("Iron Armor",50,0,50)); //Iron Armor = +HP
+			defenseClass.add(new Defense("Steel Armor",100,0,130)); //Steel Armor = +HP
+			defenseClass.add(new Defense("Chaos Armor",0,100,280)); //Chaos Armor = +EP
+			defenseClass.add(new Defense("Ultimus Armor",1000,100,1200)); //Ultimus Armor = ++HP
 		}
 		else if(player.getPlayerClass().equalsIgnoreCase("Ravager"))
 		{
-			defenseClass.add(new Defense()); //Tome Sleeve = +HP
-			defenseClass.add(new Defense()); //Conduit Enhancer = +EP
-			defenseClass.add(new Defense()); //Chaos Enhancer = +EP
-			defenseClass.add(new Defense()); //Magi Ultimus Shield = +HP, +EP
+			defenseClass.add(new Defense("Tome Sleeve",50,0,50)); //Tome Sleeve = +HP
+			defenseClass.add(new Defense("Conduit Enhancer",0,100,175)); //Conduit Enhancer = +EP
+			defenseClass.add(new Defense("Chaos Enhancer",0,300,325)); //Chaos Enhancer = +EP
+			defenseClass.add(new Defense("Magi Ultimus Shield",500,1000,1500)); //Magi Ultimus Shield = +HP, +EP
 		}
 		else if(player.getPlayerClass().equalsIgnoreCase("Reliever"))
 		{
-			defenseClass.add(new Defense()); //Staff Guard = +HP
-			defenseClass.add(new Defense()); //Conduit Enhancer = +EP
-			defenseClass.add(new Defense()); //Chaos Enhancer = +EP
-			defenseClass.add(new Defense()); //Magi Ultimus Shield = +HP, +EP
+			defenseClass.add(new Defense("Staff Guard",30,0,50)); //Staff Guard = +HP
+			defenseClass.add(new Defense("Conduit Enhancer",0,100,175)); //Conduit Enhancer = +EP
+			defenseClass.add(new Defense("Chaos Enhancer",0,300,325)); //Chaos Enhancer = +EP
+			defenseClass.add(new Defense("Magi Ultimus Shield",500,1000,1500)); //Magi Ultimus Shield = +HP, +EP
 		}
 		else if(player.getPlayerClass().equalsIgnoreCase("Entrepreneur"))
 		{
-			defenseClass.add(new Defense()); //Damage Insurance = +HP
-			defenseClass.add(new Defense()); //Weapon Insurance = +EP
-			defenseClass.add(new Defense()); //Chaos Insurance = +EP, +HP
-			defenseClass.add(new Defense()); //Platinum Insurance = +HP, +EP
+			defenseClass.add(new Defense("Damage Insurance",40,0,65)); //Damage Insurance = +HP
+			defenseClass.add(new Defense("Weapon Insurance",0,40,100)); //Weapon Insurance = +EP
+			defenseClass.add(new Defense("Chaos Insurance",50,100,280)); //Chaos Insurance = +EP, +HP
+			defenseClass.add(new Defense("Platinum Insurance",500,100,1000)); //Platinum Insurance = +HP, +EP
 		}
 	}
 	public Player defenseMarket(Player p)

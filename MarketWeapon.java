@@ -84,68 +84,75 @@ public class MarketWeapon //change Util.numberSelect() to proper parameters
 			penMult[1] = 1.5;
 			penMult[2] = 1;
 		}
+		
+		int mac1 = (int)(multipliers[0] * 100);
+		int mac2 = (int)(multipliers[1] * 100);
+		int mac3 = (int)(multipliers[2] * 100);
+		int pen1 = (int)(penMult[0] * 500);
+		int pen2 = (int)(penMult[1] * 500);
+		int pen3 = (int)(penMult[2] * 500);
 		if(player.getPlayerClass().equalsIgnoreCase("Entrepreneur")) //10% cheaper
 		{
-			weapon.add(new Weapon()); //Beginner's weapon
-			weapon.add(new Weapon()); //Genesis weapon
-			weapon.add(new Weapon()); //General weapon
-			weapon.add(new Weapon()); //Machina weapon
-			weapon.add(new Weapon()); //Penultima weapon
-			weapon.add(new Weapon()); //Ultima weapon
+			weapon.add(new Weapon("Beginner's Weapon",10,0,0,(int)(.9*75))); //Beginner's weapon
+			weapon.add(new Weapon("Genesis Weapon",30,5,5,(int)(.9*400))); //Genesis weapon
+			weapon.add(new Weapon("General Weapon",75,50,25,(int)(.9*2500))); //General weapon
+			weapon.add(new Weapon("Machina Weapon",mac1,mac2,mac3,(int)(.9*7500))); //Machina weapon
+			weapon.add(new Weapon("Penultima Weapon",pen1,pen2,pen3,(int)(.9*13500))); //Penultima weapon
+			weapon.add(new Weapon("Ultima Weapon",4000,2000,1500,(int)(.9*1500000))); //Ultima weapon
 		}
 		else
 		{
-			weapon.add(new Weapon()); //Beginner's weapon
-			weapon.add(new Weapon()); //Genesis weapon
-			weapon.add(new Weapon()); //General weapon
-			weapon.add(new Weapon()); //Machina weapon
-			weapon.add(new Weapon()); //Penultima weapon
-			weapon.add(new Weapon()); //Ultima weapon
+			weapon.add(new Weapon("Beginner's Weapon",10,0,0,75)); //Beginner's weapon
+			weapon.add(new Weapon("Genesis Weapon",30,5,5,400)); //Genesis weapon
+			weapon.add(new Weapon("General Weapon",75,50,25,2500)); //General weapon
+			weapon.add(new Weapon("Machina Weapon",mac1,mac2,mac3,7500)); //Machina weapon
+			weapon.add(new Weapon("Penultima Weapon",pen1,pen2,pen3,13500)); //Penultima weapon
+			weapon.add(new Weapon("Ultima Weapon",4000,2000,1500,1500000)); //Ultima weapon
 		}
 	}
 	private void initClassWeapons()
 	{
 		if(player.getPlayerClass().equalsIgnoreCase("Commando"))
 		{
-			weapon.add(new Weapon()); //Axis Gun
-			weapon.add(new Weapon()); //Siphon Gun
-			weapon.add(new Weapon()); //Mobius Gun
-			weapon.add(new Weapon()); //Commando's Gun
+			weapon.add(new Weapon("Axis Gun",50,5,5,1500)); //Axis Gun
+			weapon.add(new Weapon("Siphon Gun",300,-100,-150,10000)); //Siphon Gun
+			weapon.add(new Weapon("Mobius Gun",50,50,350,10000)); //Mobius Gun
+			weapon.add(new Weapon("Commando's Gun",1000,500,500,800000)); //Commando's Gun
 		}
 		else if(player.getPlayerClass().equalsIgnoreCase("Berserker"))
 		{
-			weapon.add(new Weapon()); //Axis Sword
-			weapon.add(new Weapon()); //Siphon Sword
-			weapon.add(new Weapon()); //Mobius Sword
-			weapon.add(new Weapon()); //Berserker's Sword
+			weapon.add(new Weapon("Axis Sword",75,0,0,1500)); //Axis Sword
+			weapon.add(new Weapon("Siphon Sword",500,-200,-150,10000)); //Siphon Sword
+			weapon.add(new Weapon("Mobius Sword",25,100,250,10000)); //Mobius Sword
+			weapon.add(new Weapon("Berserker's Sword",2000,250,0,800000)); //Berserker's Sword
 		}
 		else if(player.getPlayerClass().equalsIgnoreCase("Sentinel"))
 		{
-			weapon.add(new Weapon()); //Axis Shield
-			weapon.add(new Weapon()); //Siphon Shield
-			weapon.add(new Weapon()); //Mobius Shield
-			weapon.add(new Weapon()); //Sentinel's Shield
+			weapon.add(new Weapon("Axis Shield",40,10,10,1500)); //Axis Shield
+			weapon.add(new Weapon("Siphon Shield",-100,1000,-100,10000)); //Siphon Shield
+			weapon.add(new Weapon("Mobius Shield",400,-1000,250,10000)); //Mobius Shield
+			weapon.add(new Weapon("Sentinel's Shield",750,1000,500,800000)); //Sentinel's Shield
 		}
 		else if(player.getPlayerClass().equalsIgnoreCase("Ravager"))
 		{
-			weapon.add(new Weapon()); //Axis Tome
-			weapon.add(new Weapon()); //Siphon Tome
-			weapon.add(new Weapon()); //Mobius Tome
-			weapon.add(new Weapon()); //Ravager's Tome
+			weapon.add(new Weapon("Axis Tome",30,0,50,1500)); //Axis Tome
+			weapon.add(new Weapon("Siphon Tome",-100,-250,500,10000)); //Siphon Tome
+			weapon.add(new Weapon("Mobius Tome",200,100,-100,10000)); //Mobius Tome
+			weapon.add(new Weapon("Ravager's Tome",0,500,1500,800000)); //Ravager's Tome
 		}
 		else if(player.getPlayerClass().equalsIgnoreCase("Reliever"))
 		{
-			weapon.add(new Weapon()); //Axis Staff
-			weapon.add(new Weapon()); //Siphon Staff
-			weapon.add(new Weapon()); //Mobius Staff
-			weapon.add(new Weapon()); //Reliever's Staff
+			weapon.add(new Weapon("Axis Staff",20,30,30,1500)); //Axis Staff
+			weapon.add(new Weapon("Siphon Staff",-200,100,400,10000)); //Siphon Staff
+			weapon.add(new Weapon("Mobius Staff",400,-500,-100,10000)); //Mobius Staff
+			weapon.add(new Weapon("Reliever's Staff",250,750,1000,800000)); //Reliever's Staff
 		}
 		else if(player.getPlayerClass().equalsIgnoreCase("Entrepreneur"))
 		{
-			weapon.add(new Weapon()); //Axis Card
-			weapon.add(new Weapon()); //Siphon Card
-			weapon.add(new Weapon()); //Mobius Card
-			weapon.add(new Weapon()); //Entrepreneur's Card
+			weapon.add(new Weapon("Axis Card",45,5,5,1350)); //Axis Card
+			weapon.add(new Weapon("Siphon Card",75,75,75,8000)); //Siphon Card
+			weapon.add(new Weapon("Mobius Card",200,200,200,12000)); //Mobius Card
+			weapon.add(new Weapon("Entreprenuer's Card",750,750,750,700000)); //Entrepreneur's Card
 		}
 	}
 	public Player weaponMarket(Player p)
