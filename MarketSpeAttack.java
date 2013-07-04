@@ -205,7 +205,7 @@ public class MarketSpeAttack//change Util.numberSelect() to proper parameters
 				{
 					if(player.getMoney() >= speAttGen.get(choice).getCost())
 					{
-						System.out.println("You bought " + speAttGen.get(choice).getAttackName());
+						System.out.println("You bought " + speAttGen.get(choice).getAttackName() + "!");
 						buySpeAtt(speAttGen.remove(choice));
 						bought = true;
 					}

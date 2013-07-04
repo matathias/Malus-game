@@ -64,7 +64,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 		}
 		else
 		{
-			p.battleShow();
+			battShow(p,b);
 			if(p.numberHealing() < 1)
 				choiceMain = Util.numberSelect("Will you:\t\t1. Attack\t\t2. Flee",2);
 			else
@@ -217,10 +217,10 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 		nameRow += pl.getPlayerName() + " the " + pl.getPlayerClass() + spaces + en.getPlayerName() + " |";
 		System.out.println(nameRow);
 		
-		String plHP = String.valueOf(pl.getHP());
-		String plMaxHP = String.valueOf(pl.getMaxHealth());
-		String enHP = String.valueOf(en.getHP());
-		String enMaxHP = String.valueOf(en.getMaxHealth());
+		String plHP = String.valueOf((int)pl.getHP());
+		String plMaxHP = String.valueOf((int)pl.getMaxHealth());
+		String enHP = String.valueOf((int)en.getHP());
+		String enMaxHP = String.valueOf((int)en.getMaxHealth());
 		numSpace = 66 - plHP.length() - plMaxHP.length() - enHP.length() - enMaxHP.length();
 		spaces = "";
 		for(int i = 1; i <= numSpace; i++)
@@ -228,8 +228,8 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 		String hpRow = "| HP: " + plHP + "/" + plMaxHP + spaces + "HP: " + enHP + "/" + enMaxHP + " |";
 		System.out.println(hpRow);
 		
-		String plEP = String.valueOf(pl.getEP());
-		String plMaxEP = String.valueOf(pl.getMaxEP());
+		String plEP = String.valueOf((int)pl.getEP());
+		String plMaxEP = String.valueOf((int)pl.getMaxEP());
 		numSpace = 72 - plEP.length() - plMaxEP.length();
 		spaces = "";
 		for(int i = 1; i <= numSpace; i++)
@@ -244,7 +244,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 		String weapRow = "| Weapon: " + pl.getWeaponName() + spaces + "|";
 		System.out.println(weapRow);
 		
-		String plDam = String.valueOf(pl.getTotalRawDamage());
+		String plDam = String.valueOf((int)pl.getTotalRawDamage());
 		numSpace = 62 - plDam.length();
 		spaces = "";
 		for(int i = 1; i <= numSpace; i++)

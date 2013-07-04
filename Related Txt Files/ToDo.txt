@@ -1,3 +1,17 @@
+To Do:
+*Add Util.skitPause() in between lines in the Story class (?)
+   -Definitely do this with the pre-Ultima Malus "skit"; as-is the lines fill the display too quickly
+
+*Make the inn price rise less dramatically
+
+*fix the save/load methods
+
+*make enemies spawn more often (to give the player more exp so they can level up without doing each path in one area several times)
+
+*Tone down the boss attack power, especially Malus! His Black Hole Cannon will one-shot every class!
+      (Or this is merely a product of the debug class having tons of HP >_>)
+
+Have Done:
 *Create an ArrayList return method for all classes that returns an ArrayList containing all their relevant data (ex. boolean values) - Done
 *Create secondary constructors for methods that takes in an ArrayList similar to the one it would return - Done
 *Create a method in the Util class that writes data to a file - done
@@ -18,12 +32,6 @@
 *uncomment the PlaceActions initializer in Setup - done
 
 *Make sure all output lines have less than 80 characters - done (I think)
-
-*Add Util.skitPause() in between lines in the Story class (?)
-
-*fix the save/load methods
-
-*make enemies spawn more often (to give the player more exp so they can level up without doing each path in one area several times)
 
 NOTES:
 -Ravager and Reliever should have much lower damage values, lower than the current Sentinel's perhaps - modified

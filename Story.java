@@ -418,7 +418,7 @@ public class Story
 		if(placeQuoteCounter == 5)
 		{
 			Util.lineBreak();
-			System.out.println("You finally reach the village, a safe-haven adventurers such as yourself.");
+			System.out.println("You finally reach the village, a safe-haven for adventurers such as yourself.");
 			System.out.println("Looking around, you realize that it isn't as nicely equipped as the town -\nthere's no healing or special attack market - but at least there's an inn.");
 			System.out.println("You then step into the village, hoping to better prepare\nyourself for further adventuring.");
 			Util.skitPause();
@@ -511,13 +511,13 @@ public class Story
 		System.out.println("You land a final critical blow on the Wyvern,\nand then step back and watch as it explodes and falls to pieces,\nthoroughly destroyed and unsalvageable.");
 		System.out.println("\"Hmm... not bad, not bad,\" the man nods, as the platform you are on\nstarts lowering to the ground, \"though still not strong enough to beat me.\"");
 		System.out.println("\"You could actually be entertaining to me...\" he comments as he engages\na jetpack attached to his back, \"Yes... I like the sound of that.\"");
-		System.out.println("\"I have nothing else to do currently, anyway.\"\nYou simply stand back and watch as he lifts off the ground, not sure what to think of the moment.");
-		System.out.println("\"Ah, but before I go,\" the man adds, \"I think I'll go ahead and allow you to know my name...\nthe name of your superior, in all ways!\"");
+		System.out.println("\"I have nothing else to do currently, anyway.\"\nYou simply stand back and watch as he lifts off the ground,\nnot sure what to think of the comment.");
+		System.out.println("\"Ah, but before I go,\" the man adds,\n\"I think I'll go ahead and allow you to know my name...\nthe name of your superior, in all ways!\"");
 		System.out.println("\"I am Malus... future overlord of the world!!\"");
 		Util.skitPause();
 		Util.lineBreak();
 		System.out.println("So... Malus. He's the evil you first sensed. With his aura...\nhis claims to future overlord-hood may be justified.");
-		System.out.println("You quickly deduce that you have to defeat him... \n...Though you aren't ready to face him yet. You need to find his lair first anyway.");
+		System.out.println("You quickly deduce that you have to defeat him... \n...Though you aren't ready to face him yet.\nYou need to find his lair first anyway.");
 		System.out.println("There's no readily available pathway around the volcano...\nthe only path you can see is the cavern, no longer blocked by Malus or a robot.");
 		System.out.println("For now, it'll have to do.\nHopefully, it will lead you one step closer to Malus' location!");
 		Util.skitPause();
@@ -584,10 +584,10 @@ public class Story
 		if(!cavBoss)
 		{
 			Util.lineBreak();
-			System.out.println("You round another corner, finding yourself in a rather large cavern.\nWeary of locales of such size, you cautiously make your way to the other side.");
+			System.out.println("You round another corner, finding yourself in a rather large cavern.\nWary of locales of such size, you cautiously make your way to the other side.");
 			System.out.println("But your caution is to no avail. Previously unknown to you,\none of the walls is actually a door - and through it bursts a large robot!");
 			System.out.println("It looks like a huge dog... surely, this is one of Malus' creations.\nAnd if it is... then you must be getting closer to his base!");
-			System.out.println("You back into a battle stance, prepared to take on robot!");
+			System.out.println("You back into a battle stance, prepared to take on the robot!");
 			Util.skitPause();
 			cavBoss = true;
 		}
@@ -651,32 +651,32 @@ public class Story
 			Util.skitPause();
 			placeQuoteCounter++;
 		}
-		else if(f || u  || l  || m)
+		else if((f || u  || l  || m) && !(f && u && l && m))
 		{
 			Util.lineBreak();
 			System.out.println("You've destroyed some of Malus' mechanical minions...\nbut you've yet to destroy them all. It's time to remedy that situation.");
-			System.out.print("Beaten bosses: ");
+			System.out.println("Beaten bosses:");
 			if(f)
 			{
-				System.out.print("Incomplete Bug Crawler(Factory)");
+				System.out.println("\tIncomplete Bug Crawler(Factory)");
 				if(u || l || m)
 					System.out.print(", ");
 			}
 			if(u)
 			{
-				System.out.print("Civil Control Mech(Urban)");
+				System.out.println("\tCivil Control Mech(Urban)");
 				if(l || m)
 					System.out.print(", ");
 			}
 			if(l)
 			{
-				System.out.print("Prototype Mantis Crawler(Lab)");
+				System.out.println("\tPrototype Mantis Crawler(Lab)");
 				if(m)
 					System.out.print(", ");
 			}
 			if(m)
 			{
-				System.out.print("Insecti Crawler(Military)");
+				System.out.println("\tInsecti Crawler(Military)");
 			}
 			System.out.print("\n");
 			Util.skitPause();
@@ -812,7 +812,7 @@ public class Story
 			Util.lineBreak();
 			System.out.println("After destroying a fair lot of Malus' experiments and protection units\nyou find yourself in a large, circular room.");
 			System.out.println("You suspect that something is amiss...\nand sure enough, a large door in the far wall opens to reveal a large mech!");
-			System.out.println("It looks something like a Mantis...\nthough real Mantis' surely don't have tons of weaponry equipped!");
+			System.out.println("It looks something like a Mantis...\nthough real Mantises surely don't have tons of weaponry equipped!");
 			System.out.println("Its appearance doesn't matter though - you'll defeat it easily enough anyway!");
 			System.out.println("And once you do... you'll be just one step closer to Malus!");
 			Util.skitPause();
@@ -982,7 +982,7 @@ public class Story
 		System.out.println("\"...wha... what?!\" Malus exclaims as he realizes what just happened,\n\"...no! You just stole some of the Ultima Chaos!!\"");
 		System.out.println("You still aren't sure what that means - and you doubt that you'll ever care -\nbut the fact that you seem to have foiled Malus's plans somewhat\nputs a smirk on your face.");
 		System.out.println("\"Well... I'm still more powerful than you are,\" Malus muses,\n\"...if I kill you... then the power you stole should trasfer to me.\nAnd then... I'd have it all!\"");
-		System.out.println("Now, you certainly don't like that logic. But as Malus begins to advance,\nyou realize that even if he doesn't have all the Ultima Chaos, he still has plenty.");
+		System.out.println("Now, you certainly don't like that logic. But as Malus begins to advance,\nyou realize that even if he doesn't have all the Ultima Chaos,\nhe still has plenty.");
 		System.out.println("And plenty... is way too much. Malus is dangerous, very dangerous -\nand you may be the only one who can stop him!");
 		System.out.println("You back into a battle stance, prepared to do battle once more.");
 		System.out.println("\"Oh? So you actually plan to fight?\" Malus sneers,\n\"That'd almost be commendable if it weren't so stupid!\nI won't go easy this time... I'll destroy you!\"");
