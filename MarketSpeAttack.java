@@ -101,6 +101,88 @@ public class MarketSpeAttack//change Util.numberSelect() to proper parameters
 			speAttClass.add(new SpecialAttack("Monopoly","Entreprenuer",1175,975,38,5000,75,4)); //Monopoly (high dam, high ep, high crit chance, high crit bonus)
 		}
 	}
+	private int showSpeAttacks()
+	{
+		String topHeader = "+------------------------------Special Attacks---------------------------------+";
+		String bottomHeader = "+------------------------------------------------------------------------------+";
+		String midHeader = "|                                                                              |";
+		System.out.println(topHeader);
+		System.out.println(midHeader);
+		int a;
+		
+		for(a = 0; a < speAttGen.size() + speAttClass.size(); a++)
+		{
+			String saN, saDam, saCHC, saCost, saMinLvl, saEP, saCB;
+			if(a < speAttGen.size())
+			{
+				saN = speAttGen.get(a).getAttackName();
+				saDam = String.valueOf((int)speAttGen.get(a).getAttackDamage());
+				saCHC = String.valueOf((int)speAttGen.get(a).getCritChance());
+				saCost = String.valueOf((int)speAttGen.get(a).getCost());
+				saMinLvl = String.valueOf((int)speAttGen.get(a).getMinLevel());
+				saEP = String.valueOf((int)speAttGen.get(a).getExtraPoints());
+				saCB = String.valueOf(speAttGen.get(a).getCritBonus());
+			}
+			else
+			{
+				saN = speAttClass.get(a-speAttGen.size()).getAttackName();
+				saDam = String.valueOf((int)speAttClass.get(a-speAttGen.size()).getAttackDamage());
+				saCHC = String.valueOf((int)speAttClass.get(a-speAttGen.size()).getCritChance());
+				saCost = String.valueOf((int)speAttClass.get(a-speAttGen.size()).getCost());
+				saMinLvl = String.valueOf((int)speAttClass.get(a-speAttGen.size()).getMinLevel());
+				saEP = String.valueOf((int)speAttClass.get(a-speAttGen.size()).getExtraPoints());
+				saCB = String.valueOf(speAttClass.get(a-speAttGen.size()).getCritBonus());
+			}
+			String number = String.valueOf(a+1);
+			String row1 = "";
+			String row2 = "";
+			int numSpaces = 0;
+			
+			if(a+1 < 10)
+				row1 += "|  " + number + ": " + saN;
+			else
+				row1 += "| " + number + ": " + saN;
+			
+			numSpaces = 10 + 18 - saN.length();
+			for(int i = 0; i<numSpaces; i++)
+				row1 += " ";
+			
+			row1 += "Base Damage: " + saDam;
+			numSpaces = 8 - saDam.length();
+			for(int i = 0; i<numSpaces; i++)
+				row1 += " ";
+			
+			if (saCHC.length() < 2)
+				row1 += "Critical Hit Chance:  " + saCHC + " |";
+			else
+				row1 += "Critical Hit Chance: " + saCHC + " |";
+			System.out.println(row1);
+			
+			row2 += "|         Cost: " + saCost;
+			numSpaces = 8 - saCost.length();
+			for(int i = 0; i<numSpaces; i++)
+				row2 += " ";
+			
+			if(saMinLvl.length() < 2)
+				row2 += "Min Level:  " + saMinLvl + " EP Cost: " + saEP;
+			else
+				row2 += "Min Level: " + saMinLvl + " EP Cost: " + saEP;
+			
+			numSpaces = 8 - saEP.length();
+			for(int i = 0; i<numSpaces; i++)
+				row2 += " ";
+			
+			row2 += "Crit Multiplier: ";
+			numSpaces = 6 - saCB.length();
+			for(int i = 0; i<numSpaces; i++)
+				row2 += " ";
+			row2 += saCB + " |";
+			System.out.println(row2);
+		}
+		System.out.println(midHeader);
+		System.out.println(bottomHeader);
+		return a;
+	}
 	public Player speAttMarket(Player p)
 	{
 		player = p;
@@ -110,18 +192,7 @@ public class MarketSpeAttack//change Util.numberSelect() to proper parameters
 		System.out.println("You can buy Special Attacks here.");
 		System.out.println("Special Attacks are more powerful than regular attacks but they require EP to use.");
 		Util.pause();
-		System.out.println("-----------------------Special Attacks-----------------------");
-		for(int a = 0; a<speAttGen.size(); a++)
-		{
-			counter++;
-			System.out.println(counter + ": " + speAttGen.get(a).marketToString());
-		}
-		System.out.println("--------------------Class Special Attacks--------------------");
-		for(int a = 0; a<speAttClass.size(); a++)
-		{
-			counter++;
-			System.out.println(counter + ": " + speAttClass.get(a).marketToString());
-		}
+		counter = showSpeAttacks();
 		counter++;
 		System.out.println(counter + ": Don't buy anything");
 		System.out.println("Your Money: " + player.getMoney());
@@ -148,25 +219,24 @@ public class MarketSpeAttack//change Util.numberSelect() to proper parameters
 					System.out.println("Your level isn't high enough to buy " + speAttGen.get(choice).getAttackName() + "!");
 				}
 			}
-			else if(choice < (speAttGen.size()+speAttClass.size()) && choice > speAttGen.size())
+			else if(choice < (speAttGen.size()+speAttClass.size()) && choice >= speAttGen.size())
 			{
-				if(player.getLvl()>= speAttClass.get(choice).getMinLevel())
+				if(player.getLvl()>= speAttClass.get(choice-speAttGen.size()).getMinLevel())
 				{
-					if(player.getMoney() >= speAttClass.get(choice).getCost())
+					if(player.getMoney() >= speAttClass.get(choice-speAttGen.size()).getCost())
 					{
-						choice -= speAttGen.size();
-						System.out.println("You bought " + speAttClass.get(choice).getAttackName() + "!");
-						buySpeAtt(speAttClass.remove(choice));
+						System.out.println("You bought " + speAttClass.get(choice-speAttGen.size()).getAttackName() + "!");
+						buySpeAtt(speAttClass.remove(choice-speAttGen.size()));
 						bought = true;
 					}
 					else
 					{
-						System.out.println("You can't afford the " + speAttGen.get(choice).getAttackName() + "!");
+						System.out.println("You can't afford the " + speAttClass.get(choice-speAttGen.size()).getAttackName() + "!");
 					}
 				}
 				else
 				{
-					System.out.println("Your level isn't high enough to buy " + speAttClass.get(choice).getAttackName() + "!");
+					System.out.println("Your level isn't high enough to buy " + speAttClass.get(choice-speAttGen.size()).getAttackName() + "!");
 				}
 			}
 			else
@@ -176,6 +246,7 @@ public class MarketSpeAttack//change Util.numberSelect() to proper parameters
 			}
 		}
 		while(!bought);
+		Util.passTime(1000000000);
 		return player;
 	}
 	public ArrayList<String> getAllString()

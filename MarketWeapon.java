@@ -155,24 +155,74 @@ public class MarketWeapon //change Util.numberSelect() to proper parameters
 			weapon.add(new Weapon("Entreprenuer's Card",750,750,750,700000)); //Entrepreneur's Card
 		}
 	}
+	private void showWeapons()
+	{
+		String topHeader = "+----------------------------------Weapons-------------------------------------+";
+		String bottomHeader = "+------------------------------------------------------------------------------+";
+		String midHeader = "|                                                                              |";
+		System.out.println(topHeader);
+		System.out.println(midHeader);
+		
+		for(int a = 0; a<weapon.size(); a++)
+		{
+			String wN = weapon.get(a).getWeaponName();
+			String wDam = String.valueOf((int)weapon.get(a).getWeaponDamage());
+			String wHP = String.valueOf((int)weapon.get(a).getHP());
+			String wEP = String.valueOf((int)weapon.get(a).getEP());
+			String wC = String.valueOf((int)weapon.get(a).getCost());
+			String number = String.valueOf(a+1);
+			String row1 = "";
+			String row2 = "";
+			int numSpaces = 0;
+			
+			int[] length = {wN.length(), wDam.length(), wHP.length(), wEP.length(), wC.length()};
+			if(a+1 < 10)
+				row1 += "|  " + number + ": " + wN;
+			else
+				row1 += "| " + number + ": " + wN;
+			
+			numSpaces = 4 + 19 - length[0];
+			for(int i = 0; i<numSpaces; i++)
+				row1 += " ";
+			
+			row1 += "Damage: " + wDam;
+			numSpaces = 16 + 4 - length[1];
+			for(int i = 0; i<numSpaces; i++)
+				row1 += " ";
+			
+			row1 += "Adds ";
+			numSpaces = 5 - length[2];
+			for(int i = 0; i<numSpaces; i++)
+				row1 += " ";
+			row1 += wHP + "HP          |";
+			System.out.println(row1);
+			
+			row2 += "|                            Cost: " + wC;
+			numSpaces = 22 - length[4];
+			for(int i = 0; i<numSpaces; i++)
+				row2 += " ";
+			
+			row2 += "Adds ";
+			numSpaces = 5 - length[3];
+			for(int i = 0; i<numSpaces; i++)
+				row2 += " ";
+			row2 += wEP + "EP          |";
+			System.out.println(row2);
+		}
+		System.out.println(midHeader);
+		System.out.println(bottomHeader);
+	}
 	public Player weaponMarket(Player p)
 	{
 		player = p;
 		System.out.println("Welcome to the Weapon Market!");
 		System.out.println("You can buy weapons here.");
 		Util.pause();
-		System.out.println("-----------------------Weapons-----------------------");
-		for(int a = 0; a<6; a++)
-		{
-			System.out.println((a+1) + ": " + weapon.get(a).marketToString());
-		}
-		System.out.println("--------------------Class Weapons--------------------");
-		for(int a = 6; a<weapon.size(); a++)
-		{
-			System.out.println((a+1) + ": " + weapon.get(a).marketToString());
-		}
+		
+		showWeapons();
 		System.out.println("11. Don't buy anything");
 		System.out.println("Your Money: " + player.getMoney());
+		
 		int choice = Util.numberSelect("",11)-1;
 		if(choice <10)
 		{
@@ -188,6 +238,7 @@ public class MarketWeapon //change Util.numberSelect() to proper parameters
 		}
 		else
 			System.out.println("You didn't buy a weapon.");
+		Util.passTime(1000000000);
 		return player;
 	}
 	public ArrayList<Weapon> getAll()

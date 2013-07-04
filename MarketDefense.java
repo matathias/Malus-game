@@ -113,6 +113,65 @@ public class MarketDefense//change Util.numberSelect() to proper parameters
 			defenseClass.add(new Defense("Platinum Insurance",500,100,1000)); //Platinum Insurance = +HP, +EP
 		}
 	}
+	private int showDefenses()
+	{
+		String topHeader = "+---------------------------------Defenses-------------------------------------+";
+		String bottomHeader = "+------------------------------------------------------------------------------+";
+		String midHeader = "|                                                                              |";
+		System.out.println(topHeader);
+		System.out.println(midHeader);
+		int a;
+		
+		for(a = 0; a < defenseGen.size() + defenseClass.size(); a++)
+		{
+			String defN, defHP, defEP, defCost;
+			if(a < defenseGen.size())
+			{
+				defN = defenseGen.get(a).getDefenseName();
+				defHP = String.valueOf((int)defenseGen.get(a).getAddHP());
+				defEP = String.valueOf((int)defenseGen.get(a).getAddEP());
+				defCost = String.valueOf((int)defenseGen.get(a).getCost());
+			}
+			else
+			{
+				defN = defenseClass.get(a - defenseGen.size()).getDefenseName();
+				defHP = String.valueOf((int)defenseClass.get(a - defenseGen.size()).getAddHP());
+				defEP = String.valueOf((int)defenseClass.get(a - defenseGen.size()).getAddEP());
+				defCost = String.valueOf((int)defenseClass.get(a - defenseGen.size()).getCost());
+			}
+			String number = String.valueOf(a+1);
+			String row1 = "";
+			int numSpaces = 0;
+			
+			if(a+1 < 10)
+				row1 += "|  " + number + ": " + defN;
+			else
+				row1 += "| " + number + ": " + defN;
+			
+			numSpaces = 4 + 19 - defN.length();
+			for(int i = 0; i<numSpaces; i++)
+				row1 += " ";
+			
+			row1 += "Adds";
+			numSpaces = 6 - defHP.length();
+			for(int i = 0; i<numSpaces; i++)
+				row1 += " ";
+			row1 += defHP + "HP    Adds";
+			numSpaces = 6 - defEP.length();
+			for(int i = 0; i<numSpaces; i++)
+				row1 += " ";
+			row1 += defEP + "EP        Cost: " + defCost;
+			
+			numSpaces = 8 - defCost.length();
+			for(int i = 0; i<numSpaces; i++)
+				row1 += " ";
+			row1 += "|";
+			System.out.println(row1);
+		}
+		System.out.println(midHeader);
+		System.out.println(bottomHeader);
+		return a;
+	}
 	public Player defenseMarket(Player p)
 	{
 		player = p;
@@ -121,19 +180,10 @@ public class MarketDefense//change Util.numberSelect() to proper parameters
 		System.out.println("You can buy HP and EP increasing items here.");
 		System.out.println("Once bought, your HP and/or EP is permanently raised.");
 		Util.pause();
-		System.out.println("-----------------------Defenses-----------------------");
-		for(int a = 0; a<defenseGen.size(); a++)
-		{
-			counter++;
-			System.out.println(counter + ": " + defenseGen.get(a).toString());
-		}
-		System.out.println("--------------------Class Defenses--------------------");
-		for(int a = 0; a<defenseClass.size(); a++)
-		{
-			counter++;
-			System.out.println(counter + ": " + defenseClass.get(a).toString());
-		}
+		
+		counter = showDefenses();
 		counter++;
+		
 		System.out.println(counter + ": Don't buy anything");
 		System.out.println("Your Money: " + player.getMoney());
 		int choice = Util.numberSelect("",counter)-1;
@@ -149,21 +199,21 @@ public class MarketDefense//change Util.numberSelect() to proper parameters
 				System.out.println("You can't afford the " + defenseGen.get(choice).getDefenseName() + "!");
 			}
 		}
-		else if(choice < (defenseGen.size()+defenseClass.size()) && choice > defenseGen.size())
+		else if(choice < (defenseGen.size()+defenseClass.size()) && choice >= defenseGen.size())
 		{
-			if(player.getMoney() >= defenseGen.get(choice).getCost())
+			if(player.getMoney() >= defenseClass.get(choice-defenseGen.size()).getCost())
 			{
-				choice -= defenseGen.size();
-				System.out.println("You bought the " + defenseClass.get(choice).getDefenseName() + "!");
-				buyDefense(defenseClass.remove(choice));
+				System.out.println("You bought the " + defenseClass.get(choice-defenseGen.size()).getDefenseName() + "!");
+				buyDefense(defenseClass.remove(choice-defenseGen.size()));
 			}
 			else
 			{
-				System.out.println("You can't afford the " + defenseClass.get(choice).getDefenseName() + "!");
+				System.out.println("You can't afford the " + defenseClass.get(choice-defenseGen.size()).getDefenseName() + "!");
 			}
 		}
 		else
 			System.out.println("You didn't buy any defenses.");
+		Util.passTime(1000000000);
 		return player;
 	}
 	public ArrayList<String> getAllString()

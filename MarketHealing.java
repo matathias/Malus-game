@@ -89,6 +89,75 @@ public class MarketHealing
 			healClass.add(new Healing("Total Opportunity Cost","Entreprenuer",5000,1000,40,8000)); //Total Opportunity Cost (--EP, ++HP)
 		}
 	}
+	private int showHealing()
+	{
+		String topHeader = "+----------------------------------Healing-------------------------------------+";
+		String bottomHeader = "+------------------------------------------------------------------------------+";
+		String midHeader = "|                                                                              |";
+		System.out.println(topHeader);
+		System.out.println(midHeader);
+		int a;
+		
+		for(a = 0; a < healGen.size() + healClass.size(); a++)
+		{
+			String hN, hHP, hEP, hMinLvl, hCost;
+			if(a < healGen.size())
+			{
+				hN = healGen.get(a).getHealName();
+				hHP = String.valueOf((int)healGen.get(a).getHealedHP());
+				hEP = String.valueOf((int)healGen.get(a).getUsedEP());
+				hCost = String.valueOf((int)healGen.get(a).getCost());
+				hMinLvl = String.valueOf((int)healGen.get(a).getMinLevel());
+			}
+			else
+			{
+				hN = healClass.get(a-healGen.size()).getHealName();
+				hHP = String.valueOf((int)healClass.get(a-healGen.size()).getHealedHP());
+				hEP = String.valueOf((int)healClass.get(a-healGen.size()).getUsedEP());
+				hCost = String.valueOf((int)healClass.get(a-healGen.size()).getCost());
+				hMinLvl = String.valueOf((int)healClass.get(a-healGen.size()).getMinLevel());
+			}
+			String number = String.valueOf(a+1);
+			String row1 = "";
+			String row2 = "";
+			int numSpaces = 0;
+			
+			if(a+1 < 10)
+				row1 += "|  " + number + ": " + hN;
+			else
+				row1 += "| " + number + ": " + hN;
+			
+			numSpaces = 6 + 25 - hN.length();
+			for(int i = 0; i<numSpaces; i++)
+				row1 += " ";
+			
+			row1 += "Heals";
+			numSpaces = 6 - hHP.length();
+			for(int i = 0; i<numSpaces; i++)
+				row1 += " ";
+			row1 += hHP + "HP       Uses ";
+			numSpaces = 5 - hEP.length();
+			for(int i = 0; i<numSpaces; i++)
+				row1 += " ";
+			row1 += hEP + "EP          |";
+			System.out.println(row1);
+			
+			row2 += "|                                    Cost: " + hCost;
+			numSpaces = 7 + 7 - hCost.length();
+			for(int i = 0; i<numSpaces; i++)
+				row2 += " ";
+			
+			if(hMinLvl.length() < 2)
+				row2 += "Min Level:  " + hMinLvl + "         |";
+			else
+				row2 += "Min Level: " + hMinLvl + "         |";
+			
+			System.out.println(row2);
+		}
+		System.out.println(midHeader);
+		System.out.println(bottomHeader);
+		return a;
+	}
 	public Player healingMarket(Player p)
 	{
 		player = p;
@@ -100,19 +169,10 @@ public class MarketHealing
 		System.out.println("If the presented HP and EP values are negative, then the spell uses HP to heal EP.");
 		System.out.println("--Beware! Using these spells when your HP is below the threshold will result in death!");
 		Util.pause();
-		System.out.println("-----------------------Healing-----------------------");
-		for(int a = 0; a<healGen.size(); a++)
-		{
-			counter++;
-			System.out.println(counter + ": " + healGen.get(a).marketToString());
-		}
-		System.out.println("--------------------Class Healing--------------------");
-		for(int a = 0; a<healClass.size(); a++)
-		{
-			counter++;
-			System.out.println(counter + ": " + healClass.get(a).marketToString());
-		}
+		
+		counter = showHealing();
 		counter++;
+		
 		System.out.println(counter + ": Don't buy anything");
 		System.out.println("Your Money: " + player.getMoney());
 		do
@@ -138,25 +198,24 @@ public class MarketHealing
 					System.out.println("Your level isn't high enough to buy " + healGen.get(choice).getHealName() + "!");
 				}
 			}
-			else if(choice < (healGen.size()+healClass.size()) && choice > healGen.size())
+			else if(choice < (healGen.size()+healClass.size()) && choice >= healGen.size())
 			{
-				if(player.getLvl()>= healClass.get(choice).getMinLevel())
+				if(player.getLvl()>= healClass.get(choice - healGen.size()).getMinLevel())
 				{
-					if(player.getMoney() >= healClass.get(choice).getCost())
+					if(player.getMoney() >= healClass.get(choice - healGen.size()).getCost())
 					{
-						choice -= healGen.size();
-						System.out.println("You bought " + healClass.get(choice).getHealName() + "!");
-						buyHealing(healClass.remove(choice));
+						System.out.println("You bought " + healClass.get(choice - healGen.size()).getHealName() + "!");
+						buyHealing(healClass.remove(choice - healGen.size()));
 						bought = true;
 					}
 					else
 					{
-						System.out.println("You can't afford the " + healClass.get(choice).getHealName() + "!");
+						System.out.println("You can't afford the " + healClass.get(choice - healGen.size()).getHealName() + "!");
 					}
 				}
 				else
 				{
-					System.out.println("Your level isn't high enough to buy " + healClass.get(choice).getHealName() + "!");
+					System.out.println("Your level isn't high enough to buy " + healClass.get(choice - healGen.size()).getHealName() + "!");
 				}
 			}
 			else
@@ -166,6 +225,7 @@ public class MarketHealing
 			}
 		}
 		while(!bought);
+		Util.passTime(1000000000);
 		return player;
 	}
 	public ArrayList<String> getAllString()

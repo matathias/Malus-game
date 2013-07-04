@@ -50,6 +50,7 @@ public class Player
 	{
 		weapon = new Weapon();
 		maxHealth = hP;
+		maxHealthWeapon=hP;
 		healthPoints = hP;
 		attackDamage = aD;
 		EXP = exP;
@@ -201,16 +202,47 @@ public class Player
 //			System.out.println((a+1) + ". " + healing.get(a) + "\n");
 //		}
 //	}
-	public String showHealing()
+	public void showHealing()
 	{
-		String heal = "";
-		int choice = 1;
-		for(Healing a: healing)
+		String topHeader = "+----------------------------------Healing-------------------------------------+";
+		String bottomHeader = "+------------------------------------------------------------------------------+";
+		String midHeader = "|                                                                              |";
+		System.out.println(topHeader);
+		System.out.println(midHeader);
+		int a;
+		
+		for(a = 0; a < healing.size(); a++)
 		{
-			heal+= String.valueOf(choice) + ". " + a + "\n";
-			choice++;
+			String hN, hHP, hEP;
+			hN = healing.get(a).getHealName();
+			hHP = String.valueOf((int)healing.get(a).getHealedHP());
+			hEP = String.valueOf((int)healing.get(a).getUsedEP());
+			String number = String.valueOf(a+1);
+			String row1 = "";
+			int numSpaces = 0;
+			
+			if(a+1 < 10)
+				row1 += "|  " + number + ": " + hN;
+			else
+				row1 += "| " + number + ": " + hN;
+			
+			numSpaces = 6 + 25 - hN.length();
+			for(int i = 0; i<numSpaces; i++)
+				row1 += " ";
+			
+			row1 += "Heals";
+			numSpaces = 6 - hHP.length();
+			for(int i = 0; i<numSpaces; i++)
+				row1 += " ";
+			row1 += hHP + "HP       Uses ";
+			numSpaces = 5 - hEP.length();
+			for(int i = 0; i<numSpaces; i++)
+				row1 += " ";
+			row1 += hEP + "EP          |";
+			System.out.println(row1);
 		}
-		return heal;
+		System.out.println(midHeader);
+		System.out.println(bottomHeader);
 	}
 	public ArrayList<Healing> getHealing()
 	{
@@ -262,16 +294,67 @@ public class Player
 			System.out.println((a+1) + ". " + specialAttack.get(a) + "\n");
 		}
 	}*/
-	public String showSpecialAttacks()
+	public void showSpecialAttacks()
 	{
-		String attacks = "";
-		int choice = 1;
-		for(SpecialAttack a:specialAttack)
+		String topHeader = "+------------------------------Special Attacks---------------------------------+";
+		String bottomHeader = "+------------------------------------------------------------------------------+";
+		String midHeader = "|                                                                              |";
+		System.out.println(topHeader);
+		System.out.println(midHeader);
+		int a;
+		
+		for(a = 0; a < specialAttack.size(); a++)
 		{
-			attacks += String.valueOf(choice) + ". " + a + "\n";
-			choice++;
+			String saN, saDam, saCHC, saMinLvl, saEP, saCB;
+			saN = specialAttack.get(a).getAttackName();
+			saDam = String.valueOf((int)specialAttack.get(a).getAttackDamage());
+			saCHC = String.valueOf((int)specialAttack.get(a).getCritChance());
+			saMinLvl = String.valueOf((int)specialAttack.get(a).getMinLevel());
+			saEP = String.valueOf((int)specialAttack.get(a).getExtraPoints());
+			saCB = String.valueOf(specialAttack.get(a).getCritBonus());
+			String number = String.valueOf(a+1);
+			String row1 = "";
+			String row2 = "";
+			int numSpaces = 0;
+			
+			if(a+1 < 10)
+				row1 += "|  " + number + ": " + saN;
+			else
+				row1 += "| " + number + ": " + saN;
+			
+			numSpaces = 10 + 18 - saN.length();
+			for(int i = 0; i<numSpaces; i++)
+				row1 += " ";
+			
+			row1 += "Base Damage: " + saDam;
+			numSpaces = 8 - saDam.length();
+			for(int i = 0; i<numSpaces; i++)
+				row1 += " ";
+			
+			if (saCHC.length() < 2)
+				row1 += "Critical Hit Chance:  " + saCHC + " |";
+			else
+				row1 += "Critical Hit Chance: " + saCHC + " |";
+			System.out.println(row1);
+			
+			if(saMinLvl.length() < 2)
+				row2 += "|                       Min Level:  " + saMinLvl + " EP Cost: " + saEP;
+			else
+				row2 += "|                       Min Level: " + saMinLvl + " EP Cost: " + saEP;
+			
+			numSpaces = 8 - saEP.length();
+			for(int i = 0; i<numSpaces; i++)
+				row2 += " ";
+			
+			row2 += "Crit Multiplier: ";
+			numSpaces = 6 - saCB.length();
+			for(int i = 0; i<numSpaces; i++)
+				row2 += " ";
+			row2 += saCB + " |";
+			System.out.println(row2);
 		}
-		return attacks;
+		System.out.println(midHeader);
+		System.out.println(bottomHeader);
 	}
 	public ArrayList<SpecialAttack> getSpecialAttacks()
 	{
@@ -292,9 +375,9 @@ public class Player
 	public int damage()
 	{
 		Random rand = new Random();
-		double randomnessPercent = (rand.nextInt(21)+90)/100; //determines the "randomness"; basically it ensures that no "perfect number" is dealt as damage
-		int critHit = rand.nextInt(99); //checks whether or not a "critial hit" is scored, which raises the total damage done by 50%
-		if (critHit < 10) //critical hit has a 10% chance of occuring
+		double randomnessPercent = (rand.nextInt(21)+90)/100.0; //determines the "randomness"; basically it ensures that no "perfect number" is dealt as damage
+		int critHit = rand.nextInt(99); //checks whether or not a "critical hit" is scored, which raises the total damage done by 50%
+		if (critHit < 10) //critical hit has a 10% chance of occurring
 		{
 			//System.out.println("Critical hit!");
 			return (int)Math.round(getTotalRawDamage()*attackMod*randomnessPercent*1.5);
@@ -306,7 +389,7 @@ public class Player
 	{
 		subtractEP(specialAttack.get(index).getExtraPoints());
 		Random rand = new Random();
-		double randomnessPercent = (rand.nextInt(21)+90)/100; //determines the "randomness"; basically it ensures that no "perfect number" is dealt as damage
+		double randomnessPercent = (rand.nextInt(21)+90)/100.0; //determines the "randomness"; basically it ensures that no "perfect number" is dealt as damage
 		int critHit = rand.nextInt(99); //checks whether or not a "critial hit" is scored, which raises the total damage done by the attacks critical bonus percentage
 		if (critHit < specialAttack.get(index).getCritChance()) //critical hit has a variable chance of occuring
 		{
@@ -378,6 +461,10 @@ public class Player
 	public double getEXP ()
 	{
 		return EXP;
+	}
+	public double getEXPToNextLvl()
+	{
+		return 100*(Math.pow(1.15,getLvl()/1.5))-50;
 	}
 	public void setLvl(double lvl)
 	{
@@ -550,13 +637,69 @@ public class Player
 
 	public void showAll()
 	{
-		System.out.println(getPlayerName() + " the " + getPlayerClass());
-		System.out.println("Weapon: " + weapon);
-		System.out.println("HP: " + output.format(getHP()) + "/" + output.format(getMaxHealth()));
-		System.out.println("EP: " + output.format(getEP()) + "/" + output.format(getMaxEP()));
-		System.out.println("Attack Power: " + output.format(getRawDamage()));
-		System.out.println("Level: " + output.format(getLvl()) + "\tEXP: " + output.format(getEXP()) + "/" + output.format(100*(Math.pow(1.15,getLvl()/1.5))-50));
-		System.out.println("Money: " + output.format(getMoney()));
+		String topHeader = "+------------------------------------------------------------------------------+";
+		String midHeader = "|                                                                              |";
+		System.out.println(topHeader);
+		System.out.println(midHeader);
+		
+		
+		String nameRow = "| ";
+		int numSpace = 63 - getPlayerName().length() - getPlayerClass().length() - getWeaponName().length();
+		String spaces = "";
+		for(int i = 1; i <=numSpace; i++)
+			spaces += " ";
+		nameRow += getPlayerName() + " the " + getPlayerClass() + spaces + "Weapon: " + getWeaponName() + " |";
+		System.out.println(nameRow);
+		
+		String pHP = String.valueOf((int)getHP());
+		String pMaxHP = String.valueOf((int)getMaxHealth());
+		String wHP = String.valueOf((int)getWeaponHP());
+		numSpace = 52 - pHP.length() - pMaxHP.length() - wHP.length();
+		spaces = "";
+		for(int i = 1; i <=numSpace; i++)
+			spaces += " ";
+		String hpRow = "| HP: " + pHP + "/" + pMaxHP + spaces + "(Weapon HP Bonus: " + wHP + ") |";
+		System.out.println(hpRow);
+		
+		String pEP = String.valueOf((int)getEP());
+		String pMaxEP = String.valueOf((int)getMaxEP());
+		String wEP = String.valueOf((int)getWeaponEP());
+		numSpace = 52 - pEP.length() - pMaxEP.length() - wEP.length();
+		spaces = "";
+		for(int i = 1; i <=numSpace; i++)
+			spaces += " ";
+		String epRow = "| EP: " + pEP + "/" + pMaxEP + spaces + "(Weapon EP Bonus: " + wEP + ") |";
+		System.out.println(epRow);
+		
+		String pDam = String.valueOf((int)getTotalRawDamage());
+		String wDam = String.valueOf((int)getWeaponDamage());
+		numSpace = 39 - pDam.length() - wDam.length();
+		spaces = "";
+		for(int i = 1; i <=numSpace; i++)
+			spaces += " ";
+		String damRow = "| Attack Power: " + pDam + spaces + "(Weapon Damage Bonus: " + wDam + ") |";
+		System.out.println(damRow);
+		
+		String pLvl = String.valueOf((int)getLvl());
+		String pXP = String.valueOf((int)getEXP());
+		String pXPtoLvl = String.valueOf((int)getEXPToNextLvl());
+		numSpace = 59 - pLvl.length() - pXP.length() - pXPtoLvl.length();
+		spaces = "";
+		for(int i = 1; i <=numSpace; i++)
+			spaces += " ";
+		String lvlRow = "| Level: " + pLvl + "     EXP: " + pXP + "/" + pXPtoLvl + spaces + "|";
+		System.out.println(lvlRow);
+		
+		String pMoney = String.valueOf((int)getMoney());
+		numSpace = 70 - pMoney.length();
+		spaces = "";
+		for(int i = 1; i <=numSpace; i++)
+			spaces += " ";
+		String moneyRow = "| Money: " + pMoney + spaces + "|";
+		System.out.println(moneyRow);
+		
+		System.out.println(midHeader);
+		System.out.println(topHeader);
 	}
 	public void battleShow()
 	{
@@ -564,7 +707,7 @@ public class Player
 		System.out.println("Weapon: " + weapon);
 		System.out.println("HP: " + output.format(getHP()) + "/" + output.format(getMaxHealth()));
 		System.out.println("EP: " + output.format(getEP()) + "/" + output.format(getMaxEP()));
-		System.out.println("Attack Power: " + output.format(getRawDamage()));
+		System.out.println("Base Attack Power: " + output.format(getRawDamage()));
 	}
 	public void mookShow()
 	{

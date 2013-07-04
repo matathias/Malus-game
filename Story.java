@@ -35,7 +35,7 @@ public class Story
 			System.out.println("You then step outside, and try to feel for where the evil is...");
 			System.out.println("...and fail utterly. So instead, you head to the nearest town, hoping to find your way from there.");
 
-			Util.lineBreak();
+			Util.bigLineBreak();
 			Util.skitPause();
 
 			System.out.println("Once at the town, you see an Inn, several markets, and the desert beyond that.");

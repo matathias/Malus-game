@@ -39,7 +39,7 @@ public class Battle
 
 	private void doChoice()
 	{
-		p.battleShow();
+		battShow(p,e);
 		if(p.numberHealing() < 1)
 			choiceMain = Util.numberSelect("Will you:\t\t1. Attack\t\t2. Flee",2);
 		else
@@ -79,26 +79,29 @@ public class Battle
 	}
 	private void doSpeAttack()
 	{
-		System.out.println(p.showSpecialAttacks());
+		p.showSpecialAttacks();
 		System.out.println(String.valueOf(p.numberSpecialAttacks() + 1) + ". Go back");
+		boolean goBack = false;
 		do
 		{
 			choiceSpeAtt = Util.numberSelect("",p.numberSpecialAttacks() + 1);
 			if(choiceSpeAtt == p.numberSpecialAttacks()+1)
 			{
-				doAttack();
+				goBack = true;
 				break;
 			}
 			else if(p.getSpecialAttackEP(choiceSpeAtt-1)> p.getEP())
-				System.out.println("Not enough EP! Choose again.");
+				System.out.println("You don't have enough EP! Choose again.");
 		}while(p.getSpecialAttackEP(choiceSpeAtt-1)>p.getEP());
 		
-		if(choiceSpeAtt <= p.numberSpecialAttacks())
+		if(goBack)
+			doAttack();
+		else
 			specialAttack(choiceSpeAtt-1,p,e);
 	}
 	private void doHealing()
 	{
-		System.out.println(p.showHealing());
+		p.showHealing();
 		System.out.println(String.valueOf(p.numberHealing() + 1) + ". Go back");
 		do
 		{
@@ -127,7 +130,7 @@ public class Battle
 	private void regAttack(Player p, Player e)
 	{
 		damage = p.damage();
-		System.out.println("You dealt " + damage + " to the " + e.getPlayerName() + "!");
+		System.out.println("You dealt " + damage + " damage to the " + e.getPlayerName() + "!");
 		Util.lineBreak();
 		e.subtractHP(damage);
 		if(e.getHP() <= 0)
@@ -160,17 +163,21 @@ public class Battle
 		switch(winRes)
 		{
 			case 1: //Player Wins
-				System.out.println("You have defeated the " + e.getPlayerName());
-				System.out.println("+" + e.getEP() + "EP, +" + e.getEXP() + " EXP, +" + e.getMoney() + " Gold");
+				Util.lineBreak();
+				System.out.println("You have defeated the " + e.getPlayerName() + ".");
+				System.out.println("+" + e.getEP() + " EP, +" + e.getEXP() + " EXP, +" + e.getMoney() + " Gold");
 				p.addMoney(e.getMoney());
 				p.addEXP(e.getEXP());
 				p.addEP(e.getEP());
 				Util.lineBreak();
 				break;
 			case 2: //Player Flees
+				Util.lineBreak();
 				System.out.println("You ran away!");
+				Util.lineBreak();
 				break;
 			case 3: //Enemy wins
+				Util.lineBreak();
 				System.out.println("You lost!");
 				System.out.println("You lost 90% of your money! You lost 50% of your experience!");
 				p.setMoney(p.getMoney()/10); //divides money by ten
@@ -183,5 +190,57 @@ public class Battle
 				break;
 		}
 		Util.pause();
+	}
+	private void battShow(Player pl, Player en)
+	{
+		System.out.println("+------------------------------------------------------------------------------+");
+		System.out.println("|                                                                              |");
+		
+		String nameRow = "| ";
+		int numSpace = (25 - pl.getPlayerName().length()) + (12 - pl.getPlayerClass().length()) + 4;
+		numSpace += (30 - en.getPlayerName().length());
+		String spaces = "";
+		for(int i = 1; i <=numSpace; i++)
+			spaces += " ";
+		nameRow += pl.getPlayerName() + " the " + pl.getPlayerClass() + spaces + en.getPlayerName() + " |";
+		System.out.println(nameRow);
+		
+		String plHP = String.valueOf(pl.getHP());
+		String plMaxHP = String.valueOf(pl.getMaxHealth());
+		String enHP = String.valueOf(en.getHP());
+		String enMaxHP = String.valueOf(en.getMaxHealth());
+		numSpace = 66 - plHP.length() - plMaxHP.length() - enHP.length() - enMaxHP.length();
+		spaces = "";
+		for(int i = 1; i <= numSpace; i++)
+			spaces += " ";
+		String hpRow = "| HP: " + plHP + "/" + plMaxHP + spaces + "HP: " + enHP + "/" + enMaxHP + " |";
+		System.out.println(hpRow);
+		
+		String plEP = String.valueOf(pl.getEP());
+		String plMaxEP = String.valueOf(pl.getMaxEP());
+		numSpace = 72 - plEP.length() - plMaxEP.length();
+		spaces = "";
+		for(int i = 1; i <= numSpace; i++)
+			spaces += " ";
+		String epRow = "| EP: " + plEP + "/" + plMaxEP + spaces + "|";
+		System.out.println(epRow);
+		
+		numSpace = 69 - pl.getWeaponName().length();
+		spaces = "";
+		for(int i = 1; i <= numSpace; i++)
+			spaces += " ";
+		String weapRow = "| Weapon: " + pl.getWeaponName() + spaces + "|";
+		System.out.println(weapRow);
+		
+		String plDam = String.valueOf(pl.getTotalRawDamage());
+		numSpace = 62 - plDam.length();
+		spaces = "";
+		for(int i = 1; i <= numSpace; i++)
+			spaces += " ";
+		String damRow = "| Attack Damage: " + plDam + spaces + "|";
+		System.out.println(damRow);
+		
+		System.out.println("|                                                                              |");
+		System.out.println("+------------------------------------------------------------------------------+");
 	}
 }

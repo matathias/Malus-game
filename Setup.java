@@ -90,7 +90,7 @@ public class Setup
 	 	System.out.println("5. Relievers are defense-oriented special-attack users, sacrificing Damage to obtain higher HP and EP. They have exclusive access to most healing spells.");
 	 	System.out.println("6. Entrepreneurs sacrifice a little of everything in order to obtain more money per battle, recieve money from a level up, and pay less at markets.");
 	 	System.out.println("Which will you be? (Pick 1-6)");
-	 	int choice = Util.numberSelect("",7);
+	 	int choice = Util.numberSelect("",6);
 	 	switch(choice)
 	 	{
 	 		//(HP,Damage,EP,Exp,Money,PlayerName,PlayerClass,Weapon)
@@ -112,15 +112,12 @@ public class Setup
 	 			break;
 	 		case 5:
 	 			System.out.println("You choose the Reliever Class!"); //130HP, 80EP, 3 Damage
-	 			player = new Player(130,3,80,0,10,"","Commando",new Weapon("Wooden Stave",0,0,0,0));
+	 			player = new Player(130,3,80,0,10,"","Reliever",new Weapon("Wooden Stave",0,0,0,0));
 	 			break;
 	 		case 6:
 	 			System.out.println("You choose the Entrepreneur Class!");//60HP, 20EP, 3 Damage
 	 			player = new Player(60,3,20,0,100,"","Entrepreneur",new Weapon("Playing Card",0,0,0,0));
 	 			break;
-			case 7:
-				System.out.println("Debug mode. Class: Commando. HP: 1000000 EP: 1000000 Damage: 500 Money: 1000000");
-				player = new Player(1000000,500,1000000,0,1000000,"","Commando",new Weapon("Debug Weapon",1000000,10,10,50));
 	 	}
 	 	Util.pause();
 	 	chooseName();

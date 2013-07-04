@@ -17,6 +17,8 @@
 
 *uncomment the PlaceActions initializer in Setup - done
 
+*Make sure all output lines have less than 80 characters
+
 NOTES:
 -Ravager and Reliever should have much lower damage values, lower than the current Sentinel's perhaps - modified
 -Sentinel should have slightly higher damage values - modified

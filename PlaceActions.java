@@ -122,26 +122,17 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 	//{return 0;}
 	private int placeTravel(int len, int chan, Player en1, int chanEn1, Player en2, int chanEn2, Player en3, int chanEn3, Player en4, int chanEn4)
 	{
+		Util.lineBreak();
 		int counter = 0;
 		path = "";
 		win = 0;
 		justBattled = false;
 		do
 		{
-			if(!justBattled)
-			{
-				System.out.print("-");
-				path += "-";
-			}
-			else
-			{
-				System.out.println(path +  "X");
-				path += "X";
-				justBattled = false;
-			}
 			random = rand.nextInt(99);
 			if(random <= chan && !justBattled)
 			{
+				System.out.println();
 				randomEnChan = rand.nextInt(99);
 				if(randomEnChan <= chanEn1)
 				{
@@ -183,18 +174,36 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 			{
 				justBattled = false;
 			}
+			
+			if(!justBattled)
+			{
+				System.out.print("-");
+				path += "-";
+			}
+			else
+			{
+				Util.lineBreak();
+				System.out.print(path +  "X");
+				path += "X";
+			}
+			//Util.passTime(500000000);
 			counter++;
 		}
 		while (win != 3 && counter<=len);
+		System.out.println();
 		return win;
 	}
 	private void reInitMook(Player en)
 	{
 		en.setHP(en.getMaxHealth());
+		justBattled = true;
 	}
 	private void town()
 	{
 		Story.town();
+		System.out.println();
+		player.showAll();
+		System.out.println();
 		int choice = Util.numberSelect("Where will you go:\n1. Inn\n2. Weapon Market\n3. Defense Market\n4. Healing Market\n5. Special Attack Market\n6. Save\n7. Desert\n8. Quit Game",8);
 		int cost = 0;
 		switch(choice)
@@ -280,6 +289,9 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 	private void desert()    //placeTravel method arguments: modified
 	{
 		Story.desert(desert);
+		System.out.println();
+		player.showAll();
+		System.out.println();
 		int choice = Util.numberSelect("Where will you go:\n1. Path 1\n2. Path 2\n3. Path 3\n4. Back to Town",4);
 		switch(choice)
 		{
@@ -360,6 +372,9 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 	private void plains()    //placeTravel method arguments: modified
 	{
 		Story.plains(plains);
+		System.out.println();
+		player.showAll();
+		System.out.println();
 		int choice = Util.numberSelect("Where will you go:\n1. Plains Path\n2. Grasslands Path\n3. Hills Path\n4. Back to the Desert",4);
 		switch(choice)
 		{
@@ -440,6 +455,9 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 	private void forest()    //placeTravel method arguments: modified
 	{
 		Story.forest(forest);
+		System.out.println();
+		player.showAll();
+		System.out.println();
 		int choice = Util.numberSelect("Where will you go:\n1. Path 1\n2. Path 2\n3. Path 3\n4. Back to the plains",4);
 		switch(choice)
 		{
@@ -519,6 +537,9 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 	private void mountains() //placeTravel method arguments: modified
 	{
 		Story.mountains(mountains);
+		System.out.println();
+		player.showAll();
+		System.out.println();
 		int choice = Util.numberSelect("Where will you go:\n1. Path 1\n2. Path 2\n3. Path 3\n4. Back to the forest",4);
 		switch(choice)
 		{
@@ -598,6 +619,9 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 	private void village()  
 	{
 		Story.village();
+		System.out.println();
+		player.showAll();
+		System.out.println();
 		int choice = Util.numberSelect("Where will you go:\n1. Inn\n2. Weapon Market\n3. Defense Market\n4. Volcano\n5. Back to the mountains",5);
 		int cost = 0;
 		switch(choice)
@@ -661,6 +685,9 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 	private void volcano()   //placeTravel method arguments: modified
 	{
 		Story.volcano(volcano);
+		System.out.println();
+		player.showAll();
+		System.out.println();
 		int choice = Util.numberSelect("Where will you go:\n1. Path 1\n2. Path 2\n3. Path 3\n4. Back to the village",4);
 		switch(choice)
 		{
@@ -741,6 +768,9 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 	private void caverns()   //placeTravel method arguments: modified
 	{
 		Story.caverns(caverns);
+		System.out.println();
+		player.showAll();
+		System.out.println();
 		int choice = Util.numberSelect("Where will you go:\n1. Path 1\n2. Path 2\n3. Path 3\n4. Back to the Volcano",4);
 		switch(choice)
 		{
@@ -821,6 +851,9 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 	private void base()      //placeTravel method arguments: modified
 	{
 		Story.base(baseFac,baseUrb,baseLab,baseMil,baseFin);
+		System.out.println();
+		player.showAll();
+		System.out.println();
 		int choice;
 		if(baseFac && baseUrb && baseLab && baseMil)
 		{

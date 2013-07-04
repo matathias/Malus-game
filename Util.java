@@ -109,14 +109,18 @@ public class Util
 		/*
 		 * Used to separate blocks of text.
 		 */
-		System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
+		System.out.println("_____________________________________________________________________________________________________________________________\n");
 	}
 	public static void bigLineBreak()
 	{
 		/*
 		 * Used to separate significant blocks of text.
 		 */
-		System.out.println("\n-----------------------------------------------------------------------------------------------------------------------------\n");
+		System.out.println("\n_____________________________________________________________________________________________________________________________\n");
+	}
+	public static void passTime(long time)
+	{
+		for(long a = 0; a < time; a++);
 	}
 	public static void gameSave(ArrayList<String> playerData, ArrayList<String> gameData, String storyData)
 	{
