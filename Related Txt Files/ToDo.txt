@@ -17,7 +17,13 @@
 
 *uncomment the PlaceActions initializer in Setup - done
 
-*Make sure all output lines have less than 80 characters
+*Make sure all output lines have less than 80 characters - done (I think)
+
+*Add Util.skitPause() in between lines in the Story class (?)
+
+*fix the save/load methods
+
+*make enemies spawn more often (to give the player more exp so they can level up without doing each path in one area several times)
 
 NOTES:
 -Ravager and Reliever should have much lower damage values, lower than the current Sentinel's perhaps - modified

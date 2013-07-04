@@ -377,7 +377,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 					Story.desertBossEmergency();
 	 					System.out.println("Sand Stone attacked you with Desert Storm!");
 	 					damage = (int)(sandStone.damage()*3);
-	 					System.out.println("The forces of sand and desert come together in one spot, attacking you for " + damage + " damage!");
+	 					System.out.println("The forces of sand and desert come together in one spot,\nattacking you for " + damage + " damage!");
 	 					Util.lineBreak();
 	 					player.subtractHP(damage);
 	 					if(player.getHP() <= 0)
@@ -416,7 +416,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 					else
 	 					{
 	 						damage = (int)(sandStone.damage()*3);
-	 						System.out.println("Sand Stone attacked you with Desert Storm! \nThe forces of sand and desert come together in one spot, attacking you for " + damage + " damage!");
+	 						System.out.println("Sand Stone attacked you with Desert Storm! \nThe forces of sand and desert come together in one spot,\nattacking you for " + damage + " damage!");
 	 						Util.lineBreak();
 	 						player.subtractHP(damage);
 	 						if(player.getHP() <= 0)
@@ -523,7 +523,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 				{
 	 					Story.plainsBossEmergency();
 	 					damage = (int)(grassStone.damage()*4);
-	 					System.out.println("Grass Stone attacked you with Tornado! \nThe forces of the wind come together in one spot, attacking you for " + damage + " damage!");
+	 					System.out.println("Grass Stone attacked you with Tornado! \nThe forces of the wind come together in one spot,\nattacking you for " + damage + " damage!");
 	 					Util.lineBreak();
 	 					player.subtractHP(damage);
 	 					if(player.getHP() <= 0)
@@ -562,7 +562,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 					else
 	 					{
 	 						damage = (int)(grassStone.damage()*4);
-	 						System.out.println("Grass Stone attacked you with Tornado! \nThe forces of the wind come together in one spot, attacking you for " + damage + " damage!");
+	 						System.out.println("Grass Stone attacked you with Tornado! \nThe forces of the wind come together in one spot,\nattacking you for " + damage + " damage!");
 	 						Util.lineBreak();
 	 						player.subtractHP(damage);
 	 						if(player.getHP() <= 0)
@@ -669,7 +669,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 				{
 	 					Story.forestBossEmergency();
 	 					damage = (int)(leafStone.damage()*3.5);
-	 					System.out.println("Leaf Stone attacked you with Thunderstorm! \nThe forces of water and lightning come together in one spot, attacking you for " + damage + " damage!");
+	 					System.out.println("Leaf Stone attacked you with Thunderstorm! \nThe forces of water and lightning come together in one spot,\nattacking you for " + damage + " damage!");
 	 					Util.lineBreak();
 	 					player.subtractHP(damage);
 	 					if(player.getHP() <= 0)
@@ -708,7 +708,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 					else
 	 					{
 	 						damage = (int)(leafStone.damage()*3.5);
-	 						System.out.println("Leaf Stone attacked you with Thunderstorm! \nThe forces of water and lightning come together in one spot, attacking you for " + damage + " damage!");
+	 						System.out.println("Leaf Stone attacked you with Thunderstorm! \nThe forces of water and lightning come together in one spot,\nattacking you for " + damage + " damage!");
 	 						Util.lineBreak();
 	 						player.subtractHP(damage);
 	 						if(player.getHP() <= 0)
@@ -815,7 +815,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 				{
 	 					Story.mountainsBossEmergency();
 	 					damage = (int)(blizzardStone.damage()*5);
-	 					System.out.println("Blizzard Stone attacked you with Blizzard! \nThe forces of ice and snow come together in one spot, attacking you for " + damage + " damage!");
+	 					System.out.println("Blizzard Stone attacked you with Blizzard! \nThe forces of ice and snow come together in one spot,\nattacking you for " + damage + " damage!");
 	 					Util.lineBreak();
 	 					player.subtractHP(damage);
 	 					if(player.getHP() <= 0)
@@ -854,7 +854,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 					else
 	 					{
 	 						damage = (int)(blizzardStone.damage()*5);
-	 						System.out.println("Blizzard Stone attacked you with Blizzard! \nThe forces of ice and snow come together in one spot, attacking you for " + damage + " damage!");
+	 						System.out.println("Blizzard Stone attacked you with Blizzard! \nThe forces of ice and snow come together in one spot,\nattacking you for " + damage + " damage!");
 	 						Util.lineBreak();
 	 						player.subtractHP(damage);
 	 						if(player.getHP() <= 0)
@@ -964,7 +964,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 				if(quarter)
 	 				{
 	 					damage = (int)(wyvern.damage()*2.75);
-	 					System.out.println("BCA Wyvern attacked you by Flying by the platform at a high velocity and creating high speed winds!");
+	 					System.out.println("BCA Wyvern attacked you by Flying by the platform at a high velocity\nand creating high speed winds!");
 	 					System.out.println("It has dealt " + damage + " damage to you!");
 						Util.lineBreak();
 						player.subtractHP(damage);
@@ -1016,7 +1016,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 				{
 	 					Story.wyvernBossEmergency();
 	 					damage = (int)(wyvern.damage()*4);
-	 					System.out.println("BCA Wyvern attacked you with its Tail Spike! The platform is electrocuted and shakes violently, dealing " + damage + " damage!");
+	 					System.out.println("BCA Wyvern attacked you with its Tail Spike!\nThe platform is electrocuted and shakes violently, dealing " + damage + " damage!");
 						Util.lineBreak();
 						player.subtractHP(damage);
 						if(player.getHP() <= 0)
@@ -1055,7 +1055,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 					else if(attackChance >75 && attackChance <90)
 	 					{
 	 						damage = (int)(wyvern.damage()*2.75);
-	 						System.out.println("BCA Wyvern attacked you by Flying by the platform at a high velocity and creating high speed winds!");
+	 						System.out.println("BCA Wyvern attacked you by Flying by the platform at a high velocity\nand creating high speed winds!");
 	 						System.out.println("It has dealt " + damage + " damage to you!");
 							Util.lineBreak();
 							player.subtractHP(damage);
@@ -1065,7 +1065,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 					else
 	 					{
 	 						damage = (int)(wyvern.damage()*4);
-	 						System.out.println("BCA Wyvern attacked you with its Tail Spike! The platform is electrocuted and shakes violently, dealing " + damage + " damage!");
+	 						System.out.println("BCA Wyvern attacked you with its Tail Spike!\nThe platform is electrocuted and shakes violently, dealing " + damage + " damage!");
 							Util.lineBreak();
 							player.subtractHP(damage);
 							if(player.getHP() <= 0)
@@ -1366,7 +1366,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 			 		else
 	 			 		{
 	 			 			damage = (int)(bugCrawler.damage()*1.6);
-	 						System.out.println("Bug Crawler flew past the platform at a high velocity, creating high speed winds that dealt " + damage + " damage to you!");
+	 						System.out.println("Bug Crawler flew past the platform at a high velocity,\ncreating high speed winds that dealt " + damage + " damage to you!");
 							Util.lineBreak();
 							player.subtractHP(damage);
 							if(player.getHP() <= 0)
@@ -1379,7 +1379,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 			 		{
 	 			 			Story.bugCrawlerModeOneEmergency();
 	 			 			damage = (int)(bugCrawler.damage()*2.1);
-	 						System.out.println("Bug Crawler drove its tail spike into the platform, electrocuting and shaking it violently.");
+	 						System.out.println("Bug Crawler drove its tail spike into the platform,\nelectrocuting and shaking it violently.");
 	 						System.out.println(damage + " damage dealt to you!");
 							Util.lineBreak();
 							player.subtractHP(damage);
@@ -1410,7 +1410,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 				 		else if(attackChance>65 && attackChance<90)
 	 				 		{
 	 				 			damage = (int)(bugCrawler.damage()*1.6);
-	 							System.out.println("Bug Crawler flew past the platform at a high velocity, creating high speed winds that dealt " + damage + " damage to you!");
+	 							System.out.println("Bug Crawler flew past the platform at a high velocity,\ncreating high speed winds that dealt " + damage + " damage to you!");
 								Util.lineBreak();
 								player.subtractHP(damage);
 								if(player.getHP() <= 0)
@@ -1419,7 +1419,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 			 			else
 	 			 			{
 	 			 				damage = (int)(bugCrawler.damage()*2.1);
-	 							System.out.println("Bug Crawler drove its tail spike into the platform, electrocuting and shaking it violently.");
+	 							System.out.println("Bug Crawler drove its tail spike into the platform,\nelectrocuting and shaking it violently.");
 	 							System.out.println(damage + " damage dealt to you!");
 								Util.lineBreak();
 								player.subtractHP(damage);
@@ -1579,7 +1579,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 				if(third)
 	 				{
 	 					damage = (int)(civilMech.damage()*2);
-	 					System.out.println("Civil Control Mech attacked you with its Prototype Stasis Cannon! While the Stasis part failed, it dealt " + damage + " damage!");
+	 					System.out.println("Civil Control Mech attacked you with its Prototype Stasis Cannon!\nWhile the Stasis part failed, it dealt " + damage + " damage!");
 						Util.lineBreak();
 						player.subtractHP(damage);
 						if(player.getHP() <= 0)
@@ -1627,7 +1627,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 				{
 	 					Story.civilMechEmergency();
 	 					damage = (int)(civilMech.damage()*5);
-	 					System.out.println("Civil Control Mech used its Last-Resort Alpha Cannon and dealt " + damage + " damage to you!");
+	 					System.out.println("Civil Control Mech used its Last-Resort Alpha Cannon\nand dealt " + damage + " damage to you!");
 						Util.lineBreak();
 						player.subtractHP(damage);
 						if(player.getHP() <= 0)
@@ -1664,7 +1664,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 				else
 	 				{
 	 					damage = (int)(civilMech.damage()*2);
-	 					System.out.println("Civil Control Mech attacked you with its Prototype Stasis Cannon! While the Stasis part failed, it dealt " + damage + " damage!");
+	 					System.out.println("Civil Control Mech attacked you with its Prototype Stasis Cannon!\nWhile the Stasis part failed, it dealt " + damage + " damage!");
 						Util.lineBreak();
 						player.subtractHP(damage);
 						if(player.getHP() <= 0)
@@ -1776,7 +1776,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 			 		emergency = true;
 	 			 		Story.mantisCrawlerEmergency();
 	 			 		damage = (int)(mantisCrawler.damage()*5);
-	 					System.out.println("Mantis Crawler went Berserk, attacking you insanely and dealing " + damage + " total damage!!");
+	 					System.out.println("Mantis Crawler went Berserk,\nattacking you insanely and dealing " + damage + " total damage!!");
 						Util.lineBreak();
 						player.subtractHP(damage);
 						if(player.getHP() <= 0)
@@ -1796,7 +1796,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 			 		else if(attackChance > 35 && attackChance < 65)
 	 			 		{
 	 			 			damage = (int)(mantisCrawler.damage()*2.5);
-	 						System.out.println("Mantis Crawler Dash-Slid across the battlefield, ramming into you and dealing " + damage + " damage!");
+	 						System.out.println("Mantis Crawler Dash-Slid across the battlefield,\nramming into you and dealing " + damage + " damage!");
 							Util.lineBreak();
 							player.subtractHP(damage);
 							if(player.getHP() <= 0)
@@ -1814,7 +1814,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 			 		else
 	 			 		{
 	 			 			damage = (int)(mantisCrawler.damage()*3.8);
-	 						System.out.println("Mantis Crawler lunged out at you and caught you within its Preying Grasp! It deals " + damage + " damage!");
+	 						System.out.println("Mantis Crawler lunged out at you and caught you within its Preying Grasp!\nIt deals " + damage + " damage!");
 							Util.lineBreak();
 							player.subtractHP(damage);
 							if(player.getHP() <= 0)
@@ -1826,7 +1826,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 			 		if(quarter)
 	 			 		{
 	 			 			damage = (int)(mantisCrawler.damage()*5);
-	 						System.out.println("Mantis Crawler went Berserk, attacking you insanely and dealing " + damage + " total damage!!");
+	 						System.out.println("Mantis Crawler went Berserk,\nattacking you insanely and dealing " + damage + " total damage!!");
 							Util.lineBreak();
 							player.subtractHP(damage);
 							if(player.getHP() <= 0)
@@ -1845,7 +1845,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 			 		else if(attackChance > 35 && attackChance < 65)
 	 			 		{
 	 			 			damage = (int)(mantisCrawler.damage()*2.5);
-	 						System.out.println("Mantis Crawler Dash-Slid across the battlefield, ramming into you and dealing " + damage + " damage!");
+	 						System.out.println("Mantis Crawler Dash-Slid across the battlefield,\nramming into you and dealing " + damage + " damage!");
 							Util.lineBreak();
 							player.subtractHP(damage);
 							if(player.getHP() <= 0)
@@ -1863,7 +1863,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 			 		else
 	 			 		{
 	 			 			damage = (int)(mantisCrawler.damage()*3.8);
-	 						System.out.println("Mantis Crawler lunged out at you and caught you within its Preying Grasp! It deals " + damage + " damage!");
+	 						System.out.println("Mantis Crawler lunged out at you and caught you within its Preying Grasp!\nIt deals " + damage + " damage!");
 							Util.lineBreak();
 							player.subtractHP(damage);
 							if(player.getHP() <= 0)
@@ -1923,7 +1923,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 			 	if(quarter)
 	 			 	{
 	 			 		damage = (int)(insectiCrawler.damage()*3.7);
-	 					System.out.println("Insecti Crawler attacked you with its Machina Guass Cannon and dealt " + damage + " damage!");
+	 					System.out.println("Insecti Crawler attacked you with its Machina Guass Cannon\nand dealt " + damage + " damage!");
 						Util.lineBreak();
 						player.subtractHP(damage);
 						if(player.getHP() <= 0)
@@ -1942,7 +1942,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 					else if(attackChance > 47 && attackChance < 78)
 					{
 						damage = (int)(insectiCrawler.damage()*1.25);
-	 					System.out.println("Insecti Crawler Dash-Slid across the battlefield, ramming you and dealing " + damage + " damage!");
+	 					System.out.println("Insecti Crawler Dash-Slid across the battlefield,\nramming you and dealing " + damage + " damage!");
 						Util.lineBreak();
 						player.subtractHP(damage);
 						if(player.getHP() <= 0)
@@ -1979,7 +1979,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 			 		if(attackChance < 35)
 	 			 		{
 	 			 			damage = (int)(insectiCrawler.damage()*2);
-	 						System.out.println("Insecti Crawler Dash-Slid across the battlefield, ramming you and dealing " + damage + " damage!");
+	 						System.out.println("Insecti Crawler Dash-Slid across the battlefield,\nramming you and dealing " + damage + " damage!");
 							Util.lineBreak();
 							player.subtractHP(damage);
 							if(player.getHP() <= 0)
@@ -1988,7 +1988,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 			 		else if (attackChance > 35 && attackChance < 70)
 	 			 		{
 	 			 			damage = (int)(insectiCrawler.damage()*2.65);
-	 						System.out.println("Insecti Crawler attacked you with its Laceration Swipe and dealt " + damage + " damage!");
+	 						System.out.println("Insecti Crawler attacked you with its Laceration Swipe\nand dealt " + damage + " damage!");
 							Util.lineBreak();
 							player.subtractHP(damage);
 							if(player.getHP() <= 0)
@@ -1997,7 +1997,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 			 		else if (attackChance > 70 && attackChance < 90)
 	 			 		{
 	 			 			damage = (int)(insectiCrawler.damage()*3.7);
-	 						System.out.println("Insecti Crawler attacked you with its Machina Guass Cannon and dealt " + damage + " damage!");
+	 						System.out.println("Insecti Crawler attacked you with its Machina Guass Cannon\nand dealt " + damage + " damage!");
 							Util.lineBreak();
 							player.subtractHP(damage);
 							if(player.getHP() <= 0)
@@ -2006,7 +2006,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 			 		else
 	 			 		{
 	 			 			damage = (int)(insectiCrawler.damage()*4.2);
-	 						System.out.println("Insecti Crawler attacked you with its Alpha-Class Plasma Cannon and dealt " + damage + " damage!");
+	 						System.out.println("Insecti Crawler attacked you with its Alpha-Class Plasma Cannon\nand dealt " + damage + " damage!");
 							Util.lineBreak();
 							player.subtractHP(damage);
 							if(player.getHP() <= 0)
@@ -2019,7 +2019,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 			 		{
 	 			 			Story.insectiCrawlerEmergency();
 	 			 			damage = (int)(insectiCrawler.damage()*8);
-	 						System.out.println("Insecti Crawler attacks you with its Prototype Black Hole Cannon, dealing " + damage + " damage!!");
+	 						System.out.println("Insecti Crawler attacks you with its Prototype Black Hole Cannon,\ndealing " + damage + " damage!!");
 							Util.lineBreak();
 							player.subtractHP(damage);
 							if(player.getHP() <= 0)
@@ -2029,7 +2029,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 			 		else if(attackChance < 34)
 	 			 		{
 	 			 			damage = (int)(insectiCrawler.damage()*2);
-	 						System.out.println("Insecti Crawler Dash-Slid across the battlefield, ramming you and dealing " + damage + " damage!");
+	 						System.out.println("Insecti Crawler Dash-Slid across the battlefield,\nramming you and dealing " + damage + " damage!");
 							Util.lineBreak();
 							player.subtractHP(damage);
 							if(player.getHP() <= 0)
@@ -2038,7 +2038,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 			 		else if (attackChance > 34 && attackChance < 68)
 	 			 		{
 	 			 			damage = (int)(insectiCrawler.damage()*2.65);
-	 						System.out.println("Insecti Crawler attacked you with its Laceration Swipe and dealt " + damage + " damage!");
+	 						System.out.println("Insecti Crawler attacked you with its Laceration Swipe\nand dealt " + damage + " damage!");
 							Util.lineBreak();
 							player.subtractHP(damage);
 							if(player.getHP() <= 0)
@@ -2047,7 +2047,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 			 		else if (attackChance > 68 && attackChance < 86)
 	 			 		{
 	 			 			damage = (int)(insectiCrawler.damage()*3.7);
-	 						System.out.println("Insecti Crawler attacked you with its Machina Guass Cannon and dealt " + damage + " damage!");
+	 						System.out.println("Insecti Crawler attacked you with its Machina Guass Cannon\nand dealt " + damage + " damage!");
 							Util.lineBreak();
 							player.subtractHP(damage);
 							if(player.getHP() <= 0)
@@ -2056,7 +2056,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 			 		else if (attackChance > 86 && attackChance < 95)
 	 			 		{
 	 			 			damage = (int)(insectiCrawler.damage()*4.2);
-	 						System.out.println("Insecti Crawler attacked you with its Alpha-Class Plasma Cannon and dealt " + damage + " damage!");
+	 						System.out.println("Insecti Crawler attacked you with its Alpha-Class Plasma Cannon\nand dealt " + damage + " damage!");
 							Util.lineBreak();
 							player.subtractHP(damage);
 							if(player.getHP() <= 0)
@@ -2065,7 +2065,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 			 		else
 	 			 		{
 	 			 			damage = (int)(insectiCrawler.damage()*8);
-	 						System.out.println("Insecti Crawler attacks you with its Prototype Black Hole Cannon, dealing " + damage + " damage!!");
+	 						System.out.println("Insecti Crawler attacks you with its Prototype Black Hole Cannon,\ndealing " + damage + " damage!!");
 							Util.lineBreak();
 							player.subtractHP(damage);
 							if(player.getHP() <= 0)
@@ -2128,7 +2128,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 			{
 	 				if(battleStart)
 	 				{
-	 					System.out.println("Malus: \"You really think you can beat me? Ha! I'll defeat you with my Sword and Rifle alone!\"");
+	 					System.out.println("Malus: \"You really think you can beat me? Ha! \n\tI'll defeat you with my Sword and Rifle alone!\"");
 	 					battleStart = false;
 	 				}
 	 				if(attackChance<60)
@@ -2154,7 +2154,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 			{
 	 				if(above50)
 	 				{
-	 					System.out.println("Malus: \"Alright... so you're better than I thought. But we'll see how you do against the Machina Rocket Launcher!\"");
+	 					System.out.println("Malus: \"Alright... so you're better than I thought.\n\tBut we'll see how you do against the Machina Rocket Launcher!\"");
 	 					damage = malusOne.damage();
 	 					System.out.println("Malus attacked you with his Machina Rocket Launcher and dealt " + damage + " damage!");
 						Util.lineBreak();
@@ -2260,9 +2260,9 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 			{
 	 				if(above20)
 	 				{
-	 					System.out.println("Malus: \"Damn! Time to pull out the big guns! You'll never be able to handle this Plasma Cannon!\"");
+	 					System.out.println("Malus: \"Damn! Time to pull out the big guns!\n\tYou'll never be able to handle this Plasma Cannon!\"");
 	 					damage = (int)(malusOne.damage()*3.15);
-	 					System.out.println("Malus attacked you with his Alpha-Class Plasma Cannon and dealt " + damage + " damage!");
+	 					System.out.println("Malus attacked you with his Alpha-Class Plasma Cannon\nand dealt " + damage + " damage!");
 						Util.lineBreak();
 						player.subtractHP(damage);
 						if(player.getHP() <= 0)
@@ -2272,7 +2272,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 				else if(quarter)
 	 				{
 	 					damage = (int)(malusOne.damage()*3.1);
-	 					System.out.println("Malus attacked you with his Alpha-Class Plasma Cannon and dealt " + damage + " damage!");
+	 					System.out.println("Malus attacked you with his Alpha-Class Plasma Cannon\nand dealt " + damage + " damage!");
 						Util.lineBreak();
 						player.subtractHP(damage);
 						if(player.getHP() <= 0)
@@ -2326,7 +2326,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 			{
 	 				if(!emergency)
 	 				{
-	 					System.out.println("Malus: \"Can't keep playing around, can I? Ha! You'll regret going against me once I use this Guass Cannon!!\"");
+	 					System.out.println("Malus: \"Can't keep playing around, can I? Ha!\n\tYou'll regret going against me once I use this Guass Cannon!!\"");
 	 					damage = (int)(malusOne.damage()*5.2);
 	 					System.out.println("Malus attacked you with the Ultima Guass Cannon and dealt " + damage + " damage!");
 						Util.lineBreak();
@@ -2384,7 +2384,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 				else
 	 				{
 	 					damage = (int)(malusOne.damage()*3.15);
-	 					System.out.println("Malus attacked you with his Alpha-Class Plasma Cannon and dealt " + damage + " damage!");
+	 					System.out.println("Malus attacked you with his Alpha-Class Plasma Cannon\nand dealt " + damage + " damage!");
 						Util.lineBreak();
 						player.subtractHP(damage);
 						if(player.getHP() <= 0)
@@ -2470,7 +2470,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 				System.out.println("Malus: \"You thought you could beat me? Ha! Well think again!\"");
 	 				Util.skitPause();
 					damage = (int)(player.getMaxHealth()/5);
-	 				System.out.println("Malus is charging energy... its gathering in one spot and growing darker, and denser. It looks like...");
+	 				System.out.println("Malus is charging energy... \nIts gathering in one spot and growing darker, and denser. It looks like...");
 	 				Util.skitPause();
 	 				System.out.println("A Black Hole?!");
 	 				Util.skitPause();
@@ -2487,8 +2487,8 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 			else if(ultimaMalus.getHP()<ultimaMalus.getMaxHealth()/3 && !emergency33) //first time Malus's HP dips below 33%
 	 			{
 	 				damage = (int)(player.getHP()/20);
-	 				System.out.println("Malus: \"Hm, you certainly are worthy of my respect... respect enough to witness Chaos's Reign! Ah haha!\"");
-	 				System.out.println("Malus starts drawing in boundless amounts of Chaos Energy... and then unleashes it!");
+	 				System.out.println("Malus: \"Hm, you certainly are worthy of my respect...\n\trespect enough to witness Chaos's Reign! Ah haha!\"");
+	 				System.out.println("Malus starts drawing in boundless amounts of Chaos Energy...\nand then unleashes it!");
 	 				System.out.println("Using Chaos's Reign, Malus healed himself " + (int)(ultimaMalus.getHP()/50) + " and dealt " + damage + " damage to you!!");
 	 				ultimaMalus.addHP(ultimaMalus.getHP()/50);
 					Util.lineBreak();
@@ -2500,9 +2500,9 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 			else if(ultimaMalus.getHP()<ultimaMalus.getMaxHealth()/10 && !emergency10) //first time Malus's HP dips below 10%
 	 			{
 	 				damage = (int)(ultimaMalus.damage()*10); //change the modifier?
-	 				System.out.println("Malus: \"Hot damn! You just might win this... if I don't step it up a notch, that is!\"");
+	 				System.out.println("Malus: \"Hot damn! You just might win this... \n\tif I don't step it up a notch, that is!\"");
 	 				System.out.println("<The Ultima Railgun has finished charging!>");
-	 				System.out.println("Malus: \"Now that the Ultima Railgun has finished its preliminary charge, it will charge MUCH faster from now on!\"");
+	 				System.out.println("Malus: \"Now that the Ultima Railgun has finished its preliminary charge,\n\tit will charge MUCH faster from now on!\"");
 	 				System.out.println("Malus: \"Now... die!!\"");
 	 				System.out.println("Malus uses the Ultima Railgun on you, dealing " + damage + " damage!");
 	 				System.out.println("The Ultima Railgun begins charging.");
@@ -2604,7 +2604,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 			else if(blackHoleCannon) //Black Hole Cannon
 	 			{
 					damage = (int)(player.getMaxHealth()/10);
-	 				System.out.println("Malus is charging energy... its gathering in one spot and growing darker, and denser.");
+	 				System.out.println("Malus is charging energy... \nIts gathering in one spot and growing darker, and denser.");
 	 				System.out.println("Malus fires his Ultima Black Hole Cannon at you, dealing " + damage + " damage!");
 	 				System.out.println("However the cannon also injures Malus, dealing " + (int)(ultimaMalus.getHP()/20) + " damage to him.");
 	 				ultimaMalus.subtractHP(ultimaMalus.getHP()/20);

@@ -163,11 +163,11 @@ public class MarketHealing
 		player = p;
 		int counter = 0;
 		boolean bought = false;
-		System.out.println("Welcome to the Healing Market!");
+		System.out.println("\nWelcome to the Healing Market!");
 		System.out.println("You can buy Healing spells here.");
-		System.out.println("Healing Spells can only be used during battle; they consume EP to heal HP, or HP to heal EP.");
-		System.out.println("If the presented HP and EP values are negative, then the spell uses HP to heal EP.");
-		System.out.println("--Beware! Using these spells when your HP is below the threshold will result in death!");
+		System.out.println("Healing Spells can only be used during battle.\nThey consume EP to heal HP, or use HP to replenish EP.");
+		System.out.println("If the presented HP and EP values are negative,\n\tthe spell uses HP to heal EP.");
+		System.out.println("--Beware! Using these spells when your HP is below the threshold \n\twill result in death!");
 		Util.pause();
 		
 		counter = showHealing();

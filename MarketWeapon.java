@@ -215,7 +215,7 @@ public class MarketWeapon //change Util.numberSelect() to proper parameters
 	public Player weaponMarket(Player p)
 	{
 		player = p;
-		System.out.println("Welcome to the Weapon Market!");
+		System.out.println("\nWelcome to the Weapon Market!");
 		System.out.println("You can buy weapons here.");
 		Util.pause();
 		

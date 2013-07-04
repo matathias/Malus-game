@@ -188,9 +188,9 @@ public class MarketSpeAttack//change Util.numberSelect() to proper parameters
 		player = p;
 		int counter = 0;
 		boolean bought = false;
-		System.out.println("Welcome to the Special Attack Market!");
+		System.out.println("\nWelcome to the Special Attack Market!");
 		System.out.println("You can buy Special Attacks here.");
-		System.out.println("Special Attacks are more powerful than regular attacks but they require EP to use.");
+		System.out.println("Special Attacks are more powerful than regular attacks,\n but they require EP to use.");
 		Util.pause();
 		counter = showSpeAttacks();
 		counter++;

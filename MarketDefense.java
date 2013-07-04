@@ -176,7 +176,7 @@ public class MarketDefense//change Util.numberSelect() to proper parameters
 	{
 		player = p;
 		int counter = 0;
-		System.out.println("Welcome to the Defense Market!");
+		System.out.println("\nWelcome to the Defense Market!");
 		System.out.println("You can buy HP and EP increasing items here.");
 		System.out.println("Once bought, your HP and/or EP is permanently raised.");
 		Util.pause();

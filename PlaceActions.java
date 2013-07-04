@@ -186,7 +186,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 				System.out.print(path +  "X");
 				path += "X";
 			}
-			//Util.passTime(500000000);
+			Util.passTime(500000000);
 			counter++;
 		}
 		while (win != 3 && counter<=len);
