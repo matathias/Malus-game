@@ -180,7 +180,7 @@ public class Battle
 				Util.lineBreak();
 				System.out.println("You lost!");
 				System.out.println("You lost 90% of your money! You lost 50% of your experience!");
-				p.setMoney(p.getMoney()/10); //divides money by ten
+				p.setMoney(p.getMoney()/10.0); //divides money by ten
 				p.setEXP(p.getEXP()/2); //divides Experience by two
 				p.setHP(p.getMaxHealth()/20);
 				System.out.println("Money: " + p.getMoney() + "\tExp: " + p.getEXP());

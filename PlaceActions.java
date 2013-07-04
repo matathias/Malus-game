@@ -63,60 +63,60 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 		/*
 		 * Desert Enemies
 		 */
-		desertEnemies.add(new Player(40,6,5,3,0,1,"Sand Drone"));
-		desertEnemies.add(new Player(100,9,10,7,0,3,"Manipulated Cactus"));
-		desertEnemies.add(new Player(250,15,15,12,5,4,"Sand Demon"));
+		desertEnemies.add(new Player(40,6,10,3,0,1,"Sand Drone"));
+		desertEnemies.add(new Player(100,9,20,7,0,3,"Manipulated Cactus"));
+		desertEnemies.add(new Player(250,15,30,12,5,4,"Sand Demon"));
 		
 		/*
 		 * Plains Enemies
 		 */
-		plainEnemies.add(new Player(150,8,13,10,0,6,"Dry Spell"));
-		plainEnemies.add(new Player(375,20,22,8,0,7,"Grass Drone"));
-		plainEnemies.add(new Player(250,18,20,500,250,9,"Manipulated Dandelion"));
-		plainEnemies.add(new Player(750,22,40,25,0,10,"Delta-Class Ground: Beetle"));
+		plainEnemies.add(new Player(150,8,33,10,0,6,"Dry Spell"));
+		plainEnemies.add(new Player(375,20,42,8,0,7,"Grass Drone"));
+		plainEnemies.add(new Player(250,18,40,500,250,9,"Manipulated Dandelion"));
+		plainEnemies.add(new Player(750,22,60,25,0,10,"Delta-Class Ground: Beetle"));
 		
 		/*
 		 * Forest Enemies
 		 */
-		forestEnemies.add(new Player(750,25,45,42,10,12,"Manipulated Tree"));
-		forestEnemies.add(new Player(900,28,54,75,0,14,"Nature Drone"));
-		forestEnemies.add(new Player(1100,32,60,150,0,16,"Delta-Class Aerial: Bee"));
+		forestEnemies.add(new Player(750,25,65,42,10,12,"Manipulated Tree"));
+		forestEnemies.add(new Player(900,28,74,75,0,14,"Nature Drone"));
+		forestEnemies.add(new Player(1100,32,80,150,0,16,"Delta-Class Aerial: Bee"));
 		
 		/*
 		 * Mountain Enemies
 		 */
-		mountainEnemies.add(new Player(1250,40,90,200,0,20,"Sentrock Drone"));
-		mountainEnemies.add(new Player(3000,40,175,1500,10,21,"Manipulated Yeti"));
-		mountainEnemies.add(new Player(1000,50,125,175,15,22,"Avalanche Catalyst"));
-		mountainEnemies.add(new Player(1200,60,150,250,0,23,"Sentrice Drone"));
+		mountainEnemies.add(new Player(1250,40,110,200,0,20,"Sentrock Drone"));
+		mountainEnemies.add(new Player(3000,40,195,1500,10,21,"Manipulated Yeti"));
+		mountainEnemies.add(new Player(1000,50,145,175,15,22,"Avalanche Catalyst"));
+		mountainEnemies.add(new Player(1200,60,170,250,0,23,"Sentrice Drone"));
 		
 		/*
 		 * Volcano Enemies
 		 */
-		volcanoEnemies.add(new Player(1500,65,180,300,0,24,"Magma Drone"));
-		volcanoEnemies.add(new Player(2000,70,200,350,0,27,"Gamma-Class Ground: Cockroach"));
-		volcanoEnemies.add(new Player(4000,80,235,1000,20,29,"Unstoppable Magma"));
+		volcanoEnemies.add(new Player(1500,65,200,300,0,24,"Magma Drone"));
+		volcanoEnemies.add(new Player(2000,70,220,350,0,27,"Gamma-Class Ground: Cockroach"));
+		volcanoEnemies.add(new Player(4000,80,255,1000,20,29,"Unstoppable Magma"));
 		
 		/*
 		 * Cavern Enemies
 		 */
-		cavernEnemies.add(new Player(1750,120,275,400,0,32,"Gamma-Class Aerial: Mosquito"));
-		cavernEnemies.add(new Player(5000,250,315,350,0,34,"Autoturret"));
-		cavernEnemies.add(new Player(100000,0,5000,5000,1000,30,"Immovable Rock"));
+		cavernEnemies.add(new Player(1750,120,295,400,0,32,"Gamma-Class Aerial: Mosquito"));
+		cavernEnemies.add(new Player(5000,250,335,350,0,34,"Autoturret"));
+		cavernEnemies.add(new Player(100000,0,5020,5000,1000,30,"Immovable Rock"));
 		
 		/*
 		 * Base Enemies
 		 */
-		baseEnemies.add(new Player(4000,400,350,400,0,35,"Prototype Autoturret"));
-		baseEnemies.add(new Player(5250,550,405,400,0,36,"Magnatus Drone"));
-		baseEnemies.add(new Player(6000,750,460,450,0,38,"Beta-Class Ground: Black Widow"));
-		baseEnemies.add(new Player(4500,675,435,300,0,36,"Civil Autoturret"));
-		baseEnemies.add(new Player(4500,1250,490,500,0,38,"Beta-Class Aerial: Wasp"));
-		baseEnemies.add(new Player(12500,1000,515,450,0,40,"Defense Autoturret"));
-		baseEnemies.add(new Player(3456,789,1011,121314,12,41,"Manipulated Antimatter"));
-		baseEnemies.add(new Player(10000,565,500,375,50,41,"Mutant Something"));
-		baseEnemies.add(new Player(25000,1250,600,550,0,42,"Alpha-Class Ground: Tarantula"));
-		baseEnemies.add(new Player(8050,1500,550,600,0,42,"Alpha-Class Aerial: Hornet"));
+		baseEnemies.add(new Player(4000,400,370,400,0,35,"Prototype Autoturret"));
+		baseEnemies.add(new Player(5250,550,425,400,0,36,"Magnatus Drone"));
+		baseEnemies.add(new Player(6000,750,480,450,0,38,"Beta-Class Ground: Black Widow"));
+		baseEnemies.add(new Player(4500,675,455,300,0,36,"Civil Autoturret"));
+		baseEnemies.add(new Player(4500,1250,510,500,0,38,"Beta-Class Aerial: Wasp"));
+		baseEnemies.add(new Player(12500,1000,535,450,0,40,"Defense Autoturret"));
+		baseEnemies.add(new Player(3456,789,1031,121314,12,41,"Manipulated Antimatter"));
+		baseEnemies.add(new Player(10000,565,520,375,50,41,"Mutant Something"));
+		baseEnemies.add(new Player(25000,1250,620,550,0,42,"Alpha-Class Ground: Tarantula"));
+		baseEnemies.add(new Player(8050,1500,570,600,0,42,"Alpha-Class Aerial: Hornet"));
 	}
 	//private int placeTravel()//prevents compile error messages
 	//{return 0;}
@@ -186,7 +186,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 				System.out.print(path +  "X");
 				path += "X";
 			}
-			Util.passTime(500000000);
+			Util.passTime(250000000);
 			counter++;
 		}
 		while (win != 3 && counter<=len);
@@ -211,11 +211,11 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 			case 1: //inn; cost goes up with every level up
 				if(player.getPlayerClass().equalsIgnoreCase("Entrepreneur"))
 				{
-					cost = (int)((10*Math.pow(2,player.getLvl()/6)+5)*.9);
+					cost = (int)((8*Math.pow(2,player.getLvl()/6))*.9);
 				}
 				else
 				{
-					cost = (int)((10*Math.pow(2,player.getLvl()/6)+5));
+					cost = (int)((8*Math.pow(2,player.getLvl()/6)));
 				}
 				System.out.println("The Inn will replenish all your HP and EP but costs money.");
 				System.out.println("Current cost: " + cost + "\t\tYour Money: " + player.getMoney());
@@ -296,13 +296,13 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 		switch(choice)
 		{
 			case 1:
-				travelResult = placeTravel(50,15,desertEnemies.get(0),75,desertEnemies.get(1),25,desertEnemies.get(2),0,desertEnemies.get(2),0);
+				travelResult = placeTravel(50,25,desertEnemies.get(0),75,desertEnemies.get(1),25,desertEnemies.get(2),0,desertEnemies.get(2),0);
 				if(travelResult == 3)
 					town();
 				else
 				{
 					Story.desertPathOne();
-					travelResult = placeTravel(50,15,desertEnemies.get(0),75,desertEnemies.get(1),25,desertEnemies.get(2),0,desertEnemies.get(2),0);
+					travelResult = placeTravel(50,25,desertEnemies.get(0),75,desertEnemies.get(1),25,desertEnemies.get(2),0,desertEnemies.get(2),0);
 					if(travelResult == 3)
 						town();
 					else
@@ -310,7 +310,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 				}
 				break;
 			case 2: //boss route
-				travelResult = placeTravel(40,20,desertEnemies.get(0),40,desertEnemies.get(1),35,desertEnemies.get(2),25,desertEnemies.get(2),0);
+				travelResult = placeTravel(40,30,desertEnemies.get(0),40,desertEnemies.get(1),35,desertEnemies.get(2),25,desertEnemies.get(2),0);
 				if(travelResult == 3)
 					town();
 				else
@@ -328,7 +328,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 						else if(bossResult == 2)
 						{
 							Story.desertBossFlee();
-							travelResult = placeTravel(40,20,desertEnemies.get(0),40,desertEnemies.get(1),35,desertEnemies.get(2),25,desertEnemies.get(2),0);
+							travelResult = placeTravel(40,30,desertEnemies.get(0),40,desertEnemies.get(1),35,desertEnemies.get(2),25,desertEnemies.get(2),0);
 							if(travelResult == 3)
 								town();
 							else
@@ -348,13 +348,13 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 				}
 				break;
 			case 3:
-				travelResult = placeTravel(35,25,desertEnemies.get(0),50,desertEnemies.get(1),35,desertEnemies.get(2),15,desertEnemies.get(2),0);
+				travelResult = placeTravel(35,35,desertEnemies.get(0),50,desertEnemies.get(1),35,desertEnemies.get(2),15,desertEnemies.get(2),0);
 				if(travelResult == 3)
 					town();
 				else
 				{
 					Story.desertPathThree();
-					travelResult = placeTravel(35,25,desertEnemies.get(0),50,desertEnemies.get(1),35,desertEnemies.get(2),15,desertEnemies.get(2),0);
+					travelResult = placeTravel(35,35,desertEnemies.get(0),50,desertEnemies.get(1),35,desertEnemies.get(2),15,desertEnemies.get(2),0);
 					if(travelResult == 3)
 						town();
 					else
@@ -379,13 +379,13 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 		switch(choice)
 		{
 			case 1: //Plains Path
-				travelResult = placeTravel(30,15,plainEnemies.get(0),75,plainEnemies.get(1),25,plainEnemies.get(2),0,plainEnemies.get(3),0);
+				travelResult = placeTravel(30,25,plainEnemies.get(0),75,plainEnemies.get(1),25,plainEnemies.get(2),0,plainEnemies.get(3),0);
 				if(travelResult == 3)
 					town();
 				else
 				{
 					Story.plainsPlainsPath();
-					travelResult = placeTravel(30,15,plainEnemies.get(0),75,plainEnemies.get(1),25,plainEnemies.get(2),0,plainEnemies.get(3),0);
+					travelResult = placeTravel(30,25,plainEnemies.get(0),75,plainEnemies.get(1),25,plainEnemies.get(2),0,plainEnemies.get(3),0);
 					if(travelResult == 3)
 						town();
 					else
@@ -393,13 +393,13 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 				}
 				break;
 			case 2: //Grasslands Path
-				travelResult = placeTravel(35,20,plainEnemies.get(0),35,plainEnemies.get(1),55,plainEnemies.get(2),10,plainEnemies.get(3),0);
+				travelResult = placeTravel(35,30,plainEnemies.get(0),35,plainEnemies.get(1),55,plainEnemies.get(2),10,plainEnemies.get(3),0);
 				if(travelResult == 3)
 					town();
 				else
 				{
 					Story.plainsGrasslandsPath();
-					travelResult = placeTravel(35,10,plainEnemies.get(0),35,plainEnemies.get(1),55,plainEnemies.get(2),10,plainEnemies.get(3),0);
+					travelResult = placeTravel(35,30,plainEnemies.get(0),35,plainEnemies.get(1),55,plainEnemies.get(2),10,plainEnemies.get(3),0);
 					if(travelResult == 3)
 						town();
 					else
@@ -407,7 +407,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 				}
 				break;
 			case 3: //Hill path, boss
-				travelResult = placeTravel(30,10,plainEnemies.get(0),0,plainEnemies.get(1),45,plainEnemies.get(2),10,plainEnemies.get(3),45);
+				travelResult = placeTravel(30,20,plainEnemies.get(0),0,plainEnemies.get(1),45,plainEnemies.get(2),10,plainEnemies.get(3),45);
 				if(travelResult == 3)
 					town();
 				else
@@ -425,7 +425,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 						else if(bossResult == 2)
 						{
 							Story.plainsBossFlee();
-							travelResult = placeTravel(30,10,plainEnemies.get(0),0,plainEnemies.get(1),45,plainEnemies.get(2),10,plainEnemies.get(3),45);
+							travelResult = placeTravel(30,20,plainEnemies.get(0),0,plainEnemies.get(1),45,plainEnemies.get(2),10,plainEnemies.get(3),45);
 							if(travelResult == 3)
 								town();
 							else
@@ -462,13 +462,13 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 		switch(choice)
 		{
 			case 1: //Path 1
-				travelResult = placeTravel(22,10,forestEnemies.get(0),50,forestEnemies.get(1),38,forestEnemies.get(2),12,forestEnemies.get(2),0);
+				travelResult = placeTravel(22,20,forestEnemies.get(0),50,forestEnemies.get(1),38,forestEnemies.get(2),12,forestEnemies.get(2),0);
 				if(travelResult == 3)
 					town();
 				else
 				{
 					Story.forestPathOne();
-					travelResult = placeTravel(22,10,forestEnemies.get(0),50,forestEnemies.get(1),38,forestEnemies.get(2),12,forestEnemies.get(2),0);
+					travelResult = placeTravel(22,20,forestEnemies.get(0),50,forestEnemies.get(1),38,forestEnemies.get(2),12,forestEnemies.get(2),0);
 					if(travelResult == 3)
 						town();
 					else
@@ -476,13 +476,13 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 				}
 				break;
 			case 2: //Path 2
-				travelResult = placeTravel(35,10,forestEnemies.get(0),40,forestEnemies.get(1),48,forestEnemies.get(2),12,forestEnemies.get(2),0);
+				travelResult = placeTravel(35,20,forestEnemies.get(0),40,forestEnemies.get(1),48,forestEnemies.get(2),12,forestEnemies.get(2),0);
 				if(travelResult == 3)
 					town();
 				else
 				{
 					Story.forestPathTwo();
-					travelResult = placeTravel(35,10,forestEnemies.get(0),40,forestEnemies.get(1),48,forestEnemies.get(2),12,forestEnemies.get(2),0);
+					travelResult = placeTravel(35,20,forestEnemies.get(0),40,forestEnemies.get(1),48,forestEnemies.get(2),12,forestEnemies.get(2),0);
 					if(travelResult == 3)
 						town();
 					else
@@ -490,7 +490,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 				}
 				break;
 			case 3: //Path 3, boss route
-				travelResult = placeTravel(30,20,forestEnemies.get(0),20,forestEnemies.get(1),30,forestEnemies.get(2),50,forestEnemies.get(2),0);
+				travelResult = placeTravel(30,30,forestEnemies.get(0),20,forestEnemies.get(1),30,forestEnemies.get(2),50,forestEnemies.get(2),0);
 				if(travelResult == 3)
 					town();
 				else
@@ -508,7 +508,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 						else if(bossResult == 2)
 						{
 							Story.forestBossFlee();
-							travelResult = placeTravel(30,20,forestEnemies.get(0),20,forestEnemies.get(1),30,forestEnemies.get(2),50,forestEnemies.get(2),0);
+							travelResult = placeTravel(30,30,forestEnemies.get(0),20,forestEnemies.get(1),30,forestEnemies.get(2),50,forestEnemies.get(2),0);
 							if(travelResult == 3)
 								town();
 							else
@@ -544,7 +544,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 		switch(choice)
 		{
 			case 1: //Path 1, boss route
-				travelResult = placeTravel(40,10,mountainEnemies.get(0),0,mountainEnemies.get(1),8,mountainEnemies.get(2),42,mountainEnemies.get(3),50);
+				travelResult = placeTravel(40,20,mountainEnemies.get(0),0,mountainEnemies.get(1),8,mountainEnemies.get(2),42,mountainEnemies.get(3),50);
 				if(travelResult == 3)
 					town();
 				else
@@ -562,7 +562,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 						else if(bossResult == 2)
 						{
 							Story.mountainsBossFlee();
-							travelResult = placeTravel(40,10,mountainEnemies.get(0),0,mountainEnemies.get(1),8,mountainEnemies.get(2),42,mountainEnemies.get(3),50);
+							travelResult = placeTravel(40,20,mountainEnemies.get(0),0,mountainEnemies.get(1),8,mountainEnemies.get(2),42,mountainEnemies.get(3),50);
 							if(travelResult == 3)
 								town();
 							else
@@ -581,13 +581,13 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 					}
 				}
 			case 2: //Path 2
-				travelResult = placeTravel(25,10,mountainEnemies.get(0),60,mountainEnemies.get(1),8,mountainEnemies.get(2),32,mountainEnemies.get(3),0);
+				travelResult = placeTravel(25,20,mountainEnemies.get(0),60,mountainEnemies.get(1),8,mountainEnemies.get(2),32,mountainEnemies.get(3),0);
 				if(travelResult == 3)
 					town();
 				else
 				{
 					Story.mountainsPathTwo();
-					travelResult = placeTravel(25,10,mountainEnemies.get(0),60,mountainEnemies.get(1),8,mountainEnemies.get(2),32,mountainEnemies.get(3),0);
+					travelResult = placeTravel(25,20,mountainEnemies.get(0),60,mountainEnemies.get(1),8,mountainEnemies.get(2),32,mountainEnemies.get(3),0);
 					if(travelResult == 3)
 						town();
 					else
@@ -595,13 +595,13 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 				}
 				break;
 			case 3: //Path 3
-				travelResult = placeTravel(30,10,mountainEnemies.get(0),35,mountainEnemies.get(1),8,mountainEnemies.get(2),22,mountainEnemies.get(3),35);
+				travelResult = placeTravel(30,20,mountainEnemies.get(0),35,mountainEnemies.get(1),8,mountainEnemies.get(2),22,mountainEnemies.get(3),35);
 				if(travelResult == 3)
 					town();
 				else
 				{
 					Story.mountainsPathThree();
-					travelResult = placeTravel(30,10,mountainEnemies.get(0),35,mountainEnemies.get(1),8,mountainEnemies.get(2),22,mountainEnemies.get(3),35);
+					travelResult = placeTravel(30,20,mountainEnemies.get(0),35,mountainEnemies.get(1),8,mountainEnemies.get(2),22,mountainEnemies.get(3),35);
 					if(travelResult == 3)
 						town();
 					else
@@ -692,7 +692,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 		switch(choice)
 		{
 			case 1: //Path 1, boss route
-				travelResult = placeTravel(35,15,volcanoEnemies.get(0),35,volcanoEnemies.get(1),50,volcanoEnemies.get(2),15,volcanoEnemies.get(2),0);
+				travelResult = placeTravel(35,25,volcanoEnemies.get(0),35,volcanoEnemies.get(1),50,volcanoEnemies.get(2),15,volcanoEnemies.get(2),0);
 				if(travelResult == 3)
 					village();
 				else
@@ -710,7 +710,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 						else if(bossResult == 2)
 						{
 							Story.volcanoBossFlee();
-							travelResult = placeTravel(35,15,volcanoEnemies.get(0),35,volcanoEnemies.get(1),50,volcanoEnemies.get(2),15,volcanoEnemies.get(2),0);
+							travelResult = placeTravel(35,25,volcanoEnemies.get(0),35,volcanoEnemies.get(1),50,volcanoEnemies.get(2),15,volcanoEnemies.get(2),0);
 							if(travelResult == 3)
 								village();
 							else
@@ -730,13 +730,13 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 				}
 				break;
 			case 2: //Path 2
-				travelResult = placeTravel(25,15,volcanoEnemies.get(0),15,volcanoEnemies.get(1),10,volcanoEnemies.get(2),75,volcanoEnemies.get(2),0);
+				travelResult = placeTravel(25,25,volcanoEnemies.get(0),15,volcanoEnemies.get(1),10,volcanoEnemies.get(2),75,volcanoEnemies.get(2),0);
 				if(travelResult == 3)
 					village();
 				else
 				{
 					Story.volcanoPathTwo(); //It's all magma! (mention in the story?)
-					travelResult = placeTravel(25,15,volcanoEnemies.get(0),15,volcanoEnemies.get(1),10,volcanoEnemies.get(2),75,volcanoEnemies.get(2),0);
+					travelResult = placeTravel(25,25,volcanoEnemies.get(0),15,volcanoEnemies.get(1),10,volcanoEnemies.get(2),75,volcanoEnemies.get(2),0);
 					if(travelResult == 3)
 						village();
 					else
@@ -744,13 +744,13 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 				}
 				break;
 			case 3: //Path 3
-				travelResult = placeTravel(32,20,volcanoEnemies.get(0),35,volcanoEnemies.get(1),30,volcanoEnemies.get(2),35,volcanoEnemies.get(2),0);
+				travelResult = placeTravel(32,30,volcanoEnemies.get(0),35,volcanoEnemies.get(1),30,volcanoEnemies.get(2),35,volcanoEnemies.get(2),0);
 				if(travelResult == 3)
 					village();
 				else
 				{
 					Story.volcanoPathThree();
-					travelResult = placeTravel(32,20,volcanoEnemies.get(0),35,volcanoEnemies.get(1),30,volcanoEnemies.get(2),35,volcanoEnemies.get(2),0);
+					travelResult = placeTravel(32,30,volcanoEnemies.get(0),35,volcanoEnemies.get(1),30,volcanoEnemies.get(2),35,volcanoEnemies.get(2),0);
 					if(travelResult == 3)
 						village();
 					else
@@ -775,13 +775,13 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 		switch(choice)
 		{
 			case 1: //Path 1
-				travelResult = placeTravel(40,25,cavernEnemies.get(0),0,cavernEnemies.get(1),0,cavernEnemies.get(2),100,cavernEnemies.get(2),0);
+				travelResult = placeTravel(40,35,cavernEnemies.get(0),0,cavernEnemies.get(1),0,cavernEnemies.get(2),100,cavernEnemies.get(2),0);
 				if(travelResult == 3)
 					village();
 				else
 				{
 					Story.cavernsPathOne();
-					travelResult = placeTravel(40,25,cavernEnemies.get(0),0,cavernEnemies.get(1),0,cavernEnemies.get(2),100,cavernEnemies.get(2),0);
+					travelResult = placeTravel(40,35,cavernEnemies.get(0),0,cavernEnemies.get(1),0,cavernEnemies.get(2),100,cavernEnemies.get(2),0);
 					if(travelResult == 3)
 						village();
 					else
@@ -789,7 +789,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 				}
 				break;
 			case 2: //Path 2, boss route
-				travelResult = placeTravel(23,15,cavernEnemies.get(0),30,cavernEnemies.get(1),65,cavernEnemies.get(2),5,cavernEnemies.get(2),0);
+				travelResult = placeTravel(23,25,cavernEnemies.get(0),30,cavernEnemies.get(1),65,cavernEnemies.get(2),5,cavernEnemies.get(2),0);
 				if(travelResult == 3)
 					village();
 				else
@@ -807,7 +807,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 						else if(bossResult == 2)
 						{
 							Story.cavernsBossFlee();
-							travelResult = placeTravel(23,15,cavernEnemies.get(0),30,cavernEnemies.get(1),65,cavernEnemies.get(2),5,cavernEnemies.get(2),0);
+							travelResult = placeTravel(23,25,cavernEnemies.get(0),30,cavernEnemies.get(1),65,cavernEnemies.get(2),5,cavernEnemies.get(2),0);
 							if(travelResult == 3)
 								village();
 							else
@@ -827,13 +827,13 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 				}
 				break;
 			case 3: //Path 3
-				travelResult = placeTravel(40,10,cavernEnemies.get(0),40,cavernEnemies.get(1),55,cavernEnemies.get(2),5,cavernEnemies.get(2),0);
+				travelResult = placeTravel(40,20,cavernEnemies.get(0),40,cavernEnemies.get(1),55,cavernEnemies.get(2),5,cavernEnemies.get(2),0);
 				if(travelResult == 3)
 					village();
 				else
 				{
 					Story.cavernsPathThree();
-					travelResult = placeTravel(40,10,cavernEnemies.get(0),40,cavernEnemies.get(1),55,cavernEnemies.get(2),5,cavernEnemies.get(2),0);
+					travelResult = placeTravel(40,20,cavernEnemies.get(0),40,cavernEnemies.get(1),55,cavernEnemies.get(2),5,cavernEnemies.get(2),0);
 					if(travelResult == 3)
 						village();
 					else
@@ -867,7 +867,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 				caverns();
 				break;
 			case 2: //Factory path
-				travelResult = placeTravel(35,10,baseEnemies.get(0),40,baseEnemies.get(1),35,baseEnemies.get(2),25,baseEnemies.get(3),0);
+				travelResult = placeTravel(35,20,baseEnemies.get(0),40,baseEnemies.get(1),35,baseEnemies.get(2),25,baseEnemies.get(3),0);
 				if(travelResult == 3)
 					village();
 				else
@@ -885,7 +885,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 						else if(bossResult == 2)
 						{
 							Story.baseFactoryBossFlee();
-							travelResult = placeTravel(35,10,baseEnemies.get(0),40,baseEnemies.get(1),35,baseEnemies.get(2),25,baseEnemies.get(3),0);
+							travelResult = placeTravel(35,20,baseEnemies.get(0),40,baseEnemies.get(1),35,baseEnemies.get(2),25,baseEnemies.get(3),0);
 							if(travelResult == 3)
 								village();
 							else
@@ -900,7 +900,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 					else
 					{
 						Story.baseFactoryBossBeat();
-						travelResult = placeTravel(35,10,baseEnemies.get(0),40,baseEnemies.get(1),35,baseEnemies.get(2),25,baseEnemies.get(3),0);
+						travelResult = placeTravel(35,20,baseEnemies.get(0),40,baseEnemies.get(1),35,baseEnemies.get(2),25,baseEnemies.get(3),0);
 						if(travelResult == 3)
 							village();
 						else
@@ -909,7 +909,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 				}
 				break;
 			case 3: //Urban path
-				travelResult = placeTravel(50,10,baseEnemies.get(3),65,baseEnemies.get(1),20,baseEnemies.get(4),15,baseEnemies.get(3),0);
+				travelResult = placeTravel(50,20,baseEnemies.get(3),65,baseEnemies.get(1),20,baseEnemies.get(4),15,baseEnemies.get(3),0);
 				if(travelResult == 3)
 					village();
 				else
@@ -927,7 +927,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 						else if(bossResult == 2)
 						{
 							Story.baseUrbanBossFlee();
-							travelResult = placeTravel(50,10,baseEnemies.get(3),65,baseEnemies.get(1),20,baseEnemies.get(4),15,baseEnemies.get(3),0);
+							travelResult = placeTravel(50,20,baseEnemies.get(3),65,baseEnemies.get(1),20,baseEnemies.get(4),15,baseEnemies.get(3),0);
 							if(travelResult == 3)
 								village();
 							else
@@ -942,7 +942,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 					else
 					{
 						Story.baseUrbanBossBeat();
-						travelResult = placeTravel(50,10,baseEnemies.get(3),65,baseEnemies.get(1),20,baseEnemies.get(4),15,baseEnemies.get(3),0);
+						travelResult = placeTravel(50,20,baseEnemies.get(3),65,baseEnemies.get(1),20,baseEnemies.get(4),15,baseEnemies.get(3),0);
 						if(travelResult == 3)
 							village();
 						else
@@ -951,7 +951,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 				}
 				break;
 			case 4: //lab path
-				travelResult = placeTravel(15,30,baseEnemies.get(5),60,baseEnemies.get(6),7,baseEnemies.get(7),33,baseEnemies.get(3),0);
+				travelResult = placeTravel(15,40,baseEnemies.get(5),60,baseEnemies.get(6),7,baseEnemies.get(7),33,baseEnemies.get(3),0);
 				if(travelResult == 3)
 					village();
 				else
@@ -969,7 +969,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 						else if(bossResult == 2)
 						{
 							Story.baseLabBossFlee();
-							travelResult = placeTravel(15,30,baseEnemies.get(5),60,baseEnemies.get(6),7,baseEnemies.get(7),33,baseEnemies.get(3),0);
+							travelResult = placeTravel(15,40,baseEnemies.get(5),60,baseEnemies.get(6),7,baseEnemies.get(7),33,baseEnemies.get(3),0);
 							if(travelResult == 3)
 								village();
 							else
@@ -984,7 +984,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 					else
 					{
 						Story.baseLabBossBeat();
-						travelResult = placeTravel(15,30,baseEnemies.get(5),60,baseEnemies.get(6),7,baseEnemies.get(7),33,baseEnemies.get(3),0);
+						travelResult = placeTravel(15,40,baseEnemies.get(5),60,baseEnemies.get(6),7,baseEnemies.get(7),33,baseEnemies.get(3),0);
 						if(travelResult == 3)
 							village();
 						else
@@ -993,7 +993,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 				}
 				break;
 			case 5: //military path
-				travelResult = placeTravel(25,25,baseEnemies.get(5),30,baseEnemies.get(9),35,baseEnemies.get(8),35,baseEnemies.get(3),0);
+				travelResult = placeTravel(25,35,baseEnemies.get(5),30,baseEnemies.get(9),35,baseEnemies.get(8),35,baseEnemies.get(3),0);
 				if(travelResult == 3)
 					village();
 				else
@@ -1011,7 +1011,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 						else if(bossResult == 2)
 						{
 							Story.baseMilitaryBossFlee();
-							travelResult = placeTravel(25,25,baseEnemies.get(5),30,baseEnemies.get(9),35,baseEnemies.get(8),35,baseEnemies.get(3),0);
+							travelResult = placeTravel(25,35,baseEnemies.get(5),30,baseEnemies.get(9),35,baseEnemies.get(8),35,baseEnemies.get(3),0);
 							if(travelResult == 3)
 								village();
 							else
@@ -1026,7 +1026,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 					else
 					{
 						Story.baseMilitaryBossBeat();
-						travelResult = placeTravel(25,25,baseEnemies.get(5),30,baseEnemies.get(9),35,baseEnemies.get(8),35,baseEnemies.get(3),0);
+						travelResult = placeTravel(25,35,baseEnemies.get(5),30,baseEnemies.get(9),35,baseEnemies.get(8),35,baseEnemies.get(3),0);
 						if(travelResult == 3)
 							village();
 						else
@@ -1035,7 +1035,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 				}
 				break;
 			case 6: //Malus boss (tell player that there is no going back once they start fighting malus - they either beat him, or lose)
-				travelResult = placeTravel(50,20,baseEnemies.get(5),25,baseEnemies.get(9),25,baseEnemies.get(8),25,baseEnemies.get(1),25);
+				travelResult = placeTravel(50,30,baseEnemies.get(5),25,baseEnemies.get(9),25,baseEnemies.get(8),25,baseEnemies.get(1),25);
 				if(travelResult == 3)
 					village();
 				else
@@ -1065,7 +1065,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 						else if(bossResult == 2)
 						{
 							Story.malusFlee();
-							travelResult = placeTravel(50,20,baseEnemies.get(5),25,baseEnemies.get(9),25,baseEnemies.get(8),25,baseEnemies.get(1),25);
+							travelResult = placeTravel(50,30,baseEnemies.get(5),25,baseEnemies.get(9),25,baseEnemies.get(8),25,baseEnemies.get(1),25);
 							if(travelResult == 3)
 								village();
 							else

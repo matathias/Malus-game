@@ -97,27 +97,27 @@ public class Setup
 	 		//(HP,Damage,EP,Exp,Money,PlayerName,PlayerClass,Weapon)
 	 		case 1:
 	 			System.out.println("You choose the Commando Class!"); //80HP, 30EP, 5 Damage
-	 			player = new Player(80,5,30,0,10,"","Commando",new Weapon("Slingshot",0,0,0,0));
+	 			player = new Player(Player.HPMULT*80,Player.DAMMULT*5,Player.EPMULT*30,0,100,"","Commando",new Weapon("Slingshot",0,0,0,0));
 	 			break;
 	 		case 2:
 	 			System.out.println("You choose the Berserker Class!"); //40HP, 20EP, 10 Damage
-	 			player = new Player(40,10,20,0,10,"","Berserker",new Weapon("Wooden Sword",0,0,0,0));
+	 			player = new Player(Player.HPMULT*40,Player.DAMMULT*10,Player.EPMULT*20,0,100,"","Berserker",new Weapon("Wooden Sword",0,0,0,0));
 	 			break;
 	 		case 3:
-	 			System.out.println("You choose the Sentinel Class!"); //160HP, 20EP, 2.5 Damage
-	 			player = new Player(160,2.5,20,0,10,"","Sentinel",new Weapon("Wood Board",0,0,0,0));
+	 			System.out.println("You choose the Sentinel Class!"); //160HP, 20EP, 3.5 Damage
+	 			player = new Player(Player.HPMULT*160,Player.DAMMULT*3.5,Player.EPMULT*20,0,100,"","Sentinel",new Weapon("Wood Board",0,0,0,0));
 	 			break;
 	 		case 4:
-	 			System.out.println("You choose the Ravager Class!"); //50HP, 100EP, 8 Damage
-	 			player = new Player(50,8,100,0,10,"","Ravager",new Weapon("Worn-down Tome",0,0,0,0));
+	 			System.out.println("You choose the Ravager Class!"); //50HP, 90EP, 8 Damage
+	 			player = new Player(Player.HPMULT*50,Player.DAMMULT*8,Player.EPMULT*90,0,100,"","Ravager",new Weapon("Worn-down Tome",0,0,0,0));
 	 			break;
 	 		case 5:
-	 			System.out.println("You choose the Reliever Class!"); //130HP, 80EP, 3 Damage
-	 			player = new Player(130,3,80,0,10,"","Reliever",new Weapon("Wooden Stave",0,0,0,0));
+	 			System.out.println("You choose the Reliever Class!"); //130HP, 75EP, 5 Damage
+	 			player = new Player(Player.HPMULT*130,Player.DAMMULT*5,Player.EPMULT*75,0,100,"","Reliever",new Weapon("Wooden Stave",0,0,0,0));
 	 			break;
 	 		case 6:
-	 			System.out.println("You choose the Entrepreneur Class!");//60HP, 20EP, 3 Damage
-	 			player = new Player(60,3,20,0,100,"","Entrepreneur",new Weapon("Playing Card",0,0,0,0));
+	 			System.out.println("You choose the Entrepreneur Class!");//60HP, 20EP, 3.5 Damage
+	 			player = new Player(Player.HPMULT*60,Player.DAMMULT*3.5,Player.EPMULT*20,0,100,"","Entrepreneur",new Weapon("Playing Card",0,0,0,0));
 	 			break;
 	 	}
 	 	Util.pause();
