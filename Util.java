@@ -186,6 +186,9 @@ public class Util
 			out.write("#");
 			out.newLine();
 			
+			out.write(counter);
+			out.newLine();
+			
 			
 			//Close the output stream
 			out.close();
@@ -292,6 +295,13 @@ public class Util
 			
 			// Read in the story data string
 			inStory = in.readLine();
+			
+			// Pass the next "#" line
+			in.readLine();
+			
+			// Read in the counter
+			String count = in.readLine();
+			saveCounter = Integer.parseInt(count) + 1;
 			
 			//close the file
 			in.close();

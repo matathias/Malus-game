@@ -196,7 +196,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 				p.setMoney(p.getMoney()/2); //divides money by two
 				p.setEXP(p.getEXP()/2); //divides Experience by two
 				p.setHP(p.getMaxHealth()/20);
-				System.out.println("Money: " + (int)p.getMoney() + "\tExp: " + (int)p.getEXP());
+				System.out.println("Money: " + (int)p.getMoney() + "\tEXP: " + (int)p.getEXP());
 				System.out.println("You will be returned to town.");
 				Util.lineBreak();
 				Util.pause();
@@ -217,10 +217,10 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 		nameRow += pl.getPlayerName() + " the " + pl.getPlayerClass() + spaces + en.getPlayerName() + " |";
 		System.out.println(nameRow);
 		
-		String plHP = String.valueOf((int)pl.getHP());
-		String plMaxHP = String.valueOf((int)pl.getMaxHealth());
-		String enHP = String.valueOf((int)en.getHP());
-		String enMaxHP = String.valueOf((int)en.getMaxHealth());
+		String plHP = String.valueOf((int)Math.round(pl.getHP()));
+		String plMaxHP = String.valueOf((int)Math.round(pl.getMaxHealth()));
+		String enHP = String.valueOf((int)Math.round(en.getHP()));
+		String enMaxHP = String.valueOf((int)Math.round(en.getMaxHealth()));
 		numSpace = 66 - plHP.length() - plMaxHP.length() - enHP.length() - enMaxHP.length();
 		spaces = "";
 		for(int i = 1; i <= numSpace; i++)
@@ -228,8 +228,8 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 		String hpRow = "| HP: " + plHP + "/" + plMaxHP + spaces + "HP: " + enHP + "/" + enMaxHP + " |";
 		System.out.println(hpRow);
 		
-		String plEP = String.valueOf((int)pl.getEP());
-		String plMaxEP = String.valueOf((int)pl.getMaxEP());
+		String plEP = String.valueOf((int)Math.round(pl.getEP()));
+		String plMaxEP = String.valueOf((int)Math.round(pl.getMaxEP()));
 		numSpace = 72 - plEP.length() - plMaxEP.length();
 		spaces = "";
 		for(int i = 1; i <= numSpace; i++)
@@ -244,7 +244,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 		String weapRow = "| Weapon: " + pl.getWeaponName() + spaces + "|";
 		System.out.println(weapRow);
 		
-		String plDam = String.valueOf((int)pl.getTotalRawDamage());
+		String plDam = String.valueOf((int)Math.round(pl.getTotalRawDamage()));
 		numSpace = 62 - plDam.length();
 		spaces = "";
 		for(int i = 1; i <= numSpace; i++)

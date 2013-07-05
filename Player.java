@@ -575,11 +575,18 @@ public class Player
 				newDam = DAMMULT*3.5*(Math.pow(2,getLvl()/5)) + (getLvl()*6) - 3; //Damage: 3.5*(2^(x/5)) + (x*6) - 3
 			}
 			
+			setMaxHealth(newMaxHP);
+			setMaxEP(newMaxEP);
+			attackDamage = newDam;
+			
+			newMaxHP = getMaxHealth();
+			newMaxEP = getMaxEP();
+			
 			System.out.println("LEVEL UP!!!");
 			System.out.println("Level: " + output.format(curLvl) + " ==> " + output.format(newLvl));
 			System.out.println("Max HP: " + output.format(curMaxHP) + " ==> " + output.format(newMaxHP));
 			System.out.println("Max EP: " + output.format(curMaxEP) + " ==> " + output.format(newMaxEP));
-			System.out.println("Base Damage: " + output.format(curDam) + " ==> " + output.format(curDam));
+			System.out.println("Base Damage: " + output.format(curDam) + " ==> " + output.format(newDam));
 			if (playerClass.equalsIgnoreCase("Entrepreneur"))
 			{
 				Random rand = new Random();
@@ -675,9 +682,9 @@ public class Player
 		nameRow += getPlayerName() + " the " + getPlayerClass() + spaces + "Weapon: " + getWeaponName() + " |";
 		System.out.println(nameRow);
 		
-		String pHP = String.valueOf((int)getHP());
-		String pMaxHP = String.valueOf((int)getMaxHealth());
-		String wHP = String.valueOf((int)getWeaponHP());
+		String pHP = String.valueOf((int)Math.round(getHP()));
+		String pMaxHP = String.valueOf((int)Math.round(getMaxHealth()));
+		String wHP = String.valueOf((int)Math.round(getWeaponHP()));
 		numSpace = 52 - pHP.length() - pMaxHP.length() - wHP.length();
 		spaces = "";
 		for(int i = 1; i <=numSpace; i++)
@@ -685,9 +692,9 @@ public class Player
 		String hpRow = "| HP: " + pHP + "/" + pMaxHP + spaces + "(Weapon HP Bonus: " + wHP + ") |";
 		System.out.println(hpRow);
 		
-		String pEP = String.valueOf((int)getEP());
-		String pMaxEP = String.valueOf((int)getMaxEP());
-		String wEP = String.valueOf((int)getWeaponEP());
+		String pEP = String.valueOf((int)Math.round(getEP()));
+		String pMaxEP = String.valueOf((int)Math.round(getMaxEP()));
+		String wEP = String.valueOf((int)Math.round(getWeaponEP()));
 		numSpace = 52 - pEP.length() - pMaxEP.length() - wEP.length();
 		spaces = "";
 		for(int i = 1; i <=numSpace; i++)
@@ -695,8 +702,8 @@ public class Player
 		String epRow = "| EP: " + pEP + "/" + pMaxEP + spaces + "(Weapon EP Bonus: " + wEP + ") |";
 		System.out.println(epRow);
 		
-		String pDam = String.valueOf((int)getTotalRawDamage());
-		String wDam = String.valueOf((int)getWeaponDamage());
+		String pDam = String.valueOf((int)Math.round(getTotalRawDamage()));
+		String wDam = String.valueOf((int)Math.round(getWeaponDamage()));
 		numSpace = 39 - pDam.length() - wDam.length();
 		spaces = "";
 		for(int i = 1; i <=numSpace; i++)
@@ -704,9 +711,9 @@ public class Player
 		String damRow = "| Attack Power: " + pDam + spaces + "(Weapon Damage Bonus: " + wDam + ") |";
 		System.out.println(damRow);
 		
-		String pLvl = String.valueOf((int)getLvl());
-		String pXP = String.valueOf((int)getEXP());
-		String pXPtoLvl = String.valueOf((int)getEXPToNextLvl(false));
+		String pLvl = String.valueOf((int)Math.round(getLvl()));
+		String pXP = String.valueOf((int)Math.round(getEXP()));
+		String pXPtoLvl = String.valueOf((int)Math.round(getEXPToNextLvl(false)));
 		numSpace = 59 - pLvl.length() - pXP.length() - pXPtoLvl.length();
 		spaces = "";
 		for(int i = 1; i <=numSpace; i++)
@@ -714,7 +721,7 @@ public class Player
 		String lvlRow = "| Level: " + pLvl + "     EXP: " + pXP + "/" + pXPtoLvl + spaces + "|";
 		System.out.println(lvlRow);
 		
-		String pMoney = String.valueOf((int)getMoney());
+		String pMoney = String.valueOf((int)Math.round(getMoney()));
 		numSpace = 70 - pMoney.length();
 		spaces = "";
 		for(int i = 1; i <=numSpace; i++)

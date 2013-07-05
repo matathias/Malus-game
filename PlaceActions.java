@@ -216,11 +216,11 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 			case 1: //inn; cost goes up with every level up
 				if(player.getPlayerClass().equalsIgnoreCase("Entrepreneur"))
 				{
-					cost = (int)((8*Math.pow(2,player.getLvl()/6))*.9);
+					cost = (int)((5*Math.pow(1.5,player.getLvl()/4))*.9);
 				}
 				else
 				{
-					cost = (int)((8*Math.pow(2,player.getLvl()/6)));
+					cost = (int)((5*Math.pow(1.5,player.getLvl()/4)));
 				}
 				System.out.println("The Inn will replenish all your HP and EP but costs money.");
 				System.out.println("Current cost: " + cost + "\t\tYour Money: " + player.getMoney());
