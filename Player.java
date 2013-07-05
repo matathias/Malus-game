@@ -7,10 +7,13 @@ public class Player
 	public static final double HPMULT = 1.5;
 	public static final double EPMULT = 1.5;
 	public static final double DAMMULT = 1.5;
+	
 	Scanner input = new Scanner(System.in);
 	DecimalFormat output = new DecimalFormat("0");
 	private double maxHealth;
 	private double maxHealthWeapon;
+	private double extraHealth;
+	private double extraExtra;
 	private double healthPoints;
 	private double attackDamage;
 	private double attackMod;
@@ -47,6 +50,8 @@ public class Player
 		healing = new ArrayList<Healing>();
 		level = 1;
 		attackMod = 1;
+		extraHealth = 0;
+		extraExtra = 0;
 	}
 
 	public Player (double hP, double aD, double exP, double m, double eP, double lvl, String pN) //This is the enemy constructor. The EXP, money, and EP values are actually the EXP, money, and EP that will be rewarded to the human player upon defeat of the enemy.
@@ -80,8 +85,8 @@ public class Player
 	}
 	public void addHP (double hP)
 	{
-		if ((healthPoints + hP)>maxHealthWeapon)
-			healthPoints = maxHealthWeapon;
+		if ((healthPoints + hP)>getMaxHealth())
+			healthPoints = getMaxHealth();
 		else
 			healthPoints += hP;
 	}
@@ -96,27 +101,19 @@ public class Player
 	public void setMaxHealth(double hP)
 	{
 		maxHealth = hP;
-		maxHealthWeapon = maxHealth + weapon.getHP();
-		if(healthPoints>maxHealthWeapon)
-		{
-			healthPoints = maxHealthWeapon;
-		}
+		recalcMaxHealth();
 	}
 	public void addMaxHealth(double hP)
 	{
-		maxHealth += hP;
-		maxHealthWeapon = maxHealth + weapon.getHP();
-		if(healthPoints>maxHealthWeapon)
-		{
-			healthPoints = maxHealthWeapon;
-		}
+		extraHealth += hP;
+		recalcMaxHealth();
 	}
 	public void recalcMaxHealth()
 	{
-		maxHealthWeapon = maxHealth + weapon.getHP();
-		if(healthPoints>maxHealthWeapon)
+		maxHealthWeapon = maxHealth + weapon.getHP() + extraHealth;
+		if(healthPoints>getMaxHealth())
 		{
-			healthPoints = maxHealthWeapon;
+			healthPoints = getMaxHealth();
 		}
 	}
 	public double getMaxHealth()
@@ -135,17 +132,17 @@ public class Player
 	}
 	public void addEP (double eP)
 	{
-		if ((extraPoints + eP)>maxExtraWeapon)
-			extraPoints = maxExtraWeapon;
+		if ((extraPoints + eP)>getMaxEP())
+			extraPoints = getMaxEP();
 		else
 			extraPoints += eP;
 	}
 	public void setEP (double eP)
 	{
-		if(eP < maxExtraWeapon)
+		if(eP < getMaxEP())
 			extraPoints = eP;
 		else
-			extraPoints = maxExtraWeapon;
+			extraPoints = getMaxEP();
 	}
 	public double getEP()
 	{
@@ -154,27 +151,19 @@ public class Player
 	public void setMaxEP(double eP)
 	{
 		maxExtra = eP;
-		maxExtraWeapon = maxExtra + weapon.getEP();
-		if(extraPoints>maxExtraWeapon)
-		{
-			extraPoints = maxExtraWeapon;
-		}
+		recalcMaxEP();
 	}
 	public void addMaxEP(double eP)
 	{
-		maxExtra += eP;
-		maxExtraWeapon = maxExtra + weapon.getEP();
-		if(extraPoints>maxExtraWeapon)
-		{
-			extraPoints = maxExtraWeapon;
-		}
+		extraExtra += eP;
+		recalcMaxEP();
 	}
 	public void recalcMaxEP()
 	{
-		maxExtraWeapon = maxExtra + weapon.getEP();
-		if(extraPoints>maxExtraWeapon)
+		maxExtraWeapon = maxExtra + weapon.getEP() + extraExtra;
+		if(extraPoints>getMaxEP())
 		{
-			extraPoints = maxExtraWeapon;
+			extraPoints = getMaxEP();
 		}
 	}
 	public double getMaxEP()
@@ -191,20 +180,13 @@ public class Player
 	public void useHealing(int index)
 	{
 		System.out.println("You used " + healing.get(index).getHealName() + " and healed " + healing.get(index).getHealedHP() + "HP!");
-		addHP(healing.get(index).getHealedHP());
-		subtractEP(healing.get(index).getUsedEP());
+		addHP(getHealingHP(index));
+		subtractEP(getHealingEP(index));
 	}
 	public int numberHealing()
 	{
 		return healing.size();
 	}
-//	public void showHealing()
-//	{
-//		for(int a = 0; a<healing.size(); a++)
-//		{
-//			System.out.println((a+1) + ". " + healing.get(a) + "\n");
-//		}
-//	}
 	public void showHealing()
 	{
 		String topHeader = "+----------------------------------Healing-------------------------------------+";
@@ -217,9 +199,9 @@ public class Player
 		for(a = 0; a < healing.size(); a++)
 		{
 			String hN, hHP, hEP;
-			hN = healing.get(a).getHealName();
-			hHP = String.valueOf((int)healing.get(a).getHealedHP());
-			hEP = String.valueOf((int)healing.get(a).getUsedEP());
+			hN = getHealingName(a);
+			hHP = String.valueOf((int)getHealingHP(a));
+			hEP = String.valueOf((int)getHealingEP(a));
 			String number = String.valueOf(a+1);
 			String row1 = "";
 			int numSpaces = 0;
@@ -263,6 +245,10 @@ public class Player
 	{
 		return healing.get(index).getUsedEP();
 	}
+	public double getHealingHP(int index)
+	{
+		return healing.get(index).getHealedHP();
+	}
 
 	//Attack Damage----------------------------------------------------------------------------------------------------
 
@@ -290,13 +276,6 @@ public class Player
 	{
 		return specialAttack.size();
 	}
-	/*public void showSpecialAttacks()
-	{
-		for(int a = 0; a<specialAttack.size(); a++)
-		{
-			System.out.println((a+1) + ". " + specialAttack.get(a) + "\n");
-		}
-	}*/
 	public void showSpecialAttacks()
 	{
 		String topHeader = "+------------------------------Special Attacks---------------------------------+";
@@ -309,11 +288,11 @@ public class Player
 		for(a = 0; a < specialAttack.size(); a++)
 		{
 			String saN, saDam, saCHC, saMinLvl, saEP, saCB;
-			saN = specialAttack.get(a).getAttackName();
+			saN = getSpecialAttackName(a);
 			saDam = String.valueOf((int)specialAttack.get(a).getAttackDamage());
 			saCHC = String.valueOf((int)specialAttack.get(a).getCritChance());
 			saMinLvl = String.valueOf((int)specialAttack.get(a).getMinLevel());
-			saEP = String.valueOf((int)specialAttack.get(a).getExtraPoints());
+			saEP = String.valueOf((int)getSpecialAttackEP(a));
 			saCB = String.valueOf(specialAttack.get(a).getCritBonus());
 			String number = String.valueOf(a+1);
 			String row1 = "";
@@ -375,6 +354,22 @@ public class Player
 	{
 		return specialAttack.get(index).getExtraPoints();
 	}
+	public double getSpecialAttackDam(int index)
+	{
+		return specialAttack.get(index).getAttackDamage();
+	}
+	public double getSpecialAttackCritChance(int index)
+	{
+		return specialAttack.get(index).getCritChance();
+	}
+	public double getSpecialAttackCritBonus(int index)
+	{
+		return specialAttack.get(index).getCritBonus();
+	}
+	public double getSpecialAttackLvl(int index)
+	{
+		return specialAttack.get(index).getMinLevel();
+	}
 	public int damage()
 	{
 		Random rand = new Random();
@@ -382,7 +377,7 @@ public class Player
 		int critHit = rand.nextInt(99); //checks whether or not a "critical hit" is scored, which raises the total damage done by 50%
 		if (critHit < 10) //critical hit has a 10% chance of occurring
 		{
-			//System.out.println("Critical hit!");
+			//Critical hit!
 			return (int)Math.round(getTotalRawDamage()*attackMod*randomnessPercent*1.5);
 		}
 		else
@@ -390,26 +385,26 @@ public class Player
 	}
 	public int specialDamage(int index) //index controls which special attack is used
 	{
-		subtractEP(specialAttack.get(index).getExtraPoints());
+		subtractEP(getSpecialAttackEP(index));
 		Random rand = new Random();
 		double randomnessPercent = (rand.nextInt(21)+90)/100.0; //determines the "randomness"; basically it ensures that no "perfect number" is dealt as damage
-		int critHit = rand.nextInt(99); //checks whether or not a "critial hit" is scored, which raises the total damage done by the attacks critical bonus percentage
-		if (critHit < specialAttack.get(index).getCritChance()) //critical hit has a variable chance of occuring
+		int critHit = rand.nextInt(99); //checks whether or not a "critical hit" is scored, which raises the total damage done by the attacks critical bonus percentage
+		if (critHit < getSpecialAttackCritChance(index)) //critical hit has a variable chance of occuring
 		{
 			System.out.println("Critical hit!");
-			return (int)Math.round(specialAttack.get(index).getAttackDamage()*attackMod*(getLvl()/(specialAttack.get(index).getMinLevel()+5))*randomnessPercent*specialAttack.get(index).getCritBonus());
+			return (int)Math.round(getSpecialAttackDam(index)*attackMod*(getLvl()/(getSpecialAttackLvl(index)+5))*randomnessPercent*getSpecialAttackCritBonus(index));
 		}
 		else
-			return (int)Math.round(specialAttack.get(index).getAttackDamage()*attackMod*(getLvl()/(specialAttack.get(index).getMinLevel()+5))*randomnessPercent);
+			return (int)Math.round(getSpecialAttackDam(index)*attackMod*(getLvl()/(getSpecialAttackLvl(index)+5))*randomnessPercent);
 	}
 
 	//Attack Modifier----------------------------------------------------------------------------------------------------
 
-	public void addMod(double m) //adds the specfied value to the attack modifier
+	public void addMod(double m) //adds the specified value to the attack modifier
 	{
 		attackMod+=m;
 	}
-	public void setMod(double m) //sets the attackMod value to the specfied value
+	public void setMod(double m) //sets the attackMod value to the specified value
 	{
 		attackMod = m;
 	}
@@ -460,14 +455,23 @@ public class Player
 	public void setEXP (double exP)
 	{
 		EXP = exP;
+		lvlUp();
 	}
 	public double getEXP ()
 	{
 		return EXP;
 	}
-	public double getEXPToNextLvl()
+	public double getEXPToNextLvl(boolean prevLevel)
 	{
-		return 100*(Math.pow(1.15,getLvl()/1.5))-50;
+		//100*(1.15^(x/1.5))-45
+		if (prevLevel)
+		{
+			return 100*(Math.pow(1.15,(getLvl()-1)/1.5))-45;
+		}
+		else
+		{
+			return 100*(Math.pow(1.15,getLvl()/1.5))-45;
+		}
 	}
 	public void setLvl(double lvl)
 	{
@@ -484,7 +488,7 @@ public class Player
 	public void lvlUp()
 	{
 		boolean extraEXP = false;
-		if (EXP >= (100*(Math.pow(1.15,getLvl()/1.5))-30)) //if the EXP is greater than or equal to 100*(1.15^(x/1.5))-50
+		if (EXP >= getEXPToNextLvl(false)) 
 		//(-50 is for the sake of reducing the EXP requirement for the first level up)
 		{
 			/* General layout for Level Up appearance:
@@ -495,89 +499,76 @@ public class Player
 			 *Base Damage: c ==> f
 			 *(for Entrepreneur) You have won y gold!
 			 */
-			System.out.println("LEVEL UP!!!");
-			System.out.print("Level: " + output.format(getLvl()) + " ==> ");
+			double curLvl = getLvl();
+			double curMaxHP = getMaxHealth();
+			double curMaxEP = getMaxEP();
+			double curDam = getRawDamage();
+			
+			double newLvl = 0;
+			double newMaxHP = 0;
+			double newMaxEP = 0;
+			double newDam = 0;
+			
 			addLvl();
-			System.out.println(output.format(getLvl()));
+			newLvl = getLvl();
+			
 			if (playerClass.equalsIgnoreCase("Commando")) //Commando level up (Average HP, EP, Damage)
 			{
-				System.out.print("Max HP: " + output.format(getMaxHealth()) + " ==> ");
-				setMaxHealth(HPMULT*80*(Math.pow(1.75,getLvl()/5))); //HP: 80*1.75^(x/5)
-				System.out.println(output.format(getMaxHealth()));
-				System.out.print("Max EP: " + output.format(getMaxEP()) + " ==> ");
-				setMaxEP(EPMULT*30*(Math.pow(1.75,getLvl()/5))); //EP: 30*(1.75^(x/5))
-				System.out.println(output.format(getMaxEP()));
-				System.out.print("Base Damage: " + output.format(getRawDamage()) + " ==> ");
-				attackDamage = DAMMULT*5*(Math.pow(2,getLvl()/5)) + (getLvl()*10) - 5; //Damage: 5*(2^(x/5)) + (x*10) - 5
-				System.out.println(output.format(getRawDamage()));
+				newMaxHP = HPMULT*80*(Math.pow(1.75,getLvl()/5)); //HP: 80*1.75^(x/5)
+				newMaxEP = EPMULT*30*(Math.pow(1.75,getLvl()/5)); //EP: 30*(1.75^(x/5))
+				newDam = DAMMULT*5*(Math.pow(2,getLvl()/5)) + (getLvl()*10) - 5; //Damage: 5*(2^(x/5)) + (x*10) - 5
 			}
 			else if (playerClass.equalsIgnoreCase("Berserker")) //Berserker level up (Lower HP, Average EP, Higher Damage)
 			{
-				System.out.print("Max HP: " + output.format(getMaxHealth()) + " ==> ");
-				setMaxHealth(HPMULT*40*(Math.pow(1.75,getLvl()/5))); //HP: 40*1.75^(x/5)
-				System.out.println(output.format(getMaxHealth()));
-				System.out.print("Max EP: " + output.format(getMaxEP()) + " ==> ");
-				setMaxEP(EPMULT*20*(Math.pow(1.75,getLvl()/5))); //EP: 20*(1.75^(x/5))
-				System.out.println(output.format(getMaxEP()));
-				System.out.print("Base Damage: " + output.format(getRawDamage()) + " ==> ");
-				attackDamage = DAMMULT*10*(Math.pow(2,getLvl()/5)) + (getLvl()*20) - 10; //Damage: 10*(2^(x/5)) + (x*20) - 10
-				System.out.println(output.format(getRawDamage()));
+				newMaxHP = HPMULT*40*(Math.pow(1.75,getLvl()/5)); //HP: 40*1.75^(x/5)
+				newMaxEP = EPMULT*20*(Math.pow(1.75,getLvl()/5)); //EP: 20*(1.75^(x/5))
+				newDam = DAMMULT*10*(Math.pow(2,getLvl()/5)) + (getLvl()*20) - 10; //Damage: 10*(2^(x/5)) + (x*20) - 10
 			}
 			else if (playerClass.equalsIgnoreCase("Sentinel")) //Sentinel level up (Higher HP, Average EP, Lower Damage)
 			{
-				System.out.print("Max HP: " + output.format(getMaxHealth()) + " ==> ");
-				setMaxHealth(HPMULT*160*(Math.pow(1.75,getLvl()/5))); //HP: 160*1.75^(x/5)
-				System.out.println(output.format(getMaxHealth()));
-				System.out.print("Max EP: " + output.format(getMaxEP()) + " ==> ");
-				setMaxEP(EPMULT*20*(Math.pow(1.75,getLvl()/5))); //EP: 20*(1.75^(x/5))
-				System.out.println(output.format(getMaxEP()));
-				System.out.print("Base Damage: " + output.format(getRawDamage()) + " ==> ");
-				attackDamage = DAMMULT*3.5*(Math.pow(2,getLvl()/5)) + (getLvl()*5) - 2.5; //Damage: 3.5*(2^(x/5)) + (x*5) - 2.5
-				System.out.println(output.format(getRawDamage()));
+				newMaxHP = HPMULT*160*(Math.pow(1.75,getLvl()/5)); //HP: 160*1.75^(x/5)
+				newMaxEP = EPMULT*20*(Math.pow(1.75,getLvl()/5)); //EP: 20*(1.75^(x/5))
+				newDam = DAMMULT*3.5*(Math.pow(2,getLvl()/5)) + (getLvl()*5) - 2.5; //Damage: 3.5*(2^(x/5)) + (x*5) - 2.5
 			}
 			else if (playerClass.equalsIgnoreCase("Ravager")) //Ravager level up (Lower HP, Higher EP, Average Damage)
 			{
-				System.out.print("Max HP: " + output.format(getMaxHealth()) + " ==> ");
-				setMaxHealth(HPMULT*50*(Math.pow(1.75,getLvl()/5))); //HP: 50*1.75^(x/5)
-				System.out.println(output.format(getMaxHealth()));
-				System.out.print("Max EP: " + output.format(getMaxEP()) + " ==> ");
-				setMaxEP(EPMULT*90*(Math.pow(1.75,getLvl()/5))); //EP: 90*(1.75^(x/5))
-				System.out.println(output.format(getMaxEP()));
-				System.out.print("Base Damage: " + output.format(getRawDamage()) + " ==> ");
-				attackDamage = DAMMULT*8*(Math.pow(1.5,getLvl()/5)) + (getLvl()*13) - 8; //Damage: 8*(1.5^(x/5)) + (x*13) - 8
-				System.out.println(output.format(getRawDamage()));
+				newMaxHP = HPMULT*50*(Math.pow(1.75,getLvl()/5)); //HP: 50*1.75^(x/5)
+				newMaxEP = EPMULT*90*(Math.pow(1.75,getLvl()/5)); //EP: 90*(1.75^(x/5))
+				newDam = DAMMULT*8*(Math.pow(1.5,getLvl()/5)) + (getLvl()*13) - 8; //Damage: 8*(1.5^(x/5)) + (x*13) - 8
 			}
 			else if (playerClass.equalsIgnoreCase("Reliever")) //Reliever level up (Higher HP, Higher EP, Average Damage)
 			{
-				System.out.print("Max HP: " + output.format(getMaxHealth()) + " ==> ");
-				setMaxHealth(HPMULT*130*(Math.pow(1.75,getLvl()/5))); //HP: 130*1.75^(x/5)
-				System.out.println(output.format(getMaxHealth()));
-				System.out.print("Max EP: " + output.format(getMaxEP()) + " ==> ");
-				setMaxEP(EPMULT*75*(Math.pow(1.75,getLvl()/5))); //EP: 75*(1.75^(x/5))
-				System.out.println(output.format(getMaxEP()));
-				System.out.print("Base Damage: " + output.format(getRawDamage()) + " ==> ");
-				attackDamage = DAMMULT*5*(Math.pow(1.5,getLvl()/5)) + (getLvl()*4) - 4; //Damage: 5*(1.5^(x/5)) + (x*4) - 4
-				System.out.println(output.format(getRawDamage()));
+				newMaxHP = HPMULT*130*(Math.pow(1.75,getLvl()/5)); //HP: 130*1.75^(x/5)
+				newMaxEP = EPMULT*75*(Math.pow(1.75,getLvl()/5)); //EP: 75*(1.75^(x/5))
+				newDam = DAMMULT*5*(Math.pow(1.5,getLvl()/5)) + (getLvl()*4) - 4; //Damage: 5*(1.5^(x/5)) + (x*4) - 4
 			}
 			else if (playerClass.equalsIgnoreCase("Entrepreneur")) //Entrepreneur level up (Lower HP, Average EP, Lower Damage, Cheaper marker and earns money at level up)
 			{
-				System.out.print("Max HP: " + output.format(getMaxHealth()) + " ==> ");
-				setMaxHealth(HPMULT*60*(Math.pow(1.75,getLvl()/5))); //HP: 60*1.75^(x/5)
-				System.out.println(output.format(getMaxHealth()));
-				System.out.print("Max EP: " + output.format(getMaxEP()) + " ==> ");
-				setMaxEP(EPMULT*20*(Math.pow(1.75,getLvl()/5))); //EP: 20*(1.75^(x/5))
-				System.out.println(output.format(getMaxEP()));
-				System.out.print("Base Damage: " + output.format(getRawDamage()) + " ==> ");
-				attackDamage = DAMMULT*3.5*(Math.pow(2,getLvl()/5)) + (getLvl()*6) - 3; //Damage: 3.5*(2^(x/5)) + (x*6) - 3
-				System.out.println(output.format(getRawDamage()));
+				newMaxHP = HPMULT*60*(Math.pow(1.75,getLvl()/5)); //HP: 60*1.75^(x/5)
+				newMaxEP = EPMULT*20*(Math.pow(1.75,getLvl()/5)); //EP: 20*(1.75^(x/5))
+				newDam = DAMMULT*3.5*(Math.pow(2,getLvl()/5)) + (getLvl()*6) - 3; //Damage: 3.5*(2^(x/5)) + (x*6) - 3
+			}
+			
+			System.out.println("LEVEL UP!!!");
+			System.out.println("Level: " + output.format(curLvl) + " ==> " + output.format(newLvl));
+			System.out.println("Max HP: " + output.format(curMaxHP) + " ==> " + output.format(newMaxHP));
+			System.out.println("Max EP: " + output.format(curMaxEP) + " ==> " + output.format(newMaxEP));
+			System.out.println("Base Damage: " + output.format(curDam) + " ==> " + output.format(curDam));
+			if (playerClass.equalsIgnoreCase("Entrepreneur"))
+			{
 				Random rand = new Random();
 				int addM = rand.nextInt((int)getLvl()*500);
 				System.out.println("You have won " + addM + " gold!");
 				addMoney(addM);
 			}
+			
+			setMaxHealth(newMaxHP);
+			setMaxEP(newMaxEP);
+			attackDamage = newDam;
+			
 			setHP(getMaxHealth());
 			setEP(getMaxEP());
-			addEXP(-(100*(Math.pow(1.15,(getLvl()-1)/1.5))-50));
+			addEXP(-getEXPToNextLvl(true));
 			extraEXP = true;
 		}
 
@@ -685,7 +676,7 @@ public class Player
 		
 		String pLvl = String.valueOf((int)getLvl());
 		String pXP = String.valueOf((int)getEXP());
-		String pXPtoLvl = String.valueOf((int)getEXPToNextLvl());
+		String pXPtoLvl = String.valueOf((int)getEXPToNextLvl(false));
 		numSpace = 59 - pLvl.length() - pXP.length() - pXPtoLvl.length();
 		spaces = "";
 		for(int i = 1; i <=numSpace; i++)
@@ -710,7 +701,7 @@ public class Player
 		System.out.println("Weapon: " + weapon);
 		System.out.println("HP: " + output.format(getHP()) + "/" + output.format(getMaxHealth()));
 		System.out.println("EP: " + output.format(getEP()) + "/" + output.format(getMaxEP()));
-		System.out.println("Base Attack Power: " + output.format(getRawDamage()));
+		System.out.println("Attack Power: " + output.format(getTotalRawDamage()));
 	}
 	public void mookShow()
 	{

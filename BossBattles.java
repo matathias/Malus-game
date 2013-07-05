@@ -179,7 +179,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 		{
 			case 1: //Player Wins
 				System.out.println("You have defeated the " + e.getPlayerName() + "!");
-				System.out.println("+" + e.getEP() + "EP, +" + e.getEXP() + " EXP, +" + e.getMoney() + " Gold");
+				System.out.println("+" + (int)e.getEP() + "EP, +" + (int)e.getEXP() + " EXP, +" + (int)e.getMoney() + " Gold");
 				p.addMoney(e.getMoney());
 				p.addEXP(e.getEXP());
 				p.addEP(e.getEP());
@@ -192,11 +192,11 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 				break;
 			case 3: //Enemy wins
 				System.out.println("You lost!");
-				System.out.println("You lost 90% of your money! You lost 50% of your experience!");
-				p.setMoney(p.getMoney()/10); //divides money by ten
+				System.out.println("You lost 50% of your money! You lost 50% of your experience!");
+				p.setMoney(p.getMoney()/2); //divides money by two
 				p.setEXP(p.getEXP()/2); //divides Experience by two
 				p.setHP(p.getMaxHealth()/20);
-				System.out.println("Money: " + p.getMoney() + "\tExp: " + p.getEXP());
+				System.out.println("Money: " + (int)p.getMoney() + "\tExp: " + (int)p.getEXP());
 				System.out.println("You will be returned to town.");
 				Util.lineBreak();
 				Util.pause();
@@ -2644,7 +2644,9 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 			}
 	 		}
 	 	}
-	 	winResult(win,player,ultimaMalus);
+	 	if(win == 1)
+	 		winResult(win,player,ultimaMalus);
+	 	
 	 	return win;
 	 }
 }

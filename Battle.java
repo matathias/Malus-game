@@ -23,6 +23,7 @@ public class Battle
 	public int mookBattle()
 	{
 		System.out.println("You have entered battle with the " + e.getPlayerName() + "!");
+		Util.pause();
 		while (p.getHP() > 0 && e.getHP() > 0 && win != 2)
 		{
 			doChoice();
@@ -165,7 +166,7 @@ public class Battle
 			case 1: //Player Wins
 				Util.lineBreak();
 				System.out.println("You have defeated the " + e.getPlayerName() + ".");
-				System.out.println("+" + e.getEP() + " EP, +" + e.getEXP() + " EXP, +" + e.getMoney() + " Gold");
+				System.out.println("+" + (int)e.getEP() + " EP, +" + (int)e.getEXP() + " EXP, +" + (int)e.getMoney() + " Gold");
 				p.addMoney(e.getMoney());
 				p.addEXP(e.getEXP());
 				p.addEP(e.getEP());
@@ -179,11 +180,11 @@ public class Battle
 			case 3: //Enemy wins
 				Util.lineBreak();
 				System.out.println("You lost!");
-				System.out.println("You lost 90% of your money! You lost 50% of your experience!");
-				p.setMoney(p.getMoney()/10.0); //divides money by ten
+				System.out.println("You lost 50% of your money! Yoeu lost 50% of your experience!");
+				p.setMoney(p.getMoney()/2); //divides money by two
 				p.setEXP(p.getEXP()/2); //divides Experience by two
 				p.setHP(p.getMaxHealth()/20);
-				System.out.println("Money: " + p.getMoney() + "\tExp: " + p.getEXP());
+				System.out.println("Money: " + (int)p.getMoney() + "\tExp: " + (int)p.getEXP());
 				System.out.println("You will be returned to town.");
 				Util.lineBreak();
 				//Return player to town

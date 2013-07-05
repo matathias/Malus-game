@@ -183,6 +183,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 			else
 			{
 				Util.lineBreak();
+				player.showAll();
 				System.out.print(path +  "X");
 				path += "X";
 			}
@@ -201,7 +202,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 	private void town()
 	{
 		Story.town();
-		System.out.println();
+		System.out.println("\nLocation: Town");
 		player.showAll();
 		System.out.println();
 		int choice = Util.numberSelect("Where will you go:\n1. Inn\n2. Weapon Market\n3. Defense Market\n4. Healing Market\n5. Special Attack Market\n6. Save\n7. Desert\n8. Quit Game",8);
@@ -1060,6 +1061,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 							else
 							{
 								Story.malusPhaseTwoLose();
+								end();
 							}
 						}
 						else if(bossResult == 2)

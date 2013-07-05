@@ -11,6 +11,7 @@ public class Setup
 
 	 public static void Introduction()
 	 {
+		Util.lineBreak();
 	 	System.out.println("\nWelcome to... The Game!");
 	 	System.out.println("The Game is a text-based RPG,\nwith input and output involving the keyboard and text only.");
 	 	System.out.println("You will face many dangers in the game, from monsters to\nrobots to an evil villain who can end your game permanently.");
@@ -20,6 +21,7 @@ public class Setup
 	 	{
 	 		System.out.println("Then we begin!!");
 	 		Util.pause();
+	 		Util.lineBreak();
 	 		basicRules();
 	 	}
 	 	else
@@ -30,25 +32,30 @@ public class Setup
 	 public static void basicRules()
 	 {
 	 	System.out.println("The rules are simple.\nFollow the prompts to enter either a number or a word (usually \"yes\" or \"no\"),\nand don't die.");
+	 	Util.pause();
+	 	Util.lineBreak();
 	 	System.out.println("\nBattles work in turns.\nFirst, you choose your attack and deal damage to the enemy,\nand then the enemy will do the same to you.");
 	 	System.out.println("Through battling you will gain experience and money;\nthe former will increase your HP, EP, and damage,\nwhile the latter will allow you to buy weapons, new attacks, and healing spells.");
-	 	System.out.println("\tHP: Health Points; if these reach zero then you die.\n\t\tThe same applies to your enemies.");
-	 	System.out.println("\tEP: Extra Points; these allow you to use special attacks and healing spells.\n\t\tYou won't die if your EP reaches zero, but you'll be sorely disadvantaged.");
+	 	System.out.println("\tHP: Health Points; if these reach zero then you die.\n\t    The same applies to your enemies.");
+	 	System.out.println("\tEP: Extra Points; these allow you to use special attacks\n\t    and healing spells. You won't die if your EP reaches zero,\n\t    but you'll be sorely disadvantaged.");
 	 	System.out.println("\tDamage: Your attack power.\n\t\tYour damage is the base damage you deal with each attack.");
 	 	Util.pause();
+	 	Util.lineBreak();
 	 	System.out.println("HP and EP can be refilled by a level up or by visiting an inn.\nVisiting an inn costs money though, and the price rises as your level increases.");
 	 	System.out.println("In each area there will be three or four paths to choose from;\nyou just have to pick one and hope it brings you to the next area!");
 	 	System.out.println("Of course, if you pick the wrong path,\nyou'll be forced to go back the way you came.");
 	 	System.out.println("This isn't all bad, though - you may want to consider taking dead-end\npaths several times to gain more experience!");
 	 	Util.pause();
+	 	Util.lineBreak();
 	 	System.out.println("Also, sometimes the game will pause without displaying\n\"Press Enter to Continue\",such as with skits.");
 	 	System.out.println("All you have to do is press enter, and the game will continue. Example:");
 	 	Util.skitPause();
+	 	Util.lineBreak();
 	 	System.out.println("Now, are you ready... to play The Game?");
 	 	String answer = Util.yesNoLoop();
 	 	if(answer.equalsIgnoreCase("Yes"))
 	 	{
-	 		System.out.println("Well said! Time to choose a class!");
+	 		System.out.println("Well said! Time to choose a class!\n");
 	 		System.out.println("(But before that - do you have a saved game you wish to load instead?)");
 	 		String ans = Util.yesNoLoop();
 	 		if(ans.equalsIgnoreCase("Yes"))
@@ -83,13 +90,14 @@ public class Setup
 	 }
 	 public static void chooseClass()
 	 {
+		Util.lineBreak();
 	 	System.out.println("There are six classes in The Game:\nCommando, Berserker, Sentinel, Ravager, Reliever, and Entrepreneur.");
 	 	System.out.println("1. Commandos are well-balanced, with average HP, EP, and Damage.");
-	 	System.out.println("2. Berserkers are offense-oriented, sacrificing HP to obtain higher\n\tdamage-dealing power. Berserkers have the highest Damage out of all the classes.");
-	 	System.out.println("3. Sentinels are defense-oriented, sacrificing damage-dealing power\n\tto obtain higher HP. Sentinels have the highest HP out of all the classes.");
-	 	System.out.println("4. Ravagers are offense-oriented special-attack users, sacificing HP\n\tto obtain higher EP. Ravagers have the highest EP out of all the classes.");
-	 	System.out.println("5. Relievers are defense-oriented special-attack users, sacrificing Damage\n\tto obtain higher HP and EP. They have exclusive access to most healing spells.");
-	 	System.out.println("6. Entrepreneurs sacrifice a little of everything in order to obtain more\n\tmoney per battle, recieve money from a level up, and pay less at markets.");
+	 	System.out.println("2. Berserkers are offense-oriented, sacrificing HP to obtain higher\n   damage-dealing power. Berserkers have the highest Damage out of all\n   the classes.");
+	 	System.out.println("3. Sentinels are defense-oriented, sacrificing damage-dealing power\n   to obtain higher HP. Sentinels have the highest HP out of all the classes.");
+	 	System.out.println("4. Ravagers are offense-oriented special-attack users, sacificing HP\n   to obtain higher EP. Ravagers have the highest EP out of all the classes.");
+	 	System.out.println("5. Relievers are defense-oriented special-attack users, sacrificing Damage\n   to obtain higher HP and EP. They have exclusive access to most\n   healing spells.");
+	 	System.out.println("6. Entrepreneurs sacrifice a little of everything in order to obtain more\n   money per battle, recieve money from a level up, and pay less at markets.");
 	 	System.out.println("Which will you be? (Pick 1-6)");
 	 	int choice = Util.numberSelect("",6);
 	 	switch(choice)
@@ -121,6 +129,7 @@ public class Setup
 	 			break;
 	 	}
 	 	Util.pause();
+	 	Util.lineBreak();
 	 	chooseName();
 	 }
 	 public static void chooseName()
