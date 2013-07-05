@@ -48,6 +48,10 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 
 		bosses = new BossBattles();
 		setUpEnemies();
+		
+		System.out.println("Load successful!");
+		Util.pause();
+		
 		town();
 	}
 	private void setUpEnemies()
@@ -1155,10 +1159,16 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 		baseMil = bools.charAt(9) == '1' ? true : false;
 		baseFin = bools.charAt(10) == '1' ? true : false;
 		
-		for(int i = 1; i <= 8; i++)
+		for(int i = 1; i <= 7; i++)
 		{
+			int numItems = 0;
+			if(i == 1 || i == 2) numItems = 4;
+			else if(i == 3 || i == 4) numItems = 6;
+			else if(i == 5 || i == 6) numItems = 8;
+			else numItems = 5;
+			
 			int numIters = Integer.parseInt(data.get(0));
-			for(int j = 0; j <= numIters; j++)
+			for(int j = 0; j <= numIters*numItems; j++)
 			{
 				if(i == 1 || i == 2) defIn.add(data.remove(0));
 				else if(i == 3 || i == 4) healIn.add(data.remove(0));

@@ -252,6 +252,7 @@ public class MarketWeapon //change Util.numberSelect() to proper parameters
 	public ArrayList<String> getAllString()
 	{
 		ArrayList<String> data = new ArrayList<String>();
+		data.add(String.valueOf(weapon.size()));
 		for(int i = 0; i < weapon.size(); i++)
 		{
 			data.add(weapon.get(i).getWeaponName());
@@ -265,6 +266,7 @@ public class MarketWeapon //change Util.numberSelect() to proper parameters
 	public void setAllString(ArrayList<String> data)
 	{
 		ArrayList<Weapon> inData = new ArrayList<Weapon>();
+		data.remove(0);
 		for(int i = 0; i < data.size(); i+=5)
 		{
 			String inName = data.get(i);

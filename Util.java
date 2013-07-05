@@ -135,8 +135,8 @@ public class Util
 		
 		//Assemble the file name from character name, class, and the save counter.
 		String fileName;
-		String charName = playerData.get(9);
-		String charClass = playerData.get(10);
+		String charName = playerData.get(11);
+		String charClass = playerData.get(12);
 		String counter = Integer.toString(saveCounter);
 		saveCounter++;
 		
@@ -190,10 +190,12 @@ public class Util
 			//Close the output stream
 			out.close();
 			System.out.println("Saving of file " + fileName + " successful!");
+			Util.pause();
 		}
 		catch (Exception e){
 			System.out.println("Error: " + e.getMessage());
 			System.out.println("Unable to save.");
+			Util.pause();
 		}
 	}
 	public static boolean gameLoad(String fileName)
@@ -213,7 +215,7 @@ public class Util
 			
 			in.readLine();
 			//Read in the first 16 lines to the inPlayer arrayList
-			for(int i = 0; i < 16; i++)
+			for(int i = 0; i < 18; i++)
 			{
 				inPlayer.add(in.readLine());
 			}
@@ -244,7 +246,7 @@ public class Util
 			String gameBools = in.readLine();
 			inGame.add(gameBools);
 			int numItems = 0;
-			for(int i = 0; i < 4; i++)
+			for(int i = 0; i < 3; i++)
 			{
 				switch(i)
 				{
@@ -253,8 +255,6 @@ public class Util
 					case 1: numItems = 6;
 							break;
 					case 2: numItems = 8;
-							break;
-					case 3: numItems = 5;
 							break;
 				}
 				//Begin reading the Market data
@@ -278,6 +278,15 @@ public class Util
 				}
 			}
 			
+			//Read in the Weapon Market data
+			String numWeap = in.readLine();
+			itNum = Integer.parseInt(numWeap);
+			inGame.add(numWeap);
+			for(int j = 0; j < itNum*5; j++)
+			{
+				inGame.add(in.readLine());
+			}
+			
 			// Pass the next "#" line
 			in.readLine();
 			
@@ -286,9 +295,6 @@ public class Util
 			
 			//close the file
 			in.close();
-			
-			System.out.println("Load successful!");
-			pause();
 			
 			//initialize PlaceActions and Story and continue the game
 			Story.setAll(inStory);

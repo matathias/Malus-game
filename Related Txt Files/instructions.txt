@@ -1,0 +1,13 @@
+﻿How to compile jar files:
+
+Command one (compile everything):
+
+javac *.java
+
+Command two (create manifest file):
+
+echo Main-Class: [MainClass] >manifest.txt
+
+Command three (create jar file):
+
+jar cvfm [JarName].jar manifest.txt *.class

@@ -118,14 +118,22 @@ public class Setup
 	 		case 4:
 	 			System.out.println("You choose the Ravager Class!"); //50HP, 90EP, 8 Damage
 	 			player = new Player(Player.HPMULT*50,Player.DAMMULT*8,Player.EPMULT*90,0,100,"","Ravager",new Weapon("Worn-down Tome",0,0,0,0));
+	 			SpecialAttack ravFirst = new SpecialAttack("Ravager's Genesis","Ravager",25,20,-1,0,5,1.25);
+	 			SpecialAttack ravSecond = new SpecialAttack("Beginners' Luck","Ravager",10,10,-1,0,40,10);
+	 			player.addSpecialAttack(ravFirst);
+	 			player.addSpecialAttack(ravSecond);
 	 			break;
 	 		case 5:
 	 			System.out.println("You choose the Reliever Class!"); //130HP, 75EP, 5 Damage
 	 			player = new Player(Player.HPMULT*130,Player.DAMMULT*5,Player.EPMULT*75,0,100,"","Reliever",new Weapon("Wooden Stave",0,0,0,0));
+	 			SpecialAttack relFirst = new SpecialAttack("Reliever's Genesis","Reliever",15,15,-1,0,5,1.25);
+	 			Healing relSecond = new Healing("Patch Up","Reliever",25,15,1,0);
+	 			player.addSpecialAttack(relFirst);
+	 			player.addHealing(relSecond);
 	 			break;
 	 		case 6:
 	 			System.out.println("You choose the Entrepreneur Class!");//60HP, 20EP, 3.5 Damage
-	 			player = new Player(Player.HPMULT*60,Player.DAMMULT*3.5,Player.EPMULT*20,0,100,"","Entrepreneur",new Weapon("Playing Card",0,0,0,0));
+	 			player = new Player(Player.HPMULT*60,Player.DAMMULT*3.5,Player.EPMULT*20,0,250,"","Entrepreneur",new Weapon("Playing Card",0,0,0,0));
 	 			break;
 	 	}
 	 	Util.pause();

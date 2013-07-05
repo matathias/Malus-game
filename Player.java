@@ -5,7 +5,7 @@ public class Player
 {
 	public static final double MAXMONEY = 1000000000000.0;
 	public static final double HPMULT = 1.5;
-	public static final double EPMULT = 1.5;
+	public static final double EPMULT = 1.4;
 	public static final double DAMMULT = 1.5;
 	
 	Scanner input = new Scanner(System.in);
@@ -103,6 +103,12 @@ public class Player
 		maxHealth = hP;
 		recalcMaxHealth();
 	}
+	public void setMaxHealth(double hp1, double hp2)
+	{
+		maxHealth = hp1;
+		extraHealth = hp2;
+		recalcMaxHealth();
+	}
 	public void addMaxHealth(double hP)
 	{
 		extraHealth += hP;
@@ -119,6 +125,14 @@ public class Player
 	public double getMaxHealth()
 	{
 		return maxHealthWeapon;
+	}
+	private double getExtraHP()
+	{
+		return extraHealth;
+	}
+	private double getRealMaxHP()
+	{
+		return maxHealth;
 	}
 
 	//Extra Points----------------------------------------------------------------------------------------------------
@@ -139,10 +153,7 @@ public class Player
 	}
 	public void setEP (double eP)
 	{
-		if(eP < getMaxEP())
-			extraPoints = eP;
-		else
-			extraPoints = getMaxEP();
+		extraPoints = eP;
 	}
 	public double getEP()
 	{
@@ -151,6 +162,12 @@ public class Player
 	public void setMaxEP(double eP)
 	{
 		maxExtra = eP;
+		recalcMaxEP();
+	}
+	public void setMaxEP(double ep1, double ep2)
+	{
+		maxExtra = ep1;
+		extraExtra = ep2;
 		recalcMaxEP();
 	}
 	public void addMaxEP(double eP)
@@ -169,6 +186,14 @@ public class Player
 	public double getMaxEP()
 	{
 		return maxExtraWeapon;
+	}
+	private double getExtraEP()
+	{
+		return extraExtra;
+	}
+	private double getRealMaxEP()
+	{
+		return maxExtra;
 	}
 
 	//Healing----------------------------------------------------------------------------------------------------
@@ -392,10 +417,10 @@ public class Player
 		if (critHit < getSpecialAttackCritChance(index)) //critical hit has a variable chance of occuring
 		{
 			System.out.println("Critical hit!");
-			return (int)Math.round(getSpecialAttackDam(index)*attackMod*(getLvl()/(getSpecialAttackLvl(index)+5))*randomnessPercent*getSpecialAttackCritBonus(index));
+			return (int)Math.round(getSpecialAttackDam(index)*attackMod*(getLvl()/(getSpecialAttackLvl(index)+2))*randomnessPercent*getSpecialAttackCritBonus(index));
 		}
 		else
-			return (int)Math.round(getSpecialAttackDam(index)*attackMod*(getLvl()/(getSpecialAttackLvl(index)+5))*randomnessPercent);
+			return (int)Math.round(getSpecialAttackDam(index)*attackMod*(getLvl()/(getSpecialAttackLvl(index)+2))*randomnessPercent);
 	}
 
 	//Attack Modifier----------------------------------------------------------------------------------------------------
@@ -436,6 +461,7 @@ public class Player
 	public void setMoney (double m)
 	{
 		money = m;
+		addMoney(0);
 	}
 	public double getMoney()
 	{
@@ -604,6 +630,10 @@ public class Player
 		recalcMaxHealth();
 		recalcMaxEP();
 	}
+	public void loadSetWeapon(Weapon w)
+	{
+		weapon = w;
+	}
 
 	//Player Naming----------------------------------------------------------------------------------------------------
 
@@ -716,28 +746,32 @@ public class Player
 		ArrayList<String> data = new ArrayList<String>();
 		/*Data indices:
 		 * 0 - HP
-		 * 1 - MaxHP
-		 * 2 - EP
-		 * 3 - MaxEP
-		 * 4 - Attack Damage
-		 * 5 - Attack Mod
-		 * 6 - Money
-		 * 7 - EXP
-		 * 8 - Level
-		 * 9 - Player Name
-		 *10 - Player Class
-		 *11 - Weapon Name
-         *12 - Weapon Damage
-         *13 - Weapon HP Bonus
-         *14 - Weapon EP Bonus
-         *15 - Weapon Cost
+		 * 1 - RealMaxHP
+		 * 2 - extraHP
+		 * 3 - EP
+		 * 4 - RealMaxEP
+		 * 5 - extraEP
+		 * 6 - Attack Damage
+		 * 7 - Attack Mod
+		 * 8 - Money
+		 * 9 - EXP
+		 *10 - Level
+		 *11 - Player Name
+		 *12 - Player Class
+		 *13 - Weapon Name
+         *14 - Weapon Damage
+         *15 - Weapon HP Bonus
+         *16 - Weapon EP Bonus
+         *17 - Weapon Cost
 		 *   - SpecialAttacks
 		 *   - Healing Abilities
 		*/
 		data.add(String.valueOf(getHP()));
-		data.add(String.valueOf(getMaxHealth())); //includes the HP added by the weapon
+		data.add(String.valueOf(getRealMaxHP()));
+		data.add(String.valueOf(getExtraHP()));
 		data.add(String.valueOf(getEP()));
-		data.add(String.valueOf(getMaxEP())); //includes the EP added by the weapon
+		data.add(String.valueOf(getRealMaxEP()));
+		data.add(String.valueOf(getExtraEP()));
 		data.add(String.valueOf(getRawDamage()));
 		data.add(String.valueOf(getMod()));
 		data.add(String.valueOf(getMoney()));
@@ -782,17 +816,21 @@ public class Player
 	}
 	public void setAll(ArrayList<String> list)
 	{
-		setHP(Double.parseDouble(list.remove(0)));
-		setMaxHealth(Double.parseDouble(list.remove(0)));
-		setEP(Double.parseDouble(list.remove(0)));
-		setMaxEP(Double.parseDouble(list.remove(0)));
-		setDamage(Double.parseDouble(list.remove(0)));
-		setMod(Double.parseDouble(list.remove(0)));
-		setMoney(Double.parseDouble(list.remove(0)));
-		setEXP(Double.parseDouble(list.remove(0)));
-		setLvl(Double.parseDouble(list.remove(0)));
+		double hp = Double.parseDouble(list.remove(0));
+		double realMHP = Double.parseDouble(list.remove(0));
+		double exHP = Double.parseDouble(list.remove(0));
+		double ep = Double.parseDouble(list.remove(0));
+		double realMEP = Double.parseDouble(list.remove(0));
+		double exEP = Double.parseDouble(list.remove(0));
+		double dam = Double.parseDouble(list.remove(0));
+		double mod = Double.parseDouble(list.remove(0));
+		double mon = Double.parseDouble(list.remove(0));
+		double exp = Double.parseDouble(list.remove(0));
+		double lvl = Double.parseDouble(list.remove(0));
+		
 		setPlayerName(list.remove(0));
 		setClass(list.remove(0));
+		
 		
 		String weaponName = list.remove(0);
 		double weaponDam = Double.parseDouble(list.remove(0));
@@ -800,7 +838,18 @@ public class Player
 		double weaponEP = Double.parseDouble(list.remove(0));
 		int weaponCost = Integer.parseInt(list.remove(0));
 		Weapon loadWeapon = new Weapon(weaponName, weaponDam, weaponHP, weaponEP, weaponCost);
-		setWeapon(loadWeapon);
+		loadSetWeapon(loadWeapon);
+		
+		setHP(hp);
+		setEP(ep);
+		setMaxHealth(realMHP, exHP);
+		setMaxEP(realMEP, exEP);
+		
+		setDamage(dam);
+		setMod(mod);
+		setMoney(mon);
+		setLvl(lvl);
+		setEXP(exp);
 		
 		int numSpeAtt = Integer.parseInt(list.remove(0));
 		ArrayList<SpecialAttack> speAtt = new ArrayList<SpecialAttack>();
