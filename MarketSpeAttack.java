@@ -246,7 +246,7 @@ public class MarketSpeAttack//change Util.numberSelect() to proper parameters
 			}
 		}
 		while(!bought);
-		Util.passTime(1000000000);
+		Util.pause();
 		return player;
 	}
 	public ArrayList<String> getAllString()

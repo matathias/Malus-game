@@ -213,7 +213,7 @@ public class MarketDefense//change Util.numberSelect() to proper parameters
 		}
 		else
 			System.out.println("You didn't buy any defenses.");
-		Util.passTime(1000000000);
+		Util.pause();
 		return player;
 	}
 	public ArrayList<String> getAllString()

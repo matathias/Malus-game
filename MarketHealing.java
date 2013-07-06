@@ -225,7 +225,7 @@ public class MarketHealing
 			}
 		}
 		while(!bought);
-		Util.passTime(1000000000);
+		Util.pause();
 		return player;
 	}
 	public ArrayList<String> getAllString()

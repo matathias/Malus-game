@@ -122,7 +122,7 @@ public class Util
 	{
 		for(long a = 0; a < time; a++);
 	}
-	public static void gameSave(ArrayList<String> playerData, ArrayList<String> gameData, String storyData)
+	public static void gameSave(ArrayList<String> playerData, ArrayList<String> gameData, String storyData, int Loc)
 	{
 		/*
 		 * Creates a save file and writes all relevant date to it for later loading.
@@ -186,9 +186,14 @@ public class Util
 			out.write("#");
 			out.newLine();
 			
-			out.write(counter);
+			out.write(String.valueOf(Loc));
 			out.newLine();
 			
+			out.write("#");
+			out.newLine();
+			
+			out.write(counter);
+			out.newLine();
 			
 			//Close the output stream
 			out.close();
@@ -295,6 +300,13 @@ public class Util
 			
 			// Read in the story data string
 			inStory = in.readLine();
+			
+			// Pass the next "#" line
+			in.readLine();
+			
+			// Read in the location int
+			String loc = in.readLine();
+			inGame.add(loc);
 			
 			// Pass the next "#" line
 			in.readLine();

@@ -238,7 +238,7 @@ public class MarketWeapon //change Util.numberSelect() to proper parameters
 		}
 		else
 			System.out.println("You didn't buy a weapon.");
-		Util.passTime(1000000000);
+		Util.pause();
 		return player;
 	}
 	public ArrayList<Weapon> getAll()

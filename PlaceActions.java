@@ -44,7 +44,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 		rand = new Random();
 		player = new Player(pData);
 		
-		setAll(pAData);
+		int loc = setAll(pAData);
 
 		bosses = new BossBattles();
 		setUpEnemies();
@@ -52,7 +52,36 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 		System.out.println("Load successful!");
 		Util.pause();
 		
-		town();
+		switch(loc)
+		{
+			case 0:
+				town();
+				break;
+			case 1:
+				desert();
+				break;
+			case 2:
+				plains();
+				break;
+			case 3:
+				forest();
+				break;
+			case 4:
+				mountains();
+				break;
+			case 5:
+				village();
+				break;
+			case 6:
+				volcano();
+				break;
+			case 7:
+				caverns();
+				break;
+			default:
+				town();
+				break;
+		}
 	}
 	private void setUpEnemies()
 	{
@@ -271,7 +300,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 				String ans = Util.yesNoLoop();
 				if(ans.equalsIgnoreCase("Yes"))
 				{
-					Util.gameSave(player.getAll(), getAll(), Story.getAll());
+					Util.gameSave(player.getAll(), getAll(), Story.getAll(),0);
 				}
 				town();
 				break;
@@ -297,7 +326,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 		System.out.println("\nLocation: Desert");
 		player.showAll();
 		System.out.println();
-		int choice = Util.numberSelect("Where will you go:\n1. Path 1\n2. Path 2\n3. Path 3\n4. Back to Town",4);
+		int choice = Util.numberSelect("Where will you go:\n1. Path 1\n2. Path 2\n3. Path 3\n4. Back to Town\n5. Save",5);
 		switch(choice)
 		{
 			case 1:
@@ -369,6 +398,15 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 			case 4:
 				town();
 				break;
+			case 5:
+				System.out.println("Do you wish to save your game?");
+				String ans = Util.yesNoLoop();
+				if(ans.equalsIgnoreCase("Yes"))
+				{
+					Util.gameSave(player.getAll(), getAll(), Story.getAll(),1);
+				}
+				desert();
+				break;
 			default:
 				desert();
 				break;
@@ -380,7 +418,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 		System.out.println("\nLocation: Plains");
 		player.showAll();
 		System.out.println();
-		int choice = Util.numberSelect("Where will you go:\n1. Plains Path\n2. Grasslands Path\n3. Hills Path\n4. Back to the Desert",4);
+		int choice = Util.numberSelect("Where will you go:\n1. Plains Path\n2. Grasslands Path\n3. Hills Path\n4. Back to the Desert\n5. Save",5);
 		switch(choice)
 		{
 			case 1: //Plains Path
@@ -452,6 +490,15 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 			case 4:
 				desert();
 				break;
+			case 5:
+				System.out.println("Do you wish to save your game?");
+				String ans = Util.yesNoLoop();
+				if(ans.equalsIgnoreCase("Yes"))
+				{
+					Util.gameSave(player.getAll(), getAll(), Story.getAll(),2);
+				}
+				plains();
+				break;
 			default:
 				plains();
 				break;
@@ -463,7 +510,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 		System.out.println("\nLocation: Forest");
 		player.showAll();
 		System.out.println();
-		int choice = Util.numberSelect("Where will you go:\n1. Path 1\n2. Path 2\n3. Path 3\n4. Back to the plains",4);
+		int choice = Util.numberSelect("Where will you go:\n1. Path 1\n2. Path 2\n3. Path 3\n4. Back to the plains\n5. Save",5);
 		switch(choice)
 		{
 			case 1: //Path 1
@@ -534,6 +581,15 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 			case 4:
 				plains();
 				break;
+			case 5:
+				System.out.println("Do you wish to save your game?");
+				String ans = Util.yesNoLoop();
+				if(ans.equalsIgnoreCase("Yes"))
+				{
+					Util.gameSave(player.getAll(), getAll(), Story.getAll(),3);
+				}
+				forest();
+				break;
 			default:
 				forest();
 				break;
@@ -545,7 +601,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 		System.out.println("\nLocation: Mountains");
 		player.showAll();
 		System.out.println();
-		int choice = Util.numberSelect("Where will you go:\n1. Path 1\n2. Path 2\n3. Path 3\n4. Back to the forest",4);
+		int choice = Util.numberSelect("Where will you go:\n1. Path 1\n2. Path 2\n3. Path 3\n4. Back to the forest\n5. Save",5);
 		switch(choice)
 		{
 			case 1: //Path 1, boss route
@@ -616,6 +672,15 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 			case 4:
 				forest();
 				break;
+			case 5:
+				System.out.println("Do you wish to save your game?");
+				String ans = Util.yesNoLoop();
+				if(ans.equalsIgnoreCase("Yes"))
+				{
+					Util.gameSave(player.getAll(), getAll(), Story.getAll(),4);
+				}
+				mountains();
+				break;
 			default:
 				mountains();
 				break;
@@ -627,7 +692,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 		System.out.println("\nLocation Village");
 		player.showAll();
 		System.out.println();
-		int choice = Util.numberSelect("Where will you go:\n1. Inn\n2. Weapon Market\n3. Defense Market\n4. Volcano\n5. Back to the mountains",5);
+		int choice = Util.numberSelect("Where will you go:\n1. Inn\n2. Weapon Market\n3. Defense Market\n4. Volcano\n5. Back to the mountains\n6. Save",6);
 		int cost = 0;
 		switch(choice)
 		{
@@ -682,6 +747,15 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 			case 5:
 				mountains();
 				break;
+			case 6:
+				System.out.println("Do you wish to save your game?");
+				String ans = Util.yesNoLoop();
+				if(ans.equalsIgnoreCase("Yes"))
+				{
+					Util.gameSave(player.getAll(), getAll(), Story.getAll(),5);
+				}
+				village();
+				break;
 			default:
 				village();
 				break;
@@ -693,7 +767,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 		System.out.println("\nLocation: Volcano");
 		player.showAll();
 		System.out.println();
-		int choice = Util.numberSelect("Where will you go:\n1. Path 1\n2. Path 2\n3. Path 3\n4. Back to the village",4);
+		int choice = Util.numberSelect("Where will you go:\n1. Path 1\n2. Path 2\n3. Path 3\n4. Back to the village\n5. Save",5);
 		switch(choice)
 		{
 			case 1: //Path 1, boss route
@@ -765,6 +839,15 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 			case 4:
 				village();
 				break;
+			case 5:
+				System.out.println("Do you wish to save your game?");
+				String ans = Util.yesNoLoop();
+				if(ans.equalsIgnoreCase("Yes"))
+				{
+					Util.gameSave(player.getAll(), getAll(), Story.getAll(),6);
+				}
+				volcano();
+				break;
 			default:
 				volcano();
 				break;
@@ -776,7 +859,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 		System.out.println("\nLocation: Caverns");
 		player.showAll();
 		System.out.println();
-		int choice = Util.numberSelect("Where will you go:\n1. Path 1\n2. Path 2\n3. Path 3\n4. Back to the Volcano",4);
+		int choice = Util.numberSelect("Where will you go:\n1. Path 1\n2. Path 2\n3. Path 3\n4. Back to the Volcano\n5. Save",5);
 		switch(choice)
 		{
 			case 1: //Path 1
@@ -847,6 +930,15 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 				break;
 			case 4:
 				volcano();
+				break;
+			case 5:
+				System.out.println("Do you wish to save your game?");
+				String ans = Util.yesNoLoop();
+				if(ans.equalsIgnoreCase("Yes"))
+				{
+					Util.gameSave(player.getAll(), getAll(), Story.getAll(),7);
+				}
+				caverns();
 				break;
 			default:
 				caverns();
@@ -1138,7 +1230,7 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 		
 		return data;
 	}
-	public void setAll(ArrayList<String> data)
+	public int setAll(ArrayList<String> data)
 	{
 		ArrayList<String> defIn = new ArrayList<String>();
 		ArrayList<String> healIn = new ArrayList<String>();
@@ -1177,10 +1269,14 @@ public class PlaceActions //change all Util.numberselect to proper parameters
 			}
 		}
 		
+		int loc = Integer.parseInt(data.remove(0));
+		
 		markDef = new MarketDefense(defIn);
 		markHeal = new MarketHealing(healIn);
 		markSA = new MarketSpeAttack(SAIn);
 		markWeap = new MarketWeapon(weapIn);
+		
+		return loc;
 	}
 	public void end() //End the game.
 	{

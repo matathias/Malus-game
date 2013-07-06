@@ -414,7 +414,7 @@ public class Player
 		Random rand = new Random();
 		double randomnessPercent = (rand.nextInt(21)+90)/100.0; //determines the "randomness"; basically it ensures that no "perfect number" is dealt as damage
 		int critHit = rand.nextInt(99); //checks whether or not a "critical hit" is scored, which raises the total damage done by the attacks critical bonus percentage
-		if (critHit < getSpecialAttackCritChance(index)) //critical hit has a variable chance of occuring
+		if (critHit < getSpecialAttackCritChance(index)) //critical hit has a variable chance of occurring
 		{
 			System.out.println("Critical hit!");
 			return (int)Math.round(getSpecialAttackDam(index)*attackMod*(getLvl()/(getSpecialAttackLvl(index)+2))*randomnessPercent*getSpecialAttackCritBonus(index));
@@ -809,7 +809,7 @@ public class Player
 		
 		ArrayList<Healing> heal = getHealing();
 		data.add(String.valueOf(heal.size()));
-		for(int i = 0; i < heal.size(); i+=6)
+		for(int i = 0; i < heal.size(); i++)
 		{
 			data.add(heal.get(i).getHealName());
 			data.add(heal.get(i).getAvailClass());
