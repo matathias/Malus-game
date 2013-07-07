@@ -595,10 +595,6 @@ public class Player
 				addMoney(addM);
 			}
 			
-			setMaxHealth(newMaxHP);
-			setMaxEP(newMaxEP);
-			attackDamage = newDam;
-			
 			setHP(getMaxHealth());
 			setEP(getMaxEP());
 			addEXP(-getEXPToNextLvl(true));
