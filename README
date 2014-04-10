@@ -1,0 +1,18 @@
+
+Malus-game
+
+Hello! Welcome to the code for the first coherent game I've ever built. The
+majority of the coding was completed in late 2011 - this being much of the
+mechanics and classes. The code was polished in the summer of 2013 and made to
+work together properly, resulting in a fully functional game (that has yet to
+be properly balanced).
+
+In the future, should I have the time, I hope to add more to the game, namely
+some sort of GUI such that the game doesn't input and output to the terminal.
+
+All of the code is in the src directory. Game.java is the main class, so the
+command 'java Game' will run it from inside src. Or you could run any of the 
+jar files in the main directory.
+
+Contact Information:
+e-mail: warrick.david58@gmail.com
