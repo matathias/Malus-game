@@ -26,6 +26,7 @@ public class Player
 	private Weapon weapon;
 	private ArrayList <SpecialAttack> specialAttack;
 	private ArrayList <Healing> healing;
+	private ArrayList <Defense> defenses;
 	private String playerName;
 	private String playerClass;
 
@@ -48,6 +49,7 @@ public class Player
 		playerClass = pC;
 		specialAttack = new ArrayList<SpecialAttack>();
 		healing = new ArrayList<Healing>();
+		defenses = new ArrayList<Defense>();
 		level = 1;
 		attackMod = 1;
 		extraHealth = 0;
@@ -116,7 +118,7 @@ public class Player
 	}
 	public void recalcMaxHealth()
 	{
-		maxHealthWeapon = maxHealth + weapon.getHP() + extraHealth;
+		maxHealthWeapon = maxHealth + weapon.getHP() + extraHealth + totalDefenseHP();
 		if(healthPoints>getMaxHealth())
 		{
 			healthPoints = getMaxHealth();
@@ -177,7 +179,7 @@ public class Player
 	}
 	public void recalcMaxEP()
 	{
-		maxExtraWeapon = maxExtra + weapon.getEP() + extraExtra;
+		maxExtraWeapon = maxExtra + weapon.getEP() + extraExtra + totalDefenseEP();
 		if(extraPoints>getMaxEP())
 		{
 			extraPoints = getMaxEP();
@@ -194,6 +196,37 @@ public class Player
 	private double getRealMaxEP()
 	{
 		return maxExtra;
+	}
+	
+	//Defenses---------------------------------------------------------------------------------------------------
+	
+	public void addDefense(Defense d)
+	{
+		defenses.add(d);
+		recalcMaxHealth();
+		recalcMaxEP();
+	}
+	public double totalDefenseHP()
+	{
+		double hp = 0;
+		
+		for (int i = 0; i < defenses.size(); i++)
+		{
+			hp += defenses.get(i).getAddHP();
+		}
+		
+		return hp;
+	}
+	public double totalDefenseEP()
+	{
+		double ep = 0;
+		
+		for (int i = 0; i < defenses.size(); i++)
+		{
+			ep += defenses.get(i).getAddEP();
+		}
+		
+		return ep;
 	}
 
 	//Healing----------------------------------------------------------------------------------------------------
@@ -489,14 +522,14 @@ public class Player
 	}
 	public double getEXPToNextLvl(boolean prevLevel)
 	{
-		//100*(1.15^(x/1.5))-45
+		//50*(1.15^(x/1.5))-45
 		if (prevLevel)
 		{
-			return 100*(Math.pow(1.15,(getLvl()-1)/1.5))-45;
+			return 50*(Math.pow(1.15,(getLvl()-1)/1.5))-45;
 		}
 		else
 		{
-			return 100*(Math.pow(1.15,getLvl()/1.5))-45;
+			return 50*(Math.pow(1.15,getLvl()/1.5))-45;
 		}
 	}
 	public void setLvl(double lvl)

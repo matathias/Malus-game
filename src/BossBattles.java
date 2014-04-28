@@ -41,6 +41,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	
 	private void doChoice(boolean isMalus)
 	{
+		// If isMalus is true, the player is fighting Malus, which means they have no option to flee.
 		if(isMalus)
 		{
 			battShow(p,b);

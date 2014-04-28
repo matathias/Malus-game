@@ -32,8 +32,9 @@ public class MarketDefense//change Util.numberSelect() to proper parameters
 	private void buyDefense(Defense d)
 	{
 		player.subtractMoney(d.getCost());
-		player.addMaxHealth(d.getAddHP());
-		player.addMaxEP(d.getAddEP());
+		player.addDefense(d);
+		//player.addMaxHealth(d.getAddHP());
+		//player.addMaxEP(d.getAddEP());
 	}
 	private void initGeneralDefenses() //(name,addHP,addEP,cost)
 	{
