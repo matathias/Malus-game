@@ -53,6 +53,8 @@ public class MarketWeapon //change Util.numberSelect() to proper parameters
 	 */
 	private void initGeneralWeapons()
 	{
+		double costMult;
+		
 		//For determining the random elements of Machina and Penultima weapons
 		double[] multipliers = {0, 0, 0};
 		double[] penMult = {0, 0, 0};
@@ -91,24 +93,18 @@ public class MarketWeapon //change Util.numberSelect() to proper parameters
 		int pen1 = (int)(penMult[0] * 500);
 		int pen2 = (int)(penMult[1] * 500);
 		int pen3 = (int)(penMult[2] * 500);
-		if(player.getPlayerClass().equalsIgnoreCase("Entrepreneur")) //10% cheaper
-		{
-			weapon.add(new Weapon("Beginner's Weapon",10,0,0,(int)(.9*75))); //Beginner's weapon
-			weapon.add(new Weapon("Genesis Weapon",30,5,5,(int)(.9*400))); //Genesis weapon
-			weapon.add(new Weapon("General Weapon",75,50,25,(int)(.9*2500))); //General weapon
-			weapon.add(new Weapon("Machina Weapon",mac1,mac2,mac3,(int)(.9*7500))); //Machina weapon
-			weapon.add(new Weapon("Penultima Weapon",pen1,pen2,pen3,(int)(.9*13500))); //Penultima weapon
-			weapon.add(new Weapon("Ultima Weapon",4000,2000,1500,(int)(.9*1500000))); //Ultima weapon
-		}
+		
+		if(player.getPlayerClass().equalsIgnoreCase("Entrepreneur"))//10% cheaper
+			costMult = .9;
 		else
-		{
-			weapon.add(new Weapon("Beginner's Weapon",10,0,0,75)); //Beginner's weapon
-			weapon.add(new Weapon("Genesis Weapon",30,5,5,400)); //Genesis weapon
-			weapon.add(new Weapon("General Weapon",75,50,25,2500)); //General weapon
-			weapon.add(new Weapon("Machina Weapon",mac1,mac2,mac3,7500)); //Machina weapon
-			weapon.add(new Weapon("Penultima Weapon",pen1,pen2,pen3,13500)); //Penultima weapon
-			weapon.add(new Weapon("Ultima Weapon",4000,2000,1500,1500000)); //Ultima weapon
-		}
+			costMult = 1.0;
+		
+		weapon.add(new Weapon("Beginner's Weapon",10,0,0,(int)(costMult*75))); //Beginner's weapon
+		weapon.add(new Weapon("Genesis Weapon",30,5,5,(int)(costMult*400))); //Genesis weapon
+		weapon.add(new Weapon("General Weapon",75,50,25,(int)(costMult*2500))); //General weapon
+		weapon.add(new Weapon("Machina Weapon",mac1,mac2,mac3,(int)(costMult*7500))); //Machina weapon
+		weapon.add(new Weapon("Penultima Weapon",pen1,pen2,pen3,(int)(costMult*13500))); //Penultima weapon
+		weapon.add(new Weapon("Ultima Weapon",4000,2000,1500,(int)(costMult*1500000))); //Ultima weapon
 	}
 	private void initClassWeapons()
 	{
@@ -222,6 +218,10 @@ public class MarketWeapon //change Util.numberSelect() to proper parameters
 		showWeapons();
 		System.out.println("11. Don't buy anything");
 		System.out.println("Your Money: " + player.getMoney());
+		System.out.println("Current level:  " + (int)player.getLvl());
+		System.out.println("Current Max HP: " + (int)player.getMaxHealth());
+		System.out.println("Current Max EP: " + (int)player.getMaxEP());
+		System.out.println("Current Weapon: " + player.getWeaponName());
 		
 		int choice = Util.numberSelect("",11)-1;
 		if(choice <10)

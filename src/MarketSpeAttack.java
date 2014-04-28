@@ -36,24 +36,19 @@ public class MarketSpeAttack//change Util.numberSelect() to proper parameters
 	}
 	private void initGeneralSpeAtt() //(name,attackDamage,extraPoints,minLevel,cost,criticalChance,critBonus)
 	{
-		if(player.getPlayerClass().equalsIgnoreCase("Entrepreneur")) //10% cheaper
-		{
-			speAttGen.add(new SpecialAttack("Destruction","All",150,40,9,(int)(200*.9),5,1.5)); //Destruction
-			speAttGen.add(new SpecialAttack("Foe Crash","All",350,100,16,(int)(500*.9),10,1.5)); //Foe Crash
-			speAttGen.add(new SpecialAttack("Chaos Drive","All",500,175,22,(int)(2000*.9),15,1.5)); //Chaos Drive
-			speAttGen.add(new SpecialAttack("Machina Chaos","All",1000,450,30,(int)(6000*.9),25,2)); //Machina Chaos
-			speAttGen.add(new SpecialAttack("Penultima Chaos","All",2500,600,37,(int)(10000*.9),32,3.5)); //Penultima Chaos
-			speAttGen.add(new SpecialAttack("Ultima Chaos","All",50000,4300,48,(int)(100000*.9),50,5)); //Ultima Chaos (high level)
-		}
+		double costMult;
+		
+		if(player.getPlayerClass().equalsIgnoreCase("Entrepreneur"))//10% cheaper
+			costMult = .9;
 		else
-		{
-			speAttGen.add(new SpecialAttack("Destruction","All",150,40,9,200,5,1.5)); //Destruction
-			speAttGen.add(new SpecialAttack("Foe Crash","All",350,100,16,500,10,1.5)); //Foe Crash
-			speAttGen.add(new SpecialAttack("Chaos Drive","All",500,175,22,2000,15,1.5)); //Chaos Drive
-			speAttGen.add(new SpecialAttack("Machina Chaos","All",1000,450,30,6000,25,2)); //Machina Chaos
-			speAttGen.add(new SpecialAttack("Penultima Chaos","All",2500,600,37,10000,32,3.5)); //Penultima Chaos
-			speAttGen.add(new SpecialAttack("Ultima Chaos","All",50000,4300,48,100000,50,5)); //Ultima Chaos (high level)
-		}
+			costMult = 1.0;
+		
+		speAttGen.add(new SpecialAttack("Destruction","All",150,40,9,(int)(200*costMult),5,1.5)); //Destruction
+		speAttGen.add(new SpecialAttack("Foe Crash","All",350,100,16,(int)(500*costMult),10,1.5)); //Foe Crash
+		speAttGen.add(new SpecialAttack("Chaos Drive","All",500,175,22,(int)(2000*costMult),15,1.5)); //Chaos Drive
+		speAttGen.add(new SpecialAttack("Machina Chaos","All",1000,450,30,(int)(6000*costMult),25,2)); //Machina Chaos
+		speAttGen.add(new SpecialAttack("Penultima Chaos","All",2500,600,37,(int)(10000*costMult),32,3.5)); //Penultima Chaos
+		speAttGen.add(new SpecialAttack("Ultima Chaos","All",50000,4300,48,(int)(100000*costMult),50,5)); //Ultima Chaos (high level)
 	}
 	private void initClassSpeAtt()
 	{
@@ -196,6 +191,9 @@ public class MarketSpeAttack//change Util.numberSelect() to proper parameters
 		counter++;
 		System.out.println(counter + ": Don't buy anything");
 		System.out.println("Your Money: " + player.getMoney());
+		System.out.println("Current level:  " + (int)player.getLvl());
+		System.out.println("Current Max HP: " + (int)player.getMaxHealth());
+		System.out.println("Current Max EP: " + (int)player.getMaxEP());
 		do
 		{
 			int choice = Util.numberSelect("",counter)-1;

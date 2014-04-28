@@ -38,36 +38,25 @@ public class MarketDefense//change Util.numberSelect() to proper parameters
 	}
 	private void initGeneralDefenses() //(name,addHP,addEP,cost)
 	{
+		double costMult;
+		
 		if(player.getPlayerClass().equalsIgnoreCase("Entrepreneur"))//10% cheaper
-		{
-			//HP
-			defenseGen.add(new Defense("Wooden Shield",20,0,(int)(.9*90))); //Wooden Shield
-			defenseGen.add(new Defense("Iron Shield",50,0,(int)(.9*130))); //Iron Shield
-			defenseGen.add(new Defense("Steel Shield",100,0,(int)(.9*250))); //Steel Shield
-			//EP
-			defenseGen.add(new Defense("Channel Shield",0,20,(int)(.9*115))); //Channel Shield
-			defenseGen.add(new Defense("Conduit Shield",0,50,(int)(.9*225))); //Conduit Shield
-			defenseGen.add(new Defense("Chaos Shield",0,100,(int)(.9*300))); //Chaos Shield
-			//Both
-			defenseGen.add(new Defense("Machina Shield",200,200,(int)(.9*750))); //Machina Shield
-			defenseGen.add(new Defense("Penultima Shield",500,500,(int)(.9*1250))); //Penultima Shield
-			defenseGen.add(new Defense("Ultima Shield",2000,2000,(int)(.9*2000))); //Ultima Shield
-		}
+			costMult = .9;
 		else
-		{
-			//HP
-			defenseGen.add(new Defense("Wooden Shield",20,0,90)); //Wooden Shield
-			defenseGen.add(new Defense("Iron Shield",50,0,130)); //Iron Shield
-			defenseGen.add(new Defense("Steel Shield",100,0,250)); //Steel Shield
-			//EP
-			defenseGen.add(new Defense("Channel Shield",0,20,115)); //Channel Shield
-			defenseGen.add(new Defense("Conduit Shield",0,50,225)); //Conduit Shield
-			defenseGen.add(new Defense("Chaos Shield",0,100,300)); //Chaos Shield
-			//Both
-			defenseGen.add(new Defense("Machina Shield",200,200,750)); //Machina Shield
-			defenseGen.add(new Defense("Penultima Shield",500,500,1250)); //Penultima Shield
-			defenseGen.add(new Defense("Ultima Shield",2000,2000,2000)); //Ultima Shield
-		}
+			costMult = 1.0;
+
+		//HP
+		defenseGen.add(new Defense("Wooden Shield",20,0,(int)(costMult*90))); //Wooden Shield
+		defenseGen.add(new Defense("Iron Shield",50,0,(int)(costMult*130))); //Iron Shield
+		defenseGen.add(new Defense("Steel Shield",100,0,(int)(costMult*250))); //Steel Shield
+		//EP
+		defenseGen.add(new Defense("Channel Shield",0,20,(int)(costMult*115))); //Channel Shield
+		defenseGen.add(new Defense("Conduit Shield",0,50,(int)(costMult*225))); //Conduit Shield
+		defenseGen.add(new Defense("Chaos Shield",0,100,(int)(costMult*300))); //Chaos Shield
+		//Both
+		defenseGen.add(new Defense("Machina Shield",200,200,(int)(costMult*750))); //Machina Shield
+		defenseGen.add(new Defense("Penultima Shield",500,500,(int)(costMult*1250))); //Penultima Shield
+		defenseGen.add(new Defense("Ultima Shield",2000,2000,(int)(costMult*2000))); //Ultima Shield
 	}
 	private void initClassDefenses()
 	{
@@ -187,6 +176,9 @@ public class MarketDefense//change Util.numberSelect() to proper parameters
 		
 		System.out.println(counter + ": Don't buy anything");
 		System.out.println("Your Money: " + player.getMoney());
+		System.out.println("Current level:  " + (int)player.getLvl());
+		System.out.println("Current Max HP: " + (int)player.getMaxHealth());
+		System.out.println("Current Max EP: " + (int)player.getMaxEP());
 		int choice = Util.numberSelect("",counter)-1;
 		if(choice <defenseGen.size())
 		{

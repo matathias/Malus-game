@@ -119,9 +119,9 @@ public class Player
 	public void recalcMaxHealth()
 	{
 		maxHealthWeapon = maxHealth + weapon.getHP() + extraHealth + totalDefenseHP();
-		if(healthPoints>getMaxHealth())
+		if(healthPoints>maxHealthWeapon)
 		{
-			healthPoints = getMaxHealth();
+			healthPoints = maxHealthWeapon;
 		}
 	}
 	public double getMaxHealth()
@@ -227,6 +227,14 @@ public class Player
 		}
 		
 		return ep;
+	}
+	public void setDefenses(ArrayList<Defense> def)
+	{
+		defenses = def;
+	}
+	public ArrayList<Defense> getDefenses()
+	{
+		return defenses;
 	}
 
 	//Healing----------------------------------------------------------------------------------------------------
@@ -435,7 +443,7 @@ public class Player
 		int critHit = rand.nextInt(99); //checks whether or not a "critical hit" is scored, which raises the total damage done by 50%
 		if (critHit < 10) //critical hit has a 10% chance of occurring
 		{
-			//Critical hit!
+			System.out.println("Critical Hit!");
 			return (int)Math.round(getTotalRawDamage()*attackMod*randomnessPercent*1.5);
 		}
 		else
@@ -446,10 +454,10 @@ public class Player
 		subtractEP(getSpecialAttackEP(index));
 		Random rand = new Random();
 		double randomnessPercent = (rand.nextInt(21)+90)/100.0; //determines the "randomness"; basically it ensures that no "perfect number" is dealt as damage
-		int critHit = rand.nextInt(99); //checks whether or not a "critical hit" is scored, which raises the total damage done by the attacks critical bonus percentage
+		int critHit = rand.nextInt(99); //checks whether or not a "critical hit" is scored, which raises the total damage done by the attack's critical bonus percentage
 		if (critHit < getSpecialAttackCritChance(index)) //critical hit has a variable chance of occurring
 		{
-			System.out.println("Critical hit!");
+			System.out.println("Critical Hit!");
 			return (int)Math.round(getSpecialAttackDam(index)*attackMod*(getLvl()/(getSpecialAttackLvl(index)+2))*randomnessPercent*getSpecialAttackCritBonus(index));
 		}
 		else
@@ -468,7 +476,7 @@ public class Player
 	}
 	public void resetMod() //resets the attackMod value to 1
 	{
-		attackMod = 1;
+		attackMod = 1.0;
 	}
 	public double getMod()
 	{
@@ -822,6 +830,18 @@ public class Player
 		data.add(String.valueOf(getWeapon().getEP()));
 		data.add(String.valueOf(getWeapon().getCost()));
 		
+		// Add each defense item to the data arraylist
+		ArrayList<Defense> def = getDefenses();
+		data.add(String.valueOf(def.size()));
+		for(int i = 0; i < def.size(); i++)
+		{
+			data.add(def.get(i).getDefenseName());
+			data.add(String.valueOf(def.get(i).getAddHP()));
+			data.add(String.valueOf(def.get(i).getAddEP()));
+			data.add(String.valueOf(def.get(i).getCost()));
+		}
+				
+		// Add each special attack to the data arraylist
 		ArrayList<SpecialAttack> speAtt = getSpecialAttacks();
 		data.add(String.valueOf(speAtt.size()));
 		for(int i = 0; i < speAtt.size(); i++)
@@ -836,6 +856,7 @@ public class Player
 			data.add(String.valueOf(speAtt.get(i).getCritBonus()));
 		}
 		
+		// Add each healing spell to the data arraylist
 		ArrayList<Healing> heal = getHealing();
 		data.add(String.valueOf(heal.size()));
 		for(int i = 0; i < heal.size(); i++)
@@ -867,7 +888,7 @@ public class Player
 		setPlayerName(list.remove(0));
 		setClass(list.remove(0));
 		
-		
+		// From the input list, assign the values to the player's weapon
 		String weaponName = list.remove(0);
 		double weaponDam = Double.parseDouble(list.remove(0));
 		double weaponHP = Double.parseDouble(list.remove(0));
@@ -886,7 +907,20 @@ public class Player
 		setMoney(mon);
 		setLvl(lvl);
 		setEXP(exp);
+		// Set the player's defense items
+		int numDefs = Integer.parseInt(list.remove(0));
+		ArrayList<Defense> def = new ArrayList<Defense>();
+		for(int i = 0; i < numDefs; i++)
+		{
+			String defName = list.remove(0);
+			double defHP = Double.parseDouble(list.remove(0));
+			double defEP = Double.parseDouble(list.remove(0));
+			int defCost = Integer.parseInt(list.remove(0));
+			def.add(new Defense(defName, defHP, defEP, defCost));
+		}
+		setDefenses(def);
 		
+		// Set the player's special attacks
 		int numSpeAtt = Integer.parseInt(list.remove(0));
 		ArrayList<SpecialAttack> speAtt = new ArrayList<SpecialAttack>();
 		for(int i = 0; i < numSpeAtt; i++)
@@ -903,6 +937,7 @@ public class Player
 		}
 		setSpecialAttacks(speAtt);
 		
+		// Set the player's healing spells
 		int numHeal = Integer.parseInt(list.remove(0));
 		ArrayList<Healing> heal = new ArrayList<Healing>();
 		for(int i = 0; i < numHeal; i++)

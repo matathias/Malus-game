@@ -222,8 +222,17 @@ public class Util
 			int itNum = 0;
 			
 			in.readLine();
-			//Read in the first 16 lines to the inPlayer arrayList
+			//Read in the first 18 lines to the inPlayer arrayList
 			for(int i = 0; i < 18; i++)
+			{
+				inPlayer.add(in.readLine());
+			}
+			//Find the number of defenses the player should have
+			String numDefs = in.readLine();
+			itNum = Integer.parseInt(numDefs);
+			inPlayer.add(numDefs);
+			//Read in all of the defenses to the inPlayer arraylist
+			for(int i = 0; i < itNum*4; i++)
 			{
 				inPlayer.add(in.readLine());
 			}

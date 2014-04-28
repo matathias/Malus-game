@@ -36,18 +36,16 @@ public class MarketHealing
 	}
 	private void initGeneralHealing() //(name,healedHP,usedEP,minLevel,cost) (more expensive than the comparable class spells)
 	{
-		if(player.getPlayerClass().equalsIgnoreCase("Entrepreneur")) //10% cheaper
-		{
-			healGen.add(new Healing("Heal","All",25,10,8,(int)(.9*150))); //Heal (-EP,+HP)
-			healGen.add(new Healing("HealUP","All",400,100,30,(int)(.9*2050))); //HealUp (--EP, ++HP)
-			healGen.add(new Healing("Machina Heal","All",-1000,-200,36,(int)(.9*2000))); //Machina Heal(-HP, +EP)
-		}
+		double costMult;
+		
+		if(player.getPlayerClass().equalsIgnoreCase("Entrepreneur"))//10% cheaper
+			costMult = .9;
 		else
-		{
-			healGen.add(new Healing("Heal","All",25,10,8,150)); //Heal (-EP,+HP)
-			healGen.add(new Healing("HealUP","All",400,100,30,2050)); //HealUp (--EP, ++HP)
-			healGen.add(new Healing("Machina Heal","All",-1000,-200,36,2000)); //Machina Heal(-HP, +EP)
-		}
+			costMult = 1.0;
+		
+		healGen.add(new Healing("Heal","All",25,10,8,(int)(costMult*150))); //Heal (-EP,+HP)
+		healGen.add(new Healing("HealUP","All",400,100,30,(int)(costMult*2050))); //HealUp (--EP, ++HP)
+		healGen.add(new Healing("Machina Heal","All",-1000,-200,36,(int)(costMult*2000))); //Machina Heal(-HP, +EP)
 	}
 	//for spells that increase EP instead of HP, have both be negative values
 	private void initClassHealing()
@@ -175,6 +173,9 @@ public class MarketHealing
 		
 		System.out.println(counter + ": Don't buy anything");
 		System.out.println("Your Money: " + player.getMoney());
+		System.out.println("Current level:  " + (int)player.getLvl());
+		System.out.println("Current Max HP: " + (int)player.getMaxHealth());
+		System.out.println("Current Max EP: " + (int)player.getMaxEP());
 		do
 		{
 			int choice = Util.numberSelect("",counter)-1;
