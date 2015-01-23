@@ -1,5 +1,9 @@
 *.class
 *.jar
+
+// IDE shenanigans
 *.jcp
 *.jcw
 *.jcu
+*.classpath
+*.project
