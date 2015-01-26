@@ -1,11 +1,38 @@
 import java.util.*;
 
-public class MarketSpeAttack//change Util.numberSelect() to proper parameters
+/**
+ * @author 		David Warrick
+ */
+public class MarketSpeAttack
 {
+	/**
+	 * Variable to store the player character. This is necessary for determining what Special Attacks the player can
+	 * purchase, and at what cost.
+	 */
 	private Player player;
-	private ArrayList <SpecialAttack> speAttGen; //general special attacks
-	private ArrayList <SpecialAttack> speAttClass; //class-specific special attacks
 
+	/**
+	 * ArrayList of Special Attacks to store the generic Special Attacks - that is, the Special Attacks that are
+	 * available for purchase to any character, regardless of class.
+	 */
+	private ArrayList <SpecialAttack> speAttGen;
+
+	/**
+	 * ArrayList of Special Attacks to store the class-specific Special Attacks. The Special Attacks that are loaded
+	 * into this ArrayList are dependent on the class of the player character; for instance, a Special Attack that is
+	 * specific to a Ravager would not be loaded if the player is a Commando.
+	 */
+	private ArrayList <SpecialAttack> speAttClass;
+
+	/**
+	 * Used at the first game start-up.
+	 * <p>
+	 * This Constructor takes in the player character as an argument and uses it to initialize the {@link #speAttGen}
+	 * and {@link #speAttClass} ArrayLists. This Constructor is used when the game is being started up on a brand new
+	 * character and everything is being initialized as new.
+	 * <p>
+	 * @param p The player character.
+	 */
 	public MarketSpeAttack(Player p)
 	{
 		player = p;
@@ -14,27 +41,73 @@ public class MarketSpeAttack//change Util.numberSelect() to proper parameters
 		initGeneralSpeAtt();
 		initClassSpeAtt();
 	}
+
+	/**
+	 * Used when loading data from a save file.
+	 * <p>
+	 * This Constructor is meant to be used when loading data from a save file. It initializes the {@link #speAttGen}
+	 * and {@link #speAttClass} ArrayLists and then calls {@link #setAllString(ArrayList data)} to set the
+	 * values of the ArrayLists.
+	 * <p>
+	 * In this case the player is not needed as the Special Attacks are simply being loaded from a file.
+	 * <p>
+	 * @param data The String ArrayList of Special Attacks that will be passed to {@link #setAllString(ArrayList data)}.
+	 */
 	public MarketSpeAttack(ArrayList<String> data)
 	{
-		//Meant to be used with setAll methods when loading from save.
 		speAttGen = new ArrayList<SpecialAttack>();
 		speAttClass = new ArrayList<SpecialAttack>();
 		setAllString(data);
 	}
+
+	/**
+	 * Returns the player character.
+	 *
+	 * @return Returns {@link #player}.
+	 */
 	public Player getPlayer()
 	{
 		return player;
 	}
+
+	/**
+	 * Sets the player character to the given player.
+	 * <p>
+	 * This method is actually functionally useless; the player is only needed when the game *first* runs so that the
+	 * Special Attack ArrayLists are initialized properly. Once they've been initialized the player is no longer
+	 * necessary, especially since the {@link #speAttMarket(Player p)} method does not (and can not) work on the player
+	 * previously stored within the MarketSpeAttack object.
+	 * <p>
+	 * I just don't want to get rid of it in case I break anything.
+	 * <p>
+	 * @param p - a player, used to determine what Special Attacks to show.
+	 */
 	public void setPlayer(Player p)
 	{
 		player = p;
 	}
+
+	/**
+	 * Adds the selected Special Attack to the player's repertoire and removes the proper amount of money.
+	 *
+	 * @param sA - the Special Attack that the player has chosen to buy.
+	 */
 	private void buySpeAtt(SpecialAttack sA)
 	{
 		player.addSpecialAttack(sA);
 		player.subtractMoney(sA.getCost());
 	}
-	private void initGeneralSpeAtt() //(name,attackDamage,extraPoints,minLevel,cost,criticalChance,critBonus)
+
+	/**
+	 * Initializes {@link #speAttGen}, the general Special Attack ArrayList.
+	 * <p>
+	 * Initializes the six general Special Attacks, Destruction, Foe Crash, Chaos Drive, Machina Chaos, Penultima Chaos,
+	 * and Ultima Chaos. These Special Attacks are class-independent; the only thing class-dependent about them is their
+	 * cost, thanks to the Entrepreneur's "10% off all prices" trait.
+	 * <p>
+	 */
+	//Special attack format: (name,attackDamage,extraPoints,minLevel,cost,criticalChance,critBonus)
+	private void initGeneralSpeAtt()
 	{
 		double costMult;
 		
@@ -43,13 +116,21 @@ public class MarketSpeAttack//change Util.numberSelect() to proper parameters
 		else
 			costMult = 1.0;
 		
-		speAttGen.add(new SpecialAttack("Destruction","All",150,40,9,(int)(200*costMult),5,1.5)); //Destruction
-		speAttGen.add(new SpecialAttack("Foe Crash","All",350,100,16,(int)(500*costMult),10,1.5)); //Foe Crash
-		speAttGen.add(new SpecialAttack("Chaos Drive","All",500,175,22,(int)(2000*costMult),15,1.5)); //Chaos Drive
-		speAttGen.add(new SpecialAttack("Machina Chaos","All",1000,450,30,(int)(6000*costMult),25,2)); //Machina Chaos
-		speAttGen.add(new SpecialAttack("Penultima Chaos","All",2500,600,37,(int)(10000*costMult),32,3.5)); //Penultima Chaos
-		speAttGen.add(new SpecialAttack("Ultima Chaos","All",50000,4300,48,(int)(100000*costMult),50,5)); //Ultima Chaos (high level)
+		speAttGen.add(new SpecialAttack("Destruction","All",150,40,9,(int)(200*costMult),5,1.5));
+		speAttGen.add(new SpecialAttack("Foe Crash","All",350,100,16,(int)(500*costMult),10,1.5));
+		speAttGen.add(new SpecialAttack("Chaos Drive","All",500,175,22,(int)(2000*costMult),15,1.5));
+		speAttGen.add(new SpecialAttack("Machina Chaos","All",1000,450,30,(int)(6000*costMult),25,2));
+		speAttGen.add(new SpecialAttack("Penultima Chaos","All",2500,600,37,(int)(10000*costMult),32,3.5));
+		speAttGen.add(new SpecialAttack("Ultima Chaos","All",50000,4300,48,(int)(100000*costMult),50,5));
 	}
+
+	/**
+	 * Initializes {@link #speAttClass}, the class-dependent Special Attack ArrayList.
+	 * <p>
+	 * Initializes the class-dependent Special Attacks. Depending on the player's class, {@link #speAttClass} could have
+	 * as few as three entries or as many as eight.
+	 * <p>
+	 */
 	private void initClassSpeAtt()
 	{
 		if(player.getPlayerClass().equalsIgnoreCase("Commando"))
@@ -96,6 +177,12 @@ public class MarketSpeAttack//change Util.numberSelect() to proper parameters
 			speAttClass.add(new SpecialAttack("Monopoly","Entreprenuer",1175,975,38,5000,75,4)); //Monopoly (high dam, high ep, high crit chance, high crit bonus)
 		}
 	}
+
+	/**
+	 * Displays the Special Attacks in a visually pleasing and easily navigable manner.
+	 *
+	 * @return a - the number of Special Attacks in the market
+	 */
 	private int showSpeAttacks()
 	{
 		String topHeader = "+------------------------------Special Attacks---------------------------------+";
@@ -112,8 +199,8 @@ public class MarketSpeAttack//change Util.numberSelect() to proper parameters
 			{
 				saN = speAttGen.get(a).getAttackName();
 				saDam = String.valueOf((int)speAttGen.get(a).getAttackDamage());
-				saCHC = String.valueOf((int)speAttGen.get(a).getCritChance());
-				saCost = String.valueOf((int)speAttGen.get(a).getCost());
+				saCHC = String.valueOf(speAttGen.get(a).getCritChance());
+				saCost = String.valueOf(speAttGen.get(a).getCost());
 				saMinLvl = String.valueOf((int)speAttGen.get(a).getMinLevel());
 				saEP = String.valueOf((int)speAttGen.get(a).getExtraPoints());
 				saCB = String.valueOf(speAttGen.get(a).getCritBonus());
@@ -122,8 +209,8 @@ public class MarketSpeAttack//change Util.numberSelect() to proper parameters
 			{
 				saN = speAttClass.get(a-speAttGen.size()).getAttackName();
 				saDam = String.valueOf((int)speAttClass.get(a-speAttGen.size()).getAttackDamage());
-				saCHC = String.valueOf((int)speAttClass.get(a-speAttGen.size()).getCritChance());
-				saCost = String.valueOf((int)speAttClass.get(a-speAttGen.size()).getCost());
+				saCHC = String.valueOf(speAttClass.get(a-speAttGen.size()).getCritChance());
+				saCost = String.valueOf(speAttClass.get(a-speAttGen.size()).getCost());
 				saMinLvl = String.valueOf((int)speAttClass.get(a-speAttGen.size()).getMinLevel());
 				saEP = String.valueOf((int)speAttClass.get(a-speAttGen.size()).getExtraPoints());
 				saCB = String.valueOf(speAttClass.get(a-speAttGen.size()).getCritBonus());
@@ -131,14 +218,13 @@ public class MarketSpeAttack//change Util.numberSelect() to proper parameters
 			String number = String.valueOf(a+1);
 			String row1 = "";
 			String row2 = "";
-			int numSpaces = 0;
 			
 			if(a+1 < 10)
 				row1 += "|  " + number + ": " + saN;
 			else
 				row1 += "| " + number + ": " + saN;
 			
-			numSpaces = 10 + 18 - saN.length();
+			int numSpaces = 10 + 18 - saN.length();
 			for(int i = 0; i<numSpaces; i++)
 				row1 += " ";
 			
@@ -178,16 +264,30 @@ public class MarketSpeAttack//change Util.numberSelect() to proper parameters
 		System.out.println(bottomHeader);
 		return a;
 	}
+
+	/**
+	 * Manages the player choosing a Special Attack to buy (or none at all).
+	 * <p>
+	 * The actual "Market", as far as the player is concerned. This method handles interfacing with the player and
+	 * calling the correct methods to buy a Special Attack and move it into the player's repertoire.
+	 * <p>
+	 * This method takes in the player character as an argument so that the player that is modified (i.e. that has the
+	 * Special Attack added to them) is the most current player, instead of the outdated player that was previously
+	 * stored in the MarketSpeAtt object. The method then returns the player again, this time updated with the purchased
+	 * Special Attack (assuming the player actually bought one).
+	 * <p>
+	 * @param p - the player character.
+	 * @return p - the player character.
+	 */
 	public Player speAttMarket(Player p)
 	{
 		player = p;
-		int counter = 0;
 		boolean bought = false;
 		System.out.println("\nWelcome to the Special Attack Market!");
 		System.out.println("You can buy Special Attacks here.");
 		System.out.println("Special Attacks are more powerful than regular attacks,\n but they require EP to use.");
 		Util.pause();
-		counter = showSpeAttacks();
+		int counter = showSpeAttacks();
 		counter++;
 		System.out.println(counter + ": Don't buy anything");
 		System.out.println("Your Money: " + player.getMoney());
@@ -247,6 +347,30 @@ public class MarketSpeAttack//change Util.numberSelect() to proper parameters
 		Util.pause();
 		return player;
 	}
+
+	/**
+	 * Retrieves all Special Attacks in the market in string form.
+	 * <p>
+	 * For every Special Attack left in the market (meaning that it is unpurchased by the player), this method
+	 * transforms the value of each attribute into a string and adds the value to a String ArrayList. The ArrayList
+	 * is then returned.
+	 * <p>
+	 * This method's entire purpose is for saving data. The returned ArrayList will be printed to a save file, which
+	 * can then be read in order to load the save.
+	 * <p>
+	 * The Special Attack attributes are loaded into the ArrayList in the following order:
+	 * <p>		- Special Attack Name
+	 * <p>		- Special Attack Class
+	 * <p>		- Attack Damage
+	 * <p>		- EP Cost
+	 * <p>		- Minimum Level
+	 * <p>		- Money Cost
+	 * <p>		- Critical Hit Chance
+	 * <p>		- Critical Hit Damage Bonus
+	 * <p>
+	 * @return data, an ArrayList of Strings such that every eight lines holds the attribute data for a single
+	 * Special Attack.
+	 */
 	public ArrayList<String> getAllString()
 	{
 		int numGen = speAttGen.size();
@@ -254,33 +378,45 @@ public class MarketSpeAttack//change Util.numberSelect() to proper parameters
 		ArrayList<String> data = new ArrayList<String>();
 		
 		data.add(String.valueOf(numGen));
-		for(int i = 0; i < numGen; i++)
+		for(SpecialAttack item : speAttGen)
 		{
-			data.add(speAttGen.get(i).getAttackName());
-			data.add(speAttGen.get(i).getAvailClass());
-			data.add(String.valueOf(speAttGen.get(i).getAttackDamage()));
-			data.add(String.valueOf(speAttGen.get(i).getExtraPoints()));
-			data.add(String.valueOf(speAttGen.get(i).getMinLevel()));
-			data.add(String.valueOf(speAttGen.get(i).getCost()));
-			data.add(String.valueOf(speAttGen.get(i).getCritChance()));
-			data.add(String.valueOf(speAttGen.get(i).getCritBonus()));
+			data.add(item.getAttackName());
+			data.add(item.getAvailClass());
+			data.add(String.valueOf(item.getAttackDamage()));
+			data.add(String.valueOf(item.getExtraPoints()));
+			data.add(String.valueOf(item.getMinLevel()));
+			data.add(String.valueOf(item.getCost()));
+			data.add(String.valueOf(item.getCritChance()));
+			data.add(String.valueOf(item.getCritBonus()));
 		}
 		
 		data.add(String.valueOf(numClass));
-		for(int i = 0; i < numClass; i++)
+		for(SpecialAttack item : speAttClass)
 		{
-			data.add(speAttClass.get(i).getAttackName());
-			data.add(speAttClass.get(i).getAvailClass());
-			data.add(String.valueOf(speAttClass.get(i).getAttackDamage()));
-			data.add(String.valueOf(speAttClass.get(i).getExtraPoints()));
-			data.add(String.valueOf(speAttClass.get(i).getMinLevel()));
-			data.add(String.valueOf(speAttClass.get(i).getCost()));
-			data.add(String.valueOf(speAttClass.get(i).getCritChance()));
-			data.add(String.valueOf(speAttClass.get(i).getCritBonus()));
+			data.add(item.getAttackName());
+			data.add(item.getAvailClass());
+			data.add(String.valueOf(item.getAttackDamage()));
+			data.add(String.valueOf(item.getExtraPoints()));
+			data.add(String.valueOf(item.getMinLevel()));
+			data.add(String.valueOf(item.getCost()));
+			data.add(String.valueOf(item.getCritChance()));
+			data.add(String.valueOf(item.getCritBonus()));
 		}
 		
 		return data;
 	}
+
+	/**
+	 * Initializes the Market of Special Attacks with preset data.
+	 * <p>
+	 * This method is meant to be used in conjunction with saving and loading. Whereas {@link #getAllString} will
+	 * create a String ArrayList from a currently existing Market to save to a file, this method will take in a String
+	 * ArrayList read in from a file and use the data to re-initialize the Market as it was when it was saved.
+	 * <p>
+	 * The ArrayList must be in the same format as the ArrayList produced by {@link #getAllString}.
+	 * <p>
+	 * @param data The String ArrayList containing the Special Attack attributes.
+	 */
 	public void setAllString(ArrayList<String> data)
 	{
 		ArrayList<SpecialAttack> inDataGen = new ArrayList<SpecialAttack>();

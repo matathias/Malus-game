@@ -213,9 +213,9 @@ public class Player
 	{
 		double hp = 0;
 		
-		for (int i = 0; i < defenses.size(); i++)
+		for (Defense item : defenses)
 		{
-			hp += defenses.get(i).getAddHP();
+			hp += item.getAddHP();
 		}
 		
 		return hp;
@@ -224,9 +224,9 @@ public class Player
 	{
 		double ep = 0;
 		
-		for (int i = 0; i < defenses.size(); i++)
+		for (Defense item : defenses)
 		{
-			ep += defenses.get(i).getAddEP();
+			ep += item.getAddEP();
 		}
 		
 		return ep;
@@ -273,14 +273,13 @@ public class Player
 			hEP = String.valueOf((int)getHealingEP(a));
 			String number = String.valueOf(a+1);
 			String row1 = "";
-			int numSpaces = 0;
 			
 			if(a+1 < 10)
 				row1 += "|  " + number + ": " + hN;
 			else
 				row1 += "| " + number + ": " + hN;
 			
-			numSpaces = 6 + 25 - hN.length();
+			int numSpaces = 6 + 25 - hN.length();
 			for(int i = 0; i<numSpaces; i++)
 				row1 += " ";
 			
@@ -359,21 +358,20 @@ public class Player
 			String saN, saDam, saCHC, saMinLvl, saEP, saCB;
 			saN = getSpecialAttackName(a);
 			saDam = String.valueOf((int)specialAttack.get(a).getAttackDamage());
-			saCHC = String.valueOf((int)specialAttack.get(a).getCritChance());
+			saCHC = String.valueOf(specialAttack.get(a).getCritChance());
 			saMinLvl = String.valueOf((int)specialAttack.get(a).getMinLevel());
 			saEP = String.valueOf((int)getSpecialAttackEP(a));
 			saCB = String.valueOf(specialAttack.get(a).getCritBonus());
 			String number = String.valueOf(a+1);
 			String row1 = "";
 			String row2 = "";
-			int numSpaces = 0;
 			
 			if(a+1 < 10)
 				row1 += "|  " + number + ": " + saN;
 			else
 				row1 += "| " + number + ": " + saN;
 			
-			numSpaces = 10 + 18 - saN.length();
+			int numSpaces = 10 + 18 - saN.length();
 			for(int i = 0; i<numSpaces; i++)
 				row1 += " ";
 			
@@ -573,14 +571,13 @@ public class Player
 			double curMaxHP = getMaxHealth();
 			double curMaxEP = getMaxEP();
 			double curDam = getRawDamage();
-			
-			double newLvl = 0;
+
 			double newMaxHP = 0;
 			double newMaxEP = 0;
 			double newDam = 0;
 			
 			addLvl();
-			newLvl = getLvl();
+			double newLvl = getLvl();
 			
 			if (playerClass.equalsIgnoreCase("Commando")) //Commando level up (Average HP, EP, Damage)
 			{
@@ -645,7 +642,7 @@ public class Player
 			extraEXP = true;
 		}
 
-		if (extraEXP == true)
+		if (extraEXP)
 			lvlUp();
 	}
 
@@ -772,21 +769,8 @@ public class Player
 		System.out.println(midHeader);
 		System.out.println(topHeader);
 	}
-	public void battleShow()
-	{
-		System.out.println(getPlayerName() + " the " + getPlayerClass());
-		System.out.println("Weapon: " + weapon);
-		System.out.println("HP: " + output.format(getHP()) + "/" + output.format(getMaxHealth()));
-		System.out.println("EP: " + output.format(getEP()) + "/" + output.format(getMaxEP()));
-		System.out.println("Attack Power: " + output.format(getTotalRawDamage()));
-	}
-	public void mookShow()
-	{
-		System.out.println(getPlayerName());
-		System.out.println("HP: " + output.format(getHP()) + "/" + output.format(getMaxHealth()));
-	}
 
-	//I/O all related data-----------------------------------------------------------------------------------------
+	//I/O all related data----------------------------------------------------------------------------------------------
 
 	public ArrayList<String> getAll()
 	{
@@ -836,40 +820,40 @@ public class Player
 		// Add each defense item to the data arraylist
 		ArrayList<Defense> def = getDefenses();
 		data.add(String.valueOf(def.size()));
-		for(int i = 0; i < def.size(); i++)
+		for(Defense item : def)
 		{
-			data.add(def.get(i).getDefenseName());
-			data.add(String.valueOf(def.get(i).getAddHP()));
-			data.add(String.valueOf(def.get(i).getAddEP()));
-			data.add(String.valueOf(def.get(i).getCost()));
+			data.add(item.getDefenseName());
+			data.add(String.valueOf(item.getAddHP()));
+			data.add(String.valueOf(item.getAddEP()));
+			data.add(String.valueOf(item.getCost()));
 		}
 				
 		// Add each special attack to the data arraylist
 		ArrayList<SpecialAttack> speAtt = getSpecialAttacks();
 		data.add(String.valueOf(speAtt.size()));
-		for(int i = 0; i < speAtt.size(); i++)
+		for(SpecialAttack item : speAtt)
 		{
-			data.add(speAtt.get(i).getAttackName());
-			data.add(speAtt.get(i).getAvailClass());
-			data.add(String.valueOf(speAtt.get(i).getAttackDamage()));
-			data.add(String.valueOf(speAtt.get(i).getExtraPoints()));
-			data.add(String.valueOf(speAtt.get(i).getMinLevel()));
-			data.add(String.valueOf(speAtt.get(i).getCost()));
-			data.add(String.valueOf(speAtt.get(i).getCritChance()));
-			data.add(String.valueOf(speAtt.get(i).getCritBonus()));
+			data.add(item.getAttackName());
+			data.add(item.getAvailClass());
+			data.add(String.valueOf(item.getAttackDamage()));
+			data.add(String.valueOf(item.getExtraPoints()));
+			data.add(String.valueOf(item.getMinLevel()));
+			data.add(String.valueOf(item.getCost()));
+			data.add(String.valueOf(item.getCritChance()));
+			data.add(String.valueOf(item.getCritBonus()));
 		}
 		
 		// Add each healing spell to the data arraylist
 		ArrayList<Healing> heal = getHealing();
 		data.add(String.valueOf(heal.size()));
-		for(int i = 0; i < heal.size(); i++)
+		for(Healing item : heal)
 		{
-			data.add(heal.get(i).getHealName());
-			data.add(heal.get(i).getAvailClass());
-			data.add(String.valueOf(heal.get(i).getHealedHP()));
-			data.add(String.valueOf(heal.get(i).getUsedEP()));
-			data.add(String.valueOf(heal.get(i).getMinLevel()));
-			data.add(String.valueOf(heal.get(i).getCost()));
+			data.add(item.getHealName());
+			data.add(item.getAvailClass());
+			data.add(String.valueOf(item.getHealedHP()));
+			data.add(String.valueOf(item.getUsedEP()));
+			data.add(String.valueOf(item.getMinLevel()));
+			data.add(String.valueOf(item.getCost()));
 		}
 		
 		return data;

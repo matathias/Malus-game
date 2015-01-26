@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_malus-game" default="compile.module.malus-game">
+  <dirname property="module.malus-game.basedir" file="${ant.file.module_malus-game}"/>
+  
+  <property name="module.jdk.home.malus-game" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.malus-game" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.malus-game" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.malus-game" value="-encoding UTF-8 -source 1.6 ${compiler.args}"/>
+  
+  <property name="malus-game.output.dir" value="${module.malus-game.basedir}/out/production/Malus-game"/>
+  <property name="malus-game.testoutput.dir" value="${module.malus-game.basedir}/out/test/Malus-game"/>
+  
+  <path id="malus-game.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="malus-game.module.production.classpath">
+    <path refid="${module.jdk.classpath.malus-game}"/>
+  </path>
+  
+  <path id="malus-game.runtime.production.module.classpath">
+    <pathelement location="${malus-game.output.dir}"/>
+  </path>
+  
+  <path id="malus-game.module.classpath">
+    <path refid="${module.jdk.classpath.malus-game}"/>
+    <pathelement location="${malus-game.output.dir}"/>
+  </path>
+  
+  <path id="malus-game.runtime.module.classpath">
+    <pathelement location="${malus-game.testoutput.dir}"/>
+    <pathelement location="${malus-game.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.malus-game">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.malus-game">
+    <patternset refid="excluded.from.module.malus-game"/>
+  </patternset>
+  
+  <path id="malus-game.module.sourcepath">
+    <dirset dir="${module.malus-game.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.malus-game" depends="compile.module.malus-game.production,compile.module.malus-game.tests" description="Compile module Malus-game"/>
+  
+  <target name="compile.module.malus-game.production" depends="register.custom.compilers" description="Compile module Malus-game; production classes">
+    <mkdir dir="${malus-game.output.dir}"/>
+    <javac2 destdir="${malus-game.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.malus-game}/javac">
+      <compilerarg line="${compiler.args.malus-game}"/>
+      <bootclasspath refid="malus-game.module.bootclasspath"/>
+      <classpath refid="malus-game.module.production.classpath"/>
+      <src refid="malus-game.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.malus-game"/>
+    </javac2>
+    
+    <copy todir="${malus-game.output.dir}">
+      <fileset dir="${module.malus-game.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.malus-game.tests" depends="register.custom.compilers,compile.module.malus-game.production" description="compile module Malus-game; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.malus-game" description="cleanup module">
+    <delete dir="${malus-game.output.dir}"/>
+    <delete dir="${malus-game.testoutput.dir}"/>
+  </target>
+</project>

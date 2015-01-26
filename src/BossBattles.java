@@ -1,14 +1,9 @@
 import java.util.*;
 
-public class BossBattles //change Util.numberSelect to proper parameters! - Done
+public class BossBattles
 {
-	private int choiceMain;
-	private int choiceAttack;
-	private int choiceSpeAtt;
-	private int choiceHeal;
 	private int win;
 	private int damage;
-	private int winRes;
 	private Random rand;
 	private Player p, b;
 
@@ -45,6 +40,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 		if(isMalus)
 		{
 			battShow(p,b);
+			int choiceMain;
 			if(p.numberHealing() < 1)
 				choiceMain = Util.numberSelect("Will you:\t\t1. Attack",1);
 			else
@@ -66,6 +62,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 		else
 		{
 			battShow(p,b);
+			int choiceMain;
 			if(p.numberHealing() < 1)
 				choiceMain = Util.numberSelect("Will you:\t\t1. Attack\t\t2. Flee",2);
 			else
@@ -90,7 +87,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	}
 	private void doAttack(boolean isMalus)
 	{
-		choiceAttack = Util.numberSelect("Will you:\n1. Use regular attack\n2. Use Special attack\n3. Go back",3);
+		int choiceAttack = Util.numberSelect("Will you:\n1. Use regular attack\n2. Use Special attack\n3. Go back",3);
 		switch(choiceAttack)
 		{
 			case 1:
@@ -109,6 +106,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 		p.showSpecialAttacks();
 		System.out.println(String.valueOf(p.numberSpecialAttacks() + 1) + ". Go back");
 		boolean goBack = false;
+		int choiceSpeAtt;
 		do
 		{
 			choiceSpeAtt = Util.numberSelect("",p.numberSpecialAttacks() + 1);
@@ -130,6 +128,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	{
 		p.showHealing();
 		System.out.println(String.valueOf(p.numberHealing() + 1) + ". Go back");
+		int choiceHeal;
 		do
 		{
 			choiceHeal = Util.numberSelect("",p.numberHealing()+1);
@@ -148,7 +147,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	private void doFlee()
 	{
 		int fleeChance = rand.nextInt(99);
-		int totalChance = (int)(100 * (double)(p.getLvl()/b.getLvl()));
+		int totalChance = (int)(100 * (p.getLvl()/b.getLvl()));
 		if(fleeChance<=totalChance)
 			win = 2;
 		else
@@ -175,8 +174,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	}
 	private void winResult(int w, Player p, Player e)
 	{
-		winRes = w;
-		switch(winRes)
+		switch(w)
 		{
 			case 1: //Player Wins
 				System.out.println("You have defeated the " + e.getPlayerName() + "!");
@@ -272,7 +270,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 *	Final: Malus
 	 */
 
-	 /*
+	 /*				Damage code templates
 	  * 				damage = __.damage();
 	 					System.out.println("__ dealt " + damage + " damage.");
 						Util.lineBreak();
@@ -290,7 +288,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 public int sandStoneBoss(Player player)
 	 {
 	 	System.out.println("You have entered battle with Sand Stone!");
-	 	Player sandStone = new Player(750,15,125,50,20,6,"Sand Stone"); //Placeholder values
+	 	Player sandStone = new Player(750,15,125,50,20,6,"Sand Stone");
 	 	boolean quarter = true;
 	 	int quarterCounter = 0;
 	 	boolean emergency = false;
@@ -377,7 +375,7 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 				{
 	 					Story.desertBossEmergency();
 	 					System.out.println("Sand Stone attacked you with Desert Storm!");
-	 					damage = (int)(sandStone.damage()*3);
+	 					damage = (sandStone.damage()*3);
 	 					System.out.println("The forces of sand and desert come together in one spot,\nattacking you for " + damage + " damage!");
 	 					Util.lineBreak();
 	 					player.subtractHP(damage);
@@ -433,11 +431,12 @@ public class BossBattles //change Util.numberSelect to proper parameters! - Done
 	 	}
 	 	winResult(win,player,sandStone);
 	 	return win;
-	 } //replace placeholder values
+	 }
+
 	 public int grassStoneBoss(Player player)
 	 {
 	 	System.out.println("You have entered battle with Grass Stone!");
-	 	Player grassStone = new Player(1500,26,256,250,40,12,"Grass Stone"); //Placeholder values
+	 	Player grassStone = new Player(1500,26,256,250,40,12,"Grass Stone");
 	 	boolean quarter = true;
 	 	int quarterCounter = 0;
 	 	boolean emergency = false;

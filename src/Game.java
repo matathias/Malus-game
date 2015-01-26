@@ -1,3 +1,9 @@
+/**
+ * @author		David Warrick <warrick.david58@gmail.com>
+ * @version		0.1
+ * @since		2013-06-14
+ */
+// Man I don't know what the version is, I'm still trying to sort out all my shitty code
 public class Game
 {
 	public static void main (String args[])
@@ -48,7 +54,7 @@ public class Game
 			}
 			else
 			{
-				usage(args);
+				usage();
 			}
 		}
 		else if(args.length == 0)
@@ -57,10 +63,10 @@ public class Game
 		}
 		else
 		{
-			usage(args);
+			usage();
 		}
 	}
-	public static void usage(String args[])
+	public static void usage()
 	{
 		System.out.println("Usage: java Game [--debug] [debug class]");
 	}

@@ -5,7 +5,7 @@ public class Defense
 	private double addEP;
 	private int cost;
 
-	public Defense()//placeholder
+	public Defense()
 	{
 		name = "null";
 		addHP = 0.0;

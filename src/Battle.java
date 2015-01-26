@@ -2,13 +2,8 @@ import java.util.*;
 
 public class Battle
 {
-	private int choiceMain;
-	private int choiceAttack;
-	private int choiceSpeAtt;
-	private int choiceHeal;
 	private int win;
 	private int damage;
-	private int winRes;
 	private Player p, e;
 	private Random rand;
 
@@ -41,6 +36,7 @@ public class Battle
 	private void doChoice()
 	{
 		battShow(p,e);
+		int choiceMain;
 		if(p.numberHealing() < 1)
 			choiceMain = Util.numberSelect("Will you:\t\t1. Attack\t\t2. Flee",2);
 		else
@@ -64,7 +60,7 @@ public class Battle
 	}
 	private void doAttack()
 	{
-		choiceAttack = Util.numberSelect("Will you:\n1. Use regular attack\n2. Use Special attack\n3. Go back",3);
+		int choiceAttack = Util.numberSelect("Will you:\n1. Use regular attack\n2. Use Special attack\n3. Go back",3);
 		switch(choiceAttack)
 		{
 			case 1:
@@ -83,6 +79,7 @@ public class Battle
 		p.showSpecialAttacks();
 		System.out.println(String.valueOf(p.numberSpecialAttacks() + 1) + ". Go back");
 		boolean goBack = false;
+		int choiceSpeAtt;
 		do
 		{
 			choiceSpeAtt = Util.numberSelect("",p.numberSpecialAttacks() + 1);
@@ -104,6 +101,7 @@ public class Battle
 	{
 		p.showHealing();
 		System.out.println(String.valueOf(p.numberHealing() + 1) + ". Go back");
+		int choiceHeal;
 		do
 		{
 			choiceHeal = Util.numberSelect("",p.numberHealing()+1);
@@ -122,7 +120,7 @@ public class Battle
 	private void doFlee()
 	{
 		int fleeChance = rand.nextInt(99);
-		int totalChance = (int)(100 * (double)(p.getLvl()/e.getLvl()));
+		int totalChance = (int)(100 * (p.getLvl()/e.getLvl()));
 		if(fleeChance<=totalChance)
 			win = 2;
 		else
@@ -160,7 +158,7 @@ public class Battle
 
 	private void winResult(int w, Player p, Player e)
 	{
-		winRes = w;
+		int winRes = w;
 		switch(winRes)
 		{
 			case 1: //Player Wins

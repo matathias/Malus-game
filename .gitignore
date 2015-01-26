@@ -5,6 +5,7 @@
 out
 build
 dist
+Javadocs
 
 // IDE shenanigans
 *.jcp
