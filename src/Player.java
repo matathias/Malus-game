@@ -33,7 +33,8 @@ public class Player
 
 	//Constructors----------------------------------------------------------------------------------------------------
 
-	public Player (double hP, double aD, double eP, double exP, double m, String pN, String pC, Weapon w) //This is the human player constructor.
+    // This is the human player constructor.
+	public Player (double hP, double aD, double eP, double exP, double m, String pN, String pC, Weapon w)
 	{
 		weapon = w;
 		maxHealth = hP;
@@ -56,7 +57,9 @@ public class Player
 		extraExtra = 0;
 	}
 
-	public Player (double hP, double aD, double exP, double m, double eP, double lvl, String pN) //This is the enemy constructor. The EXP, money, and EP values are actually the EXP, money, and EP that will be rewarded to the human player upon defeat of the enemy.
+	//This is the enemy constructor. The EXP, money, and EP values are actually the EXP, money, and EP that will
+    // be rewarded to the human player upon defeat of the enemy.
+	public Player (double hP, double aD, double exP, double m, double eP, double lvl, String pN)
 	{
 		weapon = new Weapon();
 		maxHealth = hP;
