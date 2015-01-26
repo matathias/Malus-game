@@ -114,8 +114,4 @@ public class SpecialAttack
 	{
 		return attackName + "\tDamage: " + attackDamage + "\tEP Cost: " + extraPoints + "\tCritical Hit Chance: " + criticalChance + "\tCritical Bonus: x" + critBonus;
 	}
-	public String marketToString()
-	{
-		return attackName + "\tDamage: " + attackDamage + "\tEP Cost: " + extraPoints + "\tCritical Hit Chance: " + criticalChance + "\tCritical Bonus: x" + critBonus + "\n\tCost: " + cost + "\tMinimum Level: " + minLevel;
-	}
 }

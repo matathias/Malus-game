@@ -79,8 +79,4 @@ public class Healing
 	{
 		return healName + "\tHeals " + healedHP + "HP\tEP Cost: " + usedEP;
 	}
-	public String marketToString()
-	{
-		return healName + "\tHeals " + healedHP + "HP\tEP Cost: " + usedEP + "\n\tCost: " + cost + "\tMinimum Level: " + minLevel;
-	}
 }

@@ -1,11 +1,30 @@
 import java.util.*;
 import java.io.*;
 
+/**
+ * @author		David Warrick
+ */
 public class Util
 {
+	/**
+	 * Input mechanism.
+	 */
 	private static Scanner input = new Scanner(System.in);
+
+	/**
+	 * Keeps track of the save number so a later save will not overwrite a previous one.
+	 */
 	private static int saveCounter = 1;
 
+	/**
+	 * Handles yes/no prompts for the player.
+	 * <p>
+	 * This method will prompt the player for a yes or a no response, and will not continue until the player has typed
+	 * a case-insensitive "yes" or "no". The method will not throw an exception or an error for string input that is not
+	 * "yes" or "no", it will merely prompt the player to answer again.
+	 * <p>
+	 * @return yesNo - the player's choice
+	 */
 	public static String yesNoLoop()
 	{
 		/*
@@ -27,6 +46,18 @@ public class Util
 
 		return yesNo;
 	}
+
+	/**
+	 * Displays a list of choices for the player to choose from.
+	 * <p>
+	 * Similar to {@link #yesNoLoop}, this method will continually ask the player for an answer until they give a proper
+	 * answer, which in this case is a number between 1 and numChoices. Non-numerical or otherwise "incorrect" inputs
+	 * will not crash the program or throw an exception, they will simply prompt the player to answer again.
+	 * <p>
+	 * @param displayText - the list of choices for the player to chose from, in String form.
+	 * @param numChoices - the number of choices.
+	 * @return int choice - the number that the player picked.
+	 */
 	public static int numberSelect(String displayText, int numChoices)
 	{
 		/*
@@ -36,7 +67,7 @@ public class Util
 		 * 
 		 * This version of numberSelect accepts a String and displays it before executing the loop.
 		 */
-		int choice = 0;
+		int choice;
 		numChoices = Math.abs(numChoices);
 		System.out.println(displayText);
 		do
@@ -55,6 +86,18 @@ public class Util
 		while(choice > numChoices || choice<1);
 		return choice;
 	}
+
+	/**
+	 * Displays a list of choices for the player to choose from.
+	 * <p>
+	 * Similar to {@link #yesNoLoop}, this method will continually ask the player for an answer until they give a proper
+	 * answer, which in this case is a number between 1 and numChoices. Non-numerical or otherwise "incorrect" inputs
+	 * will not crash the program or throw an exception, they will simply prompt the player to answer again.
+	 * <p>
+	 * @param list - the list of choices for the player to chose from, in ArrayList<String> form.
+	 * @param numChoices - the number of choices.
+	 * @return int choice - the number that the player picked.
+	 */
 	public static int numberSelect(ArrayList<String> list, int numChoices)
 	{
 		/*
@@ -64,7 +107,7 @@ public class Util
 		 * 
 		 * This version of numberSelect accepts an ArrayList and displays it before executing the loop.
 		 */
-		int choice = 0;
+		int choice;
 		numChoices = Math.abs(numChoices);
 		for(int a = 0; a<list.size(); a++)
 		{
@@ -87,51 +130,64 @@ public class Util
 		while(choice > numChoices || choice<1);
 		return choice;
 	}
+
+	/**
+	 * Used to "pause" output, allowing the player to read previous text before moving on.
+	 */
 	public static void pause()
 	{
-		/*
-		 * Used to "pause" output, allowing the player to read everything before moving on.
-		 */
 		System.out.print("\nPress Enter to Continue");
 		input.nextLine();
 		System.out.println();
 	}
+
+	/**
+	 * Used to "pause" output in the same manner as {@link #pause}, except without the "Press Enter to Continue" prompt.
+	 */
 	public static void skitPause()
 	{
-		/*
-		 * Used to pause output in a non-obtrusive manner.
-		 */
 		System.out.print("");
 		input.nextLine();
 	}
+
+	/**
+	 * Used to separate blocks of text.
+	 */
 	public static void lineBreak()
 	{
-		/*
-		 * Used to separate blocks of text.
-		 */
 		System.out.println("________________________________________________________________________________\n");
 	}
+
+	/**
+	 * Used to separate significant blocks of text.
+	 */
 	public static void bigLineBreak()
 	{
-		/*
-		 * Used to separate significant blocks of text.
-		 */
 		System.out.println("\n________________________________________________________________________________\n");
 	}
+
+	/**
+	 * Used to pass some amount of time.
+	 * <p>
+	 * This function simply uses a loop to count from 0 up to the given long value.
+	 * <p>
+	 * @param time - a long value for the program to count up to.
+	 */
 	public static void passTime(long time)
 	{
 		for(long a = 0; a < time; a++);
 	}
+
+	/**
+	 * Creates a save file and writes all relevant data to it for later loading.
+	 *
+	 * @param playerData - an ArrayList<String> containing all of the player's data.
+	 * @param gameData - an ArrayList<String> containing all other data related to gameplay.
+	 * @param storyData - a String storing data on the player's progression through the story.
+	 * @param Loc - an int representing the player's current location.
+	 */
 	public static void gameSave(ArrayList<String> playerData, ArrayList<String> gameData, String storyData, int Loc)
 	{
-		/*
-		 * Creates a save file and writes all relevant date to it for later loading.
-		 */
-		/*
-		 * NOTE: Modifiy this and other methods such that gameSave only has to write String ArrayLists to file.
-		 *That is, have the other methods return ArrayLists of strings with their getAll() method, where every
-		 *object has been split into strings that display the value of the object's fields.
-		 */
 		
 		//Assemble the file name from character name, class, and the save counter.
 		String fileName;
@@ -156,9 +212,9 @@ public class Util
 			/*
 			 * Write playerData
 			 */
-			for(int i = 0; i < playerData.size(); i++)
+			for(String item : playerData)
 			{
-				out.write(playerData.get(i));
+				out.write(item);
 				out.newLine();
 			}
 			
@@ -168,9 +224,9 @@ public class Util
 			/*
 			 * Write gameData
 			 */
-			for(int i = 0; i < gameData.size(); i++)
+			for(String item : gameData)
 			{
-				out.write(gameData.get(i));
+				out.write(item);
 				out.newLine();
 			}
 			
@@ -206,20 +262,23 @@ public class Util
 			Util.pause();
 		}
 	}
+
+	/**
+	 * Reads data from a save file and resumes the game.
+	 *
+	 * @param fileName - the name of the file from which to load data.
+	 * @return Returns a boolean value stating whether or not the load was successful.
+	 */
 	public static boolean gameLoad(String fileName)
 	{
-		/*
-		 * Reads data from a file named fileName and assigns it to all relevant classes 
-		 * in order to resume the game from a previous save.
-		 */
 		ArrayList<String> inPlayer = new ArrayList<String>();
 		ArrayList<String> inGame = new ArrayList<String>();
-		String inStory = "";
+		String inStory;
 		
 		try{
 			FileReader inFile = new FileReader(fileName);
 			BufferedReader in = new BufferedReader(inFile);
-			int itNum = 0;
+			int itNum;
 			
 			in.readLine();
 			//Read in the first 18 lines to the inPlayer arrayList
