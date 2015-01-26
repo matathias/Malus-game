@@ -4,6 +4,7 @@
 // out directory
 out
 build
+dist
 
 // IDE shenanigans
 *.jcp
