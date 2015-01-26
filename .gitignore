@@ -1,6 +1,10 @@
 *.class
 *.jar
 
+// out directory
+out
+build
+
 // IDE shenanigans
 *.jcp
 *.jcw

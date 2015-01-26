@@ -31,7 +31,7 @@ public class Player
 	private String playerClass;
 
 
-	//Constructors----------------------------------------------------------------------------------------------------
+	//Constructors------------------------------------------------------------------------------------------------------
 
     // This is the human player constructor.
 	public Player (double hP, double aD, double eP, double exP, double m, String pN, String pC, Weapon w)
@@ -79,7 +79,7 @@ public class Player
 		setAll(data);
 	}
 
-	//HP----------------------------------------------------------------------------------------------------
+	//HP----------------------------------------------------------------------------------------------------------------
 
 	public void subtractHP (double hP)
 	{
