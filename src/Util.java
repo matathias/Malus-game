@@ -132,6 +132,35 @@ public class Util
 	}
 
 	/**
+	 * Used to divide a single long line into several smaller lines based on the given line length.
+	 *<p>
+	 * This method assumes that the string does not already contain line breaks, and that no single "word" within the
+	 * string is longer than length.
+	 *<p>
+	 * @param line - the String to be divided up.
+	 * @param length - the maximum line length
+	 * @return Returns a String that is line with newline characters inserted such that when printed, no single line of
+	 * text is longer than length.
+	 */
+	public static String lineWrap(String line, int length)
+	{
+		// Base case
+		if(line.length() <= length)
+			return line;
+
+		int index = length;
+		char endChar;
+		do
+		{
+			index--;
+			endChar = line.charAt(index);
+		}while (endChar != ' ' && index > 1);
+
+		// Recursion woo
+		return line.substring(0,index) + "\n" + lineWrap(line.substring(index+1), length);
+	}
+
+	/**
 	 * Used to "pause" output, allowing the player to read previous text before moving on.
 	 */
 	public static void pause()

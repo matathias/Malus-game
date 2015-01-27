@@ -2499,7 +2499,7 @@ public class BossBattles
 	 				damage = (int)(player.getHP()/20);
 	 				System.out.println("Malus: \"Hm, you certainly are worthy of my respect... respect enough to witness Chaos's Reign! Ah haha!\"");
 					Util.skitPause();
-	 				System.out.println("Malus starts drawing in boundless amounts of Chaos Energy...\nand then unleashes it!");
+	 				System.out.println("Malus starts drawing in boundless amounts of Chaos Energy... and then unleashes it!");
 					Util.skitPause();
 	 				System.out.println("Using Chaos's Reign, Malus healed himself " + (int)(ultimaMalus.getHP()/50) + " and dealt " + damage + " damage to you!!");
 	 				ultimaMalus.addHP(ultimaMalus.getHP()/50);
@@ -2519,7 +2519,7 @@ public class BossBattles
 	 				System.out.println("Malus: \"Now that the Ultima Railgun has finished its preliminary charge, it will charge MUCH faster from now on!\"");
 					System.out.println("Malus: \"Now... die!!\"");
 					Util.skitPause();
-	 				System.out.println("Malus uses the Ultima Railgun on you, dealing " + damage + " damage!");
+	 				System.out.println("Malus fires the Ultima Railgun at you, dealing " + damage + " damage!");
 					Util.skitPause();
 	 				System.out.println("The Ultima Railgun begins charging.");
 					Util.lineBreak();
@@ -2578,7 +2578,7 @@ public class BossBattles
 	 				else if((ultimaMalus.getHP()<ultimaMalus.getMaxHealth()/4 && attackChance > 83 && attackChance < 92) || (attackChance > 90)) //Ultima Guass Cannon (10%)
 	 				{
 	 					damage = (int)(ultimaMalus.damage()*5.6);
-	 					System.out.println("Malus attacked you with his Ultima Guass Cannon and dealt " + damage + " damage!");
+	 					System.out.println("Malus attacked you with his Ultima Gauss Cannon and dealt " + damage + " damage!");
 						Util.lineBreak();
 						player.subtractHP(damage);
 						if(player.getHP() <= 0)
@@ -2606,12 +2606,12 @@ public class BossBattles
 						win = 3;
 	 				chaosReign = false;
 	 			}
-	 			else if(ultimaRailgun && !blackHoleCannon) //Ultima Railgun (black hole cannon trumps Ultima Railgun; ultima railgun will the used the following turn)
+	 			else if(ultimaRailgun && !blackHoleCannon) //Ultima Railgun (black hole cannon trumps Ultima Railgun; ultima railgun will be used the following turn)
 	 			{
 					damage = (ultimaMalus.damage()*10); //change the modifier?
 	 				System.out.println("The Ultima Railgun has finished charging!");
 					Util.skitPause();
-	 				System.out.println("Malus immeidately uses it on you, dealing " + damage + " damage!");
+	 				System.out.println("Malus immediately fires it at you, dealing " + damage + " damage!");
 					Util.skitPause();
 	 				System.out.println("The Ultima Railgun begins charging once again.");
 					Util.lineBreak();

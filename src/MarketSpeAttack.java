@@ -285,7 +285,7 @@ public class MarketSpeAttack
 		boolean bought = false;
 		System.out.println("\nWelcome to the Special Attack Market!");
 		System.out.println("You can buy Special Attacks here.");
-		System.out.println("Special Attacks are more powerful than regular attacks,\n but they require EP to use.");
+		System.out.println(Util.lineWrap("Special Attacks are more powerful than regular attacks, but they require EP to use.",80));
 		Util.pause();
 		int counter = showSpeAttacks();
 		counter++;
