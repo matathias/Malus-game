@@ -54,8 +54,8 @@ public class Util
 	 * answer, which in this case is a number between 1 and numChoices. Non-numerical or otherwise "incorrect" inputs
 	 * will not crash the program or throw an exception, they will simply prompt the player to answer again.
 	 * <p>
-	 * @param displayText - the list of choices for the player to chose from, in String form.
-	 * @param numChoices - the number of choices.
+	 * @param displayText the list of choices for the player to chose from, in String form.
+	 * @param numChoices the number of choices.
 	 * @return int choice - the number that the player picked.
 	 */
 	public static int numberSelect(String displayText, int numChoices)
@@ -94,8 +94,8 @@ public class Util
 	 * answer, which in this case is a number between 1 and numChoices. Non-numerical or otherwise "incorrect" inputs
 	 * will not crash the program or throw an exception, they will simply prompt the player to answer again.
 	 * <p>
-	 * @param list - the list of choices for the player to chose from, in ArrayList<String> form.
-	 * @param numChoices - the number of choices.
+	 * @param list the list of choices for the player to chose from, in ArrayList<String> form.
+	 * @param numChoices the number of choices.
 	 * @return int choice - the number that the player picked.
 	 */
 	public static int numberSelect(ArrayList<String> list, int numChoices)
@@ -137,8 +137,8 @@ public class Util
 	 * This method assumes that the string does not already contain line breaks, and that no single "word" within the
 	 * string is longer than length.
 	 *<p>
-	 * @param line - the String to be divided up.
-	 * @param length - the maximum line length
+	 * @param line the String to be divided up.
+	 * @param length the maximum line length
 	 * @return Returns a String that is line with newline characters inserted such that when printed, no single line of
 	 * text is longer than length.
 	 */
@@ -200,7 +200,7 @@ public class Util
 	 * <p>
 	 * This function simply uses a loop to count from 0 up to the given long value.
 	 * <p>
-	 * @param time - a long value for the program to count up to.
+	 * @param time a long value for the program to count up to.
 	 */
 	public static void passTime(long time)
 	{
@@ -210,10 +210,10 @@ public class Util
 	/**
 	 * Creates a save file and writes all relevant data to it for later loading.
 	 *
-	 * @param playerData - an ArrayList<String> containing all of the player's data.
-	 * @param gameData - an ArrayList<String> containing all other data related to gameplay.
-	 * @param storyData - a String storing data on the player's progression through the story.
-	 * @param Loc - an int representing the player's current location.
+	 * @param playerData an ArrayList<String> containing all of the player's data.
+	 * @param gameData an ArrayList<String> containing all other data related to gameplay.
+	 * @param storyData a String storing data on the player's progression through the story.
+	 * @param Loc an int representing the player's current location.
 	 */
 	public static void gameSave(ArrayList<String> playerData, ArrayList<String> gameData, String storyData, int Loc)
 	{
@@ -295,7 +295,7 @@ public class Util
 	/**
 	 * Reads data from a save file and resumes the game.
 	 *
-	 * @param fileName - the name of the file from which to load data.
+	 * @param fileName the name of the file from which to load data.
 	 * @return Returns a boolean value stating whether or not the load was successful.
 	 */
 	public static boolean gameLoad(String fileName)

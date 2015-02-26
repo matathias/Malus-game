@@ -63,7 +63,7 @@ public class MarketSpeAttack
 	/**
 	 * Returns the player character.
 	 *
-	 * @return Returns {@link #player}.
+	 * @return p
 	 */
 	public Player getPlayer()
 	{
@@ -80,7 +80,7 @@ public class MarketSpeAttack
 	 * <p>
 	 * I just don't want to get rid of it in case I break anything.
 	 * <p>
-	 * @param p - a player, used to determine what Special Attacks to show.
+	 * @param p a player, used to determine what Special Attacks to show.
 	 */
 	public void setPlayer(Player p)
 	{
@@ -90,7 +90,7 @@ public class MarketSpeAttack
 	/**
 	 * Adds the selected Special Attack to the player's repertoire and removes the proper amount of money.
 	 *
-	 * @param sA - the Special Attack that the player has chosen to buy.
+	 * @param sA the Special Attack that the player has chosen to buy.
 	 */
 	private void buySpeAtt(SpecialAttack sA)
 	{
@@ -276,7 +276,7 @@ public class MarketSpeAttack
 	 * stored in the MarketSpeAtt object. The method then returns the player again, this time updated with the purchased
 	 * Special Attack (assuming the player actually bought one).
 	 * <p>
-	 * @param p - the player character.
+	 * @param p the player character.
 	 * @return p - the player character.
 	 */
 	public Player speAttMarket(Player p)
@@ -368,7 +368,7 @@ public class MarketSpeAttack
 	 * <p>		- Critical Hit Chance
 	 * <p>		- Critical Hit Damage Bonus
 	 * <p>
-	 * @return data, an ArrayList of Strings such that every eight lines holds the attribute data for a single
+	 * @return data an ArrayList of Strings such that every eight lines holds the attribute data for a single
 	 * Special Attack.
 	 */
 	public ArrayList<String> getAllString()
@@ -415,7 +415,7 @@ public class MarketSpeAttack
 	 * <p>
 	 * The ArrayList must be in the same format as the ArrayList produced by {@link #getAllString}.
 	 * <p>
-	 * @param data The String ArrayList containing the Special Attack attributes.
+	 * @param data - The String ArrayList containing the Special Attack attributes.
 	 */
 	public void setAllString(ArrayList<String> data)
 	{
